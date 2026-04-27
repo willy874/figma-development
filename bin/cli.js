@@ -278,10 +278,10 @@ function printHelp() {
 ${c('bold', 'figma-development')} — 安裝 Figma 相關的 Claude Code skills
 
 ${c('bold', '使用方式')}
-  npx github:willy874/figma-development#v1.0.0 [options]
+  npx github:willy874/figma-development [options]
 
-  ${c('dim', '# 不鎖版（追主線）：npx github:willy874/figma-development')}
-  ${c('dim', '# 鎖 commit / 其他 ref：npx github:willy874/figma-development#<ref>')}
+  ${c('dim', '# 鎖版可在 spec 後面加 #ref（tag / branch / commit）')}
+  ${c('dim', '# 例：npx github:willy874/figma-development#v1.0.0')}
 
 ${c('bold', '選項')}
   -l, --list             列出所有可用的 skills
@@ -295,13 +295,13 @@ ${c('bold', '選項')}
 
 ${c('bold', '範例')}
   ${c('dim', '# 互動式安裝到當前專案')}
-  npx github:willy874/figma-development#v1.0.0
+  npx github:willy874/figma-development
 
   ${c('dim', '# 一次安裝全部到使用者目錄並覆蓋既有檔案')}
-  npx github:willy874/figma-development#v1.0.0 --all --user --force
+  npx github:willy874/figma-development --all --user --force
 
   ${c('dim', '# 只安裝指定 skill 到專案，已存在則略過')}
-  npx github:willy874/figma-development#v1.0.0 --only figma-operator-guide,figma-spec-guide --skip-existing
+  npx github:willy874/figma-development --only figma-operator-guide,figma-spec-guide --skip-existing
 `;
   process.stdout.write(out + '\n');
 }

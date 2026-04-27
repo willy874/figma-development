@@ -11,26 +11,24 @@
 只要本機有 Node.js（>= 16）即可：
 
 ```bash
-# 互動式安裝到當前專案 ./.claude/skills/，鎖定 v1.0.0
-npx github:willy874/figma-development#v1.0.0
+# 互動式安裝到當前專案 ./.claude/skills/
+npx github:willy874/figma-development
 ```
 
 `npx` 會自動 clone 這個 repo 到一個暫存目錄並執行 CLI；執行結束後就可以丟掉。
 
 > 第一次執行可能需要 10–30 秒（取決於網路），後續 `npx` 會使用快取。
 
-### 選擇版本
+### 選擇版本（可選）
 
-`#` 後面接 git ref，可以是 tag、branch 或 commit SHA：
+預設會跑 `main` 分支的最新內容。如果想鎖到特定版本，在 spec 後面加 `#` 接 git ref（tag、branch 或 commit SHA）：
 
-| 用法                                                       | 說明                                                 |
-| ---------------------------------------------------------- | ---------------------------------------------------- |
-| `npx github:willy874/figma-development#v1.0.0`             | 鎖定 release tag（**推薦**，行為穩定可重現）          |
-| `npx github:willy874/figma-development`                    | 預設分支 `main`（會跟著主線變動）                    |
-| `npx github:willy874/figma-development#main`               | 明確指向 `main`，並讓 `npx` 重新拉一次（更新快取）   |
-| `npx github:willy874/figma-development#<commit-sha>`       | 鎖定到特定 commit                                    |
-
-下文範例一律以 `#v1.0.0` 為準。
+| 用法                                                   | 說明                                                 |
+| ------------------------------------------------------ | ---------------------------------------------------- |
+| `npx github:willy874/figma-development`                | 跟著預設分支 `main`（**最常用**）                    |
+| `npx github:willy874/figma-development#main`           | 明確指向 `main`，並讓 `npx` 重新拉一次（更新快取）   |
+| `npx github:willy874/figma-development#v1.0.0`         | 鎖定 release tag，行為穩定可重現                     |
+| `npx github:willy874/figma-development#<commit-sha>`   | 鎖定到特定 commit                                    |
 
 ---
 
@@ -100,7 +98,7 @@ CLI 會把選定的 skill 目錄整包複製到下列其中一個位置：
 ## 命令列參數
 
 ```text
-npx github:willy874/figma-development#v1.0.0 [options]
+npx github:willy874/figma-development [options]
 ```
 
 | 參數               | 說明                                                          |
@@ -118,15 +116,15 @@ npx github:willy874/figma-development#v1.0.0 [options]
 
 ```bash
 # 一次安裝全部到使用者目錄並覆蓋既有檔案
-npx github:willy874/figma-development#v1.0.0 --all --user --force
+npx github:willy874/figma-development --all --user --force
 
 # 只安裝指定 skill 到專案，已存在則略過
-npx github:willy874/figma-development#v1.0.0 \
+npx github:willy874/figma-development \
   --only figma-operator-guide,figma-spec-guide \
   --project --skip-existing
 
 # 在 CI / 不互動環境中先列出可選 skills
-npx github:willy874/figma-development#v1.0.0 --list
+npx github:willy874/figma-development --list
 ```
 
 > 在非 TTY 環境（CI、pipe）執行時，必須帶上能跳過互動的旗標（例如 `--all` 或 `--only` 搭配 `--force` / `--skip-existing`），否則 CLI 會回報「需要互動式終端機」並結束。
@@ -144,7 +142,7 @@ npx github:willy874/figma-development#v1.0.0 --list
 
 > `figma-components` 是 `figma-spec-guide` 的素材庫；通常兩者一起安裝最有用，但你可以只裝其中一個。
 
-執行 `npx github:willy874/figma-development#v1.0.0 --list` 可以看到該版本中所有可安裝的 skills 與描述。
+執行 `npx github:willy874/figma-development --list` 可以看到目前 repo 中所有可安裝的 skills 與最新描述。
 
 ---
 
