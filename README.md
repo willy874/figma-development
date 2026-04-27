@@ -18,7 +18,17 @@ npx github:willy874/figma-development
 `npx` 會自動 clone 這個 repo 到一個暫存目錄並執行 CLI；執行結束後就可以丟掉。
 
 > 第一次執行可能需要 10–30 秒（取決於網路），後續 `npx` 會使用快取。
-> 想強制更新快取版本：`npx github:willy874/figma-development#main`。
+
+### 選擇版本（可選）
+
+預設會跑 `main` 分支的最新內容。如果想鎖到特定版本，在 spec 後面加 `#` 接 git ref（tag、branch 或 commit SHA）：
+
+| 用法                                                   | 說明                                                 |
+| ------------------------------------------------------ | ---------------------------------------------------- |
+| `npx github:willy874/figma-development`                | 跟著預設分支 `main`（**最常用**）                    |
+| `npx github:willy874/figma-development#main`           | 明確指向 `main`，並讓 `npx` 重新拉一次（更新快取）   |
+| `npx github:willy874/figma-development#v1.0.0`         | 鎖定 release tag，行為穩定可重現                     |
+| `npx github:willy874/figma-development#<commit-sha>`   | 鎖定到特定 commit                                    |
 
 ---
 

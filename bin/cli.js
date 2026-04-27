@@ -280,6 +280,9 @@ ${c('bold', 'figma-development')} — 安裝 Figma 相關的 Claude Code skills
 ${c('bold', '使用方式')}
   npx github:willy874/figma-development [options]
 
+  ${c('dim', '# 鎖版可在 spec 後面加 #ref（tag / branch / commit）')}
+  ${c('dim', '# 例：npx github:willy874/figma-development#v1.0.0')}
+
 ${c('bold', '選項')}
   -l, --list             列出所有可用的 skills
       --all              安裝全部 skills（跳過互動選單）
