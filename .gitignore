@@ -36,3 +36,6 @@ coverage/
 
 # Local Claude settings (keep .claude/ tracked, ignore only local overrides)
 .claude/settings.local.json
+
+# MCP server config — contains tokens / secrets, never commit
+.mcp.json
