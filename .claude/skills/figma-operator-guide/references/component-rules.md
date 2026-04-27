@@ -1,0 +1,64 @@
+# Component rules: reuse first, design second
+
+> For the **actual inventory** of published components in this project's Figma file (names, node IDs, variants), see [components.md](../components.md). This file is about the _rules_ for working with components.
+
+## 1. Reuse over rebuild
+
+If [discovery](discovery.md) — or [components.md](../components.md) — returned a matching component, **import and configure the instance**; do not rebuild from geometry.
+
+- Use variant properties and instance swaps for the intended variation.
+- If an override isn't reachable through the component's property surface, that's a signal the component API is wrong — extend the main component, don't detach.
+
+## 2. Promote repeats to components
+
+Before producing the **second instance** of any visual pattern, stop and create a Component.
+
+- Name it using the design system's existing naming convention (check sibling components in [components.md](../components.md) first — e.g. `Tag / Success`, not `green-tag`).
+- Place it on the library/components page, not inline next to the consuming screen.
+- Expose only properties that actually vary (text, icon, state). Don't expose everything "just in case."
+
+## 3. Component API hygiene
+
+### Over-exposed properties
+
+**Symptom:** A Button with 14 boolean props, half never set.
+**Fix:** Expose only variation that exists in real usage. Prefer **variants** for discrete states (size, tone, state); prefer **slots / instance-swap** for content flexibility.
+
+### Variant explosion
+
+**Symptom:** Cartesian product of every prop → hundreds of variants, most unused.
+**Fix:** Split orthogonal concerns into separate properties; don't enumerate unused combinations.
+
+### Missing description / usage notes
+
+**Symptom:** Component has no description or "when to use / not use" guidance.
+**Fix:** Short description + one-line usage rule on every published component.
+
+## 4. Slot Property defaults
+
+Whenever a component exposes a **Slot Property** (an inner frame consumers swap content into), the slot frame MUST default to:
+
+- **Auto Layout**: on
+- **Direction**: Vertical
+- **Height**: Hug contents
+- **Gap**: `0`
+- **Padding**: `0`
+
+A slot is a pass-through container — it imposes no layout opinions on injected content. Consumers set their own spacing and direction; the slot just hugs whatever lands in it. Any non-zero gap/padding or fixed height silently distorts every consumer's layout.
+
+## 5. Never detach to "just tweak it"
+
+A detached instance is a bug:
+
+- It can't receive future updates from the main component.
+- It silently drifts from the system.
+
+If you need a variation the main component doesn't support, **add the property/variant to the main component** and use it as an instance. If the change is truly one-off, question whether it belongs in the design at all.
+
+## Self-check
+
+- [ ] Every reusable-looking element is an instance, not raw geometry.
+- [ ] No visual pattern appears twice as loose layers.
+- [ ] New components live on the library page, not inline.
+- [ ] Component properties describe real variation, not hypothetical flexibility.
+- [ ] No detached instances anywhere in the output.
