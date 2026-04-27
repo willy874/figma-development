@@ -350,19 +350,23 @@ async function main() {
 
   let scope = opts.scope;
   if (!scope) {
-    scope = await selectOne(
-      [
-        {
-          label: `專案範圍   ${c('dim', '(' + path.join(process.cwd(), '.claude/skills') + ')')}`,
-          value: 'project',
-        },
-        {
-          label: `使用者範圍 ${c('dim', '(' + path.join(os.homedir(), '.claude/skills') + ')')}`,
-          value: 'user',
-        },
-      ],
-      '選擇安裝位置',
-    );
+    if (!process.stdin.isTTY || !process.stdout.isTTY) {
+      scope = 'project';
+    } else {
+      scope = await selectOne(
+        [
+          {
+            label: `專案範圍   ${c('dim', '(' + path.join(process.cwd(), '.claude/skills') + ')')}`,
+            value: 'project',
+          },
+          {
+            label: `使用者範圍 ${c('dim', '(' + path.join(os.homedir(), '.claude/skills') + ')')}`,
+            value: 'user',
+          },
+        ],
+        '選擇安裝位置',
+      );
+    }
   }
   const targetBase =
     scope === 'user'

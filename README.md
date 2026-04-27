@@ -118,6 +118,7 @@ npx github:willy874/figma-development --list
 ```
 
 > 在非 TTY 環境（CI、pipe）執行時，必須帶上能跳過互動的旗標（例如 `--all` 或 `--only` 搭配 `--force` / `--skip-existing`），否則 CLI 會回報「需要互動式終端機」並結束。
+> 此情境下若未指定 `--user` / `--project`，預設使用 `--project`。
 
 ---
 
