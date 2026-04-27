@@ -1,11 +1,37 @@
 {
   "name": "figma-development",
   "version": "1.0.0",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "description": "互動式 CLI，透過 npx 從 GitHub 安裝這個 repo 提供的 Claude Code Figma skills。",
+  "bin": {
+    "figma-development": "bin/cli.js"
   },
-  "author": "",
-  "license": "ISC",
-  "description": ""
+  "files": [
+    "bin",
+    ".claude/skills",
+    "README.md"
+  ],
+  "engines": {
+    "node": ">=16.0.0"
+  },
+  "scripts": {
+    "start": "node bin/cli.js",
+    "test": "node bin/cli.js --list"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/willy874/figma-development.git"
+  },
+  "homepage": "https://github.com/willy874/figma-development#readme",
+  "bugs": {
+    "url": "https://github.com/willy874/figma-development/issues"
+  },
+  "keywords": [
+    "claude",
+    "claude-code",
+    "skills",
+    "figma",
+    "cli"
+  ],
+  "author": "willy874",
+  "license": "ISC"
 }
