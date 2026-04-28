@@ -1,6 +1,6 @@
 {
   "fileKey": "stse2CgIzOugynEdDSexS4",
-  "fileName": "天璇",
+  "fileName": "MUI",
   "extractedAt": "2026-04-27T07:30:21Z",
   "collectionCount": 2,
   "totalVariables": 385,
@@ -25,9 +25,7 @@
           "key": "572680ac049efd96ced28f945538f04ebc183ea3",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -45,9 +43,7 @@
           "key": "41aa030c0299926cda260a9d1893b3f7e8d35eb1",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -65,9 +61,7 @@
           "key": "d52e2d0e4c7eb76024f57b4564e8234558d1c806",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -85,9 +79,7 @@
           "key": "c952fec8cc7020d36c4f5b26a2406e69b0a61ba4",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -105,9 +97,7 @@
           "key": "402e19157314af4b8edc33becb29232ca0361f3b",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -125,9 +115,7 @@
           "key": "003a251ae14bda61b64f3225eb7dd321ed831423",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -145,9 +133,7 @@
           "key": "9e1656d75f07837381e02e2fbd14dd83c226e7dc",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -165,9 +151,7 @@
           "key": "2ae8c13509511d0e1d2a76a28e61f18d1c6b1010",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -185,9 +169,7 @@
           "key": "cf1cff3f3b8624fd989e6f4f56eb009dda777f3f",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -205,9 +187,7 @@
           "key": "5c1162561168de3aa994a92a2b48682fb8e4cf80",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -225,9 +205,7 @@
           "key": "c06be550ebd506eb8f85d6cc1dffd603dad79793",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -245,9 +223,7 @@
           "key": "14a104bdc2fe1b5917490637f5c4ecbdd876b309",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -265,9 +241,7 @@
           "key": "b15044f801454977286e24a351a8ee5300bcf4d4",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -285,9 +259,7 @@
           "key": "b143fd8a7654532d589ab1971910ca62178f0225",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -305,9 +277,7 @@
           "key": "21fc41e3c622db1f49a4d761f0ad5221ed3f791c",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -325,9 +295,7 @@
           "key": "5793ba037f38cdb1b35d08962f84a5721b3ffcfb",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -345,9 +313,7 @@
           "key": "f3ff29476c4f21ae83a9fbe4fd00b2325842fb08",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -365,9 +331,7 @@
           "key": "0aeb20f0605d8d5a973a9d76b3bc64832ad430eb",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -385,9 +349,7 @@
           "key": "9801013ab158f777f0ec283da15f466dd82a12f6",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -405,9 +367,7 @@
           "key": "7303a5f37ab68ac7ab60bff48012f6f6a534ad71",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -425,9 +385,7 @@
           "key": "6488ab50ad9a8bd07e1fe2b21e7945608debd964",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -445,9 +403,7 @@
           "key": "1da9ae9d15969633bbe1a4a6fc1fdcfec4afe38c",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -465,9 +421,7 @@
           "key": "87f87c44144c039b8a5fb4524bb4baf80d7a4a9d",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -485,9 +439,7 @@
           "key": "5467da0e809fafef1aa49086be8b051ce3df7fa1",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -505,9 +457,7 @@
           "key": "6234615d3e841bcab38ab7feacd68e3cf1bc9163",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -525,9 +475,7 @@
           "key": "b9719f77d066e57631d7c313e2824da8079ebaa4",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -545,9 +493,7 @@
           "key": "c13adafff0b505c65759a335b77fcb269ca5cb4e",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -565,9 +511,7 @@
           "key": "3273049d224e81ad85e74768fa3b7fe867e47665",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -585,9 +529,7 @@
           "key": "5eab3995074e101b2eb91dd40cb2fb29dcf3aeaa",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -605,9 +547,7 @@
           "key": "82874d11355a20042dbb7b9fb361d71dea5a0c90",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -625,9 +565,7 @@
           "key": "e6f4775b8755efeafc6c383fd188a9cafbb52081",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -645,9 +583,7 @@
           "key": "14c575b04efa730b5d05494ef126a5bbe1c8dc1f",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -665,9 +601,7 @@
           "key": "d4adbe14a549980996814cac531ee48407bf96fa",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -685,9 +619,7 @@
           "key": "f51cf39e1d84c87d0d751e0252af09c3b8084bf7",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -705,9 +637,7 @@
           "key": "8db53847777e850384beba7b6558f9d620c128b9",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -725,9 +655,7 @@
           "key": "dc7615a5de6d07c3c55147f274afa086fbe45f9f",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -745,9 +673,7 @@
           "key": "172e7ff3bc08a5734fbdecbfa7e042b828dd7947",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -765,9 +691,7 @@
           "key": "8880743633ecb603b6d0091d33dca1e3eb2e1f12",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -785,9 +709,7 @@
           "key": "32dd832e6dd0bfbf6d2526c683b83728b9734d5f",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -805,9 +727,7 @@
           "key": "0ebe9f928f0d2ba40ef487bf069248518c0920c4",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -825,9 +745,7 @@
           "key": "3b74c2823781a5b6c44582d67f5a6333d747ef4b",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -845,9 +763,7 @@
           "key": "46351e9c98fceb2fd74717b0ee99ef2f51068e68",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -865,9 +781,7 @@
           "key": "968419ae0abc1319d7dd2c98b1d5d7766a028ba4",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -885,9 +799,7 @@
           "key": "b7b3d2632f68b6e04132a77418007378088cbc6a",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -905,9 +817,7 @@
           "key": "bb40e66089468fa9c69801afe307f985b1af1337",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -925,9 +835,7 @@
           "key": "962f2f7bff7de07b0f5a0e4ef037537955b32f00",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -945,9 +853,7 @@
           "key": "426883f6d22e2dda14e40a146bcc07085e9a4097",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -965,9 +871,7 @@
           "key": "0c190412e3f3d5bcea15c93b8c52a872ff890981",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -985,9 +889,7 @@
           "key": "a25020e5432ec1e84730f32cc8647c4e071fef46",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -1005,9 +907,7 @@
           "key": "a10f06f2715530371eb95bc8e472f7f39b8a7b6b",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -1025,9 +925,7 @@
           "key": "6296cf32ee826a60b4bf4641957a3a3b1e67c9a1",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -1045,9 +943,7 @@
           "key": "24d35c9ed3baba50f161ec45fc7214da614c8d93",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -1065,9 +961,7 @@
           "key": "2d407286c7685ca0cf540d4739ffd25c6380d7a0",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -1085,9 +979,7 @@
           "key": "86b89550bd6ac56e6f00082624b81546fead34e9",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -1105,9 +997,7 @@
           "key": "907c3e14095b21ffdabd38c56dffcaa97739fb6c",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -1125,9 +1015,7 @@
           "key": "daf73842e51fca5c9f7bb971f78e928e86f67780",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -1145,9 +1033,7 @@
           "key": "5038f9f3900545056165636126bb22b5b222a88a",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -1165,9 +1051,7 @@
           "key": "e8c31bdbedf7261988692aa40bf242b0ce4f341f",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -1185,9 +1069,7 @@
           "key": "1dfd9901ea04e21e4ab4adbce31973f789035665",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -1205,9 +1087,7 @@
           "key": "3a208b1a89f326405c619b6f49355ca7c33d7096",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -1225,9 +1105,7 @@
           "key": "2b1797b7003c63c5eb3cb7a59a57deabb8f82e25",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -1245,9 +1123,7 @@
           "key": "67e67bfa9a9e7dc305c7006373f6088d13931030",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -1265,9 +1141,7 @@
           "key": "f321f0c48035ba13954e7c3440c09abdd5f61ace",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -1285,9 +1159,7 @@
           "key": "e3a6c0363d9966121313fc31e2091e1cefc8c646",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -1305,9 +1177,7 @@
           "key": "2cff50ba066397727578df60438c400071b2282f",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -1325,9 +1195,7 @@
           "key": "37ef1ab877442c8c8c1d2641f30f580d90232536",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -1345,9 +1213,7 @@
           "key": "ac78901f698ad61220e752ab45d0d4719d928e0f",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -1365,9 +1231,7 @@
           "key": "5bea5ed287c8a5ab74d4f635f9d6a17d0e815f21",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -1385,9 +1249,7 @@
           "key": "d10a785c3ead0d95d2880d6c63880f9806a36b1d",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -1405,9 +1267,7 @@
           "key": "ee873d772c411d19e065b9063c5a2bb4d5f43016",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -1425,9 +1285,7 @@
           "key": "e944a9d06725ec6d364a89c84c55b7b92a0508a5",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -1445,9 +1303,7 @@
           "key": "770d8a83efb0d1c3c056d6097a4b2604f7314b85",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -1465,9 +1321,7 @@
           "key": "864a2544cf674b9a54152e7d4bd85c3b892e31f3",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -1485,9 +1339,7 @@
           "key": "2565e249e12d5d32071ca37ea3cf74814baa370f",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -1505,9 +1357,7 @@
           "key": "648c6b1974b2b7c6335d003277b7ce2b77463549",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -1525,9 +1375,7 @@
           "key": "17a9620a06f4956b9bb2c7f09cdf0a71955bf71e",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -1545,9 +1393,7 @@
           "key": "61e605ee1502754dfbdeda9f55d028074d129f6b",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -1565,9 +1411,7 @@
           "key": "4cbc96795efbbbcd17c1ff7ad32f74f7f2463c7c",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -1585,9 +1429,7 @@
           "key": "f871b0574c2253e87342c066445e6312131978a0",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -1605,9 +1447,7 @@
           "key": "1530f72961979d8428eea1e3ff643e967859cd71",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -1625,9 +1465,7 @@
           "key": "f6cee77ccd4128c630321f99572ca8130dd764f6",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -1645,9 +1483,7 @@
           "key": "6427d98de07e027547a49336c9ca156a1326056b",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -1665,9 +1501,7 @@
           "key": "7ea2d6a5c6396e561796d848cf0b21c879947116",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -1685,9 +1519,7 @@
           "key": "b2e87d724216f5dc82aee8dfe24f4db8964890cf",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -1705,9 +1537,7 @@
           "key": "561a92329ad067d78acd7985f0b5b52f3addbd21",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -1725,9 +1555,7 @@
           "key": "bafab902564ecdfcf03f0b7de918e7efa2b5c501",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -1745,9 +1573,7 @@
           "key": "1a1c63e3f919ea65af442f2f08dcedf0be025085",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -1765,9 +1591,7 @@
           "key": "66a9c0f81809f691fc247581a5a74f073203ac3d",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -1785,9 +1609,7 @@
           "key": "ecae1ad5101a9a8f83c00bf7acae33303037ad8a",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -1805,9 +1627,7 @@
           "key": "458f08ff98db30b74677f2c2817f4de12b8cf8a6",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -1825,9 +1645,7 @@
           "key": "369949cabf67f06bad6d7e69e11a27a9afa09bda",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -1845,9 +1663,7 @@
           "key": "a534cdd5030a0494fa71c33e17ec7ef30629eb26",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -1865,9 +1681,7 @@
           "key": "3ac8445cbfc23008ef7929d79ef326866f86b02b",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -1885,9 +1699,7 @@
           "key": "ad3386ecd0634ec7eab0e623b217d72d8c5d2d4e",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -1905,9 +1717,7 @@
           "key": "f92f7ea2ac2d0ca405a0691c2d634629d28e28ad",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -1925,9 +1735,7 @@
           "key": "5215da595cf802f6167361831a4efa2d2c0d8fad",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -1945,9 +1753,7 @@
           "key": "e27da502b976545f37ffe1717bc95a549a4ea2ab",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -1965,9 +1771,7 @@
           "key": "580537cd171418dd4635e38c3f880c199426b842",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -1985,9 +1789,7 @@
           "key": "1bf7d1db152de7bbc574e256616152bc2a05d53d",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -2005,9 +1807,7 @@
           "key": "2ecdbaad2b5cefd85118e8b61d422f0a3f5bf398",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -2025,9 +1825,7 @@
           "key": "1738e0a57f8deffc373504543810cb766bd11e10",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -2045,9 +1843,7 @@
           "key": "54bd505f995fe226932915d2fbc92b7119065bbe",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -2065,9 +1861,7 @@
           "key": "9a01e7d404536cfe0283af514165a65c2cbdf7c5",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -2085,9 +1879,7 @@
           "key": "ed298964c253ec9acd21d0936ce11d6a96f93b71",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -2105,9 +1897,7 @@
           "key": "7875995ccf22cade78f57b6de55dd20ffddc9edb",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -2125,9 +1915,7 @@
           "key": "4018e201ac647e9f3fac0e48a0c3b4bd432e13c6",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -2145,9 +1933,7 @@
           "key": "ef7e84a809cf0ab6a0dab611bd1b32d62971e1ef",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -2165,9 +1951,7 @@
           "key": "ba57f4d1ba9e1a105639c784855dc1fd69d775db",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -2185,9 +1969,7 @@
           "key": "aa75d4006c8d2c8c682147ef00ac4f0e7b9d3c56",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -2205,9 +1987,7 @@
           "key": "01b5acedd5f67c55988a7f72736abe5318f6d7a5",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -2225,9 +2005,7 @@
           "key": "9e065f388384e06ac5a7111602ffd2a99f6b970e",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -2245,9 +2023,7 @@
           "key": "f154c659eec1ee46af0a5630358296b55346f739",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -2265,9 +2041,7 @@
           "key": "556600d0b045bc21f72c83ffe82e2c10f925542c",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -2285,9 +2059,7 @@
           "key": "3fc7d5c21007677b2d145386092a6a9b6253965f",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -2305,9 +2077,7 @@
           "key": "6c6bcc290c7b7d48a5ba0fd981f3a3e0772b0846",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -2325,9 +2095,7 @@
           "key": "9b5686c018bfec42739e38e103b5bbc6d73dd30f",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -2345,9 +2113,7 @@
           "key": "1493f4944861169bb721c76df5e2e746ee63d510",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -2365,9 +2131,7 @@
           "key": "fc40f25644fd6678f5fa3d9192195a7442b7c515",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -2385,9 +2149,7 @@
           "key": "ee2a3b7736bba991d92b136504254fa95790db35",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -2405,9 +2167,7 @@
           "key": "b14cc06bae46bdf8038fc0228181b4680e6ba802",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -2425,9 +2185,7 @@
           "key": "b4cac736f8db008eef4adcf7b4122faae1593019",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -2445,9 +2203,7 @@
           "key": "04409751cdad6e744b7d6e6475d639714d119df8",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -2465,9 +2221,7 @@
           "key": "f387cd9f1db697d2ba714a06e86728582802d7fa",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -2485,9 +2239,7 @@
           "key": "fb9da77a937af4b00fcfcd0c6dddaf08ab3d2ac2",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -2505,9 +2257,7 @@
           "key": "345efc39ec2a9b474495ff18e238dc963022a78c",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -2525,9 +2275,7 @@
           "key": "ea86f234dc9d803d8331b6b7d4119d55e4273849",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -2545,9 +2293,7 @@
           "key": "47133315f207ce71bc46dbcb8a1414c2bfe05377",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -2565,9 +2311,7 @@
           "key": "c23f3c2ef2278e5af70695941468c9b47c6b3e88",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -2585,9 +2329,7 @@
           "key": "a7ac67cffc3a8d5fd52af76e01c67adf3feb627b",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -2605,9 +2347,7 @@
           "key": "87697a4440069a1f8c35ddc74e055dc8f88eae79",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -2625,9 +2365,7 @@
           "key": "29963fc4852ffe7ebaaf14599f6b29f2ec94a64a",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -2645,9 +2383,7 @@
           "key": "59f3d2c44c39ddd7ca35149bda0fb1d29ecbbb3d",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -2665,9 +2401,7 @@
           "key": "62b233a65f91db92a43aa338673cb1708e577059",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -2685,9 +2419,7 @@
           "key": "40aac68b99b00ed6ddab5e5b0b561016fac2b93f",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -2705,9 +2437,7 @@
           "key": "4eafbc14d653c89da4bb1370cdf0918efdf13e4f",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -2725,9 +2455,7 @@
           "key": "ff8fdeabd4667d3df3319736407ec79f461503de",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -2745,9 +2473,7 @@
           "key": "7090f830b536248aa4455f4f478727bf5b2a0be6",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -2765,9 +2491,7 @@
           "key": "439472671f4949051a215175cae4649df3447f8e",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -2785,9 +2509,7 @@
           "key": "3b6f36c3bc96bb0ff8ba322e5e503a68c3652c1c",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -2805,9 +2527,7 @@
           "key": "e900e9fc79cdb08859203c60756a94f9ab8d04ae",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -2825,9 +2545,7 @@
           "key": "557c522e047c4372100fcfe7c0f140a19c38a509",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -2845,9 +2563,7 @@
           "key": "8d7ba5cac135c672b12ba786036eb30d36ed4d4f",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -2865,9 +2581,7 @@
           "key": "fad89778d5cbbf0e19c92850a68e265a92b07070",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -2885,9 +2599,7 @@
           "key": "4916e0a0db40edda84b0a888ca2e97694b859ee3",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -2905,9 +2617,7 @@
           "key": "4bda83a16814bdb0876432be3473e2ea92387fbf",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -2925,9 +2635,7 @@
           "key": "1c3f25a22399a903c331228d994f500e80d4a78b",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -2945,9 +2653,7 @@
           "key": "b073f9bed82bb0ae062ddcced68334a40b5b3dd1",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -2965,9 +2671,7 @@
           "key": "d12069146859644fdaefdc4da867d3035f182d3d",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -2985,9 +2689,7 @@
           "key": "6e68cfe8685f4898e4cc99228cd4c28715e3c652",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -3005,9 +2707,7 @@
           "key": "1d8203599e36dea65a4ef65b6bc568ae2b75365e",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -3025,9 +2725,7 @@
           "key": "a0db6c3138dac134c862253ec30ca05cddd61ac0",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -3045,9 +2743,7 @@
           "key": "2e28ea1cc865babf389f11a0bc5913ca252df80d",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -3065,9 +2761,7 @@
           "key": "58c3b0a96db74627f87d34d6d9262c797b9d494d",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -3085,9 +2779,7 @@
           "key": "15af6a57cd1b8db8c5baff0eb7331fe74a78d2e0",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -3105,9 +2797,7 @@
           "key": "844161fcd4b4bad4b8210bdcfb7de192a112d73a",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -3125,9 +2815,7 @@
           "key": "6b2966a82fd51ca566a3476c1a5c40429a358b30",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -3145,9 +2833,7 @@
           "key": "e6ffa059b64271920f4460eb07306ee6fdc6f04d",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -3165,9 +2851,7 @@
           "key": "cfa2d2e40f16ea52e0c43f953d9e3dd5bd973148",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -3185,9 +2869,7 @@
           "key": "9cae2f00b6776d7b7df14976a0755278b51c839b",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -3205,9 +2887,7 @@
           "key": "6a958c90e2db2dcdecb6c97d1b42b5e6bc53fd2e",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -3225,9 +2905,7 @@
           "key": "aa8b9bbe9097103253024f1c1bac6e35aa58dc38",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -3245,9 +2923,7 @@
           "key": "63a035957d9311d151825abc15ca3103db7d2c8e",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -3265,9 +2941,7 @@
           "key": "500fec4241f8aa6ff80250777e71c41105c8fa38",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -3285,9 +2959,7 @@
           "key": "cfd43f0fee7b397a387a56d2418d118d6cebb2f3",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -3305,9 +2977,7 @@
           "key": "a00f3bb3a25991a525d8f3b5a907e44892944cb1",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -3325,9 +2995,7 @@
           "key": "b0e91ca98bc44c7dbcc0252fda76ed295d20151c",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -3345,9 +3013,7 @@
           "key": "ab3b6c074bf51be6fd72c62e3c53509eeab8cdd3",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -3365,9 +3031,7 @@
           "key": "223c8a6f1061fdb3852f6b307aed448f80cfb241",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -3385,9 +3049,7 @@
           "key": "f2e7caab52b8c2acc3b15001e05ec2374dc8baef",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -3405,9 +3067,7 @@
           "key": "20a3358eca93cee244624feffb66a9684b5d6d47",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -3425,9 +3085,7 @@
           "key": "24555f8396b2f1cc6ad063a829828d374e4a36f2",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -3445,9 +3103,7 @@
           "key": "02ce50be319213b668a279aef9c3a7b081407df4",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -3465,9 +3121,7 @@
           "key": "07024466785dab1f200ca9435b3e72d986d54cbb",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -3485,9 +3139,7 @@
           "key": "c359bf180a323654be3a2a51b9eb352afa094d85",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -3505,9 +3157,7 @@
           "key": "6440f5a4a30e08b6d7c521180322fcbc5669c64b",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -3525,9 +3175,7 @@
           "key": "664eef864688e05c9b460032fa9cbe6776853a4b",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -3545,9 +3193,7 @@
           "key": "e7cb5bf104a0babfda8b8ee6feb068d7adbf7d14",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -3565,9 +3211,7 @@
           "key": "53bc653a0a6a97278b74c47759babd33d6d67770",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -3585,9 +3229,7 @@
           "key": "5e47de92e0abcf2dc7a48be2300dfc674dcc9718",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -3605,9 +3247,7 @@
           "key": "265c4ca1fdb14122018ff910176bbd71c9bf5005",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -3625,9 +3265,7 @@
           "key": "451ca8a2676e07be112eef3299f2cc17b9bd75ae",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -3645,9 +3283,7 @@
           "key": "4cc79e789344c4e6c086440e4ce2001be6060de2",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -3665,9 +3301,7 @@
           "key": "fd808cd90ca136be913d6a17ce648b32af255e6b",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -3685,9 +3319,7 @@
           "key": "4d3d51f1c4c03b5fb6faec3018a50303b1f5719a",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -3705,9 +3337,7 @@
           "key": "8da2c7de48f99a1fb6380f6944dd4dff662891aa",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -3725,9 +3355,7 @@
           "key": "de7bb9932c0ca016183340b2b2dce3e20f3646aa",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -3745,9 +3373,7 @@
           "key": "80a66b139411163ed86bf0af1ad2579393dd41f5",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -3765,9 +3391,7 @@
           "key": "7f6bc2b30bdccbcfae42b6d5014aeb90659fc4e8",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -3785,9 +3409,7 @@
           "key": "8dfd7313a5662be4627e2ef419c8ddadfc34b1c3",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -3805,9 +3427,7 @@
           "key": "bc933c0b67c1cbf958f4cdf466260b27b643d29d",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -3825,9 +3445,7 @@
           "key": "afff6486485cd583a84b33fb02013f044579638a",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -3845,9 +3463,7 @@
           "key": "6555eb14b3d1e13be27e8dbe8f1f82172cfe3c72",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -3865,9 +3481,7 @@
           "key": "068513cea6fdd245a0d4e0d9856fd2e74ed4fc7a",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -3885,9 +3499,7 @@
           "key": "e84ab9dd629c7f2c7f022793aa9b300214010bfc",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -3905,9 +3517,7 @@
           "key": "77ae07978d893a9b94f4e3d806a14e13cf039335",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -3925,9 +3535,7 @@
           "key": "78d20d901b80d48a78e66bbd63234c9cc12a7da4",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -3945,9 +3553,7 @@
           "key": "e7747a2ae07cbb2876f01f7068bbf246608915c9",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -3965,9 +3571,7 @@
           "key": "a5e58eea317c6ea86c95978e3150e4ddbfd88883",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -3985,9 +3589,7 @@
           "key": "b635bf5f7581191f16e6ab75511972763e34c222",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -4005,9 +3607,7 @@
           "key": "44e63932d26971d5f8df3574ed119621d1d310c0",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -4025,9 +3625,7 @@
           "key": "0d36ac1921a0332b000f9d8665f3c708222fb7e3",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -4045,9 +3643,7 @@
           "key": "574034c707df03a129beb454e6eabb01e65bb7b5",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -4065,9 +3661,7 @@
           "key": "d6b9b02ad738b79fe340ff325562779b9dbd5720",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -4085,9 +3679,7 @@
           "key": "b912423537100b10f67491fd903ca51228a1170a",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -4105,9 +3697,7 @@
           "key": "931b12acb28a148392e0e78e5df626cd5d1acc01",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -4125,9 +3715,7 @@
           "key": "1db70f38aa60a07a88f35bd3ce56fc6d969d0bf7",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -4145,9 +3733,7 @@
           "key": "9a8bd8b5e9694adc710e505afab35b9e5e5d2eae",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -4165,9 +3751,7 @@
           "key": "2366d5ed4bc4cf80b08e97b68f940d9ec1a8581d",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -4185,9 +3769,7 @@
           "key": "5260c159f4dd25b5837227ccb7a39befe5281d43",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -4205,9 +3787,7 @@
           "key": "135c8029d3fd2194bbbd7e5e4b56a8ccb48e143a",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -4225,9 +3805,7 @@
           "key": "8f56677184fc15cc4596538d188b65c4f60b6db1",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -4245,9 +3823,7 @@
           "key": "2c4f1b3a28208fa04438e457414e83d3877f501a",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -4265,9 +3841,7 @@
           "key": "94247bd0fa84a1230f8bb9b1b305ecf849331b8d",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -4285,9 +3859,7 @@
           "key": "c31bbb60a1d0d662e524c362f5d2f335b6f29e38",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -4305,9 +3877,7 @@
           "key": "d4cafc286c2ee68257a6adf11c85d15e96ca7d0b",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -4325,9 +3895,7 @@
           "key": "a3caac2082957a2ee9c62be3b6e0aec18d2ad739",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -4345,9 +3913,7 @@
           "key": "e61fdfc5a21b4f947b01a7cda6a0adab1be7d8ee",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -4365,9 +3931,7 @@
           "key": "9ccd38775f25b693efc41ae2808f0d77459c890d",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -4385,9 +3949,7 @@
           "key": "c1c2415174243ea4b676fd16f2cd874ed0363668",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -4405,9 +3967,7 @@
           "key": "327102be3ac145203d0acd694a80af8123177d91",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -4425,9 +3985,7 @@
           "key": "51e40934e9de3aba7028e4e1cd070f6cf674824b",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -4445,9 +4003,7 @@
           "key": "35bfbe6bee0429f7c84f4907da64bf01f5af33c5",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -4465,9 +4021,7 @@
           "key": "558802c774559d33599d928a0511263eb9982600",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -4485,9 +4039,7 @@
           "key": "6057ca2bd5f86e798d9632f6f847cdd76bef5f63",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -4505,9 +4057,7 @@
           "key": "1c4228b4864f3824c8b02d43c3dd3969b51d7fe6",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -4525,9 +4075,7 @@
           "key": "d1499f7558258a8bb9c842215fdc604f9dadec03",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -4545,9 +4093,7 @@
           "key": "b1a52c5979a23aab9b21f32ee687154a052e8d55",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -4565,9 +4111,7 @@
           "key": "e4a1a1326882fe358c2cb9d7a7ed011d9357dc17",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -4585,9 +4129,7 @@
           "key": "5ea0271759de8591ef66ca3fe8c255e5a782844f",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -4605,9 +4147,7 @@
           "key": "2572dd52cb96fd3e7e5604e8183e7fc2968f0cee",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -4625,9 +4165,7 @@
           "key": "727b5c0de0af865d6eaa805b8d8957832aba1315",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -4645,9 +4183,7 @@
           "key": "5e1a692960f76d3f48848f3a038dc8b5a85a193b",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -4665,9 +4201,7 @@
           "key": "13d4884f371caad7b9c5bdf5730db8521dee79e0",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -4685,9 +4219,7 @@
           "key": "1ca935e542378427d5468c39fece0872f62c487b",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -4705,9 +4237,7 @@
           "key": "923549d3117b80950462f903bbcd0daf9fdfdaf4",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -4725,9 +4255,7 @@
           "key": "2df1e475a28c937bb3066f11dd9a61d2caac1267",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -4745,9 +4273,7 @@
           "key": "fc3f2f1f6903f80da3f37bf020a3866878291b1d",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -4765,9 +4291,7 @@
           "key": "fcddd60e029573c51ab733db870ac15ff2efe8ad",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -4785,9 +4309,7 @@
           "key": "a88e1fda3e012176e784293fe4e165ab7b3e945b",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -4805,9 +4327,7 @@
           "key": "c50ae55a89960fc170abacdac5f9b7ca57dae5b5",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -4825,9 +4345,7 @@
           "key": "eb0943aa1b53b9fe34d7bd3fc5507700bb804bc8",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -4845,9 +4363,7 @@
           "key": "72972dc331b585a39348c53c7ca6d3ef9713e9fd",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -4865,9 +4381,7 @@
           "key": "9cd9786b19da6050421499fde2b78f22ae16f1b2",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -4885,9 +4399,7 @@
           "key": "7b83ed68f8baf70b498898fdba829a68f3cbe602",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -4905,9 +4417,7 @@
           "key": "35b25525969266f32a59f0d7c885db79ad8e206b",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -4925,9 +4435,7 @@
           "key": "6548e514836791d396bd17b66cb9f7ed606e8a70",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -4945,9 +4453,7 @@
           "key": "250b27fd838349ba58574efa938df177522d83aa",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -4965,9 +4471,7 @@
           "key": "755674b00d676a82282a3c0379e87321c3532d27",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -4985,9 +4489,7 @@
           "key": "926bb1ccaecf83c2022c2bb2cbcc662ffab5ae43",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -5005,9 +4507,7 @@
           "key": "aab4639b05c4f1ef6f10c69b3ad9e120e4ee60a1",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -5025,9 +4525,7 @@
           "key": "7d671d12c81c84d1f6b921aa45fad743c1843697",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -5045,9 +4543,7 @@
           "key": "a8d6237f821dedd012a85448800719994a3214ee",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -5065,9 +4561,7 @@
           "key": "b4c364c0ef163bb62d7ef89386c4b3b1d9c167d6",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -5085,9 +4579,7 @@
           "key": "072d6ebb8b0dd95a6f9cc2c1909300220a8d4f67",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -5105,9 +4597,7 @@
           "key": "a7af4b846fdae55fae2a53c9874b93cdb9b70247",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -5125,9 +4615,7 @@
           "key": "c01fc76630bb3011c85bd58ad7d3eb6366e29f9b",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -5145,9 +4633,7 @@
           "key": "78b714370bfb395efe75699fca6794d7a9e20255",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -5165,9 +4651,7 @@
           "key": "06b5ab551ba1ddd5d331c196696191ef43b762cb",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -5185,9 +4669,7 @@
           "key": "0f64c8c66091ab39c640fa30da5c2ebac959a6a6",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -5205,9 +4687,7 @@
           "key": "af23d19159efc7a37cd8c9ad9a95114f46eafeaf",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -5225,9 +4705,7 @@
           "key": "6140dc2bd49c4dfd40494f6724e18589b4290113",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -5245,9 +4723,7 @@
           "key": "29f09d1ae760f3dc91f49c871ffd9251af43fb7f",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -5265,9 +4741,7 @@
           "key": "a121adbc92f068a7bad8f2135a43782b5671477d",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -5285,9 +4759,7 @@
           "key": "74823f332e48e0ca4669284c5cf24bfe4e910748",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -5305,9 +4777,7 @@
           "key": "d69fc1cadb67913760fe47e8201cfa794e8f44c9",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -5325,9 +4795,7 @@
           "key": "e80c6870249a269235a257e4813e786ff373c314",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -5345,9 +4813,7 @@
           "key": "908a87255c6c09f3a380c71561696fcc55974ba1",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -5365,9 +4831,7 @@
           "key": "b110811114febd182a54da5ebdbe669d1007ca74",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -5385,9 +4849,7 @@
           "key": "ef2cad281f3b55ea281052a8371332c1128aa46d",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -5405,9 +4867,7 @@
           "key": "2b93d3538e60f6835f63e6be7c3b6b6eebcdc343",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -5425,9 +4885,7 @@
           "key": "0bc4e052d417f172917dadc44947b9ea7cedadfe",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -5445,9 +4903,7 @@
           "key": "519ee6b753e77271ebe40c531c697f801ca5e3a5",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -5465,9 +4921,7 @@
           "key": "3b2fb07e5b3af6b880a03434341146406b569724",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -5484,9 +4938,7 @@
           "key": "3289fe7cee3c4377d9a7ba595d5c560aa6b80074",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -5503,9 +4955,7 @@
           "key": "d091e495b57901067870ba34a24c8968517e66cf",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -5522,9 +4972,7 @@
           "key": "efde782670daa6d015fa62209336309ca8624812",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -5541,9 +4989,7 @@
           "key": "fb0ee6be9c897ae95fff671b4c2c9eb507742e16",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -5560,9 +5006,7 @@
           "key": "69bebe52fe59a29ebe4ff1402317eced451e50a8",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -5579,9 +5023,7 @@
           "key": "531b343ad8f05fee734309d2d58d2725a4a4e78f",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -5598,9 +5040,7 @@
           "key": "f2d129fd28e96da113024981e13bab99f122a43b",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -5617,9 +5057,7 @@
           "key": "3ea564184a0948d29a5379ae419a32b54961b99a",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -5637,9 +5075,7 @@
           "key": "a5d830ad2ae48e814921ee98a98c2c102c617dc8",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -5656,9 +5092,7 @@
           "key": "c16d49484b241dea17a30d801506ecf8d8f17854",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -5675,9 +5109,7 @@
           "key": "180326b6b3f1657ceb492538d2885eee5f360171",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -5694,9 +5126,7 @@
           "key": "70ddd028e3e7033164c0b61ce1f1844198d95042",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -5713,9 +5143,7 @@
           "key": "03bbd13c17741d09acd36f31ebdf98dbc260158c",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -5733,9 +5161,7 @@
           "key": "fe96c2e0c1fcb0aab31faef4892f60cbe19696af",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -5752,9 +5178,7 @@
           "key": "f7a4f307452eb5221d1de2cf02ea8dad78fa3641",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -5771,9 +5195,7 @@
           "key": "937596b2fbfc1b55b6ded1240f7e9379506b9e42",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -5790,9 +5212,7 @@
           "key": "ee4ef0e5cc8b1caf3b152e3c1f88f9a6f35f6a73",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -5810,9 +5230,7 @@
           "key": "d225f60379406fd7b5954693863e71c3d6bf1769",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -5829,9 +5247,7 @@
           "key": "e7da599e804bfdad356a4ab1b3db510859fb271c",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -5848,9 +5264,7 @@
           "key": "86922a780e99836636980885553495f5c9eaf0a5",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -5868,9 +5282,7 @@
           "key": "5895a26db80e6bcbb8ac6e55bd64a6c94886bd58",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -5888,9 +5300,7 @@
           "key": "273c3297fe4e2bb61913265bcb1cd15a1b1c871c",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -5908,9 +5318,7 @@
           "key": "04f1759b0df06a1afe149639704c5bf4561b9b54",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -5928,9 +5336,7 @@
           "key": "275588c637e02863de3d9625ec7bbbc176f04a58",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -5948,9 +5354,7 @@
           "key": "d766b64714f32549ffede62a4007fad6bb8c5a0a",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -5968,9 +5372,7 @@
           "key": "29f8ce20b52760efcaf54259bd17bb0005340477",
           "resolvedType": "FLOAT",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -5983,9 +5385,7 @@
           "key": "175edd3828bbc79d99c60dffe31f1c2799c6ed69",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -6003,9 +5403,7 @@
           "key": "fbfc870a11f6d959b9d54d81d91b548372b8a5fb",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -6023,9 +5421,7 @@
           "key": "6224ad8f94d994d525a9878b5329fa7fc4227abd",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -6043,9 +5439,7 @@
           "key": "69935384dc8bb03b72c33b618030f4fd530cce2c",
           "resolvedType": "FLOAT",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -6058,9 +5452,7 @@
           "key": "d72bd9f0be1c203708b9e0616489ff008227d6b2",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -6078,9 +5470,7 @@
           "key": "4a05d53188c69e8270163bed083a30acd3d68c36",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -6098,9 +5488,7 @@
           "key": "04fc09e1c6f68d003c726f1d2e16b8bfd8323660",
           "resolvedType": "FLOAT",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -6113,9 +5501,7 @@
           "key": "d311b2d5ae3bdd58a025c170db605a394d636517",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -6133,9 +5519,7 @@
           "key": "ccc6f9d9fa7b5f4462972c896fdf21dbae2654cc",
           "resolvedType": "FLOAT",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -6148,9 +5532,7 @@
           "key": "3bb806a4e5e7c448fcc89c26e91dc9cc76f649ef",
           "resolvedType": "FLOAT",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -6179,9 +5561,7 @@
           "key": "e13dbe978f091ca5cdda98151578a2a66000098a",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -6199,9 +5579,7 @@
           "key": "34b02eaa2afa384844ab87f696f689357917cf65",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -6219,9 +5597,7 @@
           "key": "0ac39446dc8d42ec7321fcefb1a622128a8175e9",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -6238,9 +5614,7 @@
           "key": "f48a84b6cb6e622dc4116b3c03dfd64c950fcdfc",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -6258,9 +5632,7 @@
           "key": "ab3b38083a8cd9d3d17e40228154b901ae5ef845",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -6277,9 +5649,7 @@
           "key": "bacfbe4ed305e4a2736f9b2027e20053662da630",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -6296,9 +5666,7 @@
           "key": "38e3e69e6b8a291a449c14376a89c1da9e18fc1c",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -6316,9 +5684,7 @@
           "key": "702ac603d6728d329b8f76c029750f476cea6687",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -6335,9 +5701,7 @@
           "key": "166e5df94524a4838349376e3541e376c65df1cf",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -6354,9 +5718,7 @@
           "key": "8e520f302d1173cc7ae09eb271a37acbff8404df",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -6374,9 +5736,7 @@
           "key": "e21dc654d5a88b7b17d3768cbfd8ed157a779dbf",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -6393,9 +5753,7 @@
           "key": "d940ec0d163c49f0544b465e2ff5696e1a715547",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -6413,9 +5771,7 @@
           "key": "fe0b95400f1a8e335b80379e4bfb45ef90ff8584",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -6432,9 +5788,7 @@
           "key": "13419b0fcc0c6b2eff21e4e27f805bb6ce25193b",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -6452,9 +5806,7 @@
           "key": "0c8e2c510220b37b7b5a49592f117a8d9108edd9",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -6471,9 +5823,7 @@
           "key": "e2c1a3c75f5e6c13e7a4a0cb5f9a28ec2cff502a",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -6491,9 +5841,7 @@
           "key": "900cc3a1a44f8cdc7aed1ec618243e6a658975b4",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -6510,9 +5858,7 @@
           "key": "071a4c2b9169a970ccbe5f96d60d13fd30370ae6",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -6529,9 +5875,7 @@
           "key": "f16eba7515dbec10293c168e6b325ddf072cec2b",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -6548,9 +5892,7 @@
           "key": "fa190d678e304093a010ac90cff1c62f7c1acdd6",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -6567,9 +5909,7 @@
           "key": "4192596d23b5eb53008ba0c93cf4cc9732f08a82",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -6586,9 +5926,7 @@
           "key": "25586e7317d8f16c107b7df921da794479cef59f",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -6605,9 +5943,7 @@
           "key": "1e8b981c0a8db377cdd98072d06a5a968548cdd0",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -6625,9 +5961,7 @@
           "key": "3e6edd26f134fd3fae1cb40222b807f37c74befa",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -6644,9 +5978,7 @@
           "key": "f527fa55037814d9cad3de5dcc99461483e8c970",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -6664,9 +5996,7 @@
           "key": "c14b136b04c1d4194272ef2e5b543331039ab4d0",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -6684,9 +6014,7 @@
           "key": "db8b57c3a27d077ecdfc5e0fcb27d48a0652f47b",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -6703,9 +6031,7 @@
           "key": "c1a53669af4b35e928ee1c6155dcb873bd368250",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -6723,9 +6049,7 @@
           "key": "178704c379bac489e1032dfb1e9008ecf50c4609",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -6742,9 +6066,7 @@
           "key": "7997a167e341b7ce654d29cae733647df1545172",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -6761,9 +6083,7 @@
           "key": "65a8689b5ef9d7940c946a6152e9790bb0467f3f",
           "resolvedType": "FLOAT",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -6776,9 +6096,7 @@
           "key": "3560bebcf9b6967c6b0c427d2f97fcebe72b0fd7",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -6795,9 +6113,7 @@
           "key": "7f176fda729118b34e123712cdbfd21e2a7feaa7",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -6815,9 +6131,7 @@
           "key": "8c984ef218eb4e7992bf18ca21d6d7e0a793e4c5",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -6835,9 +6149,7 @@
           "key": "2516cfb807a100f476c4416d8abd99756e9185f7",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -6854,9 +6166,7 @@
           "key": "e5b57aa11c584f45682e8375d523ae341b5310a3",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -6874,9 +6184,7 @@
           "key": "d163cca90b683771acaa66929e39a1735e5f2405",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -6893,9 +6201,7 @@
           "key": "aa1bfb043f703796d0a5bf49e2c1738c8744f2e5",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -6912,9 +6218,7 @@
           "key": "2e2d0aa026dfee06d26a495889891847040d0b18",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -6931,9 +6235,7 @@
           "key": "298d6bb495bded010c8f38b5b2f493b7b4f0daac",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -6951,9 +6253,7 @@
           "key": "dda3ffdcb3d690f04ae4deedf30037a8eec862ec",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -6971,9 +6271,7 @@
           "key": "2898299de240aeb18e3ade9f666e17f09661bf51",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -6990,9 +6288,7 @@
           "key": "98a34aa718d6ef23dcaaf26dbf68fdee8376d38c",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -7010,9 +6306,7 @@
           "key": "d10b1027b6518f34d1718db01b1bd1ed526ce2ee",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -7029,9 +6323,7 @@
           "key": "ea91951f6f3ccb93f47aa0aa25b4e4da61ac0c13",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -7048,9 +6340,7 @@
           "key": "f3ccb13ee7cb1ba662ff3541f333efdb1e055687",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -7068,9 +6358,7 @@
           "key": "fae853437c52b0104ea2fba46fbfe6c38c47532d",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -7088,9 +6376,7 @@
           "key": "3faf8a0042521213edbeb87facc1ae49c99b60aa",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -7107,9 +6393,7 @@
           "key": "2a6100ea47e1eb354a2dc192fe1cc2726ac32001",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -7127,9 +6411,7 @@
           "key": "233c49f2f7a43171b6b29275e0f83bb1f192c7e7",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -7146,9 +6428,7 @@
           "key": "0ec624d7c0d9f87dff62bb8224d1a47cfda747da",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -7165,9 +6445,7 @@
           "key": "ba439db0c49c10b1f6bb38dc9cd242b8749513b1",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -7185,9 +6463,7 @@
           "key": "b22cfb130d7dfe5cd4013378c93c7080b0f5b2a2",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -7205,9 +6481,7 @@
           "key": "dbd1083ce832e7c9bfbf8fe4515b26360623fa87",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -7224,9 +6498,7 @@
           "key": "fbd86b3c20656a1c3f055b91968e8a1e823a8dff",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -7244,9 +6516,7 @@
           "key": "b4e4ab53d59204d8afcb8d9dd7da62ba72ecaf32",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -7263,9 +6533,7 @@
           "key": "120e63eb2825799b84167d4c5638d3a1ae7c1d91",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -7282,9 +6550,7 @@
           "key": "03f5bc77c42bd9a31f7c2b232026fc6d4711b5c2",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -7301,9 +6567,7 @@
           "key": "a0d8bdaf68c79aef5ee3da200cd503692523e01d",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -7321,9 +6585,7 @@
           "key": "d86a10ca9026902fda1261b0eae3b492075d4870",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -7341,9 +6603,7 @@
           "key": "5baf25be632a2dfead7780e8cecaa49f78834c00",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -7361,9 +6621,7 @@
           "key": "7debdd9546aac8d4183539cf9deec52a9b0cf2c4",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -7381,9 +6639,7 @@
           "key": "d407ea39519543875f05863885207e5db700f1e2",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -7401,9 +6657,7 @@
           "key": "66dfbb13bde6ab849e7eeb219f4fd7d979ad385d",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -7421,9 +6675,7 @@
           "key": "93157c189d79c3d26e35fbd7ce17b5df2827e160",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -7441,9 +6693,7 @@
           "key": "25de6dfea45ece9aac1e363890169dba7cd74021",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -7461,9 +6711,7 @@
           "key": "2620228524865e3c58cc2ac459f6b21172f103c7",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -7480,9 +6728,7 @@
           "key": "b0f9ba26d34943bbf615593102f5c8e7eae4d932",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -7500,9 +6746,7 @@
           "key": "540219efd4ae3d1b3d8708ca6f0c06c8ae34cd9b",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -7519,9 +6763,7 @@
           "key": "b875de15cac8ba36e374d76cd4f36c6244e707f8",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "STROKE_COLOR"
-          ],
+          "scopes": ["STROKE_COLOR"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -7538,9 +6780,7 @@
           "key": "ffa2cf44fc20e23ab39c0879e75852cee1f672c3",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "STROKE_COLOR"
-          ],
+          "scopes": ["STROKE_COLOR"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -7557,10 +6797,7 @@
           "key": "32f961e380bffcff9c917bc0af31cb03dcf5faca",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "FRAME_FILL",
-            "SHAPE_FILL"
-          ],
+          "scopes": ["FRAME_FILL", "SHAPE_FILL"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -7578,10 +6815,7 @@
           "key": "4b197d7b9ddb5eefc58b5c88fd7ccfeacf68fa5a",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "FRAME_FILL",
-            "SHAPE_FILL"
-          ],
+          "scopes": ["FRAME_FILL", "SHAPE_FILL"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -7599,9 +6833,7 @@
           "key": "4398f38def557cbba2961256fcf556b2ebcf9ee1",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "STROKE_COLOR"
-          ],
+          "scopes": ["STROKE_COLOR"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -7618,9 +6850,7 @@
           "key": "33a9e9f26e473525411f2b3b0e462ce5a7ab301f",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "STROKE_COLOR"
-          ],
+          "scopes": ["STROKE_COLOR"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
@@ -7637,10 +6867,7 @@
           "key": "82d0de3cbaba34caa6569741ff68a71d977882b9",
           "resolvedType": "COLOR",
           "description": "",
-          "scopes": [
-            "FRAME_FILL",
-            "SHAPE_FILL"
-          ],
+          "scopes": ["FRAME_FILL", "SHAPE_FILL"],
           "codeSyntax": {},
           "remote": false,
           "valuesByMode": {
