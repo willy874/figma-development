@@ -1,6 +1,6 @@
 ---
 name: figma-create-component
-description: End-to-end workflow for adding a new component to the project's Figma library. Drives the full pipeline — Storybook story → runtime measurement → spec → token planning → Figma authoring → subagent review. Load when the user asks to "create a Figma component", "add `<X>` to the library", "build `<X>` in Figma from MUI/library Y", or invokes `/figma-create-component`. Required inputs: `library` and `component name`. Optional inputs: an existing JSX implementation and/or an existing Figma node to mirror.
+description: End-to-end workflow for adding a new component to the project's Figma library. Drives the full pipeline — Storybook story → runtime measurement → spec → token planning → Figma authoring → subagent review. Load when the user asks to "create a Figma component", "add `<X>` to the library", "build `<X>` in Figma from MUI/library Y", or invokes `/figma-create-component`. Required inputs: `library` and `component name`. Optional inputs: an existing JSX implementation, an editable Figma node to update in place, and/or a reference-only Figma node to mirror.
 ---
 
 # figma-create-component
@@ -27,9 +27,10 @@ Collected at invocation. If the user omits them, ask before starting — do not 
 | `library`         | yes      | The component library the new component is sourced from (e.g. `@mui/material`, `@radix-ui/react-checkbox`, custom in-repo). Determines which props/defaults the spec must reconcile against. |
 | `component name`  | yes      | PascalCase. Used verbatim for `src/stories/<Name>.stories.tsx`, the spec directory, and the published Figma `COMPONENT_SET` name. |
 | Existing JSX      | no       | Path or inline source. When present, skip the "research the library API" leg of step 1 and adapt the existing JSX into the stories file. |
-| Existing Figma node | no    | `fileKey` + `nodeId` (or full URL). When present, mirror its variant axes, property surface, and naming verbatim instead of designing them from scratch. |
+| Editable Figma node    | no | `fileKey` + `nodeId` (or full URL) of a node in **this project's** library file that we are allowed to modify in place. When present, treat it as the authoring target: keep its node id, mirror its existing variant axes / property surface / naming, and update it via `use_figma` instead of creating a new component set. Step 5 must edit this node, not duplicate it. |
+| Reference-only Figma node | no | `fileKey` + `nodeId` (or full URL) of a node we may **read but not modify** (e.g. an upstream MUI library file, a vendor design kit, a competitor screenshot frame). When present, mirror its variant axes, property surface, naming, and visual treatment verbatim, but author a brand-new component set in our own file — never write back to this node. |
 
-If a Figma node is provided, **always** run `mcp__plugin_figma_figma__get_metadata` and `get_screenshot` against it before drafting anything else — it is the strongest source of truth for axis names, variant counts, and visual reference.
+If either kind of Figma node is provided, **always** run `mcp__plugin_figma_figma__get_metadata` and `get_screenshot` against it before drafting anything else — it is the strongest source of truth for axis names, variant counts, and visual reference. When both are provided, the editable node defines the authoring target (node id, page, frame), and the reference-only node defines the visual / structural ideal that the editable node should be brought in line with.
 
 ---
 
@@ -42,7 +43,7 @@ Execute the steps in order. Do not skip ahead — each step's output is an input
 **Goal:** every "common" variant of the component is statically rendered in Storybook so step 2 can measure it.
 
 - Read the library source (or the supplied JSX) to enumerate the prop surface: every variant axis, every default, every state-affecting prop.
-- If an existing Figma node was supplied, mirror its variant axes (color × variant × state, etc.) and use the same axis names.
+- If an editable or reference-only Figma node was supplied, mirror its variant axes (color × variant × state, etc.) and use the same axis names. When both are supplied, the editable node wins on axis identity (we have to keep its existing variants intact); the reference-only node fills in any axes the editable one is missing.
 - Pattern after `src/stories/Button.stories.tsx`:
   - One `Story` per primary axis value (e.g. `Contained`, `Outlined`, `Text`).
   - One or more **matrix** stories (`ColorMatrix`, `StateMatrix`, …) that lay out the full Cartesian grid using `Stack`. Matrix stories disable controls (`parameters: { controls: { disable: true } }`) and use `cellLabel` columns.
@@ -70,7 +71,7 @@ Execute the steps in order. Do not skip ahead — each step's output is an input
 - Fill every section the chosen skeleton mandates. If a section is intentionally empty, write `n/a — <reason>`; do not silently omit it.
 - Write the §8 sync rule with concrete trigger → spec edits, naming the actual files (the new stories file, the library source, this project's theme files, etc.).
 - Show the variant-count math explicitly. For sparse matrices use the "theoretical vs published" split.
-- If an existing Figma node was supplied, set `figma_file_key`, `figma_node_id`, and `figma_component_set_id` in the frontmatter; otherwise leave them blank and note the gap in §1.
+- If an editable Figma node was supplied, set `figma_file_key`, `figma_node_id`, and `figma_component_set_id` in the frontmatter to that node — it is the published artefact this spec governs. A reference-only node does **not** populate these fields; instead, mention it in §1 as the source we mirrored from. If neither is supplied, leave the fields blank and note the gap in §1.
 
 ### Step 4 — Plan design tokens
 
@@ -93,11 +94,14 @@ Execute the steps in order. Do not skip ahead — each step's output is an input
   - `layout.md`, `tokens.md`, `component-rules.md`, `content.md` while building.
   - `states.md`, `accessibility.md`, `hygiene.md`, `handoff.md` before declaring done.
 - Also load `figma:figma-use` before any `use_figma` call (mandatory per its skill description).
-- **Ask the user where to author it** before writing. Acceptable answers:
-  - "create a new page named `<ComponentName>`" → create the page, then place the component set on it.
-  - "add it to existing page `<X>`" → place it on that page.
-  - A Figma URL pointing at an existing frame → place the component set inside that frame.
-  Do not guess. Re-confirm if the answer is ambiguous.
+- **Decide the authoring target** before writing:
+  - If an **editable Figma node** was supplied, that node *is* the target. Do not duplicate or re-create it. Update its variants, properties, layout, and bindings in place via `use_figma` so its node id (and any inbound instance references) stay stable. If the editable node lives in a frame / page that no longer fits, ask the user before moving it.
+  - Otherwise **ask the user where to author it**. Acceptable answers:
+    - "create a new page named `<ComponentName>`" → create the page, then place the component set on it.
+    - "add it to existing page `<X>`" → place it on that page.
+    - A Figma URL pointing at an existing frame → place the component set inside that frame.
+    Do not guess. Re-confirm if the answer is ambiguous.
+  - A reference-only node is **never** the authoring target — never write to its file, even if the user pastes its URL by mistake.
 - Build the component set following the spec's §3 variant matrix and §4 / §6 token bindings exactly. Use Auto Layout, bind every paint to a variable, apply text styles by id.
 - After authoring, return the resulting page name + node id (or URL) to the user so they can inspect.
 
