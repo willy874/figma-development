@@ -40,6 +40,7 @@ Two variable collections + four style groups define the project's design tokens.
 | `alias/colors/text-focus`            | `palette/action/focus`              | `#0000001F` |
 | `alias/colors/text-title`            | `palette/common/black`              | `#000000`   |
 | `alias/colors/text-disabled`         | `palette/text/disabled`             | `#00000061` |
+| `alias/colors/fg-disabled`           | `palette/action/disabled`           | `#00000042` |
 
 > Note: `border-defalt` is a typo in the Figma file — use it as-is, do not rename without coordination.
 
@@ -102,7 +103,7 @@ Each role has roughly this shape: `main`, `hover`, `focusVisible`, `outlineBorde
 
 | Token                        | Alias chain                                  | Hex         |
 | ---------------------------- | -------------------------------------------- | ----------- |
-| `seed/success/main`          | `palette/green/500`                          | `#4CAF50`   |
+| `seed/success/main`          | `palette/success/main` → `palette/green/800` | `#2E7D32`   |
 | `seed/success/hover`         | `palette/success/dark` → `palette/green/900` | `#1B5E20`   |
 | `seed/success/hover-bg`      | —                                            | `#2E7D320A` |
 | `seed/success/focusVisible`  | —                                            | `#2E7D324D` |

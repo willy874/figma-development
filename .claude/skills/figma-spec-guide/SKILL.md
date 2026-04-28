@@ -175,7 +175,7 @@ Do not renumber, merge, or reorder sections. Downstream tooling and reviewers re
 
 These rules apply to every color claim in every spec:
 
-1. **Figma variable path, not CSS variable, not hex.** Write `seed/primary/main`, not `--merak-seed-primary-main`, not `#1976d2`. The `merak` collection is the source of truth — see [`design-deken.md`](design-deken.md).
+1. **Figma variable path, not CSS variable, not hex.** Write `seed/primary/main`, not `--merak-seed-primary-main`, not `#1976d2`. The `merak` collection is the source of truth — see [`design-token.md`](design-token.md).
 2. **Preserve known typos.** `alias/colors/border-defalt` is misspelled in the collection; the spec must match or bindings fail. Annotate with `_(sic)_`.
 3. **Family-specific exceptions** (memorize these):
    - Danger & Warning use `outline-hover` in place of `hover-bg` for their 4 % tint.
@@ -200,7 +200,7 @@ These rules apply to every color claim in every spec:
 1. **Open the source.** Read `apps/console/src/components/<Name>/<Name>.tsx` end-to-end. List every prop, every default, every hard-coded MUI option.
 2. **Open the Figma component set.** Use `get_metadata` to enumerate variants and component properties. Confirm axis names, options, defaults.
 3. **Open `components.md`.** Confirm the node IDs and variant count you're about to record match what's published.
-4. **Open the theme files** listed in §4. For every paint role the component uses, locate the exact token in the `merak` variable collection (not the CSS vars). Refer to [`design-deken.md`](design-deken.md) for the path conventions.
+4. **Open the theme files** listed in §4. For every paint role the component uses, locate the exact token in the `merak` variable collection (not the CSS vars). Refer to [`design-token.md`](design-token.md) for the path conventions.
 5. **Draft the spec** following the skeleton in §2 of this guide. Use Button.md or Pagination.md as a structural template — copy section headings verbatim.
 6. **Cross-check the sync rule.** Walk the list in §8 of your draft and verify each file referenced still exists at that path; update if anything has moved.
 7. **Verify variant math.** The product in the fenced block must equal the total in the aspect table.
@@ -227,7 +227,7 @@ When updating, re-run steps 1–4 before editing — a token rename you didn't n
 ## 8. Cross-references
 
 - [`components.md`](components.md) — the component inventory; spec frontmatter IDs must match.
-- [`design-deken.md`](design-deken.md) — Figma variable path conventions and the `merak` collection layout.
+- [`design-token.md`](design-token.md) — Figma variable path conventions and the `merak` collection layout.
 - [`component-rules.md`](references/component-rules.md) — rules for instantiating a specced component on a screen.
 - [`tokens.md`](references/tokens.md) — the `setBoundVariableForPaint` helper pattern.
 - Exemplars: [`Button.md`](../figma-components/Button.md) (single set), [`Pagination.md`](../figma-components/Pagination.md) (wrapper + atom), [`Dialog.md`](../figma-components/Dialog.md) (shell + slots).
