@@ -1,6 +1,6 @@
 ---
 name: figma-create-component
-description: End-to-end workflow for adding a new component to the project's Figma library. Drives the full pipeline — Storybook story → runtime measurement → spec → token planning → Figma authoring → subagent review. Load when the user asks to "create a Figma component", "add `<X>` to the library", "build `<X>` in Figma from MUI/library Y", or invokes `/figma-create-component`. Required inputs: `library` and `component name`. Optional inputs: an existing JSX implementation, an editable Figma node to update in place, and/or a reference-only Figma node to mirror.
+description: End-to-end workflow for adding a new component to the project's Figma library. Drives the full pipeline — Storybook story → runtime measurement → spec → token planning → Figma authoring → subagent review. Load when the user asks to "create a Figma component", "add `<X>` to the library", "build `<X>` in Figma from MUI/library Y", or invokes `/figma-create-component`. Required inputs: `library` and `component name`. Optional inputs: an existing JSX implementation, an editable Figma node to update in place, a reference-only Figma node to mirror, and/or an existing editable `figma.spec.md` to update in place.
 ---
 
 # figma-create-component
@@ -29,8 +29,11 @@ Collected at invocation. If the user omits them, ask before starting — do not 
 | Existing JSX      | no       | Path or inline source. When present, skip the "research the library API" leg of step 1 and adapt the existing JSX into the stories file. |
 | Editable Figma node    | no | `fileKey` + `nodeId` (or full URL) of a node in **this project's** library file that we are allowed to modify in place. When present, treat it as the authoring target: keep its node id, mirror its existing variant axes / property surface / naming, and update it via `use_figma` instead of creating a new component set. Step 5 must edit this node, not duplicate it. |
 | Reference-only Figma node | no | `fileKey` + `nodeId` (or full URL) of a node we may **read but not modify** (e.g. an upstream MUI library file, a vendor design kit, a competitor screenshot frame). When present, mirror its variant axes, property surface, naming, and visual treatment verbatim, but author a brand-new component set in our own file — never write back to this node. |
+| Editable Figma spec    | no | Path to an existing `figma.spec.md` (and optionally its companion `storybook.render.md` / `design-token.md`) — typically under `.claude/skills/figma-components/<Name>/`. When present, treat it as the **authoring contract**: reuse its variant axes, property surface, defaults, and token bindings; in step 3, update sections in place rather than drafting from scratch. Only diverge from it when step 1/2 produced evidence that the existing values are wrong, and record any divergence in §8. If the spec's frontmatter already names a `figma_node_id`, that node behaves as an *Editable Figma node* — do not duplicate. |
 
 If either kind of Figma node is provided, **always** run `mcp__plugin_figma_figma__get_metadata` and `get_screenshot` against it before drafting anything else — it is the strongest source of truth for axis names, variant counts, and visual reference. When both are provided, the editable node defines the authoring target (node id, page, frame), and the reference-only node defines the visual / structural ideal that the editable node should be brought in line with.
+
+If an *editable Figma spec* is provided, **always** read it (and any companion `storybook.render.md` / `design-token.md`) before step 1 — its variant axes and property names should drive the stories file, and its frontmatter may already pin the authoring target for step 5. When both an editable spec and an editable Figma node are supplied, they must point at the same component set; if they don't, stop and ask the user which one wins.
 
 ---
 
@@ -68,10 +71,11 @@ Execute the steps in order. Do not skip ahead — each step's output is an input
 - Load `figma-component-spec-guide` and pick a skeleton:
   - **Skeleton A (long-form)** — default for slot-based, wrapper, and most components.
   - **Skeleton B (Render Binding Matrix)** — only when the Color × Variant × State surface is dense enough to warrant cell-by-cell paint bindings, **and** step 2 produced runtime measurements that can back the Constants table.
+- If an *editable Figma spec* was supplied, **do not draft from scratch** — open the existing file and update sections in place. Keep its skeleton choice, frontmatter ids, variant axes, property names, and defaults unless step 1/2 produced explicit evidence they are wrong; record any divergence in §8 with the trigger that justified it. Treat the existing spec's token bindings as the starting point for step 4.
 - Fill every section the chosen skeleton mandates. If a section is intentionally empty, write `n/a — <reason>`; do not silently omit it.
 - Write the §8 sync rule with concrete trigger → spec edits, naming the actual files (the new stories file, the library source, this project's theme files, etc.).
 - Show the variant-count math explicitly. For sparse matrices use the "theoretical vs published" split.
-- If an editable Figma node was supplied, set `figma_file_key`, `figma_node_id`, and `figma_component_set_id` in the frontmatter to that node — it is the published artefact this spec governs. A reference-only node does **not** populate these fields; instead, mention it in §1 as the source we mirrored from. If neither is supplied, leave the fields blank and note the gap in §1.
+- If an editable Figma node was supplied (or the editable spec's frontmatter already pins one), set `figma_file_key`, `figma_node_id`, and `figma_component_set_id` in the frontmatter to that node — it is the published artefact this spec governs. A reference-only node does **not** populate these fields; instead, mention it in §1 as the source we mirrored from. If neither is supplied, leave the fields blank and note the gap in §1.
 
 ### Step 4 — Plan design tokens
 
