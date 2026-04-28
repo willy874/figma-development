@@ -316,7 +316,7 @@ Sibling Set  : <TextField> | Multiline  (21 variants)
 
 ## 10. Token Glossary
 
-The complete set of Merak design tokens consumed by `<TextField>`. Names below are **Figma variable paths** in the `merak` collection (see `.claude/skills/figma-operator-guide/design-token.md`). Bind every Figma paint / stroke / effect to one of these — never to a literal value.
+The complete set of Merak design tokens consumed by `<TextField>`. Names below are **Figma variable paths** in the `merak` collection (see `.claude/skills/figma-design-guide/design-token.md`). Bind every Figma paint / stroke / effect to one of these — never to a literal value.
 
 ### 10.1 Seed tokens (`seed/*`)
 

@@ -1,12 +1,12 @@
 ---
 name: figma-component-button-design-token
-description: Component-scoped design tokens for `<Button>` (MerakButton v2). Defined here because they're either MUI-Button-specific runtime constants (the `inherit-contained` grey, the `outlined-inherit` border, icon layout deltas) or fixed dimensions that don't fit the shared `merak/seed/*` or `merak/alias/*` namespaces. Bind Button paints / strokes / effects to these names rather than literal values; for shared tokens used by Button (seed colors, alias colors, MD shadows), see `.claude/skills/figma-operator-guide/design-token.md`.
+description: Component-scoped design tokens for `<Button>` (MerakButton v2). Defined here because they're either MUI-Button-specific runtime constants (the `inherit-contained` grey, the `outlined-inherit` border, icon layout deltas) or fixed dimensions that don't fit the shared `merak/seed/*` or `merak/alias/*` namespaces. Bind Button paints / strokes / effects to these names rather than literal values; for shared tokens used by Button (seed colors, alias colors, MD shadows), see `.claude/skills/figma-design-guide/design-token.md`.
 parent_skill: figma-components
 ---
 
 # `<Button>` Component Tokens
 
-Tokens scoped to `<Button>` and its variants in `apps/console/src/components/Button/Button.tsx`. Reach for these only inside the Button component set; for everything else (semantic colors, action overlays, MD elevations, typography), bind to the shared `merak/*` and `material-design/*` tokens documented in [`design-token.md`](../../figma-operator-guide/design-token.md).
+Tokens scoped to `<Button>` and its variants in `apps/console/src/components/Button/Button.tsx`. Reach for these only inside the Button component set; for everything else (semantic colors, action overlays, MD elevations, typography), bind to the shared `merak/*` and `material-design/*` tokens documented in [`design-token.md`](../../figma-design-guide/design-token.md).
 
 ## Why these are component-scoped
 

@@ -98,7 +98,7 @@ Color × Variant × State (Size=Medium)   =   6 × 3 × 5   =   90 variants
 
 ## 5. Token Glossary
 
-Token names below are **Figma variable paths** in the `merak` collection — see [`.claude/skills/figma-operator-guide/design-token.md`](../../figma-operator-guide/design-token.md). Bind every Figma paint / stroke / variable to one of these — never to a literal hex.
+Token names below are **Figma variable paths** in the `merak` collection — see [`.claude/skills/figma-design-guide/design-token.md`](../../figma-design-guide/design-token.md). Bind every Figma paint / stroke / variable to one of these — never to a literal hex.
 
 ### 5.1 Seed color tokens (`seed/<C>/*`)
 
