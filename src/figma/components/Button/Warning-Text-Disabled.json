@@ -61,7 +61,7 @@
         {
           "type": "SOLID",
           "visible": true,
-          "opacity": 0.3799999952316284,
+          "opacity": 0.25999999046325684,
           "blendMode": "NORMAL",
           "color": {
             "r": 0,
@@ -71,7 +71,7 @@
           "boundVariables": {
             "color": {
               "type": "VARIABLE_ALIAS",
-              "id": "VariableID:25586e7317d8f16c107b7df921da794479cef59f/742:2662"
+              "id": "VariableID:153:4040"
             }
           }
         }
@@ -102,7 +102,7 @@
         "fills": [
           {
             "type": "VARIABLE_ALIAS",
-            "id": "VariableID:25586e7317d8f16c107b7df921da794479cef59f/742:2662"
+            "id": "VariableID:153:4040"
           }
         ]
       },

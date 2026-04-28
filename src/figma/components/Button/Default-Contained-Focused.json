@@ -13,33 +13,14 @@
       "opacity": 1,
       "blendMode": "NORMAL",
       "color": {
-        "r": 0.6196078658103943,
-        "g": 0.6196078658103943,
-        "b": 0.6196078658103943
+        "r": 0.8784313797950745,
+        "g": 0.8784313797950745,
+        "b": 0.8784313797950745
       },
       "boundVariables": {
         "color": {
           "type": "VARIABLE_ALIAS",
-          "id": "VariableID:aa1bfb043f703796d0a5bf49e2c1738c8744f2e5/742:2665"
-        }
-      }
-    }
-  ],
-  "strokes": [
-    {
-      "type": "SOLID",
-      "visible": true,
-      "opacity": 0.30000001192092896,
-      "blendMode": "NORMAL",
-      "color": {
-        "r": 0,
-        "g": 0,
-        "b": 0
-      },
-      "boundVariables": {
-        "color": {
-          "type": "VARIABLE_ALIAS",
-          "id": "VariableID:d86a10ca9026902fda1261b0eae3b492075d4870/758:66"
+          "id": "VariableID:153:4041"
         }
       }
     }
@@ -131,13 +112,7 @@
     "fills": [
       {
         "type": "VARIABLE_ALIAS",
-        "id": "VariableID:aa1bfb043f703796d0a5bf49e2c1738c8744f2e5/742:2665"
-      }
-    ],
-    "strokes": [
-      {
-        "type": "VARIABLE_ALIAS",
-        "id": "VariableID:d86a10ca9026902fda1261b0eae3b492075d4870/758:66"
+        "id": "VariableID:153:4041"
       }
     ]
   },
@@ -184,7 +159,7 @@
           "boundVariables": {
             "color": {
               "type": "VARIABLE_ALIAS",
-              "id": "VariableID:071a4c2b9169a970ccbe5f96d60d13fd30370ae6/742:2651"
+              "id": "VariableID:159:4061"
             }
           }
         }
@@ -215,7 +190,7 @@
         "fills": [
           {
             "type": "VARIABLE_ALIAS",
-            "id": "VariableID:071a4c2b9169a970ccbe5f96d60d13fd30370ae6/742:2651"
+            "id": "VariableID:159:4061"
           }
         ]
       },

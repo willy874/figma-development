@@ -10,7 +10,7 @@
     {
       "type": "SOLID",
       "visible": true,
-      "opacity": 0.11999999731779099,
+      "opacity": 0.8700000047683716,
       "blendMode": "NORMAL",
       "color": {
         "r": 0,
@@ -20,7 +20,7 @@
       "boundVariables": {
         "color": {
           "type": "VARIABLE_ALIAS",
-          "id": "VariableID:900cc3a1a44f8cdc7aed1ec618243e6a658975b4/742:2673"
+          "id": "VariableID:153:4043"
         }
       }
     }
@@ -52,7 +52,7 @@
     "strokes": [
       {
         "type": "VARIABLE_ALIAS",
-        "id": "VariableID:900cc3a1a44f8cdc7aed1ec618243e6a658975b4/742:2673"
+        "id": "VariableID:153:4043"
       }
     ]
   },
@@ -99,7 +99,7 @@
           "boundVariables": {
             "color": {
               "type": "VARIABLE_ALIAS",
-              "id": "VariableID:071a4c2b9169a970ccbe5f96d60d13fd30370ae6/742:2651"
+              "id": "VariableID:159:4061"
             }
           }
         }
@@ -130,7 +130,7 @@
         "fills": [
           {
             "type": "VARIABLE_ALIAS",
-            "id": "VariableID:071a4c2b9169a970ccbe5f96d60d13fd30370ae6/742:2651"
+            "id": "VariableID:159:4061"
           }
         ]
       },

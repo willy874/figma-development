@@ -6,25 +6,6 @@
   "y": 100,
   "width": 73,
   "height": 37,
-  "strokes": [
-    {
-      "type": "SOLID",
-      "visible": true,
-      "opacity": 0.30000001192092896,
-      "blendMode": "NORMAL",
-      "color": {
-        "r": 0.09803921729326248,
-        "g": 0.4627451002597809,
-        "b": 0.8235294222831726
-      },
-      "boundVariables": {
-        "color": {
-          "type": "VARIABLE_ALIAS",
-          "id": "VariableID:f527fa55037814d9cad3de5dcc99461483e8c970/748:2759"
-        }
-      }
-    }
-  ],
   "strokeWeight": 3,
   "strokeAlign": "OUTSIDE",
   "strokeTopWeight": 3,
@@ -49,14 +30,6 @@
   "paddingLeft": 8,
   "itemSpacing": 8,
   "counterAxisSpacing": 0,
-  "boundVariables": {
-    "strokes": [
-      {
-        "type": "VARIABLE_ALIAS",
-        "id": "VariableID:f527fa55037814d9cad3de5dcc99461483e8c970/748:2759"
-      }
-    ]
-  },
   "constraints": {
     "horizontal": "MIN",
     "vertical": "MIN"
@@ -100,7 +73,7 @@
           "boundVariables": {
             "color": {
               "type": "VARIABLE_ALIAS",
-              "id": "VariableID:3e6edd26f134fd3fae1cb40222b807f37c74befa/768:2"
+              "id": "VariableID:159:4040"
             }
           }
         }
@@ -131,7 +104,7 @@
         "fills": [
           {
             "type": "VARIABLE_ALIAS",
-            "id": "VariableID:3e6edd26f134fd3fae1cb40222b807f37c74befa/768:2"
+            "id": "VariableID:159:4040"
           }
         ]
       },
