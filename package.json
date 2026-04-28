@@ -8,13 +8,6 @@
   "main": "dist/mui-ui.cjs.js",
   "module": "dist/mui-ui.es.js",
   "types": "dist/types/index.d.ts",
-  "exports": {
-    ".": {
-      "import": "./dist/mui-ui.es.js",
-      "require": "./dist/mui-ui.cjs.js",
-      "types": "./dist/types/index.d.ts"
-    }
-  },
   "files": [
     "bin",
     ".claude/skills",
