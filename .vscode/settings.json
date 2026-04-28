@@ -1,0 +1,14 @@
+{
+  "editor.tabSize": 2,
+  "editor.formatOnSave": true,
+  "editor.formatOnSaveMode": "file",
+  "editor.codeActionsOnSave": {
+    "source.fixAll.oxc": "always"
+  },
+  "editor.defaultFormatter": "oxc.oxc-vscode",
+  "files.associations": {
+    ".oxfmtrc.json": "jsonc"
+  },
+  "oxc.enable": true,
+  "oxc.fmt.configPath": ".oxfmtrc.json"
+}
