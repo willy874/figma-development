@@ -1,7 +1,12 @@
 #!/usr/bin/env bash
-# Read /tmp/component-upload-batch.json (the use_figma response written by the
-# model via heredoc), write one JSON file per entry into outputDir, and update
+# Write per-variant JSON files from a use_figma batch response, then update
 # /tmp/component-upload-return.json with totals and the list of filenames.
+#
+# Two input modes:
+#   (a) Default: read from /tmp/component-upload-batch.json (model wrote it via heredoc).
+#   (b) Stdin:  pass `-` as the first argument to read from stdin instead.
+#               Example: printf '%s' "$RESPONSE" | write-batch.sh -
+#
 # On failure: prints "ERROR: <reason>" to stdout and exits non-zero.
 
 set -euo pipefail
@@ -15,22 +20,32 @@ command -v jq >/dev/null 2>&1   || fail "jq is required but not found in PATH"
 command -v node >/dev/null 2>&1 || fail "node is required but not found in PATH"
 
 PARAMS=/tmp/component-upload-params.json
-BATCH=/tmp/component-upload-batch.json
+DEFAULT_BATCH=/tmp/component-upload-batch.json
 RET=/tmp/component-upload-return.json
 
 [ -f "$PARAMS" ] || fail "$PARAMS not found"
-[ -f "$BATCH" ]  || fail "$BATCH not found (write the use_figma response there first)"
 [ -f "$RET" ]    || fail "$RET not found (run plan.sh first)"
 
+# Resolve input source.
+if [ "${1:-}" = "-" ]; then
+  TMP_BATCH=$(mktemp) || fail "mktemp failed"
+  trap 'rm -f "$TMP_BATCH"' EXIT
+  cat > "$TMP_BATCH" || fail "failed to read stdin"
+  BATCH="$TMP_BATCH"
+else
+  BATCH="$DEFAULT_BATCH"
+  [ -f "$BATCH" ] || fail "$BATCH not found (write the use_figma response there or pass '-' to read stdin)"
+fi
+
 jq -e 'type == "object" and has("files") and (.files | type == "object") and has("total") and has("count") and has("done")' "$BATCH" >/dev/null 2>&1 \
-  || fail "$BATCH is not a valid batch response (need files, total, count, done)"
+  || fail "batch input is not a valid response (need files, total, count, done)"
 
 OD=$(jq -r '.outputDir // empty' "$PARAMS") || fail "failed to parse $PARAMS"
 [ -n "$OD" ] || fail "params.outputDir missing"
 mkdir -p "$OD" || fail "failed to create outputDir: $OD"
 
 TMP_LIST=$(mktemp) || fail "mktemp failed"
-trap 'rm -f "$TMP_LIST"' EXIT
+trap 'rm -f "$TMP_LIST" "${TMP_BATCH:-}"' EXIT
 
 OUTDIR="$OD" BATCH_PATH="$BATCH" LIST_PATH="$TMP_LIST" node -e '
   const fs   = require("fs");
