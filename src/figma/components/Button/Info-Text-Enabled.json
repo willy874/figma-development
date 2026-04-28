@@ -71,7 +71,7 @@
           "boundVariables": {
             "color": {
               "type": "VARIABLE_ALIAS",
-              "id": "VariableID:03f5bc77c42bd9a31f7c2b232026fc6d4711b5c2/748:2799"
+              "id": "VariableID:159:4052"
             }
           }
         }
@@ -102,7 +102,7 @@
         "fills": [
           {
             "type": "VARIABLE_ALIAS",
-            "id": "VariableID:03f5bc77c42bd9a31f7c2b232026fc6d4711b5c2/748:2799"
+            "id": "VariableID:159:4052"
           }
         ]
       },

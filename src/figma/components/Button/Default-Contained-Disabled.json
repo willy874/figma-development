@@ -20,7 +20,7 @@
       "boundVariables": {
         "color": {
           "type": "VARIABLE_ALIAS",
-          "id": "VariableID:fe0b95400f1a8e335b80379e4bfb45ef90ff8584/742:2690"
+          "id": "VariableID:159:4062"
         }
       }
     }
@@ -51,7 +51,7 @@
     "fills": [
       {
         "type": "VARIABLE_ALIAS",
-        "id": "VariableID:fe0b95400f1a8e335b80379e4bfb45ef90ff8584/742:2690"
+        "id": "VariableID:159:4062"
       }
     ]
   },
@@ -88,7 +88,7 @@
         {
           "type": "SOLID",
           "visible": true,
-          "opacity": 0.3799999952316284,
+          "opacity": 0.25999999046325684,
           "blendMode": "NORMAL",
           "color": {
             "r": 0,
@@ -98,7 +98,7 @@
           "boundVariables": {
             "color": {
               "type": "VARIABLE_ALIAS",
-              "id": "VariableID:071a4c2b9169a970ccbe5f96d60d13fd30370ae6/742:2651"
+              "id": "VariableID:153:4040"
             }
           }
         }
@@ -129,7 +129,7 @@
         "fills": [
           {
             "type": "VARIABLE_ALIAS",
-            "id": "VariableID:071a4c2b9169a970ccbe5f96d60d13fd30370ae6/742:2651"
+            "id": "VariableID:153:4040"
           }
         ]
       },

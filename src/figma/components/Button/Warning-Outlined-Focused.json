@@ -20,7 +20,7 @@
       "boundVariables": {
         "color": {
           "type": "VARIABLE_ALIAS",
-          "id": "VariableID:fae853437c52b0104ea2fba46fbfe6c38c47532d/748:2805"
+          "id": "VariableID:159:4051"
         }
       }
     }
@@ -52,7 +52,7 @@
     "strokes": [
       {
         "type": "VARIABLE_ALIAS",
-        "id": "VariableID:fae853437c52b0104ea2fba46fbfe6c38c47532d/748:2805"
+        "id": "VariableID:159:4051"
       }
     ]
   },
@@ -99,7 +99,7 @@
           "boundVariables": {
             "color": {
               "type": "VARIABLE_ALIAS",
-              "id": "VariableID:ea91951f6f3ccb93f47aa0aa25b4e4da61ac0c13/748:2798"
+              "id": "VariableID:159:4048"
             }
           }
         }
@@ -130,7 +130,7 @@
         "fills": [
           {
             "type": "VARIABLE_ALIAS",
-            "id": "VariableID:ea91951f6f3ccb93f47aa0aa25b4e4da61ac0c13/748:2798"
+            "id": "VariableID:159:4048"
           }
         ]
       },
