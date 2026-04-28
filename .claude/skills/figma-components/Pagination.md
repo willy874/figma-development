@@ -139,7 +139,7 @@ Color family resolution is split between the **Default** (neutral) family and ea
 
 #### Default color (neutral) — same as stock MUI `color="standard"`
 
-Token names below are Figma variable paths (`merak` collection), not CSS variables. See `.claude/skills/figma-operator-guide/design-token.md`.
+Token names below are Figma variable paths (`merak` collection), not CSS variables. See `.claude/skills/figma-design-guide/design-token.md`.
 
 | Figma paint slot                                          | Token binding                            | Notes                                                                                   |
 | --------------------------------------------------------- | ---------------------------------------- | --------------------------------------------------------------------------------------- |
@@ -324,7 +324,7 @@ Figma Wrapper Component Set: <Pagination>
 
 ## 10. Token Glossary
 
-The complete set of Merak design tokens consumed by `<Pagination>`. Names below are **Figma variable paths** in the `merak` collection (see `.claude/skills/figma-operator-guide/design-token.md`). Bind every Figma paint / stroke / variable to one of these — never to a literal value.
+The complete set of Merak design tokens consumed by `<Pagination>`. Names below are **Figma variable paths** in the `merak` collection (see `.claude/skills/figma-design-guide/design-token.md`). Bind every Figma paint / stroke / variable to one of these — never to a literal value.
 
 ### 10.1 Seed color tokens (`seed/*`)
 
