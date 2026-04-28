@@ -1,4 +1,4 @@
-# 天璇 Design Tokens
+# Design Tokens
 
 Source: [Figma file `stse2CgIzOugynEdDSexS4`](https://www.figma.com/design/stse2CgIzOugynEdDSexS4/%E5%A4%A9%E7%92%87)
 
