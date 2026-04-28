@@ -89,6 +89,15 @@ Execute the steps in order. Do not skip ahead — each step's output is an input
 - If the component needs values that no published token covers (e.g. a chip-fill alpha that lives only in `component/chip/*`), document them in a new `design-token.md` alongside the spec, with the resolution chain and the rule that designers must bind to the new tokens — never to raw hex.
 - Update §4 (Skeleton A) or §5 + §6.1 Constants (Skeleton B) of `figma.spec.md` so every paint/stroke/effect references a token path. **Never** leave a hex value in the spec except as a "reference resolution of the light theme."
 
+#### Local-only vs published-library bindings
+
+A Figma file can hold both a **local** variable collection and consume **published** library copies of the same names. The two are distinct objects: rebinding from one to the other does not change the rendered hex but changes which file owns the source-of-truth.
+
+- Before drafting §5 of the spec, query a sample cell's `boundVariables` — the variable's `id` will start with `VariableID:<localId>` (local) or `VariableID:<sharedKey>/<id>` (consumed library). The local-vs-library distinction is invisible in `get_design_context` output (CSS var names are identical).
+- If the project enforces "use only this file's internal variables" (a common directive when the design system file isn't always available, or when a library file should be self-contained), document the local-only rule in `figma.spec.md` §1 and ensure every spec'd token has a local equivalent.
+- When a needed alias is missing locally, mint it in the local collection with the same name and resolved hex as the published copy. Re-binding ~300 cells is mechanical but slow; budget one `use_figma` call per component set.
+- When MUI runtime needs a value the shared seed family doesn't ship (e.g. `12 %`-α themed Selected bg vs. the family's `4 %`-α `hover-bg`), mint per-component pre-alpha'd tokens in `component/<name>/*` and document them in the new `design-token.md`. The pre-alpha'd-binding rule (don't pair `paint.opacity < 1` with a bound variable — Figma flattens it on instance creation) makes this the only honest way to hit 12 % per family without inflating the seed namespace.
+
 ### Step 5 — Author the Figma component
 
 **Goal:** publish the `COMPONENT_SET` (or `COMPONENT`) on the agreed page, every variant matching the spec.
@@ -109,6 +118,34 @@ Execute the steps in order. Do not skip ahead — each step's output is an input
 - Build the component set following the spec's §3 variant matrix and §4 / §6 token bindings exactly. Use Auto Layout, bind every paint to a variable, apply text styles by id.
 - After authoring, return the resulting page name + node id (or URL) to the user so they can inspect.
 
+#### Pre-flight inspection (when editing in place)
+
+Before writing any `use_figma` script that mutates dozens of cells, sample 4–6 cells across the axis matrix and read their actual paint / stroke / text-fill bindings (not just `get_design_context` — query `node.fills[0].boundVariables.color.id` directly and resolve the variable name). Three patterns are easy to miss without sampling:
+
+- **Selective theming.** A "themed" axis often only paints differently for a subset of (Type × State) combinations — e.g. Pagination themes only `Page/Hovered` and `Page/Selected`; every other Hovered cell uses the neutral overlay regardless of Color. Drafting the Render Binding Matrix from MUI source alone misses this.
+- **Stacked-fill compositing.** Themed Selected often appears as **two stacked fills** of the same 4 %-α token (composite ~7.84 %) to dodge Figma's `paint.opacity` flattening. If you see two identical fills, that's the pattern — not duplication.
+- **Source-of-truth drift.** The Figma cell may bind to library variables whose hex no longer matches the published catalogue (token renamed / removed upstream). Before assuming "Figma is correct," cross-check against `figma-design-guide/design-token.md`.
+
+#### Phase the writes by op-type
+
+For component sets with hundreds of variants, batch `use_figma` calls by the kind of operation, not by axis slice:
+
+1. **Phase A — paint rebinds + numeric tweaks.** Rebind fills / strokes / text-fills, set `paddingLeft / paddingRight`, set `fontSize`, set `letterSpacing`. No structural change. One call can comfortably handle 200–300 cells.
+2. **Phase B — structural replacements.** Removing a TEXT child and inserting an INSTANCE (e.g. swapping a unicode glyph for an icon component) is structural. Keep it in its own call so you can validate the geometry independently. One call per direction (Previous, Next, etc.).
+3. **Phase C — wrapper-level changes.** `itemSpacing`, `padding`, nested-instance overrides on the wrapper component set. Wrappers are usually <50 variants; one call.
+
+After each phase: take a `screenshot()` of 5–10 representative cells (`scale: 4`) to validate before moving on.
+
+#### Don't extend pre-existing icon sets when their axis structure is incompatible
+
+If you need icon variants that don't fit an existing icon set's axis (e.g. the existing `<Icon>` set has `Size=xs..xxl` for a single glyph, but you need `Direction × Size` for chevron-left vs. chevron-right), **mint dedicated component sets** rather than bolting on a `Glyph` axis. Adding axes to a published set:
+
+- Risks renaming every existing variant (breaking inbound instances).
+- Forces every consumer to specify the new axis, even when they don't care.
+- Requires a 2D variant explosion when the existing set was 1D.
+
+Place the new dedicated sets adjacent to the existing icon set (same page, sibling frame) so they're discoverable, and reference them by id from the consuming component set.
+
 ### Step 6 — Subagent review
 
 **Goal:** an independent pair of eyes confirms the deliverables match the four governing documents.
@@ -121,6 +158,9 @@ The review must cover:
 - **Spec ↔ Figma alignment** — the published component set's variant axes, property names, defaults, and total variant count match `figma.spec.md` §3. Spot-check at least one cell per state for paint / stroke / effect bindings.
 - **Spec ↔ `figma-component-spec-guide`** — frontmatter fields present, chosen skeleton followed, §8 sync rule is component-specific, variant-count math is shown, no raw hex outside reference resolutions, no Figma property id suffixes (`#1234:5`) outside frontmatter.
 - **Figma ↔ `figma-operator-guide`** — every paint bound to a variable, text styles applied by id, Auto Layout used (no absolute positioning except where layout.md allows), no detached instances, hygienic layer names, accessibility minimums met.
+- **Internal spec consistency** — the same constant cited in two sections must agree (e.g. §6.1 Constants table vs. §6.7 Glyph table both quoting font sizes; §3 variant count vs. §1 aspect-table total). These cross-section mismatches are common when sections are rewritten in isolation.
+- **Stale runtime claims** — `Underlying MUI version` in §1 reflects the current `package.json` / `pnpm-lock.yaml` resolution (not a guess). Reviewer should `grep package.json` to confirm.
+- **Token semantic mismatches** — when a token's name suggests one role but the spec binds it to another (e.g. `bg-disabled` used as a stroke), the spec must explain the convention inline, ideally citing the sibling spec that established it (Button / IconButton).
 
 Phrase the subagent prompt so it can pick up cold (paths, what to compare, the form of the expected report). Keep the report under 400 words — surface the failures, not the successes.
 
@@ -131,6 +171,42 @@ Phrase the subagent prompt so it can pick up cold (paths, what to compare, the f
 - For each finding, decide: fix immediately, file a TODO in §8 of the spec, or accept with a one-line rationale appended to the spec / render / design-token doc.
 - Re-run the relevant step (3, 4, or 5) after edits.
 - Re-spawn the subagent only when changes are non-trivial. For a single-line fix, a self-check is enough.
+
+---
+
+## Runtime-truth pass (optional follow-up)
+
+The default pipeline treats the Figma cells as the deployed source of truth — divergences from MUI runtime (`storybook.render.md`) are recorded in `figma.spec.md` §7 as documented design decisions. A second mode exists when the user explicitly directs the project to **align Figma to runtime**, item by item ("issue 1 → runtime", "issue 2 → MUI native", etc.). This is heavier than the initial pipeline and has its own checklist.
+
+### When to run
+
+- The user enumerates `figma.spec.md` §7 issues and assigns each one a resolution (runtime / MUI / accept-as-is).
+- A new directive is added (e.g. "全部使用該圖內部的變數" — local-only variable bindings).
+- A subagent review surfaced fail items that require structural cell rewrites, not just spec wording fixes.
+
+### What changes vs. the initial pipeline
+
+1. **Mint local-only equivalents for every consumed library variable.** Inspect each Pagination cell's `boundVariables` first to discover what's local vs. published. For each missing local alias, create it in the local collection with the same name and resolved hex.
+2. **Mint per-component pre-alpha'd tokens** for runtime values the shared seed family doesn't ship (e.g. `12 %`-α themed Selected bg). Document them in the new `design-token.md`.
+3. **Rewrite cells in phased `use_figma` calls** per the "Phase the writes by op-type" guidance under Step 5. Common phases:
+   - Phase A: paint / stroke / text-fill rebinds + numeric tweaks (padding, font-size, letter-spacing).
+   - Phase B: structural replacements (TEXT → INSTANCE for icon swaps).
+   - Phase C: wrapper-level updates (per-Size `itemSpacing`, nested-instance overrides).
+4. **Create dedicated icon component sets** when runtime uses SVG icons but the Figma cells used unicode glyphs (or vice versa). Don't extend an incompatible-axis icon set; mint a new one per direction.
+5. **Mark §7 issues resolved with date** (`Resolved YYYY-MM-DD`) and move them to a "Resolved" subsection. Keep them visible for traceability — don't delete.
+6. **Update `storybook.render.md` drift checks** to reflect closed divergences. Open drift checks should remain; resolved ones get a `~~strikethrough + "Resolved YYYY-MM-DD"~~` line.
+7. **Update `design-token.md`** if new component-scoped tokens were minted, with the resolution chain (`alpha = 0.12`, `seed/<C>/main × 12 %`, etc.) and the rationale for keeping them out of the shared seed family.
+8. **Re-spawn the subagent review** for cross-check — the structural rewrites are a fresh review surface.
+
+### What does NOT change
+
+- The variant matrix (axes, total counts) stays stable. Runtime alignment is about *paint values*, not *variant geometry*.
+- The Storybook story (`<Component>.stories.tsx`) stays stable — it already mirrors runtime.
+- Frontmatter `figma_node_id` stays stable. Editing in place preserves inbound instance references.
+
+### Capture the run in §1 of the spec
+
+After a runtime-truth pass, add a sentence to `figma.spec.md` §1 noting the date and what was reconciled — readers should know the current state is "runtime-aligned as of YYYY-MM-DD" rather than "matches the original Figma authoring intent."
 
 ---
 
