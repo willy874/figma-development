@@ -19,7 +19,7 @@ Must exist before invocation:
 ```json
 {
   "fileKey": "stse2CgIzOugynEdDSexS4",
-  "variablesPath": "src/variables.json"
+  "variablesPath": "src/figma/variables.json"
 }
 ```
 

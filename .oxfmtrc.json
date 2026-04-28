@@ -6,9 +6,5 @@
   "printWidth": 100,
   "parser": "oxc",
   "sortPackageJson": false,
-  "ignorePatterns": [
-    "src/variables.json",
-    "pnpm-lock.yaml",
-    ".claude/**"
-  ]
+  "ignorePatterns": ["pnpm-lock.yaml", ".claude/**"]
 }
