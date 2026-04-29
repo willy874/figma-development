@@ -1,6 +1,6 @@
 ---
 name: figma-component-text-field-spec
-description: Figma component specification for `<TextField>` — design counterpart of the MUI `<TextField>` consumed by `src/stories/TextField.stories.tsx`. Documents the variant matrix (Variant × Size × State × Has Value), component properties (Label / Placeholder / Value / Helper Text Content + adornment / autocomplete slots), source-to-Figma mapping, and the token bindings that pin every fill / stroke / underline to a named token. For component-scoped tokens see `design-token.md` in this directory; for runtime measurements see `storybook.render.md`.
+description: Figma component specification for `<TextField>` — design counterpart of the MUI `<TextField>` consumed by `src/stories/TextField.stories.tsx`. Documents the variant matrix (Variant × Size × State × Has Value × Multiline), component properties (Label / Placeholder / Value / Helper Text Content + adornment / autocomplete slots), source-to-Figma mapping, and the token bindings that pin every fill / stroke / underline to a named token. For component-scoped tokens see `design-token.md` in this directory; for runtime measurements see `storybook.render.md`.
 parent_skill: figma-components
 figma_file_key: KQjP6W9Uw1PN0iipwQHyYn
 figma_node_id: '1:6266'
@@ -20,9 +20,9 @@ The Figma cells already match this contract — every paint, stroke, text fill, 
 | Source story      | `src/stories/TextField.stories.tsx`                                                    |
 | Underlying source | `@mui/material@^7.3.10` `TextField` (re-exported by this package, no wrapper)          |
 | Figma file        | [MUI-Library](https://www.figma.com/design/KQjP6W9Uw1PN0iipwQHyYn) (`KQjP6W9Uw1PN0iipwQHyYn`) |
-| Figma frame       | `<TextField>` (`1:6266`, `1448 × 826 px`) on page **Foundation Components** (`0:1`)    |
+| Figma frame       | `<TextField>` (`1:6266`) on page **Foundation Components** (`0:1`) — frame height grows with the multiline block; Auto Layout determines the actual value |
 | Component Set     | `<TextField>` (`1:6266`)                                                               |
-| Total variants    | **60** (3 Variants × 2 Sizes × 5 States × 2 Has Value)                                 |
+| Total variants    | **120** (3 Variants × 2 Sizes × 5 States × 2 Has Value × 2 Multiline)                  |
 | Typography        | Roboto Regular, value `16 / 24 px` ls `0.15 px`; floated label text style `input/label` (`12 / 12 px`, ls `0.15 px`) |
 
 ## 2. Source-to-Figma Property Mapping
@@ -41,7 +41,8 @@ The Figma cells already match this contract — every paint, stroke, text fill, 
 | `InputProps.endAdornment`                                 | `Adorn. End` + `End Adorn`     | BOOLEAN + SLOT  | Same shape as Start.                                                                                               |
 | _(SearchInput-style autocomplete dropdown anchor)_        | `Autocomplete`         | SLOT             | Native slot below the input row; renders nothing in `<TextField>` itself. Intended for wrapper composers (e.g. a future `<SearchInput>` / `<Autocomplete>` recipe). |
 | `color`                                                   | —                      | —                | Wrapper forwards to MUI; Figma ships only the neutral + primary-tint surface today. Adding a `Color` axis is a §8 trigger. |
-| `multiline`, `minRows`, `maxRows`                         | —                      | —                | Not in this component set. Multiline is left for a future `<TextField> | Multiline` set (§8).                       |
+| `multiline`                                               | `Multiline`            | VARIANT          | `True` swaps the input row for a 3-row textarea. **`minRows=3` is fixed in Figma**; runtime keeps `maxRows` unset so the textarea can still grow vertically past 3 rows — the cell only encodes the minimum. |
+| `minRows`, `maxRows`                                      | —                      | —                | Not modelled as variants. Figma fixes `minRows=3` for every `Multiline=True` cell; if a host overrides `minRows` / `maxRows` the rendered height will diverge from the cell — treat as a known omission, not a drift. |
 | `select`, `type`                                          | —                      | —                | Behavior-only; Figma has no `Select` or `type=number` axis today.                                                  |
 | `onChange`, `onBlur`, `inputRef`, rest native props        | —                      | —                | Behavior-only, no design representation.                                                                           |
 
@@ -52,7 +53,7 @@ The Figma cells already match this contract — every paint, stroke, text fill, 
 ## 3. Variant Property Matrix
 
 ```
-Variant × Size × State × Has Value   =   3 × 2 × 5 × 2   =   60 variants
+Variant × Size × State × Has Value × Multiline   =   3 × 2 × 5 × 2 × 2   =   120 variants
 ```
 
 | Property    | Default value | Options                                                         |
@@ -61,6 +62,7 @@ Variant × Size × State × Has Value   =   3 × 2 × 5 × 2   =   60 variants
 | `Size`      | `Medium`      | `Medium`, `Small`                                               |
 | `State`     | `Enabled`     | `Enabled`, `Hovered`, `Focused`, `Disabled`, `Error`            |
 | `Has Value` | `True`        | `True`, `False`                                                 |
+| `Multiline` | `False`       | `False`, `True` — `True` fixes a 3-row (`69 px`) textarea content area; the wrapper grows by `+46 px` (= `(minRows−1) × 23 px`) over the single-line height. No paint / token differs from single-line. |
 
 > **`Pressed` is omitted.** MUI treats `:active` identically to `:focus` for TextField; adding it would double the matrix to 120 variants with no visual delta. Re-add per §8 if a distinct pressed paint is introduced.
 >
@@ -89,15 +91,20 @@ All paints, strokes, and surfaces bind to local variables in the MUI-Library fil
 
 ### 4.1 Sizing
 
-`<TextField>` does not override MUI defaults; the Figma cell heights mirror the runtime `getBoundingClientRect()` of `src/stories/TextField.stories.tsx` (see `storybook.render.md` §3).
+`<TextField>` does not override MUI defaults; the Figma cell heights mirror the runtime `getBoundingClientRect()` of `src/stories/TextField.stories.tsx` (see `storybook.render.md` §3 for single-line, §7 for multiline).
 
 | Property                              | Standard   | Filled      | Outlined    |
 | ------------------------------------- | ---------- | ----------- | ----------- |
 | Cell width (preview)                  | `220 px`   | `220 px`    | `220 px`    |
 | Cell height — Small                   | `45 px`    | `48 px`     | `40 px`     |
 | Cell height — Medium                  | `48 px`    | `56 px`     | `56 px`     |
+| Cell height — Small · Multiline       | `91 px`    | `94 px`     | `86 px`     |
+| Cell height — Medium · Multiline      | `94 px`    | `102 px`    | `102 px`    |
 | Wrapper height — Small                | `29 px`    | `48 px`     | `40 px`     |
 | Wrapper height — Medium               | `32 px`    | `56 px`     | `56 px`     |
+| Wrapper height — Small · Multiline    | `75 px`    | `94 px`     | `86 px`     |
+| Wrapper height — Medium · Multiline   | `78 px`    | `102 px`    | `102 px`    |
+| Textarea content height (Multiline)   | `69 px`    | `69 px`     | `69 px`     |
 | Wrapper corner radius                 | `0`        | `4 4 0 0`   | `4`         |
 | Resting underline / border thickness  | `1 px`     | `1 px`      | `1 px`      |
 | Focused underline / border thickness  | `2 px`     | `2 px`      | `2 px`      |
@@ -113,6 +120,7 @@ Notes:
 - The Figma adornment slot is `24 × 24 px` for both sizes; MUI does not constrain adornment size at runtime, but the `<Icon>` set ships at `24 × 24` so the slot stays uniform.
 - Filled rounds only the top corners (`4 4 0 0`); the bottom is the underline. Outlined rounds all four corners (`4`). Standard has no radius.
 - Floated label uses the published `input/label` text style (Roboto Regular `12 / 12 px`, ls `0.15 px`); Value uses `16 / 24 px`. Apply text styles by id, not by hand-setting `fontName` / `fontSize`.
+- **Multiline grows wrapper height by exactly `+46 px` over the single-line height** (`(minRows−1) × line-height = 2 × 23 px`). Wrapper padding (`Standard 4/5`, `Filled 25/8 Md / 21/4 Sm`, `Outlined 16.5/16.5 Md / 8.5/8.5 Sm`) and every paint / stroke / token are unchanged from single-line — the only delta is the inner `<textarea>` swap and the resulting `69 px` content height. Standard's `+16 px` outer-vs-wrapper offset (label sits above the input row) carries over: outer multiline height = wrapper multiline height + 16 px for Standard; outer = wrapper for Filled / Outlined.
 
 ### 4.2 Token bindings
 
@@ -187,27 +195,40 @@ Notes:
 
 ## 6. Layout
 
-The Component Set is laid out as a **6-column × 10-row grid** inside the `<TextField>` frame (`1:6266`, `1448 × 826 px`):
+The Component Set is laid out as a **6-column × 20-row grid** inside the `<TextField>` frame (`1:6266`):
 
 - **Columns** (left → right) — `Variant × Size`: Standard·Medium, Standard·Small, Filled·Medium, Filled·Small, Outlined·Medium, Outlined·Small. Column origins x = `{24, 260, 496, 732, 968, 1204}`; column stride `236 px` (`220 px` cell + `16 px` gap).
-- **Row bands** (top → bottom) — `State × Has Value`:
-  - Enabled · True
-  - Enabled · False
-  - Hovered · True
-  - Hovered · False
-  - Focused · True
-  - Focused · False
-  - Disabled · True
-  - Disabled · False
-  - Error · True
-  - Error · False
-- Row vertical strides reflect cell heights from §4.1; the `Has Value=False` rows collapse to the un-shrunk-label height so adjacent rows are taller / shorter rather than uniform.
+- **Row bands** (top → bottom) — `State × Has Value × Multiline`. The grid is the single-line block (10 rows, identical to the previous publication) followed immediately by the multiline block (10 more rows in the same `State × Has Value` order):
+  - Single-line block (`Multiline=False`):
+    - Enabled · True
+    - Enabled · False
+    - Hovered · True
+    - Hovered · False
+    - Focused · True
+    - Focused · False
+    - Disabled · True
+    - Disabled · False
+    - Error · True
+    - Error · False
+  - Multiline block (`Multiline=True`, repeats the State × Has Value order):
+    - Enabled · True · Multiline
+    - Enabled · False · Multiline
+    - Hovered · True · Multiline
+    - Hovered · False · Multiline
+    - Focused · True · Multiline
+    - Focused · False · Multiline
+    - Disabled · True · Multiline
+    - Disabled · False · Multiline
+    - Error · True · Multiline
+    - Error · False · Multiline
+- Row vertical strides reflect cell heights from §4.1; the `Has Value=False` rows collapse to the un-shrunk-label height (single-line block) or sit at the un-shrunk-label-at-first-row position (multiline block, see §6.1). Multiline rows are uniformly taller — the wrapper grows by `+46 px` regardless of `Has Value`.
+- Frame dimensions grow proportionally — adding the multiline block doubles the row count; the frame's `height` becomes `≈ 1648 px` (single-line block ≈ 826 px + multiline block + Helper Text bands). The exact value is whatever the Auto Layout pack produces; do not hard-code.
 
 There is no surrounding `<UseCase>` panel today; future spec updates may add curated adornment / helper-text recipes (track in §8).
 
 ### 6.1 Cell composition
 
-Every cell follows the same nested structure (the Figma `Variant=Filled, Size=Medium, State=Enabled, Has Value=True` cell `1:6299` is the canonical reference):
+Every single-line cell follows the same nested structure (the Figma `Variant=Filled, Size=Medium, State=Enabled, Has Value=True, Multiline=False` cell `1:6299` is the canonical reference):
 
 - `Input` (FRAME) — wrapper with the variant fill (Filled) or transparent (Standard / Outlined) and the notched outline (Outlined).
   - `Label` (FRAME) — sub-frame holding the un-floated label text node (visible when `Has Value=False`).
@@ -218,6 +239,16 @@ Every cell follows the same nested structure (the Figma `Variant=Filled, Size=Me
 - `Autocomplete` (SLOT) — empty bottom slot.
 
 The dual-label pattern (un-floated `Label` text inside `Content` + floated `Label` text inside `Label Container`) is what lets variant overrides toggle which label is visible without rewriting the text node. Designers should override `Label` once on the instance — both copies are wired to the same component property.
+
+#### Multiline cell composition (`Multiline=True`)
+
+Multiline cells reuse the entire single-line structure verbatim — no new nodes, no new paint roles — but the `Content` row is replaced with a multi-row textarea content area:
+
+- `Input` (FRAME) — same wrapper paint / stroke / corner radius as the single-line sibling at the same `(Variant, Size, State, Has Value)`. Wrapper height is the value listed in §4.1 "Wrapper height — Multiline" rows.
+- `Content` (FRAME) — height grows from the single-line baseline (`23 px`) to `69 px` (`3 × 23 px`). The `Value` text node fills the height; the un-floated `Label` text node (visible when `Has Value=False`) sits at the **first-row baseline** with the same translate-Y the single-line `Has Value=False` cell uses. The remaining 2 rows of the textarea sit empty below.
+- Adornment slots (`Start Adorn` / `End Adorn`), `Underline` / fieldset border, `Label Container`, `Helper Text`, `Autocomplete` SLOT — unchanged from single-line.
+
+The single design choice is whether to encode the textarea as a static `69 px` content frame (chosen here, matches the Figma "fix `minRows=3`" rule) or as an Auto-Layout content frame that grows. Since runtime can grow past `minRows` but the Figma cell only encodes the minimum, the static frame is correct.
 
 ## 7. Usage Guidelines
 
@@ -233,8 +264,11 @@ The dual-label pattern (un-floated `Label` text inside `Content` + floated `Labe
 4. Pick `Has Value`:
    - `True` when the field carries a value — override the `Value` text property; label floats.
    - `False` when the field is empty — label sits inside the input; the `Placeholder` property is currently inert (see §4.3).
-5. Toggle `Adorn. Start` / `Adorn. End` only when the source passes `InputProps.startAdornment` / `endAdornment`. With the slot visible, drop a glyph into `Start Adorn` / `End Adorn` (instance of the shared `<Icon>` set is the convention).
-6. Toggle `Helper Text` only when the source passes `helperText`; override `Helper Text Content` for the inner text.
+5. Pick `Multiline`:
+   - `False` (default) for single-line input.
+   - `True` when the source passes `multiline={true}` — the cell renders a 3-row textarea (`69 px` content). If the source overrides `minRows` / `maxRows`, the runtime height will diverge from the Figma cell — that's a known omission, not a bug. Re-author with a different fixed `minRows` only if a host uses a non-3 default consistently (a §8 trigger).
+6. Toggle `Adorn. Start` / `Adorn. End` only when the source passes `InputProps.startAdornment` / `endAdornment`. With the slot visible, drop a glyph into `Start Adorn` / `End Adorn` (instance of the shared `<Icon>` set is the convention).
+7. Toggle `Helper Text` only when the source passes `helperText`; override `Helper Text Content` for the inner text.
 
 ### 7.2 Wrapper recipes (informative)
 
@@ -278,7 +312,8 @@ This document and the source must move together. When **any** of the following c
 
 - Introducing a `Color` axis (e.g. `color="success"`) → add §2.X.1 Color value mapping, add the `Color` variant in Figma, multiply variant count in §3, add per-color rows in §4.2.
 - Adding `Pressed` to the `State` axis → update §3, add a row to §4.3.
-- Bringing multiline into the main set or shipping a sibling `<TextField> | Multiline` → update §3 / §6 and add a node-table entry in §1.
+- Changing the fixed `minRows` for `Multiline=True` (today `3`, contributing the `+46 px` wrapper-height delta) → update §2 mapping note, §3 matrix note, §4.1 Multiline rows, §6 row bands, §6.1 Multiline cell composition, and re-measure via `MultilineMatrix` in `storybook.render.md` §7.
+- Adding `maxRows` as a Figma axis (e.g. capped multiline) → introduce a new variant property, multiply variant count in §3, document the cap in §4.1.
 - Token rename / removal in `merak/alias/*` or `merak/seed/*` → update every reference in §2, §4, §10 and rename the matching variable in the local Figma collection.
 - Token value change in `component/input/*` → no edit to this spec is required (Figma resolves through the same name); `design-token.md` records the resolution chain.
 - Renaming the slot keys (`Start Adorn` / `End Adorn` / `Autocomplete`) or changing the adornment frame size from `24 × 24` → update §3.1, §5, §6.
@@ -304,20 +339,22 @@ type TextFieldProps = {
     endAdornment?: React.ReactNode;                        // → Figma `Adorn. End`   (BOOLEAN) + `End Adorn`   (SLOT)
   };
   color?: 'primary' | 'secondary' | 'error' | …;           // not represented in Figma (no Color axis today)
-  multiline?: boolean;                                     // not represented in Figma today
+  multiline?: boolean;                                     // → Figma `Multiline` (VARIANT). True ⇒ 3-row textarea (69 px content), wrapper +46 px.
+  minRows?: number;                                        // Figma fixes `minRows=3` for every `Multiline=True` cell.
+  maxRows?: number;                                        // not represented in Figma today (textarea can still grow past 3 at runtime).
 };
 ```
 
 ```
 Figma Component Set: <TextField>  (1:6266)
-  Variant axes : Variant × Size × State × Has Value
+  Variant axes : Variant × Size × State × Has Value × Multiline
   Properties   : Label (TEXT), Placeholder (TEXT), Value (TEXT),
                  Adorn. Start (BOOLEAN), Start Adorn (SLOT),
                  Adorn. End   (BOOLEAN), End Adorn   (SLOT),
                  Helper Text (BOOLEAN), Helper Text Content (TEXT),
                  Autocomplete (SLOT)
-  Default      : Variant=Standard, Size=Medium, State=Enabled, Has Value=True
-  Total        : 60 variants
+  Default      : Variant=Standard, Size=Medium, State=Enabled, Has Value=True, Multiline=False
+  Total        : 120 variants
 ```
 
 ## 10. Token Glossary

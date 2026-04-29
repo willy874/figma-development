@@ -45,7 +45,7 @@ const meta = {
     docs: {
       description: {
         component:
-          'Mirrors `<TextField>` Figma spec at `.claude/skills/figma-components/TextField/figma.spec.md` — 60 variants (3 Variants × 2 Sizes × 5 States × 2 Has Value). `Hovered` is a `:hover` pseudo-class state; trigger it by hovering the rendered field. The matrix stories pre-resolve `Focused` / `Disabled` / `Error` via `focused` / `disabled` / `error` props so every Figma cell has a runtime equivalent.',
+          'Mirrors `<TextField>` Figma spec at `.claude/skills/figma-components/TextField/figma.spec.md` — 120 variants (3 Variants × 2 Sizes × 5 States × 2 Has Value × 2 Multiline). `Hovered` is a `:hover` pseudo-class state; trigger it by hovering the rendered field. The matrix stories pre-resolve `Focused` / `Disabled` / `Error` via `focused` / `disabled` / `error` props so every Figma cell has a runtime equivalent. Multiline cells fix `minRows={3}` to match the Figma cell height.',
       },
     },
   },
@@ -148,6 +148,21 @@ export const WithBothAdornments: Story = {
 
 export const WithHelperText: Story = {
   args: { helperText: 'Helper text' },
+};
+
+// ─── Multiline ──────────────────────────────────────────────────────────────
+
+// Figma fixes `minRows={3}` so the multiline cell has a deterministic height.
+// Runtime keeps `maxRows` unset so content can still grow vertically beyond
+// 3 rows; the Figma cell only encodes the minimum.
+const MULTILINE_MIN_ROWS = 3;
+
+export const Multiline: Story = {
+  args: {
+    multiline: true,
+    minRows: MULTILINE_MIN_ROWS,
+    defaultValue: 'Value',
+  },
 };
 
 // ─── Matrices ───────────────────────────────────────────────────────────────
@@ -316,6 +331,99 @@ export const HasValueMatrix: Story = {
                   size={s}
                   label="Label"
                   placeholder="Placeholder"
+                  defaultValue={defaultValue}
+                  fullWidth
+                />
+              </div>
+            )),
+          )}
+        </Stack>
+      ))}
+    </Stack>
+  ),
+};
+
+export const MultilineMatrix: Story = {
+  parameters: { controls: { disable: true } },
+  render: () => (
+    <Stack spacing={2}>
+      <Stack direction="row" spacing={2} alignItems="flex-start">
+        <span style={cellLabel}>state \ variant × size</span>
+        {VARIANTS.flatMap((v) =>
+          SIZES.map((s) => (
+            <span key={`${v}-${s}`} style={{ ...cellLabel, width: 220 }}>
+              {v} · {s}
+            </span>
+          )),
+        )}
+      </Stack>
+      {STATES.map(({ label, extra }) => (
+        <Stack
+          key={label}
+          direction="row"
+          spacing={2}
+          alignItems="flex-start"
+        >
+          <span style={cellLabel}>{label}</span>
+          {VARIANTS.flatMap((v) =>
+            SIZES.map((s) => (
+              <div key={`${v}-${s}`} style={cell}>
+                <TextField
+                  {...extra}
+                  variant={v}
+                  size={s}
+                  multiline
+                  minRows={MULTILINE_MIN_ROWS}
+                  label="Label"
+                  defaultValue="Value"
+                  helperText={label === 'Error' ? 'Helper text' : undefined}
+                  fullWidth
+                />
+              </div>
+            )),
+          )}
+        </Stack>
+      ))}
+    </Stack>
+  ),
+};
+
+export const MultilineHasValueMatrix: Story = {
+  parameters: { controls: { disable: true } },
+  render: () => (
+    <Stack spacing={2}>
+      <Stack direction="row" spacing={2} alignItems="flex-start">
+        <span style={cellLabel}>has value \ variant × size</span>
+        {VARIANTS.flatMap((v) =>
+          SIZES.map((s) => (
+            <span key={`${v}-${s}`} style={{ ...cellLabel, width: 220 }}>
+              {v} · {s}
+            </span>
+          )),
+        )}
+      </Stack>
+      {(
+        [
+          { label: 'true', defaultValue: 'Value' },
+          { label: 'false', defaultValue: undefined },
+        ] as const
+      ).map(({ label, defaultValue }) => (
+        <Stack
+          key={label}
+          direction="row"
+          spacing={2}
+          alignItems="flex-start"
+        >
+          <span style={cellLabel}>{label}</span>
+          {VARIANTS.flatMap((v) =>
+            SIZES.map((s) => (
+              <div key={`${v}-${s}`} style={cell}>
+                <TextField
+                  variant={v}
+                  size={s}
+                  multiline
+                  minRows={MULTILINE_MIN_ROWS}
+                  label="Label"
                   defaultValue={defaultValue}
                   fullWidth
                 />

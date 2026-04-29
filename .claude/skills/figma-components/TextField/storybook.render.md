@@ -1,12 +1,12 @@
 ---
 name: figma-component-text-field-storybook-render
-description: Computed-style matrix for `<TextField>` measured against `src/stories/TextField.stories.tsx` via Chrome DevTools MCP. Documents the runtime per-variant box / paint / typography numbers across the Variant × Size × State × Has Value surface, including adornment slots and helper-text. Companion to `figma.spec.md` (the contract) and `design-token.md` (component-scoped tokens).
+description: Computed-style matrix for `<TextField>` measured against `src/stories/TextField.stories.tsx` via Chrome DevTools MCP. Documents the runtime per-variant box / paint / typography numbers across the Variant × Size × State × Has Value × Multiline surface, including adornment slots and helper-text. Companion to `figma.spec.md` (the contract) and `design-token.md` (component-scoped tokens).
 parent_skill: figma-components
 ---
 
 # `<TextField>` Storybook Render Measurements
 
-Computed-style snapshot probed with Chrome DevTools MCP against `src/stories/TextField.stories.tsx`. Stories used: `StateMatrix` (4 states × 3 variants, Size=Medium, Has Value=True; Error row also carries `Helper Text`), `SizeMatrix` (2 sizes × 3 variants), `AdornmentMatrix` (3 slot configurations × 3 variants), `Empty` (Has Value=False, no focus). These are the runtime numbers a Figma authoring pass should reproduce; if Storybook output diverges, treat it as a drift check (see §7) rather than silently rebinding.
+Computed-style snapshot probed with Chrome DevTools MCP against `src/stories/TextField.stories.tsx`. Stories used: `StateMatrix` (4 states × 3 variants, Size=Medium, Has Value=True; Error row also carries `Helper Text`), `SizeMatrix` (2 sizes × 3 variants), `AdornmentMatrix` (3 slot configurations × 3 variants), `Empty` (Has Value=False, no focus), `MultilineMatrix` and `MultilineHasValueMatrix` (multiline=true, minRows=3, Variant × Size × State × Has Value). These are the runtime numbers a Figma authoring pass should reproduce; if Storybook output diverges, treat it as a drift check (see §7) rather than silently rebinding.
 
 ## 1. Variant-axis invariants (Medium, Enabled, Has Value=True)
 
@@ -122,7 +122,50 @@ Notes:
 
 The Figma component also exposes an `autocomplete` slot (a child slot for SearchInput-style autocomplete dropdowns); it is a plain `SLOT` with no inherent paint and renders nothing at runtime in `<TextField>` itself.
 
-## 7. Drift checks
+## 7. Multiline (`multiline=true`, `minRows=3`)
+
+`MultilineMatrix` (Variant × Size × State, Has Value=True) and `MultilineHasValueMatrix` (Variant × Size × Has Value) probe the multiline surface. Multiline swaps `<input>` for a `<textarea>` (via `TextareaAutosize`) but reuses every other paint / padding / token from the single-line cell — only the wrapper height grows.
+
+### 7.1 Multiline-axis invariants (Enabled, Has Value=True, minRows=3)
+
+| Variant   | Size   | Outer height | Wrapper height | Wrapper padding (T R B L) | Textarea content height |
+| --------- | ------ | ------------ | -------------- | ------------------------- | ----------------------- |
+| Standard  | Small  | `91 px`      | `75 px`        | `1 0 5 0`                 | `69 px`                 |
+| Standard  | Medium | `94 px`      | `78 px`        | `4 0 5 0`                 | `69 px`                 |
+| Filled    | Small  | `94 px`      | `94 px`        | `21 12 4 12`              | `69 px`                 |
+| Filled    | Medium | `102 px`     | `102 px`       | `25 12 8 12`              | `69 px`                 |
+| Outlined  | Small  | `86 px`      | `86 px`        | `8.5 14 8.5 14`           | `69 px`                 |
+| Outlined  | Medium | `102 px`     | `102 px`       | `16.5 14 16.5 14`         | `69 px`                 |
+
+Notes:
+
+- **Wrapper-height delta is uniform.** Multiline grows the wrapper by exactly `(minRows − 1) × 23 px = 46 px` over the single-line height for every Variant × Size cell. The textarea content area is `3 × 23 = 69 px` (3 rows × Body1 line-height) regardless of variant.
+- **Padding does not change.** The wrapper retains the same `padding` it uses single-line — Filled keeps the `25 / 8` top/bottom inset that holds the floated label, Outlined keeps the symmetric `16.5 / 14` inset, Standard keeps the asymmetric `4 / 5`. The textarea has `padding: 0` in every cell; the wrapper's padding is what offsets it.
+- **Standard outer-vs-wrapper offset is preserved.** Standard's outer height still exceeds wrapper height by 16 px (label-overhang above the input row); Filled / Outlined's outer equals wrapper.
+- **State paints / fills / outlines are byte-identical to single-line.** Multiline cells do not introduce any new paint role — `enabledFill`, `hoverBorder`, `seed/primary/main` (Focused), `bg-disabled` (Disabled wrapper), `seed/danger/main` (Error stroke + label + helper) all carry over. The `MultilineMatrix` Disabled / Focused / Error rows confirm: wrapper bg `0 / 0.06 / 0.12` for Standard / Filled / Outlined Enabled vs Disabled, fieldset border `0.23 / 0.26 / 2px primary / 1px danger` for Outlined across states — every value matches the single-line tables in §1–§3.
+
+### 7.2 Has Value axis under multiline (Enabled)
+
+`MultilineHasValueMatrix` confirms the un-shrunk-label behaviour carries over:
+
+| Variant   | Size   | Has Value=True label transform              | Has Value=False label transform        |
+| --------- | ------ | ------------------------------------------- | -------------------------------------- |
+| Standard  | Small  | `scale(0.75) translate(0, -1.5 px)` floated | `translate(0, 17 px)` un-shrunk        |
+| Standard  | Medium | `scale(0.75) translate(0, -1.5 px)` floated | `translate(0, 20 px)` un-shrunk        |
+| Filled    | Small  | `scale(0.75) translate(12, 4 px)` floated   | `translate(12, 13 px)` un-shrunk       |
+| Filled    | Medium | `scale(0.75) translate(12, 7 px)` floated   | `translate(12, 16 px)` un-shrunk       |
+| Outlined  | Small  | `scale(0.75) translate(14, -9 px)` floated  | `translate(14, 9 px)` un-shrunk        |
+| Outlined  | Medium | `scale(0.75) translate(14, -9 px)` floated  | `translate(14, 16 px)` un-shrunk       |
+
+The un-shrunk label sits at the **first-row baseline** of the textarea — identical translate-Y to the single-line `Has Value=False` row. The remaining 2 rows of the textarea sit empty below the un-shrunk label. Wrapper / outer heights are identical to the `Has Value=True` rows above.
+
+### 7.3 Multiline drift / divergence vs Figma
+
+- **Figma fixes `minRows=3`.** Runtime keeps `maxRows` unset so users can grow the textarea past 3 rows; the Figma cell only encodes the minimum. If a host application bumps `minRows` or sets `maxRows`, the resulting computed heights will differ from the Figma cell — treat as a known omission, not a drift.
+- **Textarea is uniform-width.** The textarea inherits `box-sizing: border-box` from MUI; its width equals `wrapper width − wrapper padding-x`. Filled / Outlined narrow by `24 / 28 px` respectively (matches single-line). Standard textarea fills the wrapper width.
+- **No multiline-specific paint changes.** If a cell renders a different fill / stroke / text color from its single-line sibling at the same `(Variant, Size, State, Has Value)` coordinate, that is a spec bug — multiline is a layout-only axis.
+
+## 8. Drift checks
 
 If a Storybook re-measure produces values that disagree with the tables above, treat the difference as one of these cases — do not silently update the spec:
 

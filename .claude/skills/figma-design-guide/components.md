@@ -2,15 +2,15 @@
 
 Source: [Figma file `KQjP6W9Uw1PN0iipwQHyYn`](https://www.figma.com/design/KQjP6W9Uw1PN0iipwQHyYn/MUI-Library)
 
-Total: **54 components** on 1 page. Before creating anything new, grep this file for the name — if it exists, import via `importComponentByKeyAsync` / `importComponentSetByKeyAsync` and reuse. Never recreate an existing component.
+Total: **62 components** on 1 page. Before creating anything new, grep this file for the name — if it exists, import via `importComponentByKeyAsync` / `importComponentSetByKeyAsync` and reuse. Never recreate an existing component.
 
 **Variant counts** in parentheses indicate the node is a `COMPONENT_SET` with that many variants; entries without a count are single `COMPONENT` nodes.
 
 ---
 
-## Page: `Foundation Components` (id `0:1`) — 54 components
+## Page: `Foundation Components` (id `0:1`) — 62 components
 
-### Component sets & primitives — 14 entries
+### Component sets & primitives — 22 entries
 
 | Name                     | Node ID    | Notes      |
 | ------------------------ | ---------- | ---------- |
@@ -22,11 +22,19 @@ Total: **54 components** on 1 page. Before creating anything new, grep this file
 | `<Dialog>`               | `1:4772`   | SET (5)    |
 | `<PaginationItem>`       | `1:5098`   | SET (288)  |
 | `<Pagination>`           | `1:5675`   | SET (36)   |
-| `<TextField>`            | `1:6266`   | SET (60)   |
+| `<NavigateBefore>`       | `224:4189` | SET (3)    |
+| `<NavigateNext>`         | `224:4199` | SET (3)    |
+| `<TextField>`            | `1:6266`   | SET (120)  |
 | `<Checkbox>`             | `1:7228`   | SET (258)  |
 | `<CheckboxFormControl>`  | `1:7367`   | SET (276)  |
+| `<CheckboxGroup>`        | `306:6886` | SET (54)   |
+| `<Radio>`                | `292:6292` | SET (174)  |
+| `<RadioFormControl>`     | `295:5573` | SET (192)  |
+| `<RadioGroup>`           | `296:5915` | SET (54)   |
 | `<FormLabel>`            | `1:7696`   | SET (6)    |
 | `<DirectionFormControl>` | `1:7709`   | SET (4)    |
+| `<Chip>`                 | `342:7102` | SET (60)   |
+| `<Avatar>`               | `394:7033` |            |
 | `<Icon>`                 | `3:2722`   | SET (6) — variant wrapper |
 
 ### Icon library — 40 entries
