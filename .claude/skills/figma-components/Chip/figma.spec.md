@@ -1,6 +1,6 @@
 ---
 name: figma-component-chip-spec
-description: Figma component specification for `<Chip>` — design counterpart of the MUI `<Chip>` consumed by `src/stories/Chip.stories.tsx`. Documents the variant matrix (Color × Variant × State, Size=Medium), component properties (Icon / Avatar / Delete / Label), source-to-Figma mapping, and the per-cell Render Binding Matrix (§6) that pins every fill / stroke / foreground / effect to a named token. For component-scoped tokens see `design-token.md` in this directory; for runtime measurements see `storybook.render.md`.
+description: Figma component specification for `<Chip>` — design counterpart of the MUI `<Chip>` consumed by `src/stories/Chip.stories.tsx`. Documents the variant matrix (Color × Variant × State × Size), component properties (Icon / Avatar / Delete / Label), source-to-Figma mapping, and the per-cell Render Binding Matrix (§6) that pins every fill / stroke / foreground / effect to a named token. For component-scoped tokens see `design-token.md` in this directory; for runtime measurements see `storybook.render.md`.
 parent_skill: figma-components
 figma_file_key: KQjP6W9Uw1PN0iipwQHyYn
 figma_node_id: '301:6271'
@@ -24,8 +24,8 @@ The design system already pre-shipped Chip-scoped tokens in the shared `merak` c
 | Component Set       | `<Chip>` (`342:7102`) inside frame `301:6271`                                        |
 | Companion components| `<Avatar>` (`394:7033`) — minimal 24 × 24 circle with `Initial` TEXT property; default for the `Avatar Source` slot. Lives at the same page (`Foundation Components`), positioned outside the `<Chip>` frame. |
 | Slot defaults       | `Icon Source` → `<Icon>/Size=sm` (`3:2731`); `Avatar Source` → `<Avatar>` (`394:7033`). Shared across every variant of the set. |
-| Total variants      | **60** (6 Colors × 2 Variants × 5 States, Size=Medium only)                          |
-| Typography          | Noto Sans TC Regular, `12 / 18 px` (hand-set, matches the design-system's `material-design/components/chip` style spec) — diverges from MUI runtime (Roboto 13/19.5 px); see §7 |
+| Total variants      | **120** (6 Colors × 2 Variants × 5 States × 2 Sizes)                                 |
+| Typography          | Noto Sans TC Regular, `12 / 18 px` for Label across both Sizes (hand-set, matches the design-system's `material-design/components/chip` style spec) — diverges from MUI runtime (Roboto 13/19.5 px); see §7. The Avatar slot's `Initial` TEXT shrinks from Bold 12/18 (Medium) to Bold 10/14 (Small). |
 | Local-only bindings | **Required.** Every paint / stroke / effect resolves to a variable in this file's local collection. No `VariableID:<sharedKey>/...` consumed-library bindings are permitted (component must be self-contained). |
 
 ## 2. Source-to-Figma Property Mapping
@@ -35,7 +35,7 @@ The design system already pre-shipped Chip-scoped tokens in the shared `merak` c
 | `color`                 | `Color`        | VARIANT | Merak design-system key; mapping in §2.1                                                                             |
 | `variant`               | `Variant`      | VARIANT | `Filled` / `Outlined` (MUI default `filled`)                                                                         |
 | _(interaction state)_   | `State`        | VARIANT | `Enabled` / `Hovered` / `Focused` / `Pressed` / `Disabled`                                                           |
-| `size`                  | `Size`         | VARIANT | Only `Medium` is shipped on canvas; Small is runtime-only (see `storybook.render.md` §5)                             |
+| `size`                  | `Size`         | VARIANT | `Medium` (MUI default) / `Small`. Both Sizes are now published — see §3 / §6.1 for per-Size dimensions and `storybook.render.md` §5 for runtime numbers. |
 | `icon`                  | `Icon` + `Icon Source` | BOOLEAN + INSTANCE_SWAP | Two cooperating slot properties: `Icon` BOOLEAN toggles visibility; `Icon Source` INSTANCE_SWAP picks which component renders in the leading 20 × 20 slot. Default = `<Icon>/Size=sm` (`3:2731`, file-local component inside the `<Icon>` SET `3:2722`). The dropdown in the property panel surfaces the default; designers can also right-click → Swap Instance to pick any other component. |
 | `avatar`                | `Avatar` + `Avatar Source` | BOOLEAN + INSTANCE_SWAP | Two cooperating slot properties: `Avatar` BOOLEAN toggles visibility; `Avatar Source` INSTANCE_SWAP picks which component renders in the leading 24 × 24 slot. Default = `<Avatar>` (`394:7033`, file-local), a minimal circle with a single-character `Initial` TEXT property — designers either change `Initial` per instance, or swap to a different avatar component (photo, richer Avatar) via the property panel dropdown / right-click. Mutually exclusive with `Icon` (Avatar wins when both `true`, mirroring MUI runtime). |
 | `onDelete`              | `Delete`       | BOOLEAN | Toggle trailing delete icon visibility (18 × 18 slot, MUI's `<CancelIcon>` at `font-size: 22 px` runtime)            |
@@ -64,7 +64,7 @@ The Merak design-system color keys map to MUI palette names; in Figma, designers
 ## 3. Variant Property Matrix
 
 ```
-Color × Variant × State (Size=Medium)   =   6 × 2 × 5   =   60 variants
+Color × Variant × State × Size   =   6 × 2 × 5 × 2   =   120 variants
 ```
 
 | Property  | Default value | Options                                                |
@@ -72,21 +72,22 @@ Color × Variant × State (Size=Medium)   =   6 × 2 × 5   =   60 variants
 | `Color`   | `Default`     | `Default`, `Primary`, `Error`, `Warning`, `Info`, `Success` |
 | `Variant` | `Filled`      | `Filled`, `Outlined`                                   |
 | `State`   | `Enabled`     | `Enabled`, `Hovered`, `Focused`, `Pressed`, `Disabled` |
+| `Size`    | `Medium`      | `Medium`, `Small`                                      |
 
-`Size` is fixed at `Medium`. MUI exposes `small`, but the project ships only one Figma size; if `Small` becomes load-bearing, add it as a 7th axis (per §8) for `60 + 60 = 120` variants.
+Both Sizes mirror MUI's runtime `size` prop. Per-Size dimensions live in §6.1; the Color × Variant × State paint bindings (§6.2–§6.6) are shared across both Sizes since MUI's runtime palette resolution does not branch on Size.
 
 ### 3.1 Component (non-variant) properties
 
 | Property key     | Type           | Default                                  | Purpose                                                                                                |
 | ---------------- | -------------- | ---------------------------------------- | ------------------------------------------------------------------------------------------------------ |
-| `Icon`           | BOOLEAN        | `false`                                  | Leading icon slot **visibility**. Hidden by default; toggle on per-instance.                           |
-| `Icon Source`    | INSTANCE_SWAP  | `<Icon>/Size=sm` (`3:2731`)              | Leading icon slot **content**. Picks which 20 × 20 component renders when `Icon = true`. Default is the project's generic icon wrapper (which itself nests an `ArrowSolid` glyph by default). The leaf VECTOR fill of whatever component is dropped here gets overridden per-cell to track the chip's Foreground binding (§6 column convention) — so any component whose paint follows the standard `tdesign:loading` FRAME-wrapper + leaf VECTOR pattern will tint correctly. Components with deeper nesting may need manual fill override. **Shared-default caveat**: this default is shared across every variant of the host set; choose a benign placeholder (we use the Icon set's default ArrowSolid). |
-| `Avatar`         | BOOLEAN        | `false`                                  | Leading avatar slot **visibility**. Hidden by default; mutually exclusive with `Icon` — when both are `true`, the `Avatar` slot is rendered and the `Icon` slot is suppressed (mirrors MUI runtime). |
-| `Avatar Source`  | INSTANCE_SWAP  | `<Avatar>` (`394:7033`)                  | Leading avatar slot **content**. Picks which 24 × 24 component renders when `Avatar = true`. Default is `<Avatar>` — a minimal local circle with a single-character `Initial` TEXT property. Designers can either change `Initial` per-instance to render a different letter, or swap the instance to a richer Avatar component (photo, multi-letter, badge) via the property panel dropdown / right-click → Swap Instance. The avatar's bg + initial text are overridden per-cell to track the chip's Color (§6.7). **Shared-default caveat** applies. |
-| `Delete`         | BOOLEAN        | `false`                                  | Trailing delete icon visibility. Hidden by default; toggle on for chips that should expose `onDelete`. (Currently a TEXT `×` placeholder — see §6.8 / §7 #6.) |
-| `Label`          | TEXT           | `Chip`                                   | Chip label text. Hand-set Noto Sans TC Regular 12/18 (matches `material-design/components/chip` style spec).                                |
+| `Icon`           | BOOLEAN        | `false`                                  | Leading icon slot **visibility**. Hidden by default; toggle on per-instance. Applies to both Sizes. |
+| `Icon Source`    | INSTANCE_SWAP  | `<Icon>/Size=sm` (`3:2731`)              | Leading icon slot **content** — _governs `Size=Medium` cells only_. Picks which 20 × 20 component renders when `Icon = true` on a Medium chip. The default is the project's generic icon wrapper (which itself nests an `ArrowSolid` glyph by default). The leaf VECTOR fill of whatever component is dropped here gets overridden per-cell to track the chip's Foreground binding (§6 column convention) — so any component whose paint follows the standard `tdesign:loading` FRAME-wrapper + leaf VECTOR pattern will tint correctly. Components with deeper nesting may need manual fill override. **Per-Size baseline**: `Size=Small` cells use a fixed `<Icon>/Size=xs` (`3:2733`, 16 × 16) baseline that is **not** wired to this property — designers customize Small icons via right-click → Swap Instance on the inner glyph instead. This compromise avoids minting a duplicate `Icon Source (Small)` slot property; see §7 #10. **Shared-default caveat**: this default is shared across every Medium variant of the host set; choose a benign placeholder (we use the Icon set's default ArrowSolid). |
+| `Avatar`         | BOOLEAN        | `false`                                  | Leading avatar slot **visibility**. Hidden by default; mutually exclusive with `Icon` — when both are `true`, the `Avatar` slot is rendered and the `Icon` slot is suppressed (mirrors MUI runtime). Applies to both Sizes. |
+| `Avatar Source`  | INSTANCE_SWAP  | `<Avatar>` (`394:7033`)                  | Leading avatar slot **content** — applies to both Sizes. Picks which component renders when `Avatar = true`; the host cell sizes the slot box (24 × 24 on Medium, 18 × 18 on Small). Default is `<Avatar>` — a minimal local circle with a single-character `Initial` TEXT property. Designers can either change `Initial` per-instance to render a different letter, or swap the instance to a richer Avatar component (photo, multi-letter, badge) via the property panel dropdown / right-click → Swap Instance. The avatar's bg + initial text are overridden per-cell to track the chip's Color (§6.7); the Initial font is hand-set per-Size on the cell's inner Initial TEXT (Bold 12/18 on Medium, Bold 10/14 on Small) so the slot's default Avatar text shrinks proportionally to its 18 × 18 box. **Shared-default caveat** applies. |
+| `Delete`         | BOOLEAN        | `false`                                  | Trailing delete icon visibility. Hidden by default; toggle on for chips that should expose `onDelete`. Slot box is 18 × 18 on Medium, 16 × 16 on Small; both house an `<Icon>` instance with the `CloseCircleFilled` glyph (`665:11127`) — see §6.8. |
+| `Label`          | TEXT           | `Chip`                                   | Chip label text. Hand-set Noto Sans TC Regular 12/18 across both Sizes (matches `material-design/components/chip` style spec).              |
 
-`Icon` / `Avatar` / `Delete` are kept as BOOLEANs (not variant axes) to avoid an explosion to `60 × 2 × 2 × 2 = 480` variants. Designers compose slot combos at the instance level. The Figma component itself models the **slot precedence** (Avatar wins over Icon) by making the Avatar layer paint over the Icon layer when both are visible — see §6.1.
+`Icon` / `Avatar` / `Delete` are kept as BOOLEANs (not variant axes) to avoid an explosion to `120 × 2 × 2 × 2 = 960` variants. Designers compose slot combos at the instance level. The Figma component itself models the **slot precedence** (Avatar wins over Icon) by making the Avatar layer paint over the Icon layer when both are visible — see §6.1.
 
 ## 4. Usage Guidelines
 
@@ -95,8 +96,9 @@ Color × Variant × State (Size=Medium)   =   6 × 2 × 5   =   60 variants
 1. **Pick the Color** that matches the source `color` prop — Merak `danger` → Figma `Error`, etc. (§2.1).
 2. **Pick the Variant** — `Filled` for the default chip; `Outlined` for low-emphasis status tags or low-density UI.
 3. **Pick the State** — `Enabled` is the resting cell; `Hovered`, `Focused`, `Pressed` mirror runtime interactive states (only fire when `clickable` or `onDelete` is set at runtime — see §2 note); `Disabled` is the dimmed read-only cell.
-4. **Toggle slots** — turn on `Icon` for a 18×18 leading glyph, `Avatar` for a 24×24 circular avatar, `Delete` for a trailing delete affordance. `Avatar` overrides `Icon` when both are on.
-5. **Override the `Label`** — type the actual chip content. Long labels truncate via `text-overflow: ellipsis` at runtime; Figma's text node should keep `Truncate text` on with a max-width matching the desired chip width.
+4. **Pick the Size** — `Medium` (height 32) is the default and matches MUI's `size="medium"`; `Small` (height 24) matches `size="small"` and is intended for dense UIs (filter rows, table cells, tags inside cards). The Color × Variant × State paint bindings are identical between Sizes; only the box / slot / typography metrics differ (§6.1).
+5. **Toggle slots** — turn on `Icon` for a leading glyph (20×20 on Medium / 16×16 on Small), `Avatar` for a circular avatar (24×24 / 18×18), `Delete` for a trailing delete affordance (18×18 / 16×16). `Avatar` overrides `Icon` when both are on.
+6. **Override the `Label`** — type the actual chip content. Long labels truncate via `text-overflow: ellipsis` at runtime; Figma's text node should keep `Truncate text` on with a max-width matching the desired chip width.
 
 ### 4.2 Action / status semantics
 
@@ -170,25 +172,35 @@ Column conventions (defined once, used in every state subsection):
 
 `<C>` is the seed family (`primary | danger | warning | info | success`). `Default` rows are listed separately whenever the binding diverges from the themed pattern.
 
-### 6.1 Constants (every cell, Size=Medium)
+### 6.1 Constants (every cell)
 
-| Property                  | Value                                                                                                  |
-| ------------------------- | ------------------------------------------------------------------------------------------------------ |
-| Auto Layout direction     | `HORIZONTAL`, `primaryAxisAlignItems: CENTER`, `counterAxisAlignItems: CENTER`                         |
-| Outer height              | `32 px` (fixed) — Auto Layout `counterAxisSizingMode: FIXED, height: 32`                              |
-| Width                     | `HUG` (Auto Layout `primaryAxisSizingMode: AUTO`); minimum is the leading-pad + label + trailing-pad   |
-| Padding (Filled)          | `0 12 0 12` (root horizontal padding; vertical 0 because the 32 px height matches the cell box)        |
-| Padding (Outlined)        | `0 11 0 11` (1 px absorbed by the 1-px stroke)                                                         |
-| Item spacing              | `6` — root Auto Layout gap. Matches MUI runtime's measured 6 px visible gap between leading slot (avatar / icon) and label-text, and between label-text and trailing delete (Chrome DevTools probe of `src/stories/Chip.stories.tsx`'s `SlotMatrix`, 2026-04-29). Single-child cells (label-only) ignore `itemSpacing`, so unslotted chips remain at `padL + label + padR` widths matching MUI exactly. |
-| Avatar slot               | 24 × 24 INSTANCE bound to `Avatar Source` INSTANCE_SWAP property (default `<Avatar>` `394:7033`, leading). Visible when `Avatar = true`. The default `<Avatar>` exposes its own `Initial` TEXT property (single-character) and is paint-overridden per-cell with bg + fg per §6.7. Hidden by default. Designers swap the source component via the property panel dropdown or right-click → Swap Instance. |
-| Icon slot                 | 20 × 20 INSTANCE bound to `Icon Source` INSTANCE_SWAP property (default `<Icon>/Size=sm` `3:2731`, leading). Visible when `Icon = true`. The instance's leaf VECTOR fill is overridden per-cell to track the chip's Foreground binding (§6 column convention). Wrapper FRAME inside the Icon instance has `fills = []` so only the glyph path paints. Hidden by default. Designers swap the source component via the property panel dropdown or right-click → Swap Instance, mirroring `<Button>`'s `Icon Left`. |
-| Delete slot               | 18 × 18 FRAME with a centered TEXT `×` (Noto Sans TC Bold 14 / 18), trailing. Visible when `Delete = true`. Hidden by default. (Will swap to an `<Icon>/Cancel` instance once the icon set ships a `Cancel` glyph — see §7 #6.) |
-| Corner radius             | `16 px` (`height / 2`)                                                                                 |
-| Label text style          | `material-design/components/chip` (Noto Sans TC Regular 12/18)                                         |
-| Label `text-overflow`     | TEXT_AUTO_RESIZE = `WIDTH_AND_HEIGHT` for the design canvas; runtime truncates to ellipsis (no Figma analogue) |
-| Delete-icon Fill (`Default`) | bound to `alias/colors/fg-disabled` (`#00000042`, 26 % α) — matches MUI `alpha(text.primary, 0.26)` |
-| Delete-icon Fill (themed Filled) | bound to `seed/<C>/on` — full opacity. **Diverges** from MUI's `alpha(contrastText, 0.7)`; the design system trades the 30 % alpha softening for a single bound token. See §7. |
-| Delete-icon Fill (themed Outlined) | bound to `seed/<C>/main` — full opacity. **Diverges** from MUI's `alpha(main, 0.7)` for the same reason. |
+#### 6.1.A Per-Size box & slot dimensions
+
+| Property                  | `Size=Medium`                                                                                          | `Size=Small`                                                                                          |
+| ------------------------- | ------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------- |
+| Outer height              | `32 px` (fixed)                                                                                        | `24 px` (fixed)                                                                                       |
+| Padding (Filled)          | `0 12 0 12`                                                                                            | `0 8 0 8`                                                                                             |
+| Padding (Outlined)        | `0 11 0 11` (1 px absorbed by stroke)                                                                  | `0 7 0 7` (1 px absorbed by stroke)                                                                   |
+| Item spacing (gap)        | `6`                                                                                                    | `4` (proportional shrink of Medium's 6 to fit the tighter 24 px box; matches MUI runtime's `marginLeft: 4` baked into Small's leading-slot offset) |
+| Corner radius             | `16 px` (`height / 2`)                                                                                 | `12 px` (`height / 2`)                                                                                |
+| Avatar slot               | 24 × 24, corner radius 12                                                                              | 18 × 18, corner radius 9                                                                              |
+| Avatar `Initial` font     | Noto Sans TC Bold `12 / 18`                                                                            | Noto Sans TC Bold `10 / 14` — hand-overridden per-cell on each Small variant's inner Initial TEXT     |
+| Icon slot                 | 20 × 20 INSTANCE of `<Icon>/Size=sm` (`3:2731`), bound to `Icon Source` INSTANCE_SWAP property         | 16 × 16 INSTANCE of `<Icon>/Size=xs` (`3:2733`); the `mainComponent` property reference is **dropped** so Small cells do not track `Icon Source` (see §3.1 / §7 #10) |
+| Delete slot               | 18 × 18 FRAME (corner radius 9) housing an `<Icon>/Size=sm` instance with the `CloseCircleFilled` glyph (`665:11127`) | 16 × 16 FRAME (corner radius 8) housing an `<Icon>/Size=xs` instance with the `CloseCircleFilled` glyph (`665:11127`) |
+| Label text style          | `material-design/components/chip` (Noto Sans TC Regular 12/18)                                         | _Same_ — Label typography is shared across Sizes (matches MUI's runtime which keeps `font-size: 13` between sizes; the design system kept the choice symmetric so a `Medium ↔ Small` toggle never reflows label text). |
+| Label `text-overflow`     | TEXT_AUTO_RESIZE = `WIDTH_AND_HEIGHT`                                                                  | _Same_                                                                                                |
+
+#### 6.1.B Cross-Size constants
+
+| Property                          | Value                                                                                                  |
+| --------------------------------- | ------------------------------------------------------------------------------------------------------ |
+| Auto Layout direction             | `HORIZONTAL`, `primaryAxisAlignItems: CENTER`, `counterAxisAlignItems: CENTER`                         |
+| Width                             | `HUG` (Auto Layout `primaryAxisSizingMode: AUTO`); minimum is the leading-pad + label + trailing-pad   |
+| Sizing modes                      | `primaryAxisSizingMode: AUTO`, `counterAxisSizingMode: FIXED`                                          |
+| Delete-icon Fill (`Default`)      | bound to `alias/colors/fg-disabled` (`#00000042`, 26 % α) — matches MUI `alpha(text.primary, 0.26)`    |
+| Delete-icon Fill (themed Filled)  | bound to `seed/<C>/on` — full opacity. **Diverges** from MUI's `alpha(contrastText, 0.7)`; see §7.     |
+| Delete-icon Fill (themed Outlined)| bound to `seed/<C>/main` — full opacity. **Diverges** from MUI's `alpha(main, 0.7)` for the same reason. |
+| Color × Variant × State paints    | identical between Sizes; see §6.2–§6.6.                                                                |
 
 ### 6.2 State = Enabled
 
@@ -245,14 +257,14 @@ Disabled is uniform across every (Color × Variant) cell — every paint binds t
 
 ### 6.7 Avatar slot bindings (when `Avatar = true`)
 
-The Avatar circle inside the Chip uses these bindings when shown. The leading rectangle of the chip auto-layout reserves a 24 × 24 frame; toggling `Avatar = false` hides it.
+The Avatar circle inside the Chip uses these bindings when shown. The leading rectangle of the chip auto-layout reserves a 24 × 24 frame on Medium / 18 × 18 on Small (corner radius `height / 2`); toggling `Avatar = false` hides it.
 
 | Color    | Avatar Fill                  | Avatar Foreground (text/initials)  | Notes                                                                          |
 | -------- | ---------------------------- | ---------------------------------- | ------------------------------------------------------------------------------ |
 | Default  | `seed/neutral/main` (`#9E9E9E`) | `seed/neutral/white` (`#FFFFFF`) | Matches MUI fallback (Avatar's own bg = `palette.bgcolor` = grey/400; we approximate with neutral/main for visual closeness) |
 | `<C>`    | `seed/<C>/hover` (`palette.<color>.dark`) | `seed/<C>/on`              | Matches MUI `avatarColor<C>` rules                                             |
 
-**Avatar text typography** — the placeholder initial uses Noto Sans TC **Bold** 12 / 18 (centered, single character "A" in the published canvas placeholder). MUI runtime uses `theme.typography.pxToRem(12)` (`12 px`) without a weight override, so the regular weight wins at runtime. The Figma placeholder picks Bold for visibility on small (24 × 24) circles; designers swapping in a real avatar (photo or text-initials Avatar instance) override per their brand guidance.
+**Avatar text typography** — the placeholder initial uses Noto Sans TC **Bold** at `12 / 18` on Medium (24 × 24 circle) and `10 / 14` on Small (18 × 18 circle); the Small font is hand-overridden per-cell on each Small variant's inner Initial TEXT node so the glyph stays visually centered in the smaller box. MUI runtime uses `theme.typography.pxToRem(12)` for medium / `pxToRem(10)` for small without a weight override, so the regular weight wins at runtime. The Figma placeholder picks Bold for visibility; designers swapping in a real avatar (photo or text-initials Avatar instance) override per their brand guidance.
 
 ### 6.7a Documentation frame: `UseCase`
 
@@ -261,20 +273,21 @@ Inside the same parent frame `301:6271` ("Chip" on **Foundation Components**), t
 1. **Title** — "Use Case" (Roboto Bold 28 / 36).
 2. **Color × Variant** — 6-row × 2-col grid (Default / Primary / Error / Warning / Info / Success × Filled / Outlined), `Medium / Enabled — with leading icon` caption. Each cell is a Chip instance with `Icon = true`.
 3. **States** — single row of 5 Primary Filled instances, one per State (Enabled / Hovered / Focused / Pressed / Disabled), `Icon = true`.
-4. **Icon** — `Icon` BOOLEAN visibility + `Icon Source` INSTANCE_SWAP demo: 4 chips (`Default` Primary Filled, `No icon` Primary Filled, `Outlined` Primary Outlined, `Default chip` Default Filled) showing the leading-icon visibility toggle. The caption explains both properties together.
-5. **Avatar** — `Avatar` BOOLEAN visibility + `Avatar Source` INSTANCE_SWAP demo: 4 chips with different `Initial` values on the inner `<Avatar>` instance — `Alice → A` (Default Filled), `Mark → M` (Primary Filled), `Jane → J` (Success Outlined), `Bryan → B` (Warning Filled). Demonstrates per-instance customization of the Avatar slot without touching chip variants.
-6. **Delete** — BOOLEAN demo: 5 chips combining Delete with no slots, with Avatar, and with Icon (`Tag`, `Filter`, `Removed`, `John Doe`, `category`).
-7. **Common usage** — practical mix: filter (`All` outlined-default with Icon), status (`Active` primary with Delete, `Approved` success with Icon, `Pending` warning outlined, `Failed` error with Delete), contact (`Jane Smith` default with Avatar + Delete).
+4. **Sizes** — single row of 4 instances contrasting Medium ↔ Small for both Icon and Avatar slots: `Medium · Icon` (Default Filled), `Small · Icon` (Default Filled), `Medium · Avatar` (Primary Outlined with Delete), `Small · Avatar` (Primary Outlined with Delete). Caption: `Default / Filled / Enabled — Medium ↔ Small`. Designers compare the box height (32 vs 24), padding (12 vs 8 / 11 vs 7), avatar size (24 vs 18), icon slot (sm 20 vs xs 16), and delete frame (18 vs 16) at a glance.
+5. **Icon** — `Icon` BOOLEAN visibility + `Icon Source` INSTANCE_SWAP demo: 4 chips (`Default` Primary Filled, `No icon` Primary Filled, `Outlined` Primary Outlined, `Default chip` Default Filled) showing the leading-icon visibility toggle. The caption explains both properties together.
+6. **Avatar** — `Avatar` BOOLEAN visibility + `Avatar Source` INSTANCE_SWAP demo: 4 chips with different `Initial` values on the inner `<Avatar>` instance — `Alice → A` (Default Filled), `Mark → M` (Primary Filled), `Jane → J` (Success Outlined), `Bryan → B` (Warning Filled). Demonstrates per-instance customization of the Avatar slot without touching chip variants.
+7. **Delete** — BOOLEAN demo: 5 chips combining Delete with no slots, with Avatar, and with Icon (`Tag`, `Filter`, `Removed`, `John Doe`, `category`).
+8. **Common usage** — practical mix: filter (`All` outlined-default with Icon), status (`Active` primary with Delete, `Approved` success with Icon, `Pending` warning outlined, `Failed` error with Delete), contact (`Jane Smith` default with Avatar + Delete).
 
 Section headers use **Noto Sans TC Medium 18 / 26**, captions **Noto Sans TC Regular 12 / 20**, row / column labels **Noto Sans TC Regular 14 / 20** — same typography as `<Button>`'s `1:4473`. All chips are instances of the published COMPONENT_SET (`342:7102`); none are detached. The UseCase frame is a **showcase** — no design tokens or component definitions live here, so it is not part of the source-sync contract beyond requiring re-instantiation when variant axes / property keys change.
 
 ### 6.8 Glyph table (icon / delete glyphs)
 
-| Slot         | Visibility prop | Default visibility | Frame dims | Source glyph | Token mapping for fill                                             |
-| ------------ | --------------- | ------------------ | ---------- | ------------ | ------------------------------------------------------------------ |
-| Leading icon | `Icon`          | `false`            | 20 × 20    | INSTANCE of `<Icon>/Size=sm` (`3:2731`, file-local). Default glyph: the icon set's nested `ArrowSolid` instance (`3:2732`); designers right-click → Swap Instance to pick a different glyph. The wrapper FRAME inside the Icon instance has `fills = []` so only the leaf VECTOR's bound paint shows. | leaf VECTOR fill is overridden per-cell to track the chip's Foreground binding (Default → `alias/colors/text-default`; themed Filled → `seed/<C>/on`; themed Outlined → `seed/<C>/main`) |
-| Avatar       | `Avatar`        | `false`            | 24 × 24    | Designer-supplied (text initials or photo); the placeholder is a circle filled with §6.7 bindings | see §6.7 |
-| Trailing delete | `Delete`     | `false`            | 18 × 18    | **Placeholder**: a centered TEXT node `×` (multiplication sign U+00D7), Noto Sans TC Bold 14 / 18, fill bound to the per-Color delete-icon Fill in §6.1. The MUI runtime uses a `<CancelIcon>` SVG; the text-glyph placeholder ships today because the project's `<Icon>` set does not yet publish a `Cancel` variant. **TODO (spec §8 trigger)**: when the project's `<Icon>` set adds a `Cancel` variant, swap the placeholder for an `INSTANCE` of that icon and update this row. | per §6.1 (`alias/colors/fg-disabled` for Default; `seed/<C>/on` or `seed/<C>/main` for themed) |
+| Slot         | Visibility prop | Default visibility | Frame dims (Medium / Small) | Source glyph | Token mapping for fill                                             |
+| ------------ | --------------- | ------------------ | --------------------------- | ------------ | ------------------------------------------------------------------ |
+| Leading icon | `Icon`          | `false`            | `20 × 20` / `16 × 16`        | Medium: INSTANCE of `<Icon>/Size=sm` (`3:2731`, file-local), wired to `Icon Source` INSTANCE_SWAP. Small: INSTANCE of `<Icon>/Size=xs` (`3:2733`, file-local), with `mainComponent` property reference dropped (Small slot is not wired to `Icon Source` — see §3.1 / §7 #10). Default glyph (both Sizes): the icon set's nested `ArrowSolid` instance (`3:2732`); designers right-click → Swap Instance to pick a different glyph. The wrapper FRAME inside the Icon instance has `fills = []` so only the leaf VECTOR's bound paint shows. | leaf VECTOR fill is overridden per-cell to track the chip's Foreground binding (Default → `alias/colors/text-default`; themed Filled → `seed/<C>/on`; themed Outlined → `seed/<C>/main`) |
+| Avatar       | `Avatar`        | `false`            | `24 × 24` / `18 × 18`        | INSTANCE of `<Avatar>` (`394:7033`, file-local), wired to `Avatar Source` INSTANCE_SWAP — applies to both Sizes. The placeholder is a circle filled with §6.7 bindings; designer-supplied avatars (text initials or photo) inherit the per-Size box dims. | see §6.7 |
+| Trailing delete | `Delete`     | `false`            | `18 × 18` / `16 × 16`        | INSTANCE of `<Icon>` (`Size=sm` on Medium, `Size=xs` on Small) housed inside the Delete FRAME, with the `Glyph Source` nested INSTANCE_SWAP set to `CloseCircleFilled` (`665:11127`, `material-symbols:cancel-rounded`-equivalent — solid disc with negative-space cross). This replaced the earlier TEXT `×` placeholder; `CloseCircleFilled` was chosen over the outlined `CloseCircleSolid` (`590:7638`, `material-symbols:cancel-outline`) so the affordance reads at small sizes (16×16 / 18×18 in-chip). | per §6.1 (`alias/colors/fg-disabled` for Default; `seed/<C>/on` or `seed/<C>/main` for themed) |
 
 ## 7. Documented divergences from MUI runtime
 
@@ -285,10 +298,11 @@ These are intentional trade-offs that this spec adopts; do **not** silently re-a
 3. **Outlined themed focus background alpha** — Figma binds `seed/<C>/focusVisible` (30 % α). MUI runtime uses `alpha(palette[color].main, 0.12)` (12 % α). Same rationale — design system standardized focus tints across components.
 4. **Delete icon foreground on themed chips** — Figma binds `seed/<C>/on` (themed Filled) / `seed/<C>/main` (themed Outlined) at full alpha. MUI runtime uses the same hex but at 70 % α (`alpha(contrastText, 0.7)` / `alpha(main, 0.7)`). Honouring the alpha would require minting per-color `component/chip/delete-on-<C>` / `component/chip/delete-main-<C>` tokens; the design system's call is to keep the delete icon at full chroma. The hover-state full-alpha is reached by MUI by removing the alpha — both Figma and MUI converge on full-alpha-on-hover, so the Hovered state agrees.
 5. **Pressed-shadow alpha drift (`material-design/shadows/shadows-1`)** — The shared effect style stacks three shadows with alphas `0.02 / 0.14 / 0.12`. MUI runtime's `theme.shadows[1]` uses `0.20 / 0.14 / 0.12` (the first shadow's alpha is 10× higher than the project's library style). Pressed Chips bind to the project's shared style as-is, so the rendered drop-shadow umbra on Pressed is much softer than MUI runtime. This is a library-wide style decision — **not** a Chip-specific divergence — but consumers of the Pressed state need to know. Resolving requires editing the shared `shadows-1` effect style (which would re-paint every other component using it).
-6. **Delete-icon glyph: TEXT placeholder vs MUI's `<CancelIcon>` SVG** — The trailing delete slot ships a centered TEXT node `×` (Noto Sans TC Bold 14 / 18) bound to the per-Color delete-icon Fill. MUI runtime renders an SVG `<CancelIcon>` at `font-size: 22 px` (medium) / `16 px` (small). The text-glyph stand-in is intentional: the project's `<Icon>` set does not yet publish a `Cancel` glyph, so an SVG vector would either (a) embed a one-off vector inside the Chip (detached from the icon set, drift-prone) or (b) leave the slot empty. The TEXT placeholder lets designers see the affordance. **Swap to an `<Icon>` instance once the icon set ships `Cancel`** (recorded as a §8 sync trigger).
+6. **Delete-icon glyph: SVG `CloseCircleFilled` (Resolved 2026-04-29)** — The trailing delete slot now houses an `<Icon>` INSTANCE (`Size=sm` 18×18 on Medium / `Size=xs` 16×16 on Small) with `Glyph Source` set to `CloseCircleFilled` (`665:11127`). Originally a centered TEXT `×` placeholder while the icon set lacked a Cancel-equivalent glyph; resolved once the `CloseCircle*` family shipped. `CloseCircleFilled` (solid disc with negative-space cross) was chosen over the outlined `CloseCircleSolid` (`590:7638`) so the affordance reads at 16×16 / 18×18 sizes — matches MUI's runtime `<CancelIcon>` more tightly. The fill still binds to the per-Color delete-icon Fill (§6.1). MUI runtime sizes `<CancelIcon>` at `font-size: 22 px` (medium) / `16 px` (small) — Medium uses 18×18 here (matches `<Icon>/Size=sm`), Small uses 16×16 (matches MUI exactly).
 7. **Bound-paint convention vs. spec-guide §4 rule 5** — Every paint in the Render Binding Matrix carries `paint.opacity` set to its variable's alpha (e.g. `component/chip/fill` = 8 % α paired with `paint.opacity = 0.08`; `seed/<C>/hover-bg` = 4 % α paired with `paint.opacity = 0.04`). The `figma-component-spec-guide` §4 rule 5 ("Stacked fills for theme-color 8 % tints. A paint with `opacity < 1` plus a bound variable gets flattened on instance creation.") cautions against this pattern. **Empirical test on this file (2026-04-29)** — created an instance of Color=Default,Variant=Filled,State=Enabled, queried its fill: `paint.opacity` was preserved at `0.08`, NOT flattened to `1`. The cells render correctly on canvas and on instance creation in this file; the spec-guide rule's flattening behaviour does not reproduce in current Figma. The Chip ships with this convention because the alternative (stacked-fill compositing) would mean two paints per cell × 60 cells = 120 paints when one suffices, plus the math drift (`1 − (1 − 0.04)² ≈ 7.84 %` instead of an exact 8 %). If a future Figma update reintroduces the flattening behaviour, the §6 matrix needs to be re-authored as stacked-fills; that's a TODO at the §8 trigger level.
-8. **Leading-icon slot size: 20 × 20 vs MUI 18 × 18** — The Figma Icon slot uses an INSTANCE of `<Icon>/Size=sm` (`3:2731`, 20 × 20) to match `<Button>`'s `Icon Left` pattern in this file. MUI Chip's runtime icon renders at 18 × 18 for both medium and small chips (the SVG inherits its intrinsic dimensions; `Chip.js` only sets `font-size: 18` on small variant). The closest icon-set size for 18 px would be `Size=xs` (16 × 16), which is 2 px smaller than runtime. Choosing `Size=sm` (20 × 20) keeps Chip aligned with Button's icon convention at the cost of a 2 px visible-size delta vs MUI runtime. If a future PR mints `<Icon>/Size=18` (or similar), swap the placeholder instance and mark resolved.
-9. **Slot ↔ label spacing: simplified `itemSpacing` instead of MUI's negative-margin trick** — Figma Auto Layout uses a uniform `itemSpacing` between siblings (no per-child margin). To reproduce MUI's `marginLeft: 5, marginRight: -6` overlap pattern (which yields a 6 px visible gap between leading slot and label-text inside a label with `padding-left: 12`), the spec uses **`itemSpacing: 6`** at the root with `paddingLeft: 12 / paddingRight: 12`. Result: the visible gap matches MUI exactly (6 px), but slotted chips are ~7 px wider than MUI runtime because Figma's leading edge offsets to the slot's left side don't match MUI's `marginLeft: 5` baked into the slot. Trade-off: identical visible spacing, slightly wider total chip. Acceptable for component-library use because MUI's exact runtime width depends on text rendering anyway.
+8. **Leading-icon slot size: 20 × 20 vs MUI 18 × 18 (Medium-only)** — The Medium Icon slot uses an INSTANCE of `<Icon>/Size=sm` (`3:2731`, 20 × 20) to match `<Button>`'s `Icon Left` pattern in this file. MUI Chip's runtime icon renders at 18 × 18 for medium chips (the SVG inherits its intrinsic dimensions; `Chip.js` sets `font-size: 18` on small). The closest icon-set size for 18 px would be `Size=xs` (16 × 16), which is 2 px smaller than runtime. Choosing `Size=sm` (20 × 20) keeps Medium Chip aligned with Button's icon convention at the cost of a 2 px visible-size delta vs MUI runtime. If a future PR mints `<Icon>/Size=18` (or similar), swap the Medium placeholder instance and mark resolved. **Small chips converge with MUI runtime**: the Small Icon slot is `<Icon>/Size=xs` (16 × 16), which matches MUI's small `font-size: 18` more tightly (delta of 2 px instead of 6 px) and matches the Small delete glyph's 16 × 16 box exactly.
+9. **Slot ↔ label spacing: simplified `itemSpacing` instead of MUI's negative-margin trick** — Figma Auto Layout uses a uniform `itemSpacing` between siblings (no per-child margin). To reproduce MUI's `marginLeft: 5, marginRight: -6` overlap pattern (which yields a 6 px visible gap between leading slot and label-text inside a label with `padding-left: 12`), the spec uses **`itemSpacing: 6`** at the root with `paddingLeft: 12 / paddingRight: 12` for Medium and **`itemSpacing: 4`** with `paddingLeft: 8 / paddingRight: 8` for Small (mirroring MUI's `marginLeft: 4` baked into Small's leading slot). Result: the visible gap matches MUI exactly per Size, but slotted chips are ~5–7 px wider than MUI runtime because Figma's leading edge offsets to the slot's left side don't match MUI's negative-margin overlaps. Trade-off: identical visible spacing, slightly wider total chip. Acceptable for component-library use because MUI's exact runtime width depends on text rendering anyway.
+10. **`Icon Source` is Medium-only; Small uses a fixed `<Icon>/Size=xs` baseline** — Figma INSTANCE_SWAP properties are set-level (one default per host set), and the source's `<Icon>` set splits each Size into its own COMPONENT (`Size=sm` 20×20, `Size=xs` 16×16). To get a sensible default per Chip Size, the spec ships `Icon Source` (default `<Icon>/Size=sm`) referenced by Medium cells only; Small cells point their inner Icon instance at a fixed `<Icon>/Size=xs` and **drop the `mainComponent` property reference** so the slot is not wired to `Icon Source`. Designers customize Small icons by right-clicking the inner glyph → Swap Instance, which traverses to the Icon's nested `Glyph Source` swap. Trade-off: a single Chip-prop dropdown for both Sizes would have required minting an `Icon Source (Small)` companion property (visually duplicative in the property panel for every chip). The chosen pattern matches MUI's runtime where `<Chip icon=…>` is one prop but the runtime decides Size-appropriate dimensions; Figma can't model that with one slot, so the per-Size baseline + glyph-only swap workflow ships instead. If a future PR adds an `Icon Source (Small)` companion slot or restructures `<Icon>` so a single set node spans both Sizes, mark this resolved.
 
 If a future PR closes any of these divergences, append a `Resolved YYYY-MM-DD` line to the affected entry rather than deleting it (see `figma-create-component` "Runtime-truth pass" guidance).
 
@@ -353,22 +367,24 @@ Component: <Chip>
 File:      KQjP6W9Uw1PN0iipwQHyYn (MUI Library)
 Frame:     Foundation Components / Chip (301:6271)
 
-Variant axes (60 cells):
+Variant axes (120 cells):
   Color    : Default | Primary | Error | Warning | Info | Success
   Variant  : Filled | Outlined
   State    : Enabled | Hovered | Focused | Pressed | Disabled
-  (Size    : Medium-only published; Small lives in MUI runtime only)
+  Size     : Medium | Small
 
 Component properties:
-  Icon          BOOLEAN        default false             Show 20×20 leading icon
-  Icon Source   INSTANCE_SWAP  default <Icon>/Size=sm    Pick the icon component (property panel dropdown)
-  Avatar        BOOLEAN        default false             Show 24×24 leading avatar (overrides Icon when both true)
-  Avatar Source INSTANCE_SWAP  default <Avatar>          Pick the avatar component (property panel dropdown)
-  Delete        BOOLEAN        default false             Show 18×18 trailing delete icon (TEXT × placeholder until Cancel glyph ships)
-  Label         TEXT           default "Chip"            Hand-set Noto Sans TC Regular 12/18
+  Icon          BOOLEAN        default false             Show leading icon (20×20 Medium / 16×16 Small)
+  Icon Source   INSTANCE_SWAP  default <Icon>/Size=sm    Pick the icon component — Medium cells only (Small uses fixed <Icon>/Size=xs; see §7 #10)
+  Avatar        BOOLEAN        default false             Show leading avatar (24×24 Medium / 18×18 Small) — overrides Icon when both true
+  Avatar Source INSTANCE_SWAP  default <Avatar>          Pick the avatar component (both Sizes; per-Size box dims handled by host cell)
+  Delete        BOOLEAN        default false             Show trailing delete icon (18×18 Medium / 16×16 Small) — <Icon> instance with CloseCircleFilled glyph
+  Label         TEXT           default "Chip"            Hand-set Noto Sans TC Regular 12/18 across both Sizes
 
-Layout: root Auto Layout HORIZONTAL, height=32, padding=0/12/0/12 Filled (0/11/0/11 Outlined),
-        itemSpacing=6 (matches MUI's measured 6 px slot↔label visible gap).
+Layout (Medium): root Auto Layout HORIZONTAL, height=32, padding=0/12/0/12 Filled (0/11/0/11 Outlined),
+                 itemSpacing=6, corner radius=16.
+Layout (Small):  root Auto Layout HORIZONTAL, height=24, padding=0/8/0/8 Filled (0/7/0/7 Outlined),
+                 itemSpacing=4, corner radius=12.
 
 Default variant: Color=Default, Variant=Filled, State=Enabled, Size=Medium
 Local-only bindings: every paint, stroke, effect, text style resolves to this file's local collection.

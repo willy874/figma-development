@@ -8,9 +8,11 @@ import {
 } from '@mui/material';
 
 // MUI `Autocomplete` is a wrapper that renders a TextField via `renderInput`.
-// Stories below adapt MUI's prop surface so the matrices line up with the
-// `<TextField>` Figma spec (`.claude/skills/figma-components/TextField/figma.spec.md`)
-// — same Variant / Size axes, plus Autocomplete-specific Multiple / Open axes.
+// The `<AutocompleteMenu>` Figma component
+// (`.claude/skills/figma-components/AutocompleteMenu/`) covers the popper /
+// listbox + loading / no-options states. The `<TextField>` Figma spec
+// (`.claude/skills/figma-components/TextField/figma.spec.md`) drives the
+// input-row paint.
 
 type Option = { label: string; year: number };
 
@@ -74,7 +76,7 @@ const meta = {
     docs: {
       description: {
         component:
-          'Mirrors `<Autocomplete>` Figma spec at `.claude/skills/figma-components/Autocomplete/figma.spec.md` — 12 variants published today (3 Variants × 4 States, Size=Medium, Multiple=False), 48-variant target documented in §3 of the spec. Input row reuses the `<TextField>` Figma component (`1:6266`); the popper / listbox is the companion `<AutocompleteOption>` set (`439:7109`). `Hovered` is a `:hover` pseudo-class state — trigger by hovering. The StateMatrix renders the `Focused` row with `open: true` so the listbox is visible inline (the two states are orthogonal — see spec §3 — but coupling them keeps the matrix legible without a separate "open" axis).',
+          'Source for the `<AutocompleteMenu>` Figma component set (popper / listbox surface, State = Default / Loading / NoOptions — see `.claude/skills/figma-components/AutocompleteMenu/figma.spec.md`). Option rows live in the companion `<AutocompleteOption>` set (`439:7109`). `Hovered` is a `:hover` pseudo-class state — trigger by hovering. The StateMatrix renders the `Focused` row with `open: true` so the listbox is visible inline (the menu-open and focused-input axes are orthogonal — coupling them keeps the matrix legible without a separate "open" axis).',
       },
     },
   },
@@ -409,6 +411,44 @@ export const MultipleMatrix: Story = {
               </div>
             )),
           )}
+        </Stack>
+      ))}
+    </Stack>
+  ),
+};
+
+// `MenuMatrix` measures the popper / listbox surface in its three content
+// modes (Default / Loading / NoOptions). Drives the `<AutocompleteMenu>`
+// Figma component set — input row stays Outlined / Medium across cells so
+// every visual delta is on the menu itself.
+export const MenuMatrix: Story = {
+  parameters: { controls: { disable: true } },
+  render: () => (
+    <Stack direction="row" spacing={4} alignItems="flex-start">
+      {(
+        [
+          { label: 'Default', extra: { options: TOP_OPTIONS } },
+          {
+            label: 'Loading',
+            extra: { loading: true, options: [] as Option[] },
+          },
+          { label: 'NoOptions', extra: { options: [] as Option[] } },
+        ] as const
+      ).map(({ label, extra }) => (
+        <Stack key={label} spacing={1}>
+          <span style={{ ...cellLabel, width: 280 }}>{label}</span>
+          <div style={cell}>
+            <Autocomplete
+              open
+              disablePortal
+              getOptionLabel={(o) =>
+                typeof o === 'string' ? o : o.label
+              }
+              renderInput={renderInput('outlined', 'medium')}
+              fullWidth
+              {...extra}
+            />
+          </div>
         </Stack>
       ))}
     </Stack>

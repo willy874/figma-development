@@ -12,7 +12,7 @@ The themed colors danger / warning / info / success are **not** native to MUI Pa
 
 ## 1. Item-axis invariants (Medium, Enabled, color=primary)
 
-The 4 `Type` values × 4 `State` values × the same `(color, size)` share these properties. Numbers come from the Page column unless noted; Previous / Next swap the inner text node for a 20×20 SVG (MUI ships `NavigateBeforeIcon` / `NavigateNextIcon`).
+The 4 `Type` values × 4 `State` values × the same `(color, size)` share these properties. Numbers come from the Page column unless noted; Previous / Next swap the inner text node for a 20×20 SVG (story overrides MUI's default `slots.previous` / `slots.next` with `ChevronLeft` / `ChevronRight` glyphs wrapped in a `MerakIconSm` 20×20 box — see §1.1).
 
 | Property                        | Page                             | Previous (icon)                                   | Next (icon)                                   | Ellipsis                              |
 | ------------------------------- | -------------------------------- | ------------------------------------------------- | --------------------------------------------- | ------------------------------------- |
@@ -24,7 +24,7 @@ The 4 `Type` values × 4 `State` values × the same `(color, size)` share these 
 | `border` (Enabled / Hovered / Disabled) | `1 px solid rgba(0, 0, 0, 0.23)` | same                                      | same                                          | same                                  |
 | `box-shadow`                    | `none`                           | `none`                                            | `none`                                        | `none`                                |
 | `font` (label / glyph)          | `14 / 20.02 px Roboto Regular`, `letter-spacing: 0.14994 px` | same | same                                          | same (renders the literal `…` U+2026 character) |
-| icon glyph (Previous / Next)    | n/a                              | inline 20×20 SVG `NavigateBeforeIcon`, `fill: currentColor` | 20×20 SVG `NavigateNextIcon`         | n/a                                   |
+| icon glyph (Previous / Next)    | n/a                              | `MerakIconSm` 20×20 box around inline `ChevronLeft` SVG (material-symbols `keyboard-arrow-left`), `color: inherit` → `currentColor` | same with `ChevronRight` (material-symbols `keyboard-arrow-right`) | n/a                                   |
 | `cursor` (Enabled / Selected)   | `pointer`                        | `pointer`                                         | `pointer`                                     | `default` (MUI sets ellipsis non-interactive) |
 | `pointer-events` (Disabled)     | `none`                           | `none`                                            | `none`                                        | n/a                                   |
 
@@ -71,15 +71,15 @@ Probed via `ColorSizeMatrix` (default row) and `ItemSelectedColorSizeMatrix`.
 
 | Size   | item box     | `min-width` | `padding`   | `margin` (visible inter-item gap) | page font-size / line-height | icon SVG size (Previous/Next) | ellipsis font-size |
 | ------ | ------------ | ----------- | ----------- | --------------------------------- | ---------------------------- | ----------------------------- | ------------------ |
-| small  | `26 × 26 px` | `26 px`     | `0 4 px`    | `0 1 px` (gap **2 px**)           | `14 / 20.02 px`              | `18 × 18 px`                  | `14 px`            |
+| small  | `26 × 26 px` | `26 px`     | `0 4 px`    | `0 1 px` (gap **2 px**)           | `14 / 20.02 px`              | `20 × 20 px`                  | `14 px`            |
 | medium | `32 × 32 px` | `32 px`     | `0 6 px`    | `0 3 px` (gap **6 px**)           | `14 / 20.02 px`              | `20 × 20 px`                  | `14 px`            |
-| large  | `40 × 40 px` | `40 px`     | `0 10 px`   | `0 3 px` (gap **6 px**)           | `15 / 21.45 px`              | `22 × 22 px`                  | `15 px`            |
+| large  | `40 × 40 px` | `40 px`     | `0 10 px`   | `0 3 px` (gap **6 px**)           | `15 / 21.45 px`              | `20 × 20 px`                  | `15 px`            |
 
 Notes vs the existing spec's §4.1 (now superseded by these runtime numbers — `figma.spec.md` §4 has been updated to match):
 
 - **Padding**: spec said `4 / 6 / 8`; runtime is `4 / 6 / 10`. Large is 10 px, not 8 px.
 - **Page font-size**: spec said `13 / 14 / 15`; runtime is `14 / 14 / 15`. Small is 14 px, not 13 px.
-- **Icon SVG size**: spec said `18 / 22 / 26`; runtime is `18 / 20 / 22`.
+- **Icon SVG size**: runtime is **uniform `20 / 20 / 20 px`** since the 2026-04-29 unification — the story overrides `slots.previous` / `slots.next` on `PaginationItem` with a `MerakIconSm` 20×20 wrapper around `ChevronLeft` / `ChevronRight` glyphs, replacing MUI's default `NavigateBeforeIcon` / `NavigateNextIcon` (which scaled 18 / 20 / 22 with `size`). Figma matches at 20×20 across every Pagination `Size`.
 - **Inter-item gap**: spec said `4 px` flat across all sizes; runtime is `2 / 6 / 6` derived from item `margin: 0 (1|3|3) px`. Figma wrapper auto-layout gap is currently authored at `4 px` — a compromise that's correct for none of the sizes. See §6 drift check 3.
 
 ## 5. Wrapper layout (`<Pagination>` root, color=default, size=medium)
@@ -100,7 +100,7 @@ Item ordering matches the Figma wrapper composition (§6.2 of `figma.spec.md`) o
 
 If a Storybook re-measure produces values that disagree with the tables above, treat the difference as one of these cases — do not silently update the spec:
 
-1. **MUI upgrade** — `@mui/material` major bumps may change the hard-coded `0.23` outlined-border, the `0.12` selected overlay, the icon SVG sizes (`18/20/22`), or the padding ramp (`4/6/10`). Update `figma.spec.md` §1 MUI version row alongside this file.
+1. **MUI upgrade** — `@mui/material` major bumps may change the hard-coded `0.23` outlined-border, the `0.12` selected overlay, MUI's default chevron icon sizes (now bypassed by the story's `slots.previous` / `slots.next` override at uniform 20×20), or the padding ramp (`4/6/10`). Update `figma.spec.md` §1 MUI version row alongside this file.
 2. **Theme override** — if `mui-theme.ts` introduces a `MuiPagination` / `MuiPaginationItem` `defaultProps` / `styleOverrides` block (this project has none today), document it in §1 and re-derive §1–§4 values.
 3. **Outlined border token mismatch** — `0.23 black` (runtime) vs `0.12 black` (Figma `alias/colors/border-defalt`). Intentional Figma binding for dark-mode correctness; resolved alpha simply differs. If MUI migrates `PaginationItem` to `theme.palette.divider`, the runtime would then resolve to `0.12` and the divergence closes — record the alignment in §1.
 4. **Disabled foreground / outlined-border** — runtime keeps `text.primary` (87 %-α) and `0.23 black` for outlined-disabled cells. Figma uses `alias/colors/text-disabled` (38 %-α) and `alias/colors/bg-disabled` (12 %-α) for better legibility. Acceptable design divergence (`figma.spec.md` §7 currently-open issue 3).
@@ -115,3 +115,7 @@ The following drift items were resolved when the Figma cells were re-authored to
 8. ~~**Padding Large** (Figma `0 8` → runtime `0 10`).~~ **Resolved.** All `Size=Large` cells re-authored to `paddingLeft = paddingRight = 10`.
 9. ~~**Page font Small** (Figma `13 px` → runtime `14 px`).~~ **Resolved.** All `Color=*, Type=Page, Size=Small` cells re-authored to `font-size: 14 px`, `letter-spacing: 0.1499 px`.
 10. ~~**Ellipsis font Medium / Large** (Figma `16 / 18 px` → runtime `14 / 15 px`).~~ **Resolved.** All `Type=Ellipsis` cells re-authored to runtime ramp (`Small=14`, `Medium=14`, `Large=15`).
+
+### Resolved (2026-04-29 icon-source unification pass)
+
+11. ~~**Icon source / size for Previous / Next** (runtime: MUI default `NavigateBeforeIcon` / `NavigateNextIcon` at 18 / 20 / 22 px per Pagination Size; Figma: dedicated `<NavigateBefore>` / `<NavigateNext>` sets at 18 / 20 / 22 px).~~ **Resolved.** The story now overrides `slots.previous` / `slots.next` on `PaginationItem` with a `MerakIconSm` 20×20 wrapper around inline `ChevronLeft` / `ChevronRight` SVGs (material-symbols `keyboard-arrow-left/right`). All three Pagination `Size` values render the chevron at uniform `20 × 20 px`. Figma matches via `<Icon>` `Size=sm` instances with the `Glyph Source` `INSTANCE_SWAP` preset to ChevronLeft (`512:7505`) / ChevronRight (`512:7509`) — see `figma.spec.md` §6.7.

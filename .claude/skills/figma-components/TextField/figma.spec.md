@@ -20,8 +20,9 @@ The Figma cells already match this contract — every paint, stroke, text fill, 
 | Source story      | `src/stories/TextField.stories.tsx`                                                    |
 | Underlying source | `@mui/material@^7.3.10` `TextField` (re-exported by this package, no wrapper)          |
 | Figma file        | [MUI-Library](https://www.figma.com/design/KQjP6W9Uw1PN0iipwQHyYn) (`KQjP6W9Uw1PN0iipwQHyYn`) |
-| Figma frame       | `<TextField>` (`1:6266`) on page **Foundation Components** (`0:1`) — frame height grows with the multiline block; Auto Layout determines the actual value |
-| Component Set     | `<TextField>` (`1:6266`)                                                               |
+| Figma frame       | `TextField` (`1:6156`) on page **Foundation Components** (`0:1`) — outer documentation frame (`2928.91 × 3606.33 px`) housing both the variant grid (`1:6266`) at `x=24` and the `UseCase` panel (`1:6157`) at `x=1575.96`. Frame height grows with the multiline block; Auto Layout determines the actual value. |
+| Component Set     | `<TextField>` (`1:6266`) — variant grid (`1449.14 × 2088.32 px`)                       |
+| UseCase panel     | `UseCase` (`1:6157`) — curated examples (`1260 × 2137.12 px`); see §6.2                |
 | Total variants    | **120** (3 Variants × 2 Sizes × 5 States × 2 Has Value × 2 Multiline)                  |
 | Typography        | Roboto Regular, value `16 / 24 px` ls `0.15 px`; floated label text style `input/label` (`12 / 12 px`, ls `0.15 px`) |
 
@@ -224,7 +225,28 @@ The Component Set is laid out as a **6-column × 20-row grid** inside the `<Text
 - Row vertical strides reflect cell heights from §4.1; the `Has Value=False` rows collapse to the un-shrunk-label height (single-line block) or sit at the un-shrunk-label-at-first-row position (multiline block, see §6.1). Multiline rows are uniformly taller — the wrapper grows by `+46 px` regardless of `Has Value`.
 - Frame dimensions grow proportionally — adding the multiline block doubles the row count; the frame's `height` becomes `≈ 1648 px` (single-line block ≈ 826 px + multiline block + Helper Text bands). The exact value is whatever the Auto Layout pack produces; do not hard-code.
 
-There is no surrounding `<UseCase>` panel today; future spec updates may add curated adornment / helper-text recipes (track in §8).
+The surrounding outer frame `TextField` (`1:6156`) houses both the variant grid and a `UseCase` documentation panel (`1:6157`) at `x=1575.96` — see §6.2 for the panel's section inventory.
+
+### 6.2 `UseCase` documentation panel (`1:6157`)
+
+Sibling panel to the variant grid, used by designers as a quick-reference catalog of the variant axes plus curated wrapper recipes. Renders nothing in production — it lives in the library file only. Each section pairs a Head (title + caption) with a Body of example instances dropped from the `<TextField>` component set.
+
+| Section node | Name             | Caption (verbatim)                                                                                                                  | Examples (verbatim labels)                                                                                                  |
+| ------------ | ---------------- | ----------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- |
+| `1:6159`     | **Variants**     | `<TextField> variant — standard · filled · outlined`                                                                                | Standard · Filled · Outlined                                                                                                |
+| `1:6173`     | **Sizes**        | `<TextField> size — medium (default) · small`                                                                                       | medium · small                                                                                                              |
+| `1:6184`     | **States**       | `Interaction & validation states — Enabled · Hovered · Focused · Disabled · Error`                                                  | Enabled · Hovered · Focused · Disabled · Error                                                                              |
+| `1:6204`     | **Has Value**    | `True floats label & shows Value · False keeps un-floated label inside input — placeholder stays suppressed`                        | Has Value=True · Has Value=False                                                                                            |
+| `422:7056`   | **Multiline**    | `Multiline=true swaps <input> for <textarea> with fixed minRows=3 — wrapper height grows by +46 px; paint / tokens unchanged`       | Multiline=false · Multiline=true · Multiline=true · Empty                                                                   |
+| `1:6215`     | **Helper Text**  | `Toggle the <FormHelperText> row — pairs with State=Error for inline validation`                                                    | Helper Text=false · Helper Text=true · Error + Helper Text                                                                  |
+| `1:6229`     | **Adornments**   | `prefixNode / suffixNode slots — toggle Adorn. Start / Adorn. End`                                                                  | Adorn. Start · Adorn. End · Both adornments                                                                                 |
+| `1:6243`     | **Common usage** | `Typical <TextField> recipes used across the Console app`                                                                           | SearchInput recipe (Outlined + leading `<SearchIcon>`) · PasswordInput recipe (Outlined + trailing `<EyeIcon>`) · Required field (Filled with helper) · Inline validation (Error with helper message) · Read-only / disabled (pre-filled identifier) · Compact filter (Standard Small) |
+
+Notes:
+
+- **The panel is informative, not normative.** Examples are instances of the component set with property overrides — they don't introduce new tokens, paint roles, or variants. If a recipe diverges visually from the equivalent `(Variant, Size, State, Has Value, Multiline)` cell in the grid, that's a spec bug.
+- **The Common usage recipes are not yet wrapper components** (see §7.2). Each one is a hand-composed `<TextField>` instance plus an `<Icon>` instance dropped into a slot; promoting any of them to a wrapper component set is a §8 trigger.
+- **The Multiline section node id sits in a different range (`422:*`)** because it was added in a later publish; treat the discontinuity as expected.
 
 ### 6.1 Cell composition
 
@@ -272,10 +294,18 @@ The single design choice is whether to encode the textarea as a static `69 px` c
 
 ### 7.2 Wrapper recipes (informative)
 
-The Figma component set has no wrapper components today. When a future PasswordInput / SearchInput recipe lands, it will compose this set with:
+The Figma component set has no wrapper components today — every recipe below is a hand-composed instance of the set. The `UseCase` panel (§6.2) ships canonical examples; mirror those property overrides exactly when reusing a recipe on a screen.
 
-- **Password** — `Adorn. End=true`, drop an `Eye` / `EyeClose` `<Icon>` instance into `End Adorn`.
-- **Search** — `Adorn. Start=true`, drop a `Search` `<Icon>` instance into `Start Adorn`; populate the `Autocomplete` slot with a popper child.
+| Recipe                  | Variant   | Size   | State          | Adornment                                                   | Helper Text                  | Notes                                                                                       |
+| ----------------------- | --------- | ------ | -------------- | ----------------------------------------------------------- | ---------------------------- | ------------------------------------------------------------------------------------------- |
+| **SearchInput**         | Outlined  | Medium | Enabled        | `Adorn. Start=true`, drop `<Search>` `<Icon>` instance      | off                          | Populate the `Autocomplete` slot with a popper child when wiring an actual autocomplete UI. |
+| **PasswordInput**       | Outlined  | Medium | Enabled        | `Adorn. End=true`, drop `<Eye>` / `<EyeClose>` `<Icon>`     | on (e.g. password rules)     | Toggle the `<Eye>` ↔ `<EyeClose>` glyph at instance level for the show/hide affordance.     |
+| **Required field**      | Filled    | Medium | Enabled        | none                                                        | on (instructional copy)      | Append `*` to the `Label` value to mark required at design time — no separate variant.      |
+| **Inline validation**   | (any)     | Medium | Error          | none                                                        | on (error message)           | Use `State=Error`; do not stack with `Focused`. Helper text retints to `seed/danger/main`.  |
+| **Read-only / disabled**| Outlined  | Medium | Disabled       | none                                                        | optional                     | Pre-fill `Value` with the identifier; the entire cell collapses to the disabled tone.       |
+| **Compact filter**      | Standard  | Small  | Enabled        | none                                                        | off                          | Use the un-floated label pattern (`Has Value=False`) when the filter has no current value.  |
+
+When a future component set ships these as proper wrappers, add a §3.N matrix per wrapper and update §6 to document the wrapper grid alongside the atom grid.
 
 ### 7.3 Don'ts
 
@@ -318,6 +348,7 @@ This document and the source must move together. When **any** of the following c
 - Token value change in `component/input/*` → no edit to this spec is required (Figma resolves through the same name); `design-token.md` records the resolution chain.
 - Renaming the slot keys (`Start Adorn` / `End Adorn` / `Autocomplete`) or changing the adornment frame size from `24 × 24` → update §3.1, §5, §6.
 - Surfacing the `Placeholder` property visibly (e.g. by adding a "no-label" sub-variant) → update §4.3, §7, and add the new variant axis in §3.
+- Adding / removing / renaming a section in the `UseCase` panel (`1:6157`) — including a new Common-usage recipe → update §6.2's section table and §7.2's wrapper-recipe table in lockstep. Promoting any Common-usage recipe to a proper wrapper component set → add the wrapper to §1, give it its own §3.N matrix and §6 grid entry.
 - `@mui/material` major bump → re-run `storybook.render.md` §7 drift checks; bump the version row in §1; reconcile any new computed-style values against §4.
 
 ## 9. Quick Reference

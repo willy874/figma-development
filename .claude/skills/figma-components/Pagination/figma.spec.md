@@ -252,8 +252,8 @@ Numbers below are the **Figma-authored values** in the published item set (`1:50
 | Padding (T R B L)                   | `0 4 0 4`     | `0 6 0 6`     | `0 10 0 10`   |
 | Corner radius                       | `4 px`        | `4 px`        | `4 px`        |
 | Outline border width / alignment    | `1 px` / INSIDE | same        | same          |
-| Icon glyph (`Type ∈ {Previous, Next}`) | `<NavigateBefore>` / `<NavigateNext>` instance, Size variant matching cell — see §6.7 | same | same |
-| Icon size (Previous / Next)         | `18 × 18 px`  | `20 × 20 px`  | `22 × 22 px`  |
+| Icon glyph (`Type ∈ {Previous, Next}`) | `<Icon>` `Size=sm` instance, `Glyph Source` preset to `ChevronLeft` (`512:7505`) / `ChevronRight` (`512:7509`) — see §6.7 | same | same |
+| Icon size (Previous / Next)         | `20 × 20 px`  | `20 × 20 px`  | `20 × 20 px`  |
 | Label font size (`Type=Page`)       | `14 px`       | `14 px`       | `15 px`       |
 | Glyph font size (`Type=Ellipsis`)   | `14 px`       | `14 px`       | `15 px`       |
 | Letter-spacing (Page / Ellipsis)    | `0.1499 px`   | `0.1499 px`   | `0.1606 px`   |
@@ -328,19 +328,19 @@ The published wrapper bakes `currentPage = 5, totalPages = 10`, so labels are `1
 
 ### 6.7 Glyph treatment (Previous / Next / Ellipsis)
 
-`Previous` / `Next` cells render an **INSTANCE** of a dedicated chevron component (resolved per cell `Size`); `Ellipsis` cells render the literal `…` character as a TEXT node.
+`Previous` / `Next` cells render an **INSTANCE** of the shared `<Icon>` set at `Size=sm`, with the inner `Glyph Source` `INSTANCE_SWAP` property preset per direction; `Ellipsis` cells render the literal `…` character as a TEXT node.
 
-| Item `Type` | Glyph source                                        | Size mapping                                                                | Color override                                                                          |
-| ----------- | --------------------------------------------------- | --------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- |
-| `Previous`  | `<NavigateBefore>` component set instance           | `Small=18` (`224:4182`) · `Medium=20` (`224:4185`) · `Large=22` (`224:4188`) | Inner `Vector` fill bound to `alias/colors/text-default` (default); `State=Disabled` cells override to `alias/colors/text-disabled`. |
-| `Next`      | `<NavigateNext>` component set instance             | `Small=18` (`224:4192`) · `Medium=20` (`224:4195`) · `Large=22` (`224:4198`) | Same as Previous.                                                                        |
-| `Ellipsis`  | TEXT node, character `…` (U+2026)                   | Roboto Regular `14 / 14 / 15 px` per Size (matches `Type=Page` font ramp)  | TEXT fill bound to `alias/colors/text-default` (or `text-disabled` for `State=Disabled`). |
+| Item `Type` | Glyph source                                                                                              | Size                                                          | Color override                                                                                                                       |
+| ----------- | --------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------ |
+| `Previous`  | `<Icon>` (`3:2722`) `Size=sm` (`3:2731`); `Glyph Source` (`INSTANCE_SWAP`) → `ChevronLeft` (`512:7505`)   | Fixed `20 × 20 px` for every Pagination `Size`                | Glyph Vector fills bound to `alias/colors/text-default` (default); `State=Disabled` cells override to `alias/colors/text-disabled`. |
+| `Next`      | `<Icon>` (`3:2722`) `Size=sm` (`3:2731`); `Glyph Source` (`INSTANCE_SWAP`) → `ChevronRight` (`512:7509`)  | Same as Previous.                                              | Same as Previous.                                                                                                                    |
+| `Ellipsis`  | TEXT node, character `…` (U+2026)                                                                         | Roboto Regular `14 / 14 / 15 px` per Size (matches `Type=Page` font ramp) | TEXT fill bound to `alias/colors/text-default` (or `text-disabled` for `State=Disabled`).                                            |
 
-**Chevron icon authoring.** `<NavigateBefore>` (`224:4189`) and `<NavigateNext>` (`224:4199`) are component sets sitting alongside `<Icon>` (`3:2722`) in the **Foundation Components** page. Each holds three Size variants (Small / Medium / Large = 18 / 20 / 22 px) wrapping a 24×24 viewBox MD chevron-left / chevron-right vector. Vector fills bind to the local `alias/colors/text-default` token so the icon inherits the cell's foreground colour.
+**Why one shared `<Icon>` set, not dedicated chevron sets.** Pagination chevrons used to live in two dedicated component sets — `<NavigateBefore>` (`224:4189`) and `<NavigateNext>` (`224:4199`) — each with three `Size=Small/Medium/Large` variants at 18/20/22 px. The 2026-04-29 unification pass replaced them with one `<Icon>` `Size=sm` instance per cell, plus `Glyph Source` preset to `ChevronLeft` / `ChevronRight` (both published as standalone components in the shared Icon library — see `figma-design-guide/components.md` §Icon library). One shared set + one swap property is structurally simpler than two dedicated sets, and it lets future direction-aware revisions (RTL chevron, custom glyph) reuse the same Icon library entries instead of minting new component sets.
 
-**Why dedicated icon sets, not the existing `<Icon>` set.** The existing `<Icon>` component set (`3:2722`) is a generic container with `Size=xs..xxl` variants holding an `ArrowSolid` instance — a single-glyph icon meant for ad-hoc use. Pagination needs *different* glyphs (chevron-left vs chevron-right) per `Type`, so a single `Size`-axis set can't represent both. Two dedicated component sets — one per direction — let each `<PaginationItem>` cell pick the matching icon at the matching size with no per-instance vector overrides.
+**Why fixed `20 × 20 px` for every Pagination `Size`.** Storybook hard-codes `width: 20, height: 20` on the icon slot wrapper (`MerakIconSm` in `src/stories/Pagination.stories.tsx`) regardless of the underlying MUI `Pagination` `size` prop. Figma now matches: every `Type ∈ {Previous, Next}` cell, across all three Pagination `Size` values, contains an `<Icon> Size=sm` instance at 20 × 20. The earlier 18/20/22 ramp came from the dedicated `<NavigateBefore>` Size variants and was a Figma-only divergence — MUI runtime never scaled the chevron either.
 
-**Icon swap on consumer instances.** The chevron is currently a fixed nested instance; designers cannot swap it via right-click → Swap Instance without detaching the cell. If a future revision needs swappable icons (e.g. for a localized RTL chevron), promote the icon to an `INSTANCE_SWAP` component property on each Previous / Next variant — note the **shared-default caveat** (one default per axis level), so each `Type` value still needs its own baseline.
+**Icon swap on consumer instances.** Because the chevron lives inside an `<Icon>` instance with an exposed `Glyph Source` `INSTANCE_SWAP` property, designers can swap the glyph (e.g. for a localized RTL chevron) directly from the `<PaginationItem>` instance via Figma's nested-property panel — no detach required. Note the **shared-default caveat**: `Glyph Source` defaults are shared across every cell in the Pagination set; the per-direction defaults (ChevronLeft for Previous, ChevronRight for Next) live on the variants themselves, not at the set level.
 
 ## 7. Open issues
 
@@ -361,6 +361,10 @@ The runtime-truth pass on **2026-04-28** resolved most of the issues that previo
 7. ~~**Page font-size Small divergence.**~~ **Resolved 2026-04-28.** All `Color=*, Type=Page, Size=Small` cells re-authored to font-size `14 px`, letter-spacing `0.1499 px` (matches MUI's `pxToRem(14)`).
 8. ~~**Ellipsis font-size divergence.**~~ **Resolved 2026-04-28.** All `Type=Ellipsis` cells re-authored to runtime font-size (`Small=14`, `Medium=14`, `Large=15`) — the `…` text now matches the cell's Page font ramp instead of the previous `14/16/18`.
 
+### Resolved (2026-04-29 icon-source unification pass)
+
+9. **Icon source for Previous / Next.** Replaced the dedicated `<NavigateBefore>` (`224:4189`) / `<NavigateNext>` (`224:4199`) component sets — three `Size` variants at 18 / 20 / 22 px each — with a single `<Icon>` (`3:2722`) `Size=sm` (`3:2731`) instance per cell, plus the `Glyph Source` `INSTANCE_SWAP` property preset to `ChevronLeft` (`512:7505`) for Previous or `ChevronRight` (`512:7509`) for Next. All 144 `Type ∈ {Previous, Next}` variants in `1:5098` were swapped in place; the legacy `<NavigateBefore>` / `<NavigateNext>` sets are no longer referenced by Pagination. Icon dims are now uniform `20 × 20 px` for every Pagination `Size`, matching the runtime story's `MerakIconSm` slot wrapper. See §6.7.
+
 ## 8. Source Sync Rule
 
 This document and the source must move together. When **any** of the following changes, update this spec **and** the named files in the same PR:
@@ -375,8 +379,8 @@ This document and the source must move together. When **any** of the following c
 | Figma wrapper set `1:5675` variant axes / cell count or composition change                      | `figma.spec.md` §3.3, §6.6, re-run `figma-component-upload`                                                                |
 | Local `merak/*` tokens used by Pagination are renamed in this Figma file                        | `figma.spec.md` §5 + §6, `./design-token.md`. **Do not** auto-pull from the published library — the Pagination cells bind to the local collection only. |
 | Published library `seed/*` / `alias/*` tokens drift from the local copies                       | `./design-token.md` (record divergence), `figma.spec.md` §1 local-only note. Re-sync values manually if needed.            |
-| `<NavigateBefore>` / `<NavigateNext>` chevron component sets are renamed, moved, or replaced    | `figma.spec.md` §6.7 icon mapping table (component IDs `224:4189` / `224:4199` and per-Size variant IDs)                  |
-| `<Icon>` set (`3:2722`) is restructured (e.g. add `Glyph` axis covering chevron-left/right)     | `figma.spec.md` §6.7 — re-evaluate whether the dedicated `<NavigateBefore>` / `<NavigateNext>` sets can be retired in favour of `<Icon>` instances |
+| `<Icon>` set (`3:2722`) variant axes change (e.g. `Size=sm` renamed) or its `Glyph Source` `INSTANCE_SWAP` property is renamed | `figma.spec.md` §6.1 / §6.7 icon mapping table (Size=sm `3:2731` ID + property name `Glyph Source`)                       |
+| `ChevronLeft` (`512:7505`) / `ChevronRight` (`512:7509`) glyph components are renamed, moved, or replaced in the Icon library | `figma.spec.md` §6.7 (Glyph Source preset IDs), `../../figma-design-guide/components.md` §Icon library                    |
 | Local `component/pagination/selected-bg-*` tokens are promoted to `seed/<C>/selected-bg @ α=0.12` | `figma.spec.md` §5.3 / §6.4 (rebind), `./design-token.md` (delete promoted tokens, point at new shared family)            |
 | `mui-theme.ts` adds a `MuiPagination` / `MuiPaginationItem` override (this project has none today) | `figma.spec.md` §1, `storybook.render.md` §1–§4                                                                          |
 

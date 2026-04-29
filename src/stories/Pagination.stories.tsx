@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import {
+  Box,
   Pagination,
   PaginationItem,
   Stack,
@@ -8,6 +9,61 @@ import {
   type SxProps,
   type Theme,
 } from '@mui/material';
+
+// ─── Icon (sm) slot overrides ───────────────────────────────────────────────
+//
+// MUI PaginationItem defaults `slots.previous` / `slots.next` to
+// `NavigateBefore` / `NavigateNext` from `@mui/icons-material`. The Figma
+// spec swaps those for the published `<Icon>` instances at Size=sm (20px)
+// with `ChevronLeft` / `ChevronRight` glyphs (material-symbols
+// `keyboard-arrow-left` / `keyboard-arrow-right`, see `.claude/skills/
+// figma-design-guide/components.md` §Icon library `512:7505` / `512:7509`).
+// Inline SVGs are authored on the same 24×24 MD grid as Icon.stories.tsx so
+// `currentColor` inheritance through PaginationItem's text paint is preserved.
+
+const ChevronLeftGlyph = () => (
+  <svg viewBox="0 0 24 24" width="100%" height="100%" fill="currentColor" aria-hidden>
+    <path d="M15.41 16.59 10.83 12l4.58-4.59L14 6l-6 6 6 6z" />
+  </svg>
+);
+
+const ChevronRightGlyph = () => (
+  <svg viewBox="0 0 24 24" width="100%" height="100%" fill="currentColor" aria-hidden>
+    <path d="M8.59 16.59 13.17 12 8.59 7.41 10 6l6 6-6 6z" />
+  </svg>
+);
+
+const MerakIconSm = ({ children }: { children: React.ReactNode }) => (
+  <Box
+    aria-hidden
+    sx={{
+      display: 'inline-flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      width: 20,
+      height: 20,
+      color: 'inherit',
+      flexShrink: 0,
+      lineHeight: 0,
+    }}
+  >
+    {children}
+  </Box>
+);
+
+const PreviousIcon = () => (
+  <MerakIconSm>
+    <ChevronLeftGlyph />
+  </MerakIconSm>
+);
+
+const NextIcon = () => (
+  <MerakIconSm>
+    <ChevronRightGlyph />
+  </MerakIconSm>
+);
+
+const PAGINATION_ITEM_SLOTS = { previous: PreviousIcon, next: NextIcon };
 
 // ─── Color mapping ──────────────────────────────────────────────────────────
 //
@@ -88,7 +144,11 @@ const MerakPagination = ({ color = 'default', ...rest }: MerakPaginationProps) =
     shape="rounded"
     color={color === 'default' ? 'standard' : 'primary'}
     renderItem={(item) => (
-      <PaginationItem {...item} sx={paginationItemSx(color)} />
+      <PaginationItem
+        {...item}
+        slots={PAGINATION_ITEM_SLOTS}
+        sx={paginationItemSx(color)}
+      />
     )}
     {...rest}
   />
@@ -290,6 +350,7 @@ export const ItemTypeStateMatrix: Story = {
                 type={t.type}
                 page={t.page ?? 1}
                 {...extra}
+                slots={PAGINATION_ITEM_SLOTS}
                 sx={paginationItemSx(color as MerakColor)}
               />
             </div>

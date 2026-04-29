@@ -1,12 +1,12 @@
 ---
-name: figma-component-autocomplete-design-token
-description: Component-scoped design tokens for `<Autocomplete>`. Defined here because they're MUI-Autocomplete-specific pre-alpha'd primary tints (option Selected / Selected+Focused) that don't fit the shared `merak/seed/*` or `merak/alias/*` namespaces and live as **local** variables inside the MUI-Library file (`KQjP6W9Uw1PN0iipwQHyYn`). Bind option Selected backgrounds to these names rather than literal values; for shared tokens used by Autocomplete (alias text colors, alias bg-outline-hover, paper-elevation-0, shadows-1) see `.claude/skills/figma-design-guide/design-token.md`.
+name: figma-component-autocomplete-menu-design-token
+description: Component-scoped design tokens for `<AutocompleteMenu>` (and its option-row companion `<AutocompleteOption>`). Defined here because they're MUI-Autocomplete-specific pre-alpha'd primary tints (option Selected / Selected+Focused) that don't fit the shared `merak/seed/*` or `merak/alias/*` namespaces and live as **local** variables inside the MUI-Library file (`KQjP6W9Uw1PN0iipwQHyYn`). Bind option Selected backgrounds to these names rather than literal values; for shared tokens used by AutocompleteMenu (alias text colors, alias bg-outline-hover, paper-elevation-0, shadows-1) see `.claude/skills/figma-design-guide/design-token.md`.
 parent_skill: figma-components
 ---
 
-# `<Autocomplete>` Component Tokens
+# `<AutocompleteMenu>` Component Tokens
 
-Tokens scoped to `<Autocomplete>` and its companion `<AutocompleteOption>`. Reach for these only inside the Autocomplete component set; for everything else (semantic colors, shadows, typography, paper background), bind to the shared `merak/*` and `material-design/*` tokens documented in [`design-token.md`](../../figma-design-guide/design-token.md).
+Tokens scoped to `<AutocompleteMenu>` and its companion `<AutocompleteOption>`. Reach for these only inside the AutocompleteMenu component set; for everything else (semantic colors, shadows, typography, paper background), bind to the shared `merak/*` and `material-design/*` tokens documented in [`design-token.md`](../../figma-design-guide/design-token.md).
 
 ## Why these are component-scoped
 
@@ -55,6 +55,5 @@ These are not Figma variables but design constants worth recording in one place:
 | End-adornment button size                        | `28 × 28 px`      | Popup-arrow button + clear-icon button                    |
 | End-adornment button padding                     | `2 px` (popup) / `4 px` (clear) | Inner padding around the glyph              |
 | Popup-arrow rotation (Open=True)                 | `180°`            | The arrow flips when the popper is open                   |
-| Tag chip per-chip margin — Size=Medium / Small   | `3 px / 2 px`     | Spacing between consecutive `<Chip>` instances inside the wrapper |
 
 Anything in this table that gains a project-level token (e.g. `merak/component/listbox/popper-radius`) should be lifted out of this file into the shared collection and removed here.

@@ -19,10 +19,20 @@ Before producing the **second instance** of any visual pattern, stop and create 
 
 ## 3. Component API hygiene
 
+### Prefer Slot over Instance Swap
+
+When a property exists to let consumers inject content, default to a **Slot Property** (a nested frame they fill with arbitrary children) rather than an **Instance Swap Property** (a single instance reference they replace).
+
+- **Slot** accepts any layer or composition — text + icon, multiple chips, an empty state, nothing at all. Consumers don't have to detach to combine.
+- **Instance Swap** is constrained to one instance of one component. The moment a consumer needs two icons, an icon + label, or a non-component element, they detach — which violates Rule 5.
+- Use Instance Swap **only** when the slot must be exactly one instance of a known, enumerable component set (e.g. an `Icon` slot in a button that only ever holds an icon from the icon library). If there's any chance of mixed or composed content, use a Slot.
+
+See Section 4 for the required Auto Layout defaults that make slots safely pass-through.
+
 ### Over-exposed properties
 
 **Symptom:** A Button with 14 boolean props, half never set.
-**Fix:** Expose only variation that exists in real usage. Prefer **variants** for discrete states (size, tone, state); prefer **slots / instance-swap** for content flexibility.
+**Fix:** Expose only variation that exists in real usage. Prefer **variants** for discrete states (size, tone, state); prefer **slots** for content flexibility (see "Prefer Slot over Instance Swap" above).
 
 ### Variant explosion
 
