@@ -1,0 +1,104 @@
+{
+  "id": "1:4762",
+  "name": "Dividers=false",
+  "type": "COMPONENT",
+  "scrollBehavior": "SCROLLS",
+  "children": [
+    {
+      "id": "1:4763",
+      "name": "slot",
+      "type": "SLOT",
+      "scrollBehavior": "SCROLLS",
+      "componentPropertyReferences": {
+        "slotContentId": "slot#2964:0"
+      },
+      "children": [],
+      "blendMode": "PASS_THROUGH",
+      "clipsContent": true,
+      "background": [],
+      "fills": [],
+      "strokes": [],
+      "strokeWeight": 1,
+      "strokeAlign": "INSIDE",
+      "backgroundColor": {
+        "r": 0,
+        "g": 0,
+        "b": 0,
+        "a": 0
+      },
+      "layoutMode": "VERTICAL",
+      "counterAxisSizingMode": "FIXED",
+      "itemSpacing": 8,
+      "layoutWrap": "NO_WRAP",
+      "absoluteBoundingBox": {
+        "x": 1586.1666259765625,
+        "y": 5329,
+        "width": 396,
+        "height": 24
+      },
+      "absoluteRenderBounds": {
+        "x": 1586.1666259765625,
+        "y": 5329,
+        "width": 396,
+        "height": 24
+      },
+      "constraints": {
+        "vertical": "TOP",
+        "horizontal": "LEFT"
+      },
+      "layoutAlign": "STRETCH",
+      "layoutGrow": 0,
+      "layoutSizingHorizontal": "FILL",
+      "layoutSizingVertical": "HUG",
+      "effects": [],
+      "interactions": [],
+      "complexStrokeProperties": {
+        "strokeType": "BASIC"
+      }
+    }
+  ],
+  "blendMode": "PASS_THROUGH",
+  "clipsContent": false,
+  "background": [],
+  "fills": [],
+  "strokes": [],
+  "strokeWeight": 1,
+  "strokeAlign": "INSIDE",
+  "backgroundColor": {
+    "r": 0,
+    "g": 0,
+    "b": 0,
+    "a": 0
+  },
+  "layoutMode": "VERTICAL",
+  "counterAxisSizingMode": "FIXED",
+  "paddingLeft": 24,
+  "paddingRight": 24,
+  "paddingBottom": 20,
+  "layoutWrap": "NO_WRAP",
+  "absoluteBoundingBox": {
+    "x": 1562.1666259765625,
+    "y": 5329,
+    "width": 444,
+    "height": 44
+  },
+  "absoluteRenderBounds": {
+    "x": 1562.1666259765625,
+    "y": 5329,
+    "width": 444,
+    "height": 44
+  },
+  "constraints": {
+    "vertical": "TOP",
+    "horizontal": "LEFT"
+  },
+  "layoutAlign": "INHERIT",
+  "layoutGrow": 0,
+  "layoutSizingHorizontal": "FIXED",
+  "layoutSizingVertical": "HUG",
+  "effects": [],
+  "interactions": [],
+  "complexStrokeProperties": {
+    "strokeType": "BASIC"
+  }
+}

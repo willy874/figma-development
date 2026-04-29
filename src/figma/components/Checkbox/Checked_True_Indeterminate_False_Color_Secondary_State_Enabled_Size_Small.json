@@ -1,0 +1,102 @@
+{
+  "id": "1:7303",
+  "name": "Checked=True, Indeterminate=False, Color=Secondary, State=Enabled, Size=Small",
+  "type": "COMPONENT",
+  "scrollBehavior": "SCROLLS",
+  "children": [
+    {
+      "id": "1:7304",
+      "name": "Indicator",
+      "type": "VECTOR",
+      "scrollBehavior": "SCROLLS",
+      "boundVariables": {
+        "fills": [
+          {
+            "type": "VARIABLE_ALIAS",
+            "id": "VariableID:264:4709"
+          }
+        ]
+      },
+      "blendMode": "PASS_THROUGH",
+      "fills": [
+        {
+          "blendMode": "NORMAL",
+          "type": "SOLID",
+          "color": {
+            "r": 0.6117647290229797,
+            "g": 0.15294118225574493,
+            "b": 0.6901960968971252,
+            "a": 1
+          },
+          "boundVariables": {
+            "color": {
+              "type": "VARIABLE_ALIAS",
+              "id": "VariableID:264:4709"
+            }
+          }
+        }
+      ],
+      "fillOverrideTable": {
+        "1": null
+      },
+      "strokes": [],
+      "strokeWeight": 1,
+      "strokeAlign": "INSIDE",
+      "absoluteBoundingBox": {
+        "x": 1603,
+        "y": 10080,
+        "width": 15,
+        "height": 15
+      },
+      "absoluteRenderBounds": {
+        "x": 1603,
+        "y": 10080,
+        "width": 15,
+        "height": 15
+      },
+      "constraints": {
+        "vertical": "TOP",
+        "horizontal": "LEFT"
+      },
+      "effects": [],
+      "interactions": [],
+      "complexStrokeProperties": {
+        "strokeType": "BASIC"
+      }
+    }
+  ],
+  "blendMode": "PASS_THROUGH",
+  "clipsContent": false,
+  "background": [],
+  "fills": [],
+  "strokes": [],
+  "strokeWeight": 1,
+  "strokeAlign": "INSIDE",
+  "backgroundColor": {
+    "r": 0,
+    "g": 0,
+    "b": 0,
+    "a": 0
+  },
+  "absoluteBoundingBox": {
+    "x": 1594,
+    "y": 10071,
+    "width": 33,
+    "height": 33
+  },
+  "absoluteRenderBounds": {
+    "x": 1594,
+    "y": 10071,
+    "width": 33,
+    "height": 33
+  },
+  "constraints": {
+    "vertical": "TOP",
+    "horizontal": "LEFT"
+  },
+  "effects": [],
+  "interactions": [],
+  "complexStrokeProperties": {
+    "strokeType": "BASIC"
+  }
+}

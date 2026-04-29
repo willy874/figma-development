@@ -1,0 +1,239 @@
+{
+  "id": "3:2723",
+  "name": "Size=xxl",
+  "type": "COMPONENT",
+  "scrollBehavior": "SCROLLS",
+  "children": [
+    {
+      "id": "3:2724",
+      "name": "ArrowSolid",
+      "type": "INSTANCE",
+      "scrollBehavior": "SCROLLS",
+      "componentPropertyReferences": {
+        "mainComponent": "Instance#798:2"
+      },
+      "componentId": "3:2740",
+      "overrides": [
+        {
+          "id": "3:2724",
+          "overriddenFields": [
+            "height",
+            "width"
+          ]
+        },
+        {
+          "id": "I3:2724;3:2741",
+          "overriddenFields": [
+            "layoutAlign",
+            "layoutGrow"
+          ]
+        }
+      ],
+      "children": [
+        {
+          "id": "I3:2724;3:2741",
+          "name": "material-symbols:arrow-back-ios-new-rounded",
+          "type": "FRAME",
+          "scrollBehavior": "SCROLLS",
+          "rotation": -3.141592653589793,
+          "children": [
+            {
+              "id": "I3:2724;3:2742",
+              "name": "Vector",
+              "type": "VECTOR",
+              "scrollBehavior": "SCROLLS",
+              "blendMode": "PASS_THROUGH",
+              "fills": [
+                {
+                  "blendMode": "NORMAL",
+                  "type": "SOLID",
+                  "color": {
+                    "r": 0,
+                    "g": 0,
+                    "b": 0,
+                    "a": 1
+                  }
+                }
+              ],
+              "strokes": [],
+              "strokeWeight": 2,
+              "strokeAlign": "INSIDE",
+              "absoluteBoundingBox": {
+                "x": -2546.549907684326,
+                "y": 303.04999923706055,
+                "width": 20.900005340576172,
+                "height": 37.9267463684082
+              },
+              "absoluteRenderBounds": {
+                "x": -2546.5498046875,
+                "y": 303.04998779296875,
+                "width": 20.89990234375,
+                "height": 37.9267578125
+              },
+              "constraints": {
+                "vertical": "SCALE",
+                "horizontal": "SCALE"
+              },
+              "effects": [],
+              "interactions": [],
+              "complexStrokeProperties": {
+                "strokeType": "BASIC"
+              }
+            }
+          ],
+          "blendMode": "PASS_THROUGH",
+          "clipsContent": true,
+          "background": [
+            {
+              "blendMode": "NORMAL",
+              "visible": false,
+              "type": "SOLID",
+              "color": {
+                "r": 1,
+                "g": 1,
+                "b": 1,
+                "a": 1
+              }
+            }
+          ],
+          "fills": [
+            {
+              "blendMode": "NORMAL",
+              "visible": false,
+              "type": "SOLID",
+              "color": {
+                "r": 1,
+                "g": 1,
+                "b": 1,
+                "a": 1
+              }
+            }
+          ],
+          "strokes": [],
+          "strokeWeight": 1,
+          "strokeAlign": "INSIDE",
+          "backgroundColor": {
+            "r": 0,
+            "g": 0,
+            "b": 0,
+            "a": 0
+          },
+          "absoluteBoundingBox": {
+            "x": -2560,
+            "y": 298,
+            "width": 48,
+            "height": 48
+          },
+          "absoluteRenderBounds": {
+            "x": -2560,
+            "y": 298,
+            "width": 48,
+            "height": 48
+          },
+          "targetAspectRatio": {
+            "x": 48,
+            "y": 48
+          },
+          "constraints": {
+            "vertical": "TOP",
+            "horizontal": "LEFT"
+          },
+          "layoutAlign": "STRETCH",
+          "layoutGrow": 0,
+          "layoutSizingHorizontal": "FILL",
+          "layoutSizingVertical": "FIXED",
+          "effects": [],
+          "interactions": [],
+          "complexStrokeProperties": {
+            "strokeType": "BASIC"
+          }
+        }
+      ],
+      "blendMode": "PASS_THROUGH",
+      "clipsContent": true,
+      "background": [],
+      "fills": [],
+      "strokes": [],
+      "strokeWeight": 1,
+      "strokeAlign": "INSIDE",
+      "backgroundColor": {
+        "r": 0,
+        "g": 0,
+        "b": 0,
+        "a": 0
+      },
+      "layoutMode": "VERTICAL",
+      "counterAxisSizingMode": "FIXED",
+      "primaryAxisSizingMode": "FIXED",
+      "counterAxisAlignItems": "CENTER",
+      "primaryAxisAlignItems": "CENTER",
+      "layoutWrap": "NO_WRAP",
+      "absoluteBoundingBox": {
+        "x": -2560,
+        "y": 298,
+        "width": 48,
+        "height": 48
+      },
+      "absoluteRenderBounds": {
+        "x": -2560,
+        "y": 298,
+        "width": 48,
+        "height": 48
+      },
+      "constraints": {
+        "vertical": "TOP",
+        "horizontal": "LEFT"
+      },
+      "layoutAlign": "STRETCH",
+      "layoutGrow": 1,
+      "layoutSizingHorizontal": "FILL",
+      "layoutSizingVertical": "FILL",
+      "effects": [],
+      "interactions": [],
+      "complexStrokeProperties": {
+        "strokeType": "BASIC"
+      }
+    }
+  ],
+  "blendMode": "PASS_THROUGH",
+  "clipsContent": true,
+  "background": [],
+  "fills": [],
+  "strokes": [],
+  "strokeWeight": 1,
+  "strokeAlign": "INSIDE",
+  "backgroundColor": {
+    "r": 0,
+    "g": 0,
+    "b": 0,
+    "a": 0
+  },
+  "layoutMode": "VERTICAL",
+  "counterAxisSizingMode": "FIXED",
+  "primaryAxisSizingMode": "FIXED",
+  "primaryAxisAlignItems": "CENTER",
+  "layoutWrap": "NO_WRAP",
+  "absoluteBoundingBox": {
+    "x": -2560,
+    "y": 298,
+    "width": 48,
+    "height": 48
+  },
+  "absoluteRenderBounds": {
+    "x": -2560,
+    "y": 298,
+    "width": 48,
+    "height": 48
+  },
+  "constraints": {
+    "vertical": "TOP",
+    "horizontal": "LEFT"
+  },
+  "layoutSizingHorizontal": "FIXED",
+  "layoutSizingVertical": "FIXED",
+  "effects": [],
+  "interactions": [],
+  "complexStrokeProperties": {
+    "strokeType": "BASIC"
+  }
+}
