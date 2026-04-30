@@ -29,6 +29,24 @@ When a property exists to let consumers inject content, default to a **Slot Prop
 
 See Section 4 for the required Auto Layout defaults that make slots safely pass-through.
 
+### Creating SLOTs via Plugin API (do NOT fall back to INSTANCE_SWAP)
+
+A real Figma SLOT (`node.type === 'SLOT'`) is created by calling **`componentNode.createSlot()`** — the method lives on each variant `COMPONENT`, not on the `figma` global, and not on `COMPONENT_SET`. The bundled plugin typings shipped with this project's Figma plugin cache can lag the runtime by many versions and may show **zero** mentions of `slot` even though the runtime fully supports it.
+
+When the user asks for a "Slot" / "SLOT", do not silently downgrade to `INSTANCE_SWAP` because the local typings look empty. Try in this order:
+
+1. **`variant.createSlot()`** on each variant `COMPONENT` (the canonical API). Returns a `SlotNode` already parented to the variant; configure auto-layout per Section 4 and append default content.
+2. If `createSlot` is missing at runtime, fetch the upstream typings to confirm the method name / signature before giving up:
+   - `https://raw.githubusercontent.com/figma/plugin-typings/master/plugin-api-standalone.d.ts` (canonical, always current)
+   - The plugin you have installed via `claude-plugins-official/figma/<version>/` may also have a newer release on GitHub — check `https://raw.githubusercontent.com/figma/mcp-server-guide/HEAD/.claude-plugin/plugin.json` for the upstream version and prompt the user to `/plugin` update if it's behind.
+3. Only after both runtime and upstream typings confirm SLOT is genuinely unavailable, fall back to a named `INSTANCE_SWAP` property — and tell the user explicitly that you downgraded and why.
+
+What does **not** work and should not be retried:
+- `figma.createSlot()` — the factory is on `ComponentNode`, not the global.
+- `slot.clone()` — degrades to `FRAME`, loses the SLOT type.
+- `figma.createNodeFromJSXAsync({ type: 'SLOT' })` — returns "not yet supported".
+- `frame.markAsSlot()` / `instance.markAsSlot()` — no such method exists.
+
 ### Over-exposed properties
 
 **Symptom:** A Button with 14 boolean props, half never set.
