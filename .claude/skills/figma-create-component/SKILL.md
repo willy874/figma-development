@@ -64,6 +64,15 @@ Execute the steps in order. Do not skip ahead — each step's output is an input
 - Record: box metrics (min-width, height, padding, border, radius), paints (background, color, border-color), effects (shadow), typography (`font-family`, weight, size, line-height, letter-spacing, `text-transform`), state-specific deltas, and any custom CSS properties the library exposes.
 - Use `.claude/skills/figma-components/Button/storybook.render.md` as the structural exemplar.
 
+#### End every `storybook.render.md` with a Canonical Constants block
+
+The Constants block is the **single source of truth** for every distinct numeric / hex value in the document. Per-variant tables cite a constant by name; they never re-type the value. This is the upstream half of the fix for render → spec drift — without it, step 3 has nothing stable to copy from.
+
+- **One value, one name.** If three cells share `padding-inline: 16px`, name it once (`box.padding-x.md = 16px`) and cite the name everywhere else. Re-typing the same number in three tables guarantees one of them will eventually go stale.
+- **Name by role, not by cell.** `box.padding-x.md` > `medium-button-horizontal-padding-when-no-icon`. Role-named constants flow into `figma.spec.md` §6.1 verbatim; cell-named ones force a rename round-trip.
+- **Group by category, stable order.** `box.*` (padding, gap, min-width / min-height) → `radius.*` → `border.*` → `paint.*` (background, fg, border-color) → `shadow.*` → `type.*` (font-size, line-height, letter-spacing, text-transform). Stable order makes side-by-side diffs across components — and across render-doc revisions — readable.
+- **Deltas reference the base.** Per-variant overrides (e.g. `Outlined.disabled` re-binds `paint.fg`) live in the variant table as `paint.fg → paint.fg-disabled`, never as a re-typed hex.
+
 ### Step 3 — Draft `figma.spec.md`
 
 **Goal:** the contract between source and Figma — variant surface, property API, layout, sync rules.
@@ -76,6 +85,33 @@ Execute the steps in order. Do not skip ahead — each step's output is an input
 - Write the §8 sync rule with concrete trigger → spec edits, naming the actual files (the new stories file, the library source, this project's theme files, etc.).
 - Show the variant-count math explicitly. For sparse matrices use the "theoretical vs published" split.
 - If an editable Figma node was supplied (or the editable spec's frontmatter already pins one), set `figma_file_key`, `figma_node_id`, and `figma_component_set_id` in the frontmatter to that node — it is the published artefact this spec governs. A reference-only node does **not** populate these fields; instead, mention it in §1 as the source we mirrored from. If neither is supplied, leave the fields blank and note the gap in §1.
+
+#### Constants-first authoring (kills the render → spec drift)
+
+The single biggest source of `figma.spec.md` ↔ `storybook.render.md` divergence is re-typing numbers from memory or from a different render-doc revision. Author the spec's Constants section **first**, mechanically, before drafting any other prose:
+
+1. **Copy verbatim.** Lift the entire Canonical Constants block from `storybook.render.md` into `figma.spec.md` §6.1 (Skeleton B) or §4 (Skeleton A) — same names, same values, same grouping order. No reformatting, no abbreviation, no "improvement" while copying.
+2. **Cite by name everywhere else.** Every subsequent numeric reference in the spec — variant tables, render binding matrix, token bindings, §6.7 glyph table, §7 design-decision rationales — references a constant **by its name**, never as a raw value. If the spec needs a value the constants block doesn't have, add it to the constants block first, then reference it.
+3. **Cross-section citations are explicit.** When two sections must agree (§3 variant-count math vs. §6 cell counts; §6.1 Constants vs. §6.7 Glyph table), the second section cites the first by location: `font-size = type.body-md (see §6.1)`. Avoid restating the number — restated numbers diverge under edits.
+
+#### Implementation specificity (kills the "spec is unclear" failure mode)
+
+Every binding entry — whether in §4 (Skeleton A) or §6 Render Binding Matrix (Skeleton B) — must answer four questions a Figma operator can act on without re-deriving from the render doc or the library source:
+
+1. **Which node.** Layer-name path from the variant root (`<root> / Container / Label`). Not "the label", not "the inner text".
+2. **Which property.** Figma property by name: `fills[0]`, `strokes[0]`, `paddingLeft`, `itemSpacing`, `effects[0]`, `textStyleId`, `cornerRadius`. Not "the colour", not "spacing".
+3. **Which value.** A constant name from §6.1 or a token path from §4 (`merak/seed/primary/main`, `material-design/typography/body-md`). Never a raw hex / px / number in this column — that defeats the constants-first rule.
+4. **Which source.** The render-doc section that justifies it (`render.md §3.2 Color × State`) or the Figma reference node id when an editable / reference-only node was supplied.
+
+Skeleton B's Render Binding Matrix already enforces this column shape — Skeleton A authors must shape their §4 sub-tables the same way. An entry missing any of the four is incomplete; both reviewers and the step-5 operator will fail without it.
+
+#### Self-check before declaring step 3 done
+
+Run these checks on the drafted spec; do not advance to step 4 until they pass:
+
+- **No orphan numerics.** `grep -E '\b\d+(\.\d+)?(px|%|em|rem)?\b'` the spec. Every match must either (a) live inside §6.1 Constants, (b) be the cited reference resolution of the light theme, or (c) carry an inline `// from render.md §X` citation. Anything else is a re-typed value waiting to drift.
+- **Constants ↔ render parity.** Diff §6.1 against the render doc's Canonical Constants block line by line. Mismatch = fail; fix the spec, not the render doc, unless step 2 missed a value (in which case fix render first, then re-copy).
+- **Cross-section parity.** For each constant cited in two or more sections, confirm both sections reference the same name, not the same number. The classic failure: §6.1 says `type.body-md = 14px`, §6.7 cites it correctly, but a stray variant table re-types `15px` somewhere — find and fix.
 
 ### Step 4 — Plan design tokens
 
@@ -158,13 +194,14 @@ Spawn a single subagent (use `general-purpose` unless a more specialized agent f
 
 The review must cover:
 
-- **Spec ↔ render alignment** — every numeric value in `figma.spec.md` matches `storybook.render.md` (or the divergence is justified).
+- **Spec ↔ render alignment** — extract every numeric / hex value cited in `figma.spec.md` (e.g. via `grep -E '\b\d+(\.\d+)?(px|%|em|rem)?\b'`). For each: confirm it appears in §6.1 Constants under a name, and that the same name + value exists in `storybook.render.md`'s Canonical Constants block. A re-typed value that happens to match is **still a fail** — the rule is "cite by name", not "re-type but get it right." Only exception: §7 reference-resolution callouts that quote the light-theme hex inline.
 - **Spec ↔ Figma alignment** — the published component set's variant axes, property names, defaults, and total variant count match `figma.spec.md` §3. Spot-check at least one cell per state for paint / stroke / effect bindings.
 - **Spec ↔ `figma-component-spec-guide`** — frontmatter fields present, chosen skeleton followed, §8 sync rule is component-specific, variant-count math is shown, no raw hex outside reference resolutions, no Figma property id suffixes (`#1234:5`) outside frontmatter.
 - **Figma ↔ `figma-operator-guide`** — every paint bound to a variable, text styles applied by id, Auto Layout used (no absolute positioning except where layout.md allows), no detached instances, hygienic layer names, accessibility minimums met.
 - **Local-only bindings** — sample 4–6 cells across the matrix and confirm every `boundVariables` id starts with `VariableID:<localId>` (no `VariableID:<sharedKey>/...` consumed-library references). Any component-scoped tokens that aren't in `figma-design-guide/design-token.md` must be documented in `.claude/skills/figma-components/<Name>/design-token.md` with a resolution chain.
 - **`design-token.md` ↔ local variables** — for every entry in the component's `design-token.md`, confirm a local variable with the same name exists in the file (matching `resolvedType` and resolved value). Missing entries mean step 5's pre-flight was skipped — flag as fail.
-- **Internal spec consistency** — the same constant cited in two sections must agree (e.g. §6.1 Constants table vs. §6.7 Glyph table both quoting font sizes; §3 variant count vs. §1 aspect-table total). These cross-section mismatches are common when sections are rewritten in isolation.
+- **Internal spec consistency** — the same constant cited in two sections must reference it by the **same name**, not by the same re-typed number (e.g. §6.1 Constants table vs. §6.7 Glyph table both quoting font sizes; §3 variant count vs. §1 aspect-table total). A re-typed value that currently agrees is a latent failure — flag it. These cross-section mismatches are common when sections are rewritten in isolation.
+- **Binding-entry completeness** — every row in §4 token bindings (Skeleton A) or §6 Render Binding Matrix (Skeleton B) names: the target node by layer path, the Figma property (`fills[0]`, `paddingLeft`, `textStyleId`, …), the value as a constant name or token path (never a raw hex / px), and the render-doc section that justifies it. An entry missing any of the four is incomplete and blocks step 5.
 - **Stale runtime claims** — `Underlying MUI version` in §1 reflects the current `package.json` / `pnpm-lock.yaml` resolution (not a guess). Reviewer should `grep package.json` to confirm.
 - **Token semantic mismatches** — when a token's name suggests one role but the spec binds it to another (e.g. `bg-disabled` used as a stroke), the spec must explain the convention inline, ideally citing the sibling spec that established it (Button / IconButton).
 

@@ -36,7 +36,7 @@ Each submodule lists its own `triggers:` block. Load the ones that match.
 
 ### Phase 2 — While you build (situational)
 
-- **[component-rules.md](references/component-rules.md)** — Inserting, duplicating, or creating any reusable UI (button, input, card, tag, modal). Or designing a component's variant/property API.
+- **[component-rules.md](references/component-rules.md)** — Inserting, duplicating, or creating any reusable UI (button, input, card, tag, modal). Or designing a component's variant/property API. **Always load before calling `addComponentProperty`** — the slot-first decision rule (SLOT vs INSTANCE_SWAP) lives there, and the default is SLOT whenever sub-components are involved or the React counterpart uses `children`.
 - **[layout.md](references/layout.md)** — Creating a container frame, setting `x`/`y`/`width`/`height`, or considering `layoutPositioning: "ABSOLUTE"`.
 - **[tokens.md](references/tokens.md)** — Applying any color, spacing, radius, shadow, or typography value. **Required** whenever you call `setBoundVariableForPaint` — see "Plugin API binding" section for the mandatory helper pattern that prevents silent black-fill failures.
 - **`figma-design-guide`** (sister skill) — The **actual inventory** of this project's tokens (`design-token.md`) and published components (`components.md`). Load whenever you need a real token name or want to check whether a component already exists before creating one.
