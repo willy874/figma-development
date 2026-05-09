@@ -7,7 +7,12 @@
       "id": "VariableCollectionId:37:2603",
       "name": "merak",
       "key": "029b7d3002436a3e9d247d0a17ab7e85c0221a79",
-      "modes": [{ "name": "Mode 1", "modeId": "37:0" }],
+      "modes": [
+        {
+          "name": "Mode 1",
+          "modeId": "37:0"
+        }
+      ],
       "defaultModeId": "37:0",
       "remote": false,
       "totalVariables": 78,
@@ -25,7 +30,10 @@
               "a": 0.03999999910593033
             }
           },
-          "scopes": ["FRAME_FILL", "SHAPE_FILL"],
+          "scopes": [
+            "FRAME_FILL",
+            "SHAPE_FILL"
+          ],
           "codeSyntax": {},
           "description": "Local mirror of merak seed/primary/hover-bg (added for Checkbox State variants — opacity baked in)",
           "remote": false
@@ -43,7 +51,10 @@
               "a": 0.03999999910593033
             }
           },
-          "scopes": ["FRAME_FILL", "SHAPE_FILL"],
+          "scopes": [
+            "FRAME_FILL",
+            "SHAPE_FILL"
+          ],
           "codeSyntax": {},
           "description": "Local mirror of merak seed/info/hover-bg (added for Checkbox State variants — opacity baked in)",
           "remote": false
@@ -61,7 +72,10 @@
               "a": 0.03999999910593033
             }
           },
-          "scopes": ["FRAME_FILL", "SHAPE_FILL"],
+          "scopes": [
+            "FRAME_FILL",
+            "SHAPE_FILL"
+          ],
           "codeSyntax": {},
           "description": "Local mirror of merak seed/success/hover-bg (added for Checkbox State variants — opacity baked in)",
           "remote": false
@@ -79,7 +93,10 @@
               "a": 0.03999999910593033
             }
           },
-          "scopes": ["FRAME_FILL", "SHAPE_FILL"],
+          "scopes": [
+            "FRAME_FILL",
+            "SHAPE_FILL"
+          ],
           "codeSyntax": {},
           "description": "Local mirror of merak seed/secondary/outline-hover (added for Checkbox State variants — opacity baked in)",
           "remote": false
@@ -97,7 +114,10 @@
               "a": 0.03999999910593033
             }
           },
-          "scopes": ["FRAME_FILL", "SHAPE_FILL"],
+          "scopes": [
+            "FRAME_FILL",
+            "SHAPE_FILL"
+          ],
           "codeSyntax": {},
           "description": "Local mirror of merak seed/danger/outline-hover (added for Checkbox State variants — opacity baked in)",
           "remote": false
@@ -115,7 +135,10 @@
               "a": 0.03999999910593033
             }
           },
-          "scopes": ["FRAME_FILL", "SHAPE_FILL"],
+          "scopes": [
+            "FRAME_FILL",
+            "SHAPE_FILL"
+          ],
           "codeSyntax": {},
           "description": "Local mirror of merak seed/warning/outline-hover (added for Checkbox State variants — opacity baked in)",
           "remote": false
@@ -133,7 +156,10 @@
               "a": 0.30000001192092896
             }
           },
-          "scopes": ["FRAME_FILL", "SHAPE_FILL"],
+          "scopes": [
+            "FRAME_FILL",
+            "SHAPE_FILL"
+          ],
           "codeSyntax": {},
           "description": "Local mirror of merak seed/primary/focusVisible (added for Checkbox State variants — opacity baked in)",
           "remote": false
@@ -151,7 +177,10 @@
               "a": 0.30000001192092896
             }
           },
-          "scopes": ["FRAME_FILL", "SHAPE_FILL"],
+          "scopes": [
+            "FRAME_FILL",
+            "SHAPE_FILL"
+          ],
           "codeSyntax": {},
           "description": "Local mirror of merak seed/secondary/focusVisible (added for Checkbox State variants — opacity baked in)",
           "remote": false
@@ -169,7 +198,10 @@
               "a": 0.30000001192092896
             }
           },
-          "scopes": ["FRAME_FILL", "SHAPE_FILL"],
+          "scopes": [
+            "FRAME_FILL",
+            "SHAPE_FILL"
+          ],
           "codeSyntax": {},
           "description": "Local mirror of merak seed/danger/focusVisible (added for Checkbox State variants — opacity baked in)",
           "remote": false
@@ -187,7 +219,10 @@
               "a": 0.30000001192092896
             }
           },
-          "scopes": ["FRAME_FILL", "SHAPE_FILL"],
+          "scopes": [
+            "FRAME_FILL",
+            "SHAPE_FILL"
+          ],
           "codeSyntax": {},
           "description": "Local mirror of merak seed/warning/focusVisible (added for Checkbox State variants — opacity baked in)",
           "remote": false
@@ -205,7 +240,10 @@
               "a": 0.30000001192092896
             }
           },
-          "scopes": ["FRAME_FILL", "SHAPE_FILL"],
+          "scopes": [
+            "FRAME_FILL",
+            "SHAPE_FILL"
+          ],
           "codeSyntax": {},
           "description": "Local mirror of merak seed/info/focusVisible (added for Checkbox State variants — opacity baked in)",
           "remote": false
@@ -223,7 +261,10 @@
               "a": 0.30000001192092896
             }
           },
-          "scopes": ["FRAME_FILL", "SHAPE_FILL"],
+          "scopes": [
+            "FRAME_FILL",
+            "SHAPE_FILL"
+          ],
           "codeSyntax": {},
           "description": "Local mirror of merak seed/success/focusVisible (added for Checkbox State variants — opacity baked in)",
           "remote": false
@@ -233,8 +274,18 @@
           "name": "seed/neutral/focusVisible",
           "key": "5871e546e6a6af539990a749ff461178b1100e2e",
           "resolvedType": "COLOR",
-          "valuesByMode": { "37:0": { "r": 0, "g": 0, "b": 0, "a": 0.30000001192092896 } },
-          "scopes": ["FRAME_FILL", "SHAPE_FILL"],
+          "valuesByMode": {
+            "37:0": {
+              "r": 0,
+              "g": 0,
+              "b": 0,
+              "a": 0.30000001192092896
+            }
+          },
+          "scopes": [
+            "FRAME_FILL",
+            "SHAPE_FILL"
+          ],
           "codeSyntax": {},
           "description": "Local mirror of merak seed/neutral/focusVisible (added for Checkbox State variants — opacity baked in)",
           "remote": false
@@ -244,8 +295,18 @@
           "name": "alias/colors/bg-outline-hover",
           "key": "5cfe33004315c2067629c74303c3782212bee30c",
           "resolvedType": "COLOR",
-          "valuesByMode": { "37:0": { "r": 0, "g": 0, "b": 0, "a": 0.03999999910593033 } },
-          "scopes": ["FRAME_FILL", "SHAPE_FILL"],
+          "valuesByMode": {
+            "37:0": {
+              "r": 0,
+              "g": 0,
+              "b": 0,
+              "a": 0.03999999910593033
+            }
+          },
+          "scopes": [
+            "FRAME_FILL",
+            "SHAPE_FILL"
+          ],
           "codeSyntax": {},
           "description": "Local mirror of merak alias/colors/bg-outline-hover (added for Checkbox State variants — opacity baked in)",
           "remote": false
@@ -255,8 +316,17 @@
           "name": "alias/colors/fg-disabled",
           "key": "fc1435925963418f6eb5926c5012783236d0e91a",
           "resolvedType": "COLOR",
-          "valuesByMode": { "37:0": { "r": 0, "g": 0, "b": 0, "a": 0.25999999046325684 } },
-          "scopes": ["TEXT_FILL"],
+          "valuesByMode": {
+            "37:0": {
+              "r": 0,
+              "g": 0,
+              "b": 0,
+              "a": 0.25999999046325684
+            }
+          },
+          "scopes": [
+            "TEXT_FILL"
+          ],
           "codeSyntax": {},
           "description": "",
           "remote": false
@@ -274,7 +344,10 @@
               "a": 1
             }
           },
-          "scopes": ["FRAME_FILL", "SHAPE_FILL"],
+          "scopes": [
+            "FRAME_FILL",
+            "SHAPE_FILL"
+          ],
           "codeSyntax": {},
           "description": "",
           "remote": false
@@ -284,8 +357,17 @@
           "name": "component/button/contained-default-fg",
           "key": "d4921e43ad455c21560f91d9279e17465d2e97d9",
           "resolvedType": "COLOR",
-          "valuesByMode": { "37:0": { "r": 0, "g": 0, "b": 0, "a": 0.8700000047683716 } },
-          "scopes": ["TEXT_FILL"],
+          "valuesByMode": {
+            "37:0": {
+              "r": 0,
+              "g": 0,
+              "b": 0,
+              "a": 0.8700000047683716
+            }
+          },
+          "scopes": [
+            "TEXT_FILL"
+          ],
           "codeSyntax": {},
           "description": "",
           "remote": false
@@ -295,8 +377,17 @@
           "name": "component/button/outlined-default-border",
           "key": "1386306652d2b7de7c10280989b637884caf4bbd",
           "resolvedType": "COLOR",
-          "valuesByMode": { "37:0": { "r": 0, "g": 0, "b": 0, "a": 0.8700000047683716 } },
-          "scopes": ["STROKE_COLOR"],
+          "valuesByMode": {
+            "37:0": {
+              "r": 0,
+              "g": 0,
+              "b": 0,
+              "a": 0.8700000047683716
+            }
+          },
+          "scopes": [
+            "STROKE_COLOR"
+          ],
           "codeSyntax": {},
           "description": "",
           "remote": false
@@ -314,7 +405,11 @@
               "a": 1
             }
           },
-          "scopes": ["FRAME_FILL", "TEXT_FILL", "STROKE_COLOR"],
+          "scopes": [
+            "FRAME_FILL",
+            "TEXT_FILL",
+            "STROKE_COLOR"
+          ],
           "codeSyntax": {},
           "description": "",
           "remote": false
@@ -324,8 +419,17 @@
           "name": "seed/primary/on",
           "key": "81555e109cd8207f896008a1141a2265fb5f5c0f",
           "resolvedType": "COLOR",
-          "valuesByMode": { "37:0": { "r": 1, "g": 1, "b": 1, "a": 1 } },
-          "scopes": ["TEXT_FILL"],
+          "valuesByMode": {
+            "37:0": {
+              "r": 1,
+              "g": 1,
+              "b": 1,
+              "a": 1
+            }
+          },
+          "scopes": [
+            "TEXT_FILL"
+          ],
           "codeSyntax": {},
           "description": "",
           "remote": false
@@ -343,7 +447,9 @@
               "a": 1
             }
           },
-          "scopes": ["FRAME_FILL"],
+          "scopes": [
+            "FRAME_FILL"
+          ],
           "codeSyntax": {},
           "description": "",
           "remote": false
@@ -361,7 +467,9 @@
               "a": 0.5
             }
           },
-          "scopes": ["STROKE_COLOR"],
+          "scopes": [
+            "STROKE_COLOR"
+          ],
           "codeSyntax": {},
           "description": "",
           "remote": false
@@ -379,7 +487,11 @@
               "a": 1
             }
           },
-          "scopes": ["FRAME_FILL", "TEXT_FILL", "STROKE_COLOR"],
+          "scopes": [
+            "FRAME_FILL",
+            "TEXT_FILL",
+            "STROKE_COLOR"
+          ],
           "codeSyntax": {},
           "description": "",
           "remote": false
@@ -389,8 +501,17 @@
           "name": "seed/danger/on",
           "key": "aa0b1958d809d2d5d8aed280da6a023308dda0d3",
           "resolvedType": "COLOR",
-          "valuesByMode": { "37:0": { "r": 1, "g": 1, "b": 1, "a": 1 } },
-          "scopes": ["TEXT_FILL"],
+          "valuesByMode": {
+            "37:0": {
+              "r": 1,
+              "g": 1,
+              "b": 1,
+              "a": 1
+            }
+          },
+          "scopes": [
+            "TEXT_FILL"
+          ],
           "codeSyntax": {},
           "description": "",
           "remote": false
@@ -408,7 +529,9 @@
               "a": 1
             }
           },
-          "scopes": ["FRAME_FILL"],
+          "scopes": [
+            "FRAME_FILL"
+          ],
           "codeSyntax": {},
           "description": "",
           "remote": false
@@ -426,7 +549,9 @@
               "a": 0.5
             }
           },
-          "scopes": ["STROKE_COLOR"],
+          "scopes": [
+            "STROKE_COLOR"
+          ],
           "codeSyntax": {},
           "description": "",
           "remote": false
@@ -444,7 +569,11 @@
               "a": 1
             }
           },
-          "scopes": ["FRAME_FILL", "TEXT_FILL", "STROKE_COLOR"],
+          "scopes": [
+            "FRAME_FILL",
+            "TEXT_FILL",
+            "STROKE_COLOR"
+          ],
           "codeSyntax": {},
           "description": "",
           "remote": false
@@ -454,8 +583,17 @@
           "name": "seed/warning/on",
           "key": "d5996b2e6cf9e19b135c6546e94d11d425009a5d",
           "resolvedType": "COLOR",
-          "valuesByMode": { "37:0": { "r": 1, "g": 1, "b": 1, "a": 1 } },
-          "scopes": ["TEXT_FILL"],
+          "valuesByMode": {
+            "37:0": {
+              "r": 1,
+              "g": 1,
+              "b": 1,
+              "a": 1
+            }
+          },
+          "scopes": [
+            "TEXT_FILL"
+          ],
           "codeSyntax": {},
           "description": "",
           "remote": false
@@ -466,9 +604,16 @@
           "key": "fe994be05f8b744fda4394092cc4ce16874d07ec",
           "resolvedType": "COLOR",
           "valuesByMode": {
-            "37:0": { "r": 0.9019607901573181, "g": 0.3176470696926117, "b": 0, "a": 1 }
+            "37:0": {
+              "r": 0.9019607901573181,
+              "g": 0.3176470696926117,
+              "b": 0,
+              "a": 1
+            }
           },
-          "scopes": ["FRAME_FILL"],
+          "scopes": [
+            "FRAME_FILL"
+          ],
           "codeSyntax": {},
           "description": "",
           "remote": false
@@ -486,7 +631,9 @@
               "a": 0.5
             }
           },
-          "scopes": ["STROKE_COLOR"],
+          "scopes": [
+            "STROKE_COLOR"
+          ],
           "codeSyntax": {},
           "description": "",
           "remote": false
@@ -504,7 +651,11 @@
               "a": 1
             }
           },
-          "scopes": ["FRAME_FILL", "TEXT_FILL", "STROKE_COLOR"],
+          "scopes": [
+            "FRAME_FILL",
+            "TEXT_FILL",
+            "STROKE_COLOR"
+          ],
           "codeSyntax": {},
           "description": "",
           "remote": false
@@ -514,8 +665,17 @@
           "name": "seed/info/on",
           "key": "a31e7676904323b7037359171b07a4302024da60",
           "resolvedType": "COLOR",
-          "valuesByMode": { "37:0": { "r": 1, "g": 1, "b": 1, "a": 1 } },
-          "scopes": ["TEXT_FILL"],
+          "valuesByMode": {
+            "37:0": {
+              "r": 1,
+              "g": 1,
+              "b": 1,
+              "a": 1
+            }
+          },
+          "scopes": [
+            "TEXT_FILL"
+          ],
           "codeSyntax": {},
           "description": "",
           "remote": false
@@ -533,7 +693,9 @@
               "a": 1
             }
           },
-          "scopes": ["FRAME_FILL"],
+          "scopes": [
+            "FRAME_FILL"
+          ],
           "codeSyntax": {},
           "description": "",
           "remote": false
@@ -551,7 +713,9 @@
               "a": 0.5
             }
           },
-          "scopes": ["STROKE_COLOR"],
+          "scopes": [
+            "STROKE_COLOR"
+          ],
           "codeSyntax": {},
           "description": "",
           "remote": false
@@ -569,7 +733,11 @@
               "a": 1
             }
           },
-          "scopes": ["FRAME_FILL", "TEXT_FILL", "STROKE_COLOR"],
+          "scopes": [
+            "FRAME_FILL",
+            "TEXT_FILL",
+            "STROKE_COLOR"
+          ],
           "codeSyntax": {},
           "description": "",
           "remote": false
@@ -579,8 +747,17 @@
           "name": "seed/success/on",
           "key": "c5f0b6dc6daef14206b26abbd386f2e645cdc827",
           "resolvedType": "COLOR",
-          "valuesByMode": { "37:0": { "r": 1, "g": 1, "b": 1, "a": 1 } },
-          "scopes": ["TEXT_FILL"],
+          "valuesByMode": {
+            "37:0": {
+              "r": 1,
+              "g": 1,
+              "b": 1,
+              "a": 1
+            }
+          },
+          "scopes": [
+            "TEXT_FILL"
+          ],
           "codeSyntax": {},
           "description": "",
           "remote": false
@@ -598,7 +775,9 @@
               "a": 1
             }
           },
-          "scopes": ["FRAME_FILL"],
+          "scopes": [
+            "FRAME_FILL"
+          ],
           "codeSyntax": {},
           "description": "",
           "remote": false
@@ -616,7 +795,9 @@
               "a": 0.5
             }
           },
-          "scopes": ["STROKE_COLOR"],
+          "scopes": [
+            "STROKE_COLOR"
+          ],
           "codeSyntax": {},
           "description": "",
           "remote": false
@@ -634,7 +815,9 @@
               "a": 1
             }
           },
-          "scopes": ["FRAME_FILL"],
+          "scopes": [
+            "FRAME_FILL"
+          ],
           "codeSyntax": {},
           "description": "",
           "remote": false
@@ -644,8 +827,17 @@
           "name": "alias/colors/text-default",
           "key": "7db080e0ffe525e0992c43aec04a69ed20c3ac74",
           "resolvedType": "COLOR",
-          "valuesByMode": { "37:0": { "r": 0, "g": 0, "b": 0, "a": 0.8700000047683716 } },
-          "scopes": ["TEXT_FILL"],
+          "valuesByMode": {
+            "37:0": {
+              "r": 0,
+              "g": 0,
+              "b": 0,
+              "a": 0.8700000047683716
+            }
+          },
+          "scopes": [
+            "TEXT_FILL"
+          ],
           "codeSyntax": {},
           "description": "",
           "remote": false
@@ -655,8 +847,18 @@
           "name": "alias/colors/bg-disabled",
           "key": "b0a01ade3234f381e7a2097edda2444def3b7f5e",
           "resolvedType": "COLOR",
-          "valuesByMode": { "37:0": { "r": 0, "g": 0, "b": 0, "a": 0.11999999731779099 } },
-          "scopes": ["FRAME_FILL", "STROKE_COLOR"],
+          "valuesByMode": {
+            "37:0": {
+              "r": 0,
+              "g": 0,
+              "b": 0,
+              "a": 0.11999999731779099
+            }
+          },
+          "scopes": [
+            "FRAME_FILL",
+            "STROKE_COLOR"
+          ],
           "codeSyntax": {},
           "description": "",
           "remote": false
@@ -666,8 +868,18 @@
           "name": "alias/colors/bg-default",
           "key": "61a5256db27ff646ac696e95755d81cd510758d2",
           "resolvedType": "COLOR",
-          "valuesByMode": { "37:0": { "r": 1, "g": 1, "b": 1, "a": 1 } },
-          "scopes": ["FRAME_FILL", "SHAPE_FILL"],
+          "valuesByMode": {
+            "37:0": {
+              "r": 1,
+              "g": 1,
+              "b": 1,
+              "a": 1
+            }
+          },
+          "scopes": [
+            "FRAME_FILL",
+            "SHAPE_FILL"
+          ],
           "codeSyntax": {},
           "description": "",
           "remote": false
@@ -677,8 +889,18 @@
           "name": "alias/colors/bg-selected",
           "key": "ec06896ae78f653fbc5f4279dd0cc94e9fba4989",
           "resolvedType": "COLOR",
-          "valuesByMode": { "37:0": { "r": 0, "g": 0, "b": 0, "a": 0.0784313753247261 } },
-          "scopes": ["FRAME_FILL", "SHAPE_FILL"],
+          "valuesByMode": {
+            "37:0": {
+              "r": 0,
+              "g": 0,
+              "b": 0,
+              "a": 0.0784313753247261
+            }
+          },
+          "scopes": [
+            "FRAME_FILL",
+            "SHAPE_FILL"
+          ],
           "codeSyntax": {},
           "description": "",
           "remote": false
@@ -688,8 +910,17 @@
           "name": "alias/colors/text-disabled",
           "key": "232b2378374392a43c939e0a4c7c446241ce600e",
           "resolvedType": "COLOR",
-          "valuesByMode": { "37:0": { "r": 0, "g": 0, "b": 0, "a": 0.3803921639919281 } },
-          "scopes": ["TEXT_FILL"],
+          "valuesByMode": {
+            "37:0": {
+              "r": 0,
+              "g": 0,
+              "b": 0,
+              "a": 0.3803921639919281
+            }
+          },
+          "scopes": [
+            "TEXT_FILL"
+          ],
           "codeSyntax": {},
           "description": "",
           "remote": false
@@ -699,8 +930,17 @@
           "name": "alias/colors/border-defalt",
           "key": "905c4aaab16f75e6195ad06df956a2c189e51a36",
           "resolvedType": "COLOR",
-          "valuesByMode": { "37:0": { "r": 0, "g": 0, "b": 0, "a": 0.12156862765550613 } },
-          "scopes": ["STROKE_COLOR"],
+          "valuesByMode": {
+            "37:0": {
+              "r": 0,
+              "g": 0,
+              "b": 0,
+              "a": 0.12156862765550613
+            }
+          },
+          "scopes": [
+            "STROKE_COLOR"
+          ],
           "codeSyntax": {},
           "description": "",
           "remote": false
@@ -718,7 +958,10 @@
               "a": 0.12156862765550613
             }
           },
-          "scopes": ["FRAME_FILL", "SHAPE_FILL"],
+          "scopes": [
+            "FRAME_FILL",
+            "SHAPE_FILL"
+          ],
           "codeSyntax": {},
           "description": "",
           "remote": false
@@ -736,7 +979,10 @@
               "a": 0.12156862765550613
             }
           },
-          "scopes": ["FRAME_FILL", "SHAPE_FILL"],
+          "scopes": [
+            "FRAME_FILL",
+            "SHAPE_FILL"
+          ],
           "codeSyntax": {},
           "description": "",
           "remote": false
@@ -754,7 +1000,10 @@
               "a": 0.12156862765550613
             }
           },
-          "scopes": ["FRAME_FILL", "SHAPE_FILL"],
+          "scopes": [
+            "FRAME_FILL",
+            "SHAPE_FILL"
+          ],
           "codeSyntax": {},
           "description": "",
           "remote": false
@@ -772,7 +1021,10 @@
               "a": 0.12156862765550613
             }
           },
-          "scopes": ["FRAME_FILL", "SHAPE_FILL"],
+          "scopes": [
+            "FRAME_FILL",
+            "SHAPE_FILL"
+          ],
           "codeSyntax": {},
           "description": "",
           "remote": false
@@ -790,7 +1042,10 @@
               "a": 0.12156862765550613
             }
           },
-          "scopes": ["FRAME_FILL", "SHAPE_FILL"],
+          "scopes": [
+            "FRAME_FILL",
+            "SHAPE_FILL"
+          ],
           "codeSyntax": {},
           "description": "",
           "remote": false
@@ -800,8 +1055,17 @@
           "name": "component/input/standard/enabledBorder",
           "key": "bb2379bd67d4cd227f6a2617d4e471a731826998",
           "resolvedType": "COLOR",
-          "valuesByMode": { "37:0": { "r": 0, "g": 0, "b": 0, "a": 0.41960784792900085 } },
-          "scopes": ["STROKE_COLOR"],
+          "valuesByMode": {
+            "37:0": {
+              "r": 0,
+              "g": 0,
+              "b": 0,
+              "a": 0.41960784792900085
+            }
+          },
+          "scopes": [
+            "STROKE_COLOR"
+          ],
           "codeSyntax": {},
           "description": "",
           "remote": false
@@ -811,8 +1075,17 @@
           "name": "component/input/standard/hoverBorder",
           "key": "98765dee2638d03b26097eabcd37c138dc828452",
           "resolvedType": "COLOR",
-          "valuesByMode": { "37:0": { "r": 0, "g": 0, "b": 0, "a": 0.8705882430076599 } },
-          "scopes": ["STROKE_COLOR"],
+          "valuesByMode": {
+            "37:0": {
+              "r": 0,
+              "g": 0,
+              "b": 0,
+              "a": 0.8705882430076599
+            }
+          },
+          "scopes": [
+            "STROKE_COLOR"
+          ],
           "codeSyntax": {},
           "description": "",
           "remote": false
@@ -822,8 +1095,18 @@
           "name": "component/input/filled/enabledFill",
           "key": "9c448c062deeca56b22902f9dfabe2a0bf98ecdc",
           "resolvedType": "COLOR",
-          "valuesByMode": { "37:0": { "r": 0, "g": 0, "b": 0, "a": 0.05882352963089943 } },
-          "scopes": ["FRAME_FILL", "SHAPE_FILL"],
+          "valuesByMode": {
+            "37:0": {
+              "r": 0,
+              "g": 0,
+              "b": 0,
+              "a": 0.05882352963089943
+            }
+          },
+          "scopes": [
+            "FRAME_FILL",
+            "SHAPE_FILL"
+          ],
           "codeSyntax": {},
           "description": "",
           "remote": false
@@ -833,8 +1116,18 @@
           "name": "component/input/filled/hoverFill",
           "key": "dbfc2b8b3fd30a95c6b6795105c6d7faddb5e507",
           "resolvedType": "COLOR",
-          "valuesByMode": { "37:0": { "r": 0, "g": 0, "b": 0, "a": 0.09019608050584793 } },
-          "scopes": ["FRAME_FILL", "SHAPE_FILL"],
+          "valuesByMode": {
+            "37:0": {
+              "r": 0,
+              "g": 0,
+              "b": 0,
+              "a": 0.09019608050584793
+            }
+          },
+          "scopes": [
+            "FRAME_FILL",
+            "SHAPE_FILL"
+          ],
           "codeSyntax": {},
           "description": "",
           "remote": false
@@ -844,8 +1137,17 @@
           "name": "component/input/outlined/enabledBorder",
           "key": "34684e96237cfc6f62640fd864272f342b8b694f",
           "resolvedType": "COLOR",
-          "valuesByMode": { "37:0": { "r": 0, "g": 0, "b": 0, "a": 0.12156862765550613 } },
-          "scopes": ["STROKE_COLOR"],
+          "valuesByMode": {
+            "37:0": {
+              "r": 0,
+              "g": 0,
+              "b": 0,
+              "a": 0.12156862765550613
+            }
+          },
+          "scopes": [
+            "STROKE_COLOR"
+          ],
           "codeSyntax": {},
           "description": "",
           "remote": false
@@ -855,8 +1157,17 @@
           "name": "component/input/outlined/hoverBorder",
           "key": "e211a16abe44959aac97986d5dbdfd4fcfff63d5",
           "resolvedType": "COLOR",
-          "valuesByMode": { "37:0": { "r": 0, "g": 0, "b": 0, "a": 0.8705882430076599 } },
-          "scopes": ["STROKE_COLOR"],
+          "valuesByMode": {
+            "37:0": {
+              "r": 0,
+              "g": 0,
+              "b": 0,
+              "a": 0.8705882430076599
+            }
+          },
+          "scopes": [
+            "STROKE_COLOR"
+          ],
           "codeSyntax": {},
           "description": "",
           "remote": false
@@ -866,8 +1177,18 @@
           "name": "alias/colors/text-sub",
           "key": "6ee96e1cc8fecf7f291d81a144711d62774cba20",
           "resolvedType": "COLOR",
-          "valuesByMode": { "37:0": { "r": 0, "g": 0, "b": 0, "a": 0.6000000238418579 } },
-          "scopes": ["SHAPE_FILL", "TEXT_FILL"],
+          "valuesByMode": {
+            "37:0": {
+              "r": 0,
+              "g": 0,
+              "b": 0,
+              "a": 0.6000000238418579
+            }
+          },
+          "scopes": [
+            "SHAPE_FILL",
+            "TEXT_FILL"
+          ],
           "codeSyntax": {},
           "description": "",
           "remote": false
@@ -877,8 +1198,17 @@
           "name": "text/disabled",
           "key": "8823fc6b08d639c89c74031eaa592b054a1d0ac1",
           "resolvedType": "COLOR",
-          "valuesByMode": { "37:0": { "r": 0, "g": 0, "b": 0, "a": 0.3803921639919281 } },
-          "scopes": ["TEXT_FILL"],
+          "valuesByMode": {
+            "37:0": {
+              "r": 0,
+              "g": 0,
+              "b": 0,
+              "a": 0.3803921639919281
+            }
+          },
+          "scopes": [
+            "TEXT_FILL"
+          ],
           "codeSyntax": {},
           "description": "",
           "remote": false
@@ -888,8 +1218,18 @@
           "name": "background/paper-elevation-0",
           "key": "bcb5c1011163fc04a40430a249362ed5b31efee0",
           "resolvedType": "COLOR",
-          "valuesByMode": { "37:0": { "r": 1, "g": 1, "b": 1, "a": 1 } },
-          "scopes": ["FRAME_FILL", "SHAPE_FILL"],
+          "valuesByMode": {
+            "37:0": {
+              "r": 1,
+              "g": 1,
+              "b": 1,
+              "a": 1
+            }
+          },
+          "scopes": [
+            "FRAME_FILL",
+            "SHAPE_FILL"
+          ],
           "codeSyntax": {},
           "description": "",
           "remote": false
@@ -899,8 +1239,17 @@
           "name": "alias/colors/bg-active",
           "key": "e49f6a8ec7444282783be39a01319f8aa08408fb",
           "resolvedType": "COLOR",
-          "valuesByMode": { "37:0": { "r": 0, "g": 0, "b": 0, "a": 0.5400000214576721 } },
-          "scopes": ["ALL_SCOPES"],
+          "valuesByMode": {
+            "37:0": {
+              "r": 0,
+              "g": 0,
+              "b": 0,
+              "a": 0.5400000214576721
+            }
+          },
+          "scopes": [
+            "ALL_SCOPES"
+          ],
           "codeSyntax": {},
           "description": "",
           "remote": false
@@ -918,7 +1267,9 @@
               "a": 1
             }
           },
-          "scopes": ["ALL_SCOPES"],
+          "scopes": [
+            "ALL_SCOPES"
+          ],
           "codeSyntax": {},
           "description": "",
           "remote": false
@@ -928,8 +1279,18 @@
           "name": "alias/colors/bg-filled-hover",
           "key": "cef4d4ee529999d447483cf39256ba03714c060a",
           "resolvedType": "COLOR",
-          "valuesByMode": { "37:0": { "r": 0, "g": 0, "b": 0, "a": 0.11999999731779099 } },
-          "scopes": ["FRAME_FILL", "SHAPE_FILL"],
+          "valuesByMode": {
+            "37:0": {
+              "r": 0,
+              "g": 0,
+              "b": 0,
+              "a": 0.11999999731779099
+            }
+          },
+          "scopes": [
+            "FRAME_FILL",
+            "SHAPE_FILL"
+          ],
           "codeSyntax": {},
           "description": "",
           "remote": false
@@ -939,8 +1300,18 @@
           "name": "alias/colors/bg-focus",
           "key": "4aef87c51c9cf6bfbae062747273fdde128ab666",
           "resolvedType": "COLOR",
-          "valuesByMode": { "37:0": { "r": 0, "g": 0, "b": 0, "a": 0.11999999731779099 } },
-          "scopes": ["FRAME_FILL", "SHAPE_FILL"],
+          "valuesByMode": {
+            "37:0": {
+              "r": 0,
+              "g": 0,
+              "b": 0,
+              "a": 0.11999999731779099
+            }
+          },
+          "scopes": [
+            "FRAME_FILL",
+            "SHAPE_FILL"
+          ],
           "codeSyntax": {},
           "description": "",
           "remote": false
@@ -950,8 +1321,18 @@
           "name": "component/chip/fill",
           "key": "ee43910768490ac0dd09d54e8a1e45f5895d37c6",
           "resolvedType": "COLOR",
-          "valuesByMode": { "37:0": { "r": 0, "g": 0, "b": 0, "a": 0.07999999821186066 } },
-          "scopes": ["FRAME_FILL", "SHAPE_FILL"],
+          "valuesByMode": {
+            "37:0": {
+              "r": 0,
+              "g": 0,
+              "b": 0,
+              "a": 0.07999999821186066
+            }
+          },
+          "scopes": [
+            "FRAME_FILL",
+            "SHAPE_FILL"
+          ],
           "codeSyntax": {},
           "description": "",
           "remote": false
@@ -969,7 +1350,9 @@
               "a": 1
             }
           },
-          "scopes": ["STROKE_COLOR"],
+          "scopes": [
+            "STROKE_COLOR"
+          ],
           "codeSyntax": {},
           "description": "",
           "remote": false
@@ -979,8 +1362,18 @@
           "name": "component/chip/focus-fill",
           "key": "70d412553980f6e209bde7a090eb4f26a8db3fde",
           "resolvedType": "COLOR",
-          "valuesByMode": { "37:0": { "r": 0, "g": 0, "b": 0, "a": 0.20000000298023224 } },
-          "scopes": ["FRAME_FILL", "SHAPE_FILL"],
+          "valuesByMode": {
+            "37:0": {
+              "r": 0,
+              "g": 0,
+              "b": 0,
+              "a": 0.20000000298023224
+            }
+          },
+          "scopes": [
+            "FRAME_FILL",
+            "SHAPE_FILL"
+          ],
           "codeSyntax": {},
           "description": "",
           "remote": false
@@ -990,8 +1383,12 @@
           "name": "component/chip/disabled-opacity",
           "key": "0ebb53ac5ccb80ca079a281d6bd964ba83d767e4",
           "resolvedType": "FLOAT",
-          "valuesByMode": { "37:0": 0.3799999952316284 },
-          "scopes": ["OPACITY"],
+          "valuesByMode": {
+            "37:0": 0.3799999952316284
+          },
+          "scopes": [
+            "OPACITY"
+          ],
           "codeSyntax": {},
           "description": "",
           "remote": false
@@ -1009,7 +1406,11 @@
               "a": 1
             }
           },
-          "scopes": ["FRAME_FILL", "SHAPE_FILL", "TEXT_FILL"],
+          "scopes": [
+            "FRAME_FILL",
+            "SHAPE_FILL",
+            "TEXT_FILL"
+          ],
           "codeSyntax": {},
           "description": "",
           "remote": false
@@ -1019,8 +1420,18 @@
           "name": "seed/neutral/white",
           "key": "f3c7181c179c87253d80dc4a9cbf155bd34922bd",
           "resolvedType": "COLOR",
-          "valuesByMode": { "37:0": { "r": 1, "g": 1, "b": 1, "a": 1 } },
-          "scopes": ["FRAME_FILL", "TEXT_FILL"],
+          "valuesByMode": {
+            "37:0": {
+              "r": 1,
+              "g": 1,
+              "b": 1,
+              "a": 1
+            }
+          },
+          "scopes": [
+            "FRAME_FILL",
+            "TEXT_FILL"
+          ],
           "codeSyntax": {},
           "description": "",
           "remote": false
@@ -1030,8 +1441,18 @@
           "name": "seed/neutral/black",
           "key": "9a4df7ae4192e552b9e73b0843e6ba90be704611",
           "resolvedType": "COLOR",
-          "valuesByMode": { "37:0": { "r": 0, "g": 0, "b": 0, "a": 1 } },
-          "scopes": ["FRAME_FILL", "TEXT_FILL"],
+          "valuesByMode": {
+            "37:0": {
+              "r": 0,
+              "g": 0,
+              "b": 0,
+              "a": 1
+            }
+          },
+          "scopes": [
+            "FRAME_FILL",
+            "TEXT_FILL"
+          ],
           "codeSyntax": {},
           "description": "",
           "remote": false
@@ -1049,7 +1470,10 @@
               "a": 0.07999999821186066
             }
           },
-          "scopes": ["FRAME_FILL", "SHAPE_FILL"],
+          "scopes": [
+            "FRAME_FILL",
+            "SHAPE_FILL"
+          ],
           "codeSyntax": {},
           "description": "",
           "remote": false
@@ -1067,7 +1491,10 @@
               "a": 0.11999999731779099
             }
           },
-          "scopes": ["FRAME_FILL", "SHAPE_FILL"],
+          "scopes": [
+            "FRAME_FILL",
+            "SHAPE_FILL"
+          ],
           "codeSyntax": {},
           "description": "",
           "remote": false
@@ -1085,7 +1512,10 @@
               "a": 0.07999999821186066
             }
           },
-          "scopes": ["FRAME_FILL", "SHAPE_FILL"],
+          "scopes": [
+            "FRAME_FILL",
+            "SHAPE_FILL"
+          ],
           "codeSyntax": {},
           "description": "",
           "remote": false
@@ -1103,7 +1533,10 @@
               "a": 0.11999999731779099
             }
           },
-          "scopes": ["FRAME_FILL", "SHAPE_FILL"],
+          "scopes": [
+            "FRAME_FILL",
+            "SHAPE_FILL"
+          ],
           "codeSyntax": {},
           "description": "",
           "remote": false
@@ -1121,7 +1554,10 @@
               "a": 0.07999999821186066
             }
           },
-          "scopes": ["FRAME_FILL", "SHAPE_FILL"],
+          "scopes": [
+            "FRAME_FILL",
+            "SHAPE_FILL"
+          ],
           "codeSyntax": {},
           "description": "",
           "remote": false
@@ -1139,7 +1575,10 @@
               "a": 0.8980000019073486
             }
           },
-          "scopes": ["FRAME_FILL", "SHAPE_FILL"],
+          "scopes": [
+            "FRAME_FILL",
+            "SHAPE_FILL"
+          ],
           "codeSyntax": {},
           "description": "",
           "remote": false
@@ -1157,7 +1596,10 @@
               "a": 1
             }
           },
-          "scopes": ["FRAME_FILL", "SHAPE_FILL"],
+          "scopes": [
+            "FRAME_FILL",
+            "SHAPE_FILL"
+          ],
           "codeSyntax": {},
           "description": "",
           "remote": false
@@ -1167,8 +1609,18 @@
           "name": "component/snackbar/alert-icon-fg",
           "key": "8fdc442712256e07d2baf80fa0047047a08a80f8",
           "resolvedType": "COLOR",
-          "valuesByMode": { "37:0": { "r": 1, "g": 1, "b": 1, "a": 0.9020000100135803 } },
-          "scopes": ["FRAME_FILL", "SHAPE_FILL"],
+          "valuesByMode": {
+            "37:0": {
+              "r": 1,
+              "g": 1,
+              "b": 1,
+              "a": 0.9020000100135803
+            }
+          },
+          "scopes": [
+            "FRAME_FILL",
+            "SHAPE_FILL"
+          ],
           "codeSyntax": {},
           "description": "",
           "remote": false
