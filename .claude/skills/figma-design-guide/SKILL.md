@@ -13,7 +13,7 @@ Load alongside `figma-operator-guide` (for Figma authoring rules) and `figma:fig
 
 ## Submodule index
 
-- **[design-token.md](design-token.md)** — Variable collections (`material-design`, `merak`), text styles, elevation/effect styles. Use whenever you need a real token name (color, spacing, typography, shadow). Always bind to `merak/*` semantic tokens; reach into `material-design/palette/*` only when no semantic token fits.
+- **[design-token.md](design-token.md)** — The single `merak` variable collection (78 vars: `alias/colors/*`, `seed/*`, `component/*`, plus a few top-level), 28 text styles (`material-design/typography/*` + `component/typography/*`, each with a `-bold` sibling), and 24 `material-design/shadows/shadows-{1..24}` effect styles. Use whenever you need a real token name (color, typography, shadow). Bind to existing tokens by name — there is no raw palette layer to fall back on.
 - **[components.md](components.md)** — The published component inventory (names, node IDs, variant counts) in the MUI Library file. Grep this list before creating any new component — if it exists, import via `importComponentByKeyAsync` / `importComponentSetByKeyAsync` and reuse.
 
 ---
