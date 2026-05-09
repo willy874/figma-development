@@ -43,14 +43,14 @@
       "strokeWeight": 1,
       "strokeAlign": "INSIDE",
       "absoluteBoundingBox": {
-        "x": 1648,
-        "y": 10493,
+        "x": 3395,
+        "y": 3042.594970703125,
         "width": 21,
         "height": 21
       },
       "absoluteRenderBounds": {
-        "x": 1648,
-        "y": 10493,
+        "x": 3395,
+        "y": 3042.594970703125,
         "width": 21,
         "height": 21
       },
@@ -79,14 +79,14 @@
     "a": 0
   },
   "absoluteBoundingBox": {
-    "x": 1639,
-    "y": 10484,
+    "x": 3386,
+    "y": 3033.594970703125,
     "width": 39,
     "height": 39
   },
   "absoluteRenderBounds": {
-    "x": 1639,
-    "y": 10484,
+    "x": 3386,
+    "y": 3033.594970703125,
     "width": 39,
     "height": 39
   },

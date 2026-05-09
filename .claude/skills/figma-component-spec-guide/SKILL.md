@@ -284,6 +284,6 @@ When updating, re-run steps 1–4 before editing. For Skeleton B, re-probe the S
 
 - [`figma-design-guide`](../figma-design-guide/SKILL.md) — project-specific design system inventory (variable collections, text styles, elevation, published component IDs). Spec frontmatter IDs and every token path in §4 / §10 must reconcile against this skill's submodules.
 - Sibling skills:
-  - `figma-component-upload` — bulk-extract every variant of a component set into per-variant JSON.
+  - `figma-component-sync` — bulk-extract every variant of a component set into per-variant JSON.
   - `figma-init` — force-overwrite variable values from a JSON snapshot.
   - `figma:figma-use` — required before any `use_figma` write.

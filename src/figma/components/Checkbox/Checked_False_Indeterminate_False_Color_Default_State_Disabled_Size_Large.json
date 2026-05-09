@@ -66,14 +66,14 @@
       "cornerRadius": 5,
       "cornerSmoothing": 0,
       "absoluteBoundingBox": {
-        "x": 1696,
-        "y": 10349,
+        "x": 3443,
+        "y": 2898.594970703125,
         "width": 21,
         "height": 21
       },
       "absoluteRenderBounds": {
-        "x": 1696,
-        "y": 10349,
+        "x": 3443,
+        "y": 2898.594970703125,
         "width": 21,
         "height": 21
       },
@@ -102,14 +102,14 @@
     "a": 0
   },
   "absoluteBoundingBox": {
-    "x": 1687,
-    "y": 10340,
+    "x": 3434,
+    "y": 2889.594970703125,
     "width": 39,
     "height": 39
   },
   "absoluteRenderBounds": {
-    "x": 1687,
-    "y": 10340,
+    "x": 3434,
+    "y": 2889.594970703125,
     "width": 39,
     "height": 39
   },

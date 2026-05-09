@@ -6,13 +6,13 @@
   "children": [
     {
       "id": "3:2726",
-      "name": "ArrowSolid",
+      "name": "User",
       "type": "INSTANCE",
       "scrollBehavior": "SCROLLS",
       "componentPropertyReferences": {
-        "mainComponent": "Instance#798:2"
+        "mainComponent": "Glyph Source#798:2"
       },
-      "componentId": "3:2740",
+      "componentId": "3:2748",
       "overrides": [
         {
           "id": "3:2726",
@@ -20,55 +20,132 @@
             "height",
             "width"
           ]
-        },
-        {
-          "id": "I3:2726;3:2741",
-          "overriddenFields": [
-            "layoutAlign",
-            "layoutGrow"
-          ]
         }
       ],
       "children": [
         {
-          "id": "I3:2726;3:2741",
-          "name": "material-symbols:arrow-back-ios-new-rounded",
+          "id": "I3:2726;3:2749",
+          "name": "gg:profile",
           "type": "FRAME",
           "scrollBehavior": "SCROLLS",
-          "rotation": -3.141592653589793,
           "children": [
             {
-              "id": "I3:2726;3:2742",
-              "name": "Vector",
-              "type": "VECTOR",
+              "id": "I3:2726;3:2750",
+              "name": "Group",
+              "type": "GROUP",
               "scrollBehavior": "SCROLLS",
-              "blendMode": "PASS_THROUGH",
-              "fills": [
+              "children": [
                 {
-                  "blendMode": "NORMAL",
-                  "type": "SOLID",
-                  "color": {
-                    "r": 0,
-                    "g": 0,
-                    "b": 0,
-                    "a": 1
+                  "id": "I3:2726;3:2751",
+                  "name": "Vector",
+                  "type": "VECTOR",
+                  "scrollBehavior": "SCROLLS",
+                  "blendMode": "PASS_THROUGH",
+                  "fills": [
+                    {
+                      "blendMode": "NORMAL",
+                      "type": "SOLID",
+                      "color": {
+                        "r": 0,
+                        "g": 0,
+                        "b": 0,
+                        "a": 1
+                      }
+                    }
+                  ],
+                  "strokes": [],
+                  "strokeWeight": 1,
+                  "strokeAlign": "INSIDE",
+                  "absoluteBoundingBox": {
+                    "x": -2542.029296875,
+                    "y": 256.6666564941406,
+                    "width": 10.666666984558105,
+                    "height": 10.666666984558105
+                  },
+                  "absoluteRenderBounds": {
+                    "x": -2542.029296875,
+                    "y": 256.6666564941406,
+                    "width": 10.666748046875,
+                    "height": 10.666656494140625
+                  },
+                  "constraints": {
+                    "vertical": "SCALE",
+                    "horizontal": "SCALE"
+                  },
+                  "effects": [],
+                  "interactions": [],
+                  "complexStrokeProperties": {
+                    "strokeType": "BASIC"
+                  }
+                },
+                {
+                  "id": "I3:2726;3:2752",
+                  "name": "Vector",
+                  "type": "VECTOR",
+                  "scrollBehavior": "SCROLLS",
+                  "blendMode": "PASS_THROUGH",
+                  "fills": [
+                    {
+                      "blendMode": "NORMAL",
+                      "type": "SOLID",
+                      "color": {
+                        "r": 0,
+                        "g": 0,
+                        "b": 0,
+                        "a": 1
+                      }
+                    }
+                  ],
+                  "strokes": [],
+                  "strokeWeight": 1,
+                  "strokeAlign": "INSIDE",
+                  "absoluteBoundingBox": {
+                    "x": -2551.362548828125,
+                    "y": 251.3333282470703,
+                    "width": 29.33333396911621,
+                    "height": 29.33333396911621
+                  },
+                  "absoluteRenderBounds": {
+                    "x": -2551.362548828125,
+                    "y": 251.3333282470703,
+                    "width": 29.333251953125,
+                    "height": 29.333328247070312
+                  },
+                  "constraints": {
+                    "vertical": "SCALE",
+                    "horizontal": "SCALE"
+                  },
+                  "effects": [],
+                  "interactions": [],
+                  "complexStrokeProperties": {
+                    "strokeType": "BASIC"
                   }
                 }
               ],
+              "blendMode": "PASS_THROUGH",
+              "clipsContent": false,
+              "background": [],
+              "fills": [],
               "strokes": [],
-              "strokeWeight": 2,
+              "strokeWeight": 1,
               "strokeAlign": "INSIDE",
+              "backgroundColor": {
+                "r": 0,
+                "g": 0,
+                "b": 0,
+                "a": 0
+              },
               "absoluteBoundingBox": {
-                "x": -2543.729235649109,
-                "y": 253.36665534973145,
-                "width": 13.933337211608887,
-                "height": 25.28449821472168
+                "x": -2551.362548828125,
+                "y": 251.3333282470703,
+                "width": 29.33333396911621,
+                "height": 29.33333396911621
               },
               "absoluteRenderBounds": {
-                "x": -2543.729248046875,
-                "y": 253.3666534423828,
-                "width": 13.933349609375,
-                "height": 25.284500122070312
+                "x": -2551.362548828125,
+                "y": 251.3333282470703,
+                "width": 29.33333396911621,
+                "height": 29.33333396911621
               },
               "constraints": {
                 "vertical": "SCALE",
@@ -131,8 +208,8 @@
             "height": 32
           },
           "targetAspectRatio": {
-            "x": 48,
-            "y": 48
+            "x": 24,
+            "y": 24
           },
           "constraints": {
             "vertical": "TOP",

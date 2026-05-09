@@ -268,4 +268,4 @@ After a runtime-truth pass, add a sentence to `figma.spec.md` §1 noting the dat
 - `figma-design-guide` — published variable collection, text styles, elevation, components inventory. Loaded in step 4 (and consulted throughout).
 - `figma-operator-guide` — situational submodules for any `use_figma` write. Loaded in step 5.
 - `figma:figma-use` — mandatory before any `use_figma` call.
-- `figma-component-upload` — sibling skill for snapshotting an authored component back out to per-variant JSON (useful as a post-step verification artefact, not part of this pipeline).
+- `figma-component-sync` — sibling skill for snapshotting an authored component back out to per-variant JSON (useful as a post-step verification artefact, not part of this pipeline).

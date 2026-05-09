@@ -61,14 +61,14 @@
           "strokeWeight": 1,
           "strokeAlign": "OUTSIDE",
           "absoluteBoundingBox": {
-            "x": 480,
-            "y": 9739,
+            "x": 1962,
+            "y": 2288.594970703125,
             "width": 40,
             "height": 24
           },
           "absoluteRenderBounds": {
-            "x": 481.3203125,
-            "y": 9744,
+            "x": 1963.3203125,
+            "y": 2293.594970703125,
             "width": 36.7484130859375,
             "height": 12.15625
           },
@@ -130,14 +130,14 @@
       "primaryAxisAlignItems": "CENTER",
       "layoutWrap": "NO_WRAP",
       "absoluteBoundingBox": {
-        "x": 480,
-        "y": 9739,
+        "x": 1962,
+        "y": 2288.594970703125,
         "width": 40,
         "height": 24
       },
       "absoluteRenderBounds": {
-        "x": 480,
-        "y": 9739,
+        "x": 1962,
+        "y": 2288.594970703125,
         "width": 40,
         "height": 24
       },
@@ -180,14 +180,14 @@
       "layoutMode": "VERTICAL",
       "layoutWrap": "NO_WRAP",
       "absoluteBoundingBox": {
-        "x": 482,
-        "y": 9767,
+        "x": 1964,
+        "y": 2316.594970703125,
         "width": 36,
         "height": 36
       },
       "absoluteRenderBounds": {
-        "x": 482,
-        "y": 9767,
+        "x": 1964,
+        "y": 2316.594970703125,
         "width": 36,
         "height": 36
       },
@@ -224,14 +224,14 @@
   "itemSpacing": 4,
   "layoutWrap": "NO_WRAP",
   "absoluteBoundingBox": {
-    "x": 480,
-    "y": 9739,
+    "x": 1962,
+    "y": 2288.594970703125,
     "width": 40,
     "height": 64
   },
   "absoluteRenderBounds": {
-    "x": 480,
-    "y": 9739,
+    "x": 1962,
+    "y": 2288.594970703125,
     "width": 40,
     "height": 64
   },

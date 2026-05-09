@@ -58,13 +58,13 @@
       "strokeAlign": "OUTSIDE",
       "absoluteBoundingBox": {
         "x": 2047,
-        "y": 2537,
+        "y": 12645,
         "width": 8,
         "height": 16
       },
       "absoluteRenderBounds": {
         "x": 2048.2314453125,
-        "y": 2539.9921875,
+        "y": 12647.9921875,
         "width": 3.814453125,
         "height": 10.0078125
       },
@@ -185,13 +185,13 @@
   "layoutWrap": "NO_WRAP",
   "absoluteBoundingBox": {
     "x": 2035,
-    "y": 2529,
+    "y": 12637,
     "width": 32,
     "height": 32
   },
   "absoluteRenderBounds": {
     "x": 2035,
-    "y": 2529,
+    "y": 12637,
     "width": 32,
     "height": 32
   },

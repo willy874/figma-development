@@ -2,40 +2,49 @@
 
 Source: [Figma file `KQjP6W9Uw1PN0iipwQHyYn`](https://www.figma.com/design/KQjP6W9Uw1PN0iipwQHyYn/MUI-Library)
 
-Total: **83 components** on 1 page (22 component sets / primitives + 61 icon library entries). Before creating anything new, grep this file for the name — if it exists, import via `importComponentByKeyAsync` / `importComponentSetByKeyAsync` and reuse. Never recreate an existing component.
+Total: **93 components** on 1 page (31 component sets / primitives + 62 icon library entries). Before creating anything new, grep this file for the name — if it exists, import via `importComponentByKeyAsync` / `importComponentSetByKeyAsync` and reuse. Never recreate an existing component.
 
 **Variant counts** in parentheses indicate the node is a `COMPONENT_SET` with that many variants; entries without a count are single `COMPONENT` nodes.
 
 ---
 
-## Page: `Foundation Components` (id `0:1`) — 63 components
+## Page: `Foundation Components` (id `0:1`) — 93 components
 
-### Component sets & primitives — 22 entries
+### Component sets & primitives — 31 entries
 
-| Name                     | Node ID    | Notes      |
-| ------------------------ | ---------- | ---------- |
-| `<Button>`               | `1:4109`   | SET (90)   |
-| `<IconButton>`           | `1:4571`   | SET (90)   |
-| `<DialogActions>`        | `1:4757`   |            |
-| `<DialogContent>`        | `1:4761`   | SET (2)    |
-| `<DialogTitle>`          | `1:4768`   |            |
-| `<Dialog>`               | `1:4772`   | SET (5)    |
-| `<PaginationItem>`       | `1:5098`   | SET (288)  |
-| `<Pagination>`           | `1:5675`   | SET (36)   |
-| `<NavigateBefore>`       | `224:4189` | SET (3)    |
-| `<NavigateNext>`         | `224:4199` | SET (3)    |
-| `<TextField>`            | `1:6266`   | SET (120)  |
-| `<Checkbox>`             | `1:7228`   | SET (258)  |
-| `<CheckboxFormControl>`  | `1:7367`   | SET (276)  |
-| `<CheckboxGroup>`        | `306:6886` | SET (54)   |
-| `<Radio>`                | `292:6292` | SET (174)  |
-| `<RadioFormControl>`     | `295:5573` | SET (192)  |
-| `<RadioGroup>`           | `296:5915` | SET (54)   |
-| `<FormLabel>`            | `1:7696`   | SET (6)    |
-| `<DirectionFormControl>` | `1:7709`   | SET (4)    |
-| `<Chip>`                 | `342:7102` | SET (60)   |
-| `<Avatar>`               | `394:7033` |            |
-| `<Icon>`                 | `3:2722`   | SET (6) — variant wrapper |
+| Name                          | Node ID      | Notes                     |
+| ----------------------------- | ------------ | ------------------------- |
+| `<Button>`                    | `1:4109`     | SET (90)                  |
+| `<IconButton>`                | `1:4571`     | SET (90)                  |
+| `<DialogActions>`             | `1:4757`     |                           |
+| `<DialogContent>`             | `1:4761`     | SET (2)                   |
+| `<DialogTitle>`               | `1:4768`     |                           |
+| `<Dialog>`                    | `1:4772`     | SET (5)                   |
+| `<PaginationItem>`            | `1:5098`     | SET (288)                 |
+| `<Pagination>`                | `1:5675`     | SET (36)                  |
+| `<NavMenu>`                   | `793:11949`  | SET (2)                   |
+| `<NavMenuItem>`               | `790:11848`  | SET (5)                   |
+| `<TextField>`                 | `1:6266`     | SET (120)                 |
+| `<Select>`                    | `593:7633`   | SET (120)                 |
+| `<AutocompleteMenu>`          | `534:7976`   | SET (3)                   |
+| `<AutocompleteOption>`        | `439:7109`   | SET (5)                   |
+| `<AutocompleteMultipleValue>` | `526:14901`  | SET (3)                   |
+| `<PinInput>`                  | `911:12594`  | SET (8)                   |
+| `<Checkbox>`                  | `1:7228`     | SET (258)                 |
+| `<CheckboxFormControl>`       | `1:7367`     | SET (276)                 |
+| `<CheckboxGroup>`             | `306:6886`   | SET (54)                  |
+| `<Radio>`                     | `292:6292`   | SET (174)                 |
+| `<RadioFormControl>`          | `295:5573`   | SET (192)                 |
+| `<RadioGroup>`                | `296:5915`   | SET (54)                  |
+| `<FormLabel>`                 | `1:7696`     | SET (6)                   |
+| `<DirectionFormControl>`      | `1:7709`     | SET (4)                   |
+| `<Chip>`                      | `342:7102`   | SET (120)                 |
+| `<Avatar>`                    | `394:7033`   |                           |
+| `<Icon>`                      | `3:2722`     | SET (6) — variant wrapper |
+| `<Snackbar>`                  | `860:11925`  | SET (15)                  |
+| `<SnackbarSeverityIcon>`      | `855:11806`  | SET (4)                   |
+| `<Tooltip>`                   | `810:16739`  | SET (24)                  |
+| `<Typography>`                | `844:16739`  | SET (26)                  |
 
 ### Icon library — 62 entries
 
