@@ -108,7 +108,7 @@ The Figma component sets ship cells whose paint values diverge from MUI 7 runtim
 6. **Shell elevation.** **Resolved 2026-04-29 — with intentional alpha divergence.** All 5 Size cells re-bound from `shadows-8` to the file's published `material-design/shadows/shadows-24` effect style (id `S:69f1ad5e…`), which uses the design-system MD ramp triplet `α 0.02 / 0.14 / 0.12` — **softer than MUI's runtime `α 0.2 / 0.14 / 0.12`**. The whole `shadows-1…24` ramp uses the same 0.02 key-light alpha; matching MUI 1:1 would diverge from every other elevated surface in the library (Card, Menu, Drawer, etc.). Treat the alpha drift as design-system intent, not a bug. Shell `bg-default` fill also re-bound from a consumed-library copy to local `VariableID:223:4180`.
 7. **`<DialogContent Dividers=false>` top padding `0`.** Confirmed — title's bottom padding (16 px) supplies the gap above the body.
 8. **Actions inter-button spacing implementation.** Runtime uses `margin-left` between siblings; Figma now uses Auto Layout `gap: 8 px`. Visually identical; treated as an implementation detail, **not** a divergence.
-9. ~~**Local-only stroke on `<DialogContent Dividers=true>`.**~~ **Resolved 2026-04-29.** Cell `1:4764` divider stroke re-bound from a consumed-library copy to local `mui/alias/colors/border-defalt` (`VariableID:223:4183`) at α 0.12.
+9. ~~**Local-only stroke on `<DialogContent Dividers=true>`.**~~ **Resolved 2026-04-29.** Cell `1:4764` divider stroke re-bound from a consumed-library copy to local `mui/alias/colors/border-default` (`VariableID:223:4183`) at α 0.12.
 
 ## 7. Static-render limitations
 

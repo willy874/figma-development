@@ -105,7 +105,7 @@ The `Size` axis mirrors MUI `Dialog.maxWidth` and uses MUI's default pixel width
 | MUI prop              | Figma surface                           | Type    | Notes                                                                                                                                                                 |
 | --------------------- | --------------------------------------- | ------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `children: ReactNode` | `slot` SLOT shared across both variants | SLOT    | Designers drop arbitrary content (forms, text, `<DialogContentText>`, etc.) into the slot. The Slot is one property shared between `Dividers=false` / `Dividers=true`. |
-| `dividers?: boolean`  | `Dividers`                              | VARIANT | `false` (default) / `true`. When `true`, MUI draws a 1 px top + 1 px bottom border bound to `alias/colors/border-defalt` _(sic)_.                                       |
+| `dividers?: boolean`  | `Dividers`                              | VARIANT | `false` (default) / `true`. When `true`, MUI draws a 1 px top + 1 px bottom border bound to `alias/colors/border-default`.                                       |
 | native `'div'` props  | —                                       | —       | Forwarded to MUI; no design representation.                                                                                                                            |
 
 ### 2.4 `<DialogActions>` — re-exported `@mui/material/DialogActions`
@@ -211,7 +211,7 @@ All paints, strokes, and effects on the four Dialog nodes **must** be bound to a
 | Title text (`<DialogTitle>`)                                 | **`alias/colors/text-default`**                     | 87% black. h6 typography.                                                                                                                                                                                       |
 | Content text — default body inside `<DialogContent>`         | **`alias/colors/text-default`**                     | 87% black. body1 typography (when caller sets `color="text.primary"` on `<DialogContentText>`).                                                                                                                 |
 | Content text — description (`<DialogContentText>` default)   | **`alias/colors/text-sub`**                         | 60% black. body1 typography. This is the MUI 7 default for `<DialogContentText>` when no `color` prop is passed.                                                                                                |
-| Content divider (`<DialogContent Dividers=true>`)            | **`alias/colors/border-defalt`** _(sic)_            | Top + bottom 1 px strokes. `strokeAlign = INSIDE`. _Note: token name in the Figma variable collection is misspelled `border-defalt` (missing `u`) — bind to the name as published; see §8 for the rename path._ |
+| Content divider (`<DialogContent Dividers=true>`)            | **`alias/colors/border-default`**            | Top + bottom 1 px strokes. `strokeAlign = INSIDE`. _Note: token name in the Figma variable collection is misspelled `border-default` (missing `u`) — bind to the name as published; see §8 for the rename path._ |
 | Backdrop (MUI `Backdrop`)                                    | _(no catalogue token today — see §10.1 note)_       | `rgba(0, 0, 0, 0.5)` — runtime-only, not a child of the Figma component sets. Add a per-screen overlay rectangle bound to a future `alias/layout/mask-bg` once it ships; until then, document the backdrop inline with a raw paint in the screen mock and flag it for follow-up via §8. |
 
 ### 4.3 Slot-composition rules
@@ -306,7 +306,7 @@ The **2026-04-29 runtime-truth pass** reconciled the four nodes against Chrome D
 2. ~~**`<DialogActions>` padding — `8 px` all sides, not `16 px`.**~~ **Resolved 2026-04-29.** Component `1:4757` re-authored: `layoutMode = HORIZONTAL`, `padding = 8`, `itemSpacing = 8`, `primaryAxisAlignItems = MAX (flex-end)`, `counterAxisAlignItems = CENTER`. Slot child set to FILL both axes. Symbol size remains `484 × 84` (slot `468 × 68` + 8 padding).
 3. ~~**Shell elevation — `shadows[24]`, not `shadows[8]`.**~~ **Resolved 2026-04-29.** Re-bound to the file's published `material-design/shadows/shadows-24` effect style (3-layer composite: `0 11 15 -7 α0.02`, `0 24 38 3 α0.14`, `0 8 46 8 α0.12` — the design-system MD ramp dialog tier, not MUI's runtime alpha values) and applied to all 5 Size cells.
 4. ~~**Local-only fill on shell — `bg-default` was bound to a consumed-library copy.**~~ **Resolved 2026-04-29.** All 5 shell cells re-bound to local `mui/alias/colors/bg-default` (`VariableID:223:4180`).
-5. ~~**Local-only stroke on `<DialogContent Dividers=true>` — `border-defalt` was bound to a consumed-library copy.**~~ **Resolved 2026-04-29.** Cell `1:4764` re-bound to local `mui/alias/colors/border-defalt` (`VariableID:223:4183`) at α 0.12.
+5. ~~**Local-only stroke on `<DialogContent Dividers=true>` — `border-default` was bound to a consumed-library copy.**~~ **Resolved 2026-04-29.** Cell `1:4764` re-bound to local `mui/alias/colors/border-default` (`VariableID:223:4183`) at α 0.12.
 
 ## 8. Source Sync Rule
 
@@ -384,7 +384,7 @@ The complete set of MUI design tokens consumed by `<Dialog>`. Names below are **
 | `alias/colors/text-default`  | `<DialogTitle>` text; `<DialogContent>` text (when caller passes `color="text.primary"`) | 87 % black.                                                       |
 | `alias/colors/text-sub`      | `<DialogContentText>` default text fill                | 60 % black — MUI's `text.secondary`.                                                 |
 | `alias/colors/text-disabled` | Disabled body content (rare; usually inherited from caller's component) | 38 % black.                                                          |
-| `alias/colors/border-defalt` _(sic)_ | `<DialogContent Dividers=true>` top + bottom borders | 1 px strokes around the content region. Preserve the typo as published — see `library-tokens.md`.    |
+| `alias/colors/border-default` | `<DialogContent Dividers=true>` top + bottom borders | 1 px strokes around the content region. (no notable rendering divergence).    |
 
 ### 10.2 Effect / shadow tokens
 

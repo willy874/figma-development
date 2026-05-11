@@ -165,7 +165,7 @@ Bind every Figma fill / stroke to the listed token path — never paste raw hex.
 | Role                           | Token (Figma local)                   | Reference resolution (light theme) | Used by                                           |
 | ------------------------------ | ------------------------------------- | ---------------------------------- | ------------------------------------------------- |
 | Cell foreground (label text)   | **`alias/colors/text-default`**       | `rgba(0, 0, 0, 0.87)` (`#000000DE`) | Every cell `State ∈ {Default, Hover, Selected}`. Head and body share the same fg paint — only weight differs. |
-| Cell border-bottom             | **none** (stroke removed at cell level on 2026-04-30) | n/a                          | Previously bound to `alias/colors/border-defalt` _(sic)_ on every cell. Now omitted on the cell variants — divider rendering, if needed, is delegated to row composition or a wrapping container. Runtime MUI still paints a `1 px solid` border-bottom; this is a documented divergence, tracked in §8. |
+| Cell border-bottom             | **none** (stroke removed at cell level on 2026-04-30) | n/a                          | Previously bound to `alias/colors/border-default` on every cell. Now omitted on the cell variants — divider rendering, if needed, is delegated to row composition or a wrapping container. Runtime MUI still paints a `1 px solid` border-bottom; this is a documented divergence, tracked in §8. |
 | Cell background                | none — paint omitted (transparent)    | `rgba(0, 0, 0, 0)`                 | Every cell across every State. The cell itself never paints a background; the row provides the overlay (see below). |
 | Row background — Default       | none — paint omitted                  | `rgba(0, 0, 0, 0)`                 | `Hover=Off, Selected=Off`                         |
 | Row background — Hover         | **`alias/colors/bg-outline-hover`**   | `rgba(0, 0, 0, 0.04)` (`#0000000A`) | `Hover=On, Selected=Off`. Same alias used by Pagination Hover. |
@@ -263,7 +263,7 @@ Specifically:
 - The `<TableSortLabel>` graduating to its own component set ⇒ add §3.3 + §5 axis tables for it; demote the inline mention.
 - The `<TablePagination>` graduating to its own component set ⇒ add a separate spec under `.claude/skills/figma-components/TablePagination/`.
 
-A token **value** change in the local `mui` collection (e.g. `seed/primary/main` shifts) needs **no** spec edit — variables resolve by name, paints follow. A token **name** change (e.g. `border-defalt` typo finally fixed) requires updating every reference in §2.3, §4.2, §4.3, §10.
+A token **value** change in the local `mui` collection (e.g. `seed/primary/main` shifts) needs **no** spec edit — variables resolve by name, paints follow. A token **name** change (e.g. an `alias/colors/*` rename) requires updating every reference in §2.3, §4.2, §4.3, §10.
 
 ## 9. Quick Reference
 
@@ -316,7 +316,7 @@ No other seed family is consumed directly by Table.
 | ----------------------------------------------- | ---------------- | -------------------------------------------------------- |
 | `alias/colors/text-default`                     | `#000000` 87 %-α | Cell foreground (head + body) and active sort-label arrow. |
 | `alias/colors/text-sub`                         | `#000000` 60 %-α | Inactive sort-label arrow.                               |
-| `alias/colors/border-defalt` _(sic)_            | `#000000` 12 %-α | **No longer consumed by `<TableCell>`** as of 2026-04-30 (cell strokes removed). Kept in this glossary because the typo'd alias still exists in the file and other component sets reference it. |
+| `alias/colors/border-default`                    | `#000000` 12 %-α | **No longer consumed by `<TableCell>`** as of 2026-04-30 (cell strokes removed). Kept in this glossary because other component sets still reference the alias. |
 | `alias/colors/bg-outline-hover`                 | `#000000` 4 %-α  | Row hover overlay (non-selected).                        |
 | `alias/colors/bg-default`                       | `#ffffff`        | Composed reference container background.                 |
 
@@ -345,7 +345,7 @@ The MUI Library file owns **no local text styles** (`figma.getLocalTextStylesAsy
 
 ### Currently-open issues (resolved in §8 sync rule when closed)
 
-1. **Border colour divergence** — runtime `rgb(224,224,224)` vs Figma `alias/colors/border-defalt` (`rgba(0,0,0,0.12)`). Intentional for dark-mode parity; matches the convention set by Pagination and Button. Re-evaluate when MUI moves cells to `theme.palette.divider` token.
+1. **Border colour divergence** — runtime `rgb(224,224,224)` vs Figma `alias/colors/border-default` (`rgba(0,0,0,0.12)`). Intentional for dark-mode parity; matches the convention set by Pagination and Button. Re-evaluate when MUI moves cells to `theme.palette.divider` token.
 2. **Last-row border** — runtime drops the bottom border on the final body row. Figma authors every cell with the border; the composed reference frame masks the last row's border manually. Cell-set authoring stays uniform.
 3. **`Variant=Footer`** — not authored; runtime resolves to body styling. Add only when the project's stories exercise a `<TableFooter>` cell.
 4. **`Align=Justify`** — not authored; uncommon for cells. Add when first consumer needs it.

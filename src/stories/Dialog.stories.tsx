@@ -201,7 +201,7 @@ export const ContentDividersTrue: Story = {
       <DialogContent dividers>
         <SampleBody>
           MUI re-introduces top + bottom 1 px borders bound to
-          `alias/colors/border-defalt`, and bumps the content padding to
+          `alias/colors/border-default`, and bumps the content padding to
           `16 / 24 / 16 / 24` so the text doesn't clip the strokes.
         </SampleBody>
       </DialogContent>

@@ -28,7 +28,7 @@ The 4 `Type` values × 4 `State` values × the same `(color, size)` share these 
 | `cursor` (Enabled / Selected)   | `pointer`                        | `pointer`                                         | `pointer`                                     | `default` (MUI sets ellipsis non-interactive) |
 | `pointer-events` (Disabled)     | `none`                           | `none`                                            | `none`                                        | n/a                                   |
 
-> The `0.23 black` outlined-border value is **not** a MUI alias token — MUI hard-codes it inside PaginationItem.js as `theme.palette.mode === 'light' ? 'rgba(0,0,0,0.23)' : 'rgba(255,255,255,0.23)'`. The Figma component binds the border to `alias/colors/border-defalt` (`rgba(0,0,0,0.12)`) instead, so dark mode flips automatically. This is a deliberate Figma ↔ runtime divergence, not a measurement bug — see §6 drift checks.
+> The `0.23 black` outlined-border value is **not** a MUI alias token — MUI hard-codes it inside PaginationItem.js as `theme.palette.mode === 'light' ? 'rgba(0,0,0,0.23)' : 'rgba(255,255,255,0.23)'`. The Figma component binds the border to `alias/colors/border-default` (`rgba(0,0,0,0.12)`) instead, so dark mode flips automatically. This is a deliberate Figma ↔ runtime divergence, not a measurement bug — see §6 drift checks.
 
 ## 2. State axis (Page type, color=primary, size=medium)
 
@@ -102,7 +102,7 @@ If a Storybook re-measure produces values that disagree with the tables above, t
 
 1. **MUI upgrade** — `@mui/material` major bumps may change the hard-coded `0.23` outlined-border, the `0.12` selected overlay, MUI's default chevron icon sizes (now bypassed by the story's `slots.previous` / `slots.next` override at uniform 20×20), or the padding ramp (`4/6/10`). Update `figma.spec.md` §1 MUI version row alongside this file.
 2. **Theme override** — if `mui-theme.ts` introduces a `MuiPagination` / `MuiPaginationItem` `defaultProps` / `styleOverrides` block (this project has none today), document it in §1 and re-derive §1–§4 values.
-3. **Outlined border token mismatch** — `0.23 black` (runtime) vs `0.12 black` (Figma `alias/colors/border-defalt`). Intentional Figma binding for dark-mode correctness; resolved alpha simply differs. If MUI migrates `PaginationItem` to `theme.palette.divider`, the runtime would then resolve to `0.12` and the divergence closes — record the alignment in §1.
+3. **Outlined border token mismatch** — `0.23 black` (runtime) vs `0.12 black` (Figma `alias/colors/border-default`). Intentional Figma binding for dark-mode correctness; resolved alpha simply differs. If MUI migrates `PaginationItem` to `theme.palette.divider`, the runtime would then resolve to `0.12` and the divergence closes — record the alignment in §1.
 4. **Disabled foreground / outlined-border** — runtime keeps `text.primary` (87 %-α) and `0.23 black` for outlined-disabled cells. Figma uses `alias/colors/text-disabled` (38 %-α) and `alias/colors/bg-disabled` (12 %-α) for better legibility. Acceptable design divergence (`figma.spec.md` §7 currently-open issue 3).
 
 ### Resolved (2026-04-28 runtime-truth pass)

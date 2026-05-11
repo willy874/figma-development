@@ -136,7 +136,7 @@ Per family `<C>` ∈ {`primary`, `danger`, `warning`, `info`, `success`} (no `se
 - `alias/colors/bg-filled-hover` — `palette.action.focus` (`#0000001F`, 12 % α); used for `Color=Default` Filled `:hover` background, matches MUI `alpha(action.selected, 0.12)`.
 - `alias/colors/bg-outline-hover` — `palette.action.hover` (`#0000000A`, 4 % α); used for `Color=Default` Outlined `:hover` background.
 - `alias/colors/bg-focus` — `palette.action.focus` (`#0000001F`, 12 % α); used for `Color=Default` Outlined `Mui-focusVisible` background.
-- `alias/colors/border-defalt` _(sic)_ — preserved typo; not used directly by Chip but listed for visibility (Chip uses `component/chip/outline` for the `Color=Default` Outlined stroke).
+- `alias/colors/border-default` — not used directly by Chip but listed for visibility (Chip uses `component/chip/outline` for the `Color=Default` Outlined stroke).
 - `alias/colors/fg-disabled` — `palette.action.disabled` (`#00000042`, 26 % α); reference for delete-icon enabled tint when `Color=Default` (matches MUI `alpha(text.primary, 0.26)`).
 
 ### 5.3 Component-scoped (Chip)

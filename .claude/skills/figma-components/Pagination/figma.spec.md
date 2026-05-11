@@ -194,7 +194,7 @@ Per-family token names (4 %-α hover token used for both `Hovered` and `Selected
 | `alias/colors/bg-outline-hover`      | Item background, `State=Hovered` (Default color, all Types)            | 4 %-α black overlay for hover.             |
 | `alias/colors/bg-selected`           | Item background, `State=Selected, Type=Page` (Default color)           | 8 %-α black overlay for selected page.     |
 | `alias/colors/bg-disabled`           | Item border, `State=Disabled` (all Colors)                             | 12 %-α black for desaturated stroke. The token's `bg-` prefix reflects its source role (`palette/action/disabledBackground`), but MUI (and `<Button>` / `<IconButton>`) repurpose the same surface paint as the disabled outline border because MUI uses `theme.palette.action.disabledBackground` for that exact role. Convention is intentional — see `<Button>` spec §5.2 / `<IconButton>` spec §5.2 note. |
-| `alias/colors/border-defalt` _(sic)_ | Item border, `State ∈ {Enabled, Hovered, Selected}` (all Colors except `Page/Selected` themed border, which uses `seed/<C>/outlineBorder`) | Default outlined stroke (12 %-α black). Preserve typo as published — see `library-tokens.md`. |
+| `alias/colors/border-default` | Item border, `State ∈ {Enabled, Hovered, Selected}` (all Colors except `Page/Selected` themed border, which uses `seed/<C>/outlineBorder`) | Default outlined stroke (12 %-α black). (no notable rendering divergence). |
 | `alias/colors/text-default`          | Item foreground + glyph, `State ∈ {Enabled, Hovered, Selected}` (all Colors except `Page/Selected` themed Label, which uses `seed/<C>/main`) | 87 %-α black.                              |
 | `alias/colors/text-disabled`         | Item foreground + glyph, `State=Disabled`                              | 38 %-α black.                              |
 
@@ -264,11 +264,11 @@ Numbers below are the **Figma-authored values** in the published item set (`1:50
 
 | Type                        | Color   | Fill                          | Stroke                                       | Foreground                              | Effect |
 | --------------------------- | ------- | ----------------------------- | -------------------------------------------- | --------------------------------------- | ------ |
-| `Page`                      | Default | `alias/colors/bg-default`     | `alias/colors/border-defalt` _(sic)_         | `alias/colors/text-default`             | —      |
-| `Page`                      | `<C>`   | `alias/colors/bg-default`     | `alias/colors/border-defalt` _(sic)_         | `alias/colors/text-default`             | —      |
-| `Previous` / `Next`         | Default | `alias/colors/bg-default`     | `alias/colors/border-defalt` _(sic)_         | `alias/colors/text-default` (`‹` / `›` glyph) | —      |
+| `Page`                      | Default | `alias/colors/bg-default`     | `alias/colors/border-default`         | `alias/colors/text-default`             | —      |
+| `Page`                      | `<C>`   | `alias/colors/bg-default`     | `alias/colors/border-default`         | `alias/colors/text-default`             | —      |
+| `Previous` / `Next`         | Default | `alias/colors/bg-default`     | `alias/colors/border-default`         | `alias/colors/text-default` (`‹` / `›` glyph) | —      |
 | `Previous` / `Next`         | `<C>`   | _(same as Default)_           | _(same as Default)_                          | _(same as Default)_                     | —      |
-| `Ellipsis`                  | Default | `alias/colors/bg-default`     | `alias/colors/border-defalt` _(sic)_         | `alias/colors/text-default` (`…` glyph) | —      |
+| `Ellipsis`                  | Default | `alias/colors/bg-default`     | `alias/colors/border-default`         | `alias/colors/text-default` (`…` glyph) | —      |
 | `Ellipsis`                  | `<C>`   | _(same as Default)_           | _(same as Default)_                          | _(same as Default)_                     | —      |
 
 ### 6.3 `State=Hovered`
@@ -277,10 +277,10 @@ Only `Type=Page, Color=<C>` carries a themed hover tint. Every other (Type × Co
 
 | Type                        | Color   | Fill                                                                | Stroke                               | Foreground                          | Effect |
 | --------------------------- | ------- | ------------------------------------------------------------------- | ------------------------------------ | ----------------------------------- | ------ |
-| `Page`                      | Default | `alias/colors/bg-outline-hover`                                     | `alias/colors/border-defalt` _(sic)_ | `alias/colors/text-default`         | —      |
-| `Page`                      | `<C>`   | `seed/<C>/hover-bg` _(or `outline-hover`)_ — single fill, 4 % tint  | `alias/colors/border-defalt` _(sic)_ | `alias/colors/text-default`         | —      |
-| `Previous` / `Next`         | Default & `<C>` | `alias/colors/bg-outline-hover` _(neutral, no themed variant)_ | `alias/colors/border-defalt` _(sic)_ | `alias/colors/text-default` (glyph) | —      |
-| `Ellipsis`                  | Default & `<C>` | `alias/colors/bg-outline-hover` _(neutral, no themed variant)_ | `alias/colors/border-defalt` _(sic)_ | `alias/colors/text-default` (glyph) | —      |
+| `Page`                      | Default | `alias/colors/bg-outline-hover`                                     | `alias/colors/border-default` | `alias/colors/text-default`         | —      |
+| `Page`                      | `<C>`   | `seed/<C>/hover-bg` _(or `outline-hover`)_ — single fill, 4 % tint  | `alias/colors/border-default` | `alias/colors/text-default`         | —      |
+| `Previous` / `Next`         | Default & `<C>` | `alias/colors/bg-outline-hover` _(neutral, no themed variant)_ | `alias/colors/border-default` | `alias/colors/text-default` (glyph) | —      |
+| `Ellipsis`                  | Default & `<C>` | `alias/colors/bg-outline-hover` _(neutral, no themed variant)_ | `alias/colors/border-default` | `alias/colors/text-default` (glyph) | —      |
 
 > Hovered does **not** tint the border or foreground for any Color — only the background overlay changes, and even then only `Page/<C>` swaps to the themed 4 %-α token. This matches MUI runtime exactly for outlined PaginationItem (`storybook.render.md` §2) and is the deliberate MUI rule: "only `Page/Hovered` and `Page/Selected` differ across Color; every other (Type × State) combination renders identically across the Color axis."
 
@@ -290,7 +290,7 @@ Only `Type=Page, Color=<C>` carries a themed hover tint. Every other (Type × Co
 
 | Type                        | Color   | Fill                                                          | Stroke                                       | Foreground                              | Effect |
 | --------------------------- | ------- | ------------------------------------------------------------- | -------------------------------------------- | --------------------------------------- | ------ |
-| `Page`                      | Default | `alias/colors/bg-selected` (8 %-α black, single fill)         | `alias/colors/border-defalt` _(sic)_         | `alias/colors/text-default`             | —      |
+| `Page`                      | Default | `alias/colors/bg-selected` (8 %-α black, single fill)         | `alias/colors/border-default`         | `alias/colors/text-default`             | —      |
 | `Page`                      | `<C>`   | `component/pagination/selected-bg-<c>` (12 %-α themed, single fill) | `seed/<C>/outlineBorder` (50 %-α tint) | `seed/<C>/main` (solid)                 | —      |
 | `Previous` / `Next` / `Ellipsis` | any | _(same paint as State=Enabled — see §6.2)_                    | _(same)_                                     | _(same)_                                | —      |
 

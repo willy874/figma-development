@@ -31,13 +31,11 @@ Surface / text / border roles. Reach for these before `seed/*`.
 | `alias/colors/bg-selected`                           | `#00000014` |
 | `alias/colors/bg-focus`                              | `#0000001F` |
 | `alias/colors/bg-disabled`                           | `#0000001F` |
-| `alias/colors/border-defalt` _(sic — typo retained)_ | `#0000001F` |
+| `alias/colors/border-default`                        | `#0000001F` |
 | `alias/colors/text-default`                          | `#000000DE` |
 | `alias/colors/text-sub`                              | `#00000099` |
 | `alias/colors/text-disabled`                         | `#00000061` |
 | `alias/colors/fg-disabled`                           | `#00000042` |
-
-> `border-defalt` is a typo in the Figma file. Use it as-is — do not rename without coordination.
 
 ---
 

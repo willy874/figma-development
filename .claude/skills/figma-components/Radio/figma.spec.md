@@ -300,8 +300,6 @@ Full names: `seed/primary/main`, `seed/primary/hover-bg`, `seed/primary/focusVis
 | `alias/colors/bg-outline-hover`  | Halo overlay on `Color=Default` Hovered / Pressed      | MUI `palette.action.hover` (`#000000 0.04α`).                         |
 | `seed/neutral/focusVisible`      | Halo overlay on `Color=Default` Focused                | `#000000 0.30α` — `30 %` neutral focus tint.                          |
 
-> Preserve the typo `border-defalt` _(sic)_ in any reference; Radio does not consume it but other components in this file do.
-
 ### 10.3 Component-scoped tokens
 
 `<Radio>` does **not** mint any component-scoped tokens — every paint resolves to a shared `seed/*` or `alias/*` token. If a future MUI revision diverges (e.g. introduces a `palette.[color].light × 0.20` halo on Pressed), mint the new value as a `component/radio/*` local in the MUI-Library file and document it in `design-token.md`.

@@ -236,7 +236,7 @@ Tracked here so the next runtime-truth pass has a punch list:
 6. **~~Local `seed/success/main` resolves to `#4CAF50`, not the catalogue's `#2E7D32`.~~ Resolved 2026-04-29.** Pre-flight on 2026-04-29 found the *external* (consumed-library) `seed/success/main` at `#4CAF50`, but the *local* copy in `mui` was already canonical `#2E7D32`. The local-only sweep (issue 9) rebound every Success cell from external → local, so the renders now resolve to `#2E7D32` per runtime. Closed.
 7. **Default unchecked glyph drift.** Same `bg-active` (`0.54α`) vs. runtime `text-sub` (`0.6α`) divergence as item 5. Resolve together.
 8. **Disabled glyph uses `text-disabled` (`0.38α`); runtime uses `palette.action.disabled` (`0.26α`).** The Figma cells reach for the typography-family disabled token instead of the icon-family disabled token. Same convention `<Button>` uses (`bg-disabled` for Outlined disabled border). Twelve-percent-α-darker than runtime; visually distinguishable but acceptable since the design intent is "clearly greyed out." Resolve by either (a) accepting the alpha difference (current decision) or (b) minting a local `alias/colors/fg-disabled` (`#00000042`) and rebinding.
-9. **~~Indicator paints (glyphs + unchecked rectangle fill / stroke) bind to external library variables, violating the local-only rule.~~ Resolved 2026-04-29.** Pre-flight on 2026-04-29 found **11** external `VariableID:<sharedKey>/...` references across both Checkbox + CheckboxFormControl: `alias/colors/{bg-default, bg-active, border-defalt(sic), text-default, text-disabled}` and `seed/{primary, secondary, danger, warning, info, success}/main`. The halo tokens were already fully local. The remediation `use_figma` pass:
+9. **~~Indicator paints (glyphs + unchecked rectangle fill / stroke) bind to external library variables, violating the local-only rule.~~ Resolved 2026-04-29.** Pre-flight on 2026-04-29 found **11** external `VariableID:<sharedKey>/...` references across both Checkbox + CheckboxFormControl: `alias/colors/{bg-default, bg-active, border-default(sic), text-default, text-disabled}` and `seed/{primary, secondary, danger, warning, info, success}/main`. The halo tokens were already fully local. The remediation `use_figma` pass:
     - Phase 0: minted 2 missing locals (`alias/colors/bg-active`, `seed/secondary/main`); the other 9 already existed in the local `mui` collection.
     - Phase 1: built an external→local id remap by name match.
     - Phase 2: rebound the Checkbox set — 258 fill rebinds + 87 stroke rebinds across 258 mutated cells.
@@ -245,7 +245,7 @@ Tracked here so the next runtime-truth pass has a punch list:
 
     The MUI-Library file is now self-contained for `<Checkbox>` and `<CheckboxFormControl>`. Closed.
 
-10. **~~Local `mui` collection is missing `seed/<color>/main`, `bg-active`, `bg-default`, `border-defalt`, `text-disabled`.~~ Resolved 2026-04-29.** Phase 0 of issue 9's resolution minted the 2 genuinely missing locals (`alias/colors/bg-active` `#0000008A`, `seed/secondary/main` `#9C27B0`). The other names listed earlier already existed in the collection — the original audit conflated *consumed-library bindings* with *local-collection membership*. The corrected reading is in issue 9's Phase 0/1 summary. Closed.
+10. **~~Local `mui` collection is missing `seed/<color>/main`, `bg-active`, `bg-default`, `border-default`, `text-disabled`.~~ Resolved 2026-04-29.** Phase 0 of issue 9's resolution minted the 2 genuinely missing locals (`alias/colors/bg-active` `#0000008A`, `seed/secondary/main` `#9C27B0`). The other names listed earlier already existed in the collection — the original audit conflated *consumed-library bindings* with *local-collection membership*. The corrected reading is in issue 9's Phase 0/1 summary. Closed.
 
 ## 8. Source Sync Rule
 
@@ -321,8 +321,6 @@ Full names: `seed/primary/main`, `seed/primary/hover-bg`, `seed/primary/focusVis
 | `alias/colors/text-disabled`     | Disabled glyph (any color, any value)                  | MUI `palette.text.disabled` (`#000000 0.38α`). Drift `+0.12α` darker than runtime `palette.action.disabled` (`0.26α`). |
 | `alias/colors/bg-outline-hover`  | Halo overlay on `Color=Default` Hovered / Pressed      | MUI `palette.action.hover` (`#000000 0.04α`).                         |
 | `seed/neutral/focusVisible`      | Halo overlay on `Color=Default` Focused                | `#000000 0.30α` — `30 %` neutral focus tint.                          |
-
-> Preserve the typo `border-defalt` _(sic)_ in any reference; Checkbox does not consume it but other components in this file do.
 
 ### 10.3 Component-scoped tokens
 

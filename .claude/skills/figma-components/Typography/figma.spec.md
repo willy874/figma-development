@@ -293,7 +293,7 @@ Six families consumed at the **instance level** for color overrides; the master 
 | `alias/colors/text-sub`        | Designer-overrideable for `color="textSecondary"` (instance level)              |
 | `alias/colors/text-disabled`   | Designer-overrideable for `color="textDisabled"` (instance level)               |
 
-No `alias/colors/border-defalt` _(sic)_ usage — Typography has no border.
+No `alias/colors/border-default` usage — Typography has no border.
 
 ### Component-scoped tokens (`component/typography/*`)
 
