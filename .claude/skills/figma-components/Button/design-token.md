@@ -1,6 +1,6 @@
 ---
 name: figma-component-button-design-token
-description: Component-scoped design tokens for `<Button>` (MUIButton v2). Defined here because they're either MUI-Button-specific runtime constants (the `inherit-contained` grey, the `outlined-inherit` border, icon layout deltas) or fixed dimensions that don't fit the shared `mui/seed/*` or `mui/alias/*` namespaces. Bind Button paints / strokes / effects to these names rather than literal values; for shared tokens used by Button (seed colors, alias colors, MD shadows), see `.claude/skills/figma-create-component/library-tokens.md`.
+description: Component-scoped design tokens for `<Button>` (MUIButton v2). Eight tokens live in the MUI Library Figma file today — three COLOR variables (inherit-contained grey / fg, outlined-inherit border), three FLOAT variables (focus-ring width, icon gap, icon edge-offset), and two EFFECT styles (`elevation-rest` cloned from `shadows-2`, `elevation-focused` cloned from `shadows-6`). For shared tokens used by Button (seed colors, alias colors, MD shadows), see `.claude/skills/figma-create-component/library-tokens.md`.
 parent_skill: figma-components
 ---
 
@@ -19,16 +19,25 @@ Anything that turns out to be reused by another component should be promoted to 
 
 ## Tokens
 
+### Variables — `mui` collection (6)
+
 | Token                                     | Type   | Resolves to                                | Used by                                                            |
 | ----------------------------------------- | ------ | ------------------------------------------ | ------------------------------------------------------------------ |
 | `component/button/contained-default-bg`   | COLOR  | `palette/grey/300` = `#E0E0E0`             | `Color=Default, Variant=Contained, State=Enabled`                  |
 | `component/button/contained-default-fg`   | COLOR  | `palette/text/primary` = `#000000DE`       | `Color=Default, Variant=Contained` foreground (label + icon)       |
 | `component/button/outlined-default-border`| COLOR  | `palette/text/primary` = `#000000DE`       | `Color=Default, Variant=Outlined, State ∈ {Enabled, Focused}` border (MUI's `outlinedInherit` uses `currentColor`, not the `0.5α` `outlineBorder` pattern) |
-| `component/button/elevation-rest`         | EFFECT | `material-design/shadows/shadows-2`        | `Variant=Contained, State ∈ {Enabled, Hovered, Pressed, Disabled-spec*}` (Disabled actually clears shadow at runtime — see `figma.spec.md` §7) |
-| `component/button/elevation-focused`      | EFFECT | `material-design/shadows/shadows-6`        | `Variant=Contained, State=Focused`                                 |
-| `component/button/focus-ring-width`       | FLOAT  | `3` (px)                                   | All variants, `State=Focused` outer ring (Figma enhancement; runtime renders no ring on the box, see `storybook.render.md` §3) |
-| `component/button/icon-gap`               | FLOAT  | `8` (px)                                   | Gap between `Icon Left` / `Icon Right` slot and the label          |
-| `component/button/icon-edge-offset`       | FLOAT  | `-4` (px)                                  | Negative margin on the outer edge of the icon slot — bleeds the icon `4 px` toward the button edge so visual side-padding becomes `16 − 4 = 12 px` |
+| `component/button/focus-ring-width`       | FLOAT  | `3` (px), scope `STROKE_FLOAT`             | All variants, `State=Focused` outer ring (Figma enhancement; runtime renders no ring on the box, see `storybook.render.md` §3) |
+| `component/button/icon-gap`               | FLOAT  | `8` (px), scope `GAP`                      | Gap between `Icon Left` / `Icon Right` slot and the label          |
+| `component/button/icon-edge-offset`       | FLOAT  | `-4` (px), scope `GAP`                     | Negative margin on the outer edge of the icon slot — bleeds the icon `4 px` toward the button edge so visual side-padding becomes `16 − 4 = 12 px` |
+
+### Effect styles (2)
+
+Effect styles cannot alias other styles in Figma — these are independent clones of the `material-design/shadows/*` source. If the source shadow ramp changes, this file's two styles must be re-cloned (or migrated to bound effect variables once Figma supports them).
+
+| Style                                     | Cloned from                                | Used by                                                            |
+| ----------------------------------------- | ------------------------------------------ | ------------------------------------------------------------------ |
+| `component/button/elevation-rest`         | `material-design/shadows/shadows-2`        | `Variant=Contained, State ∈ {Enabled, Hovered, Pressed, Disabled-spec*}` (Disabled actually clears shadow at runtime — see `figma.spec.md` §7) |
+| `component/button/elevation-focused`      | `material-design/shadows/shadows-6`        | `Variant=Contained, State=Focused`                                 |
 
 ## Notes
 

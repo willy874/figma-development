@@ -4,17 +4,17 @@ Source: see [`figma.config.json`](../../../figma.config.json) `.library.fileUrl`
 
 [Figma file `KQjP6W9Uw1PN0iipwQHyYn`](https://www.figma.com/design/KQjP6W9Uw1PN0iipwQHyYn/MUI-Library) (MUI-Library)
 
-One variable collection (`mui`, 78 vars) + 28 text styles + 24 effect styles. **When building in Figma, bind to these tokens — never hard-code hex/px values.**
+One variable collection (`mui`, 82 vars) + 28 text styles + 29 effect styles. **When building in Figma, bind to these tokens — never hard-code hex/px values.**
 
 ## Collection structure
 
 | Collection | Modes        | Vars | Purpose                                          |
 | ---------- | ------------ | ---- | ------------------------------------------------ |
-| `mui`    | 1 (`Mode 1`) | 78   | The project's semantic + component token layer. |
+| `mui`    | 1 (`Mode 1`) | 82   | The project's semantic + component token layer. |
 
 > **No raw palette collection.** The previous `material-design` collection (~300 vars) is gone — every value here is already at the semantic / component layer. If a needed value is missing, add a new semantic token rather than hard-coding hex.
 >
-> 14 of the 78 are **local mirrors** of upstream `mui` tokens (description: "Local mirror of mui `<name>` — opacity baked in"). Added so Checkbox State variants can swap fills without alpha-inheritance issues. Reuse by name; do not duplicate.
+> 14 of the 82 are **local mirrors** of upstream `mui` tokens (description: "Local mirror of mui `<name>` — opacity baked in"). Added so Checkbox State variants can swap fills without alpha-inheritance issues. Reuse by name; do not duplicate.
 
 ---
 
@@ -125,17 +125,26 @@ Themable color roles. Not every role has every slot — only what's actually def
 
 ---
 
-## 3. Component-scoped tokens — `component/*` (26)
+## 3. Component-scoped tokens — `component/*` (30)
 
 Reach for these only inside the matching component. Documented per-component for traceability.
 
-### Button (3)
+### Button (6)
 
-| Token                                        | Hex         |
-| -------------------------------------------- | ----------- |
-| `component/button/contained-default-bg`      | `#E0E0E0`   |
-| `component/button/contained-default-fg`      | `#000000DE` |
-| `component/button/outlined-default-border`   | `#000000DE` |
+| Token                                        | Type  | Value           |
+| -------------------------------------------- | ----- | --------------- |
+| `component/button/contained-default-bg`      | COLOR | `#E0E0E0`       |
+| `component/button/contained-default-fg`      | COLOR | `#000000DE`     |
+| `component/button/outlined-default-border`   | COLOR | `#000000DE`     |
+| `component/button/focus-ring-width`          | FLOAT | `3` (px, `STROKE_FLOAT`) |
+| `component/button/icon-gap`                  | FLOAT | `8` (px, `GAP`) |
+| `component/button/icon-edge-offset`          | FLOAT | `-4` (px, `GAP`) |
+
+### IconButton (1)
+
+| Token                                          | Type  | Value                       |
+| ---------------------------------------------- | ----- | --------------------------- |
+| `component/icon-button/focus-ring-width`       | FLOAT | `3` (px, `STROKE_FLOAT`)    |
 
 ### Chip (4)
 
@@ -276,9 +285,22 @@ Inter        — Light, Regular, Bold
 
 ---
 
-## 6. Elevation — Effect Styles (24)
+## 6. Elevation — Effect Styles (29)
 
-Namespace: `material-design/shadows/shadows-{1..24}`. Standard MD elevation ramp.
+Two namespaces:
+
+- `material-design/shadows/shadows-{1..24}` — the standard MD elevation ramp (24 styles, source of truth).
+- `component/{button,icon-button}/elevation-*` — 5 component-scoped aliases, each an **independent clone** of the matching MD ramp step (effect styles cannot reference other effect styles in Figma). If the MD ramp changes, re-clone the aliases:
+
+| Alias style                                | Cloned from                          |
+| ------------------------------------------ | ------------------------------------ |
+| `component/button/elevation-rest`          | `material-design/shadows/shadows-2`  |
+| `component/button/elevation-focused`       | `material-design/shadows/shadows-6`  |
+| `component/icon-button/elevation-rest`     | `material-design/shadows/shadows-2`  |
+| `component/icon-button/elevation-focused`  | `material-design/shadows/shadows-6`  |
+| `component/icon-button/elevation-pressed`  | `material-design/shadows/shadows-8`  |
+
+Material Design ramp (24 styles):
 
 Each style is composed of **three stacked `DROP_SHADOW` layers** (umbra / penumbra / ambient), all black, all `blendMode: NORMAL`, all `showShadowBehindNode: false`, all `offset.x: 0`:
 

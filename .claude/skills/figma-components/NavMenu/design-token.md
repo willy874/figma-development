@@ -1,6 +1,6 @@
 ---
 name: figma-component-navmenu-design-token
-description: Component-scoped design token for `<NavMenu>` / `<NavMenuItem>`. Covers the single themed `Selected` background tint minted to match MUI's runtime `alpha(palette.primary.main, palette.action.selectedOpacity = 0.08)` overlay. The shared `mui` family ships an 8 %-α **black** alias (`alias/colors/bg-selected`) and a solid `seed/primary/selected` (`palette.primary.light`), but no 8 %-α primary token — hence one component-scoped local. The token lives in the **MUI Library Figma file's local `mui` collection** — NavMenu binds only to local variables; nothing reaches into a published library. For shared semantic tokens used by NavMenu (`alias/colors/*`, `seed/primary/*`), see `figma.spec.md` §5 and `../../figma-create-component/library-tokens.md`.
+description: Component-scoped design token for `<NavMenu>` / `<NavMenuItem>`. Covers the single themed `Selected` background tint minted to match MUI's runtime `alpha(palette.primary.main, palette.action.selectedOpacity = 0.08)` overlay. The shared `mui` family ships an 8 %-α **black** alias (`alias/colors/bg-selected`) but no 8 %-α primary token — hence one component-scoped local. The token lives in the **MUI Library Figma file's local `mui` collection** — NavMenu binds only to local variables; nothing reaches into a published library. For shared semantic tokens used by NavMenu (`alias/colors/*`, `seed/primary/*`), see `figma.spec.md` §5 and `../../figma-create-component/library-tokens.md`.
 parent_skill: figma-components
 ---
 
@@ -13,8 +13,8 @@ Tokens scoped to `<NavMenu>` / `<NavMenuItem>` and authored in the **local `mui`
 MUI runtime renders `<ListItemButton>`'s `&.Mui-selected` background as `theme.alpha(palette.primary.main, palette.action.selectedOpacity)`, where `selectedOpacity = 0.08` — an **8 %-α primary** tint. The shared `mui` family does not ship a token at this exact alpha + hue:
 
 - `alias/colors/bg-selected` is **8 %-α black** (`#00000014`) — same alpha, wrong hue. Used by Pagination Default-color Selected. Binding NavMenu Selected here would render a neutral grey instead of the primary-tinted blue MUI actually paints.
-- `seed/primary/selected` is **solid `#42A5F5`** (`palette.primary.light`) — wrong alpha. The token's name is misleading; it does not represent the Selected overlay.
 - `seed/primary/hover-bg` is **4 %-α primary** (`#1976D20A`). Two stacked layers tops out at `~7.84 %` — close to 8 % but visibly lighter. Pagination uses this stacking pattern at the Hovered state, not Selected.
+- No `seed/primary/selected` or `seed/primary/selected-bg` token exists in the catalogue today; the closest neighbour `seed/primary/main` is fully opaque, so it cannot stand in for the overlay.
 
 To hit MUI's exact 8 %-α primary without inflating the shared seed family, NavMenu owns one 8 %-α primary token locally. `Color=Default` does not exist as an axis on NavMenu (see `figma.spec.md` §1 — there is no Color variant), so only the primary color is needed.
 

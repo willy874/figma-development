@@ -1,6 +1,6 @@
 ---
 name: figma-component-iconbutton-design-token
-description: Component-scoped design tokens for `<IconButton>` (MUIIconButton v1). Covers IconButton-specific layout constants (focus-ring width, elevation aliases). The two `Default`-color resolver tokens (`contained-default-bg`, `outlined-default-border`) are NOT redefined here — `<IconButton>` borrows them from `<Button>`'s `component/button/*` namespace because the values and resolver path are byte-identical. See `figma.spec.md` §5.5 for the borrow list.
+description: Component-scoped design tokens for `<IconButton>` (MUIIconButton v1). Four tokens live in the MUI Library Figma file today — one FLOAT variable (focus-ring width) and three EFFECT styles (`elevation-rest` cloned from `shadows-2`, `elevation-focused` cloned from `shadows-6`, `elevation-pressed` cloned from `shadows-8`). The two `Default`-color resolver tokens (`contained-default-bg`, `outlined-default-border`) are NOT redefined here — `<IconButton>` borrows them from `<Button>`'s `component/button/*` namespace because the values and resolver path are byte-identical. See `figma.spec.md` §5.5 for the borrow list.
 parent_skill: figma-components
 ---
 
@@ -21,12 +21,21 @@ If a third consumer (Chip, ListItem, …) appears, promote both to `mui/alias/co
 
 ## IconButton-scoped tokens
 
+### Variables — `mui` collection (1)
+
 | Token                                            | Type   | Resolves to                                | Used by                                                                                          |
 | ------------------------------------------------ | ------ | ------------------------------------------ | ------------------------------------------------------------------------------------------------ |
-| `component/icon-button/elevation-rest`           | EFFECT | `material-design/shadows/shadows-2`        | `Variant=Contained, State ∈ {Enabled, Hovered}`                                                  |
-| `component/icon-button/elevation-focused`        | EFFECT | `material-design/shadows/shadows-6`        | `Variant=Contained, State=Focused`                                                               |
-| `component/icon-button/elevation-pressed`        | EFFECT | `material-design/shadows/shadows-8`        | `Variant=Contained, State=Pressed`                                                               |
-| `component/icon-button/focus-ring-width`         | FLOAT  | `3` (px)                                   | All variants, `State=Focused` outer ring                                                         |
+| `component/icon-button/focus-ring-width`         | FLOAT  | `3` (px), scope `STROKE_FLOAT`             | All variants, `State=Focused` outer ring                                                         |
+
+### Effect styles (3)
+
+Effect styles cannot alias other styles in Figma — these are independent clones of the `material-design/shadows/*` source. If the source shadow ramp changes, this file's three styles must be re-cloned.
+
+| Style                                            | Cloned from                                | Used by                                                                                          |
+| ------------------------------------------------ | ------------------------------------------ | ------------------------------------------------------------------------------------------------ |
+| `component/icon-button/elevation-rest`           | `material-design/shadows/shadows-2`        | `Variant=Contained, State ∈ {Enabled, Hovered}`                                                  |
+| `component/icon-button/elevation-focused`        | `material-design/shadows/shadows-6`        | `Variant=Contained, State=Focused`                                                               |
+| `component/icon-button/elevation-pressed`        | `material-design/shadows/shadows-8`        | `Variant=Contained, State=Pressed`                                                               |
 
 ## Notes
 
