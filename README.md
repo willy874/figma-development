@@ -51,12 +51,10 @@ npx github:willy874/figma-development#v1.0.0
 
 | Skill                                                                                | 角色                                                                                 |
 | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ |
-| [`figma-create-component`](./.claude/skills/figma-create-component/SKILL.md)         | **核心 pipeline router** — 串起底下所有 skill                                        |
-| [`figma-component-spec-guide`](./.claude/skills/figma-component-spec-guide/SKILL.md) | `figma.spec.md` / `storybook.render.md` / `design-token.md` 的撰寫規範               |
+| [`figma-create-component`](./.claude/skills/figma-create-component/SKILL.md)         | **核心 pipeline router** — 串起底下所有 skill；內附 [`component-spec-guide.md`](./.claude/skills/figma-create-component/component-spec-guide.md) submodule 規範 `figma.spec.md` / `storybook.render.md` / `design-token.md` 撰寫 |
 | [`figma-design-guide`](./.claude/skills/figma-design-guide/SKILL.md)                 | 本專案 Figma 檔的 token / text style / elevation / 已發佈元件清單                    |
 | [`figma-operator-guide`](./.claude/skills/figma-operator-guide/SKILL.md)             | 任何 `use_figma` 寫入動作前的 router；指向 layout / tokens / states / hygiene 子模組 |
-| [`figma-component-sync`](./.claude/skills/figma-component-sync/SKILL.md)             | 把已發佈的 `COMPONENT_SET` 每個 variant 抽成 JSON 快照                               |
-| [`figma-init`](./.claude/skills/figma-init/SKILL.md)                                 | 用 JSON snapshot 強制覆寫某個 Figma 檔的所有變數值                                   |
+| [`figma-init`](./.claude/skills/figma-init/SKILL.md)                                 | 用 JSON snapshot 強制覆寫某個 Figma 檔的所有變數值；也負責產出 `figma.config.json`   |
 
 ---
 
@@ -65,11 +63,11 @@ npx github:willy874/figma-development#v1.0.0
 ```
 .claude/skills/                 # 對外發佈的 Claude Code skills
   figma-create-component/       # ← 核心 pipeline
-  figma-component-spec-guide/
+    SKILL.md
+    component-spec-guide.md     # spec 撰寫規範（submodule）
   figma-components/             # 每個元件一個資料夾（spec / render / design-token）
   figma-design-guide/
   figma-operator-guide/
-  figma-component-sync/
   figma-init/
 bin/cli.js                      # npx 安裝精靈
 src/stories/                    # pipeline step 1 產出的 Storybook stories
@@ -84,7 +82,6 @@ src/index.ts                    # mui-ui 元件庫進入點（peerDeps: MUI v7 +
 
 - Claude Code 已設定 Figma MCP（`mcp__claude_ai_Figma__*`、`mcp__plugin_figma_figma__use_figma`）
 - Chrome DevTools MCP（pipeline step 2 量 runtime computed style）
-- `figma-component-sync` / `figma-init` 走 Figma REST API，需要 `FIGMA_TOKEN`
 
 ---
 

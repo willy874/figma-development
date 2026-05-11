@@ -253,6 +253,6 @@ When any of the following changes, update this spec **and** the named files in t
 | `node_modules/@mui/material/IconButton/IconButton.js` changes (MUI bump)   | `figma.spec.md` §1 MUI version row, `storybook.render.md` §1 + §6                                          |
 | `mui-theme.ts` adds/changes a `MuiIconButton` override                     | `figma.spec.md` §1, `storybook.render.md` §1 + §3                                                          |
 | `src/stories/IconButton.stories.tsx` `variantSx` changes                   | `figma.spec.md` §6, `storybook.render.md` §4 (if Hovered/Pressed alters)                                   |
-| Figma frame `1:4571` variant axes / cell count change                      | `figma.spec.md` §3, re-run figma-component-sync to refresh `figma-init` snapshot                         |
+| Figma frame `1:4571` variant axes / cell count change                      | `figma.spec.md` §3, refresh `figma.config.json` via `figma-init/config-init.md`                            |
 | `seed/*` or `alias/*` tokens used by IconButton are renamed in Figma       | `figma.spec.md` §5 + §6, `figma-design-guide/design-token.md`                                              |
 | Default-color `contained-bg` / `outlined-default-border` are promoted from `component/button/*` to a shared `merak/*` token | `figma.spec.md` §5.5 + §6, `design-token.md` (this dir), and Button's `design-token.md` |
