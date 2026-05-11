@@ -120,7 +120,6 @@ Run these checks on the drafted spec; do not advance to step 4 until they pass:
 - Read [`./library-tokens.md`](./library-tokens.md) and reconcile every numeric / hex value from `storybook.render.md` against the catalogue (`mui/*`, `material-design/*`, text styles, shadows).
 - **Local-only is the project default.** Every binding the component emits must resolve to a variable in this file's own collection — never a `VariableID:<sharedKey>/<id>` from a consumed library. The rule applies to every component built through this pipeline; the design system file is not guaranteed to be loaded next to the consumer, so library files must be self-contained.
 - Default to semantic tokens: `mui/seed/*`, `mui/alias/*`. Drop into `material-design/palette/*` only when no semantic token fits — and justify it inline.
-- Preserve known typos (`alias/colors/border-defalt` _(sic)_).
 - Apply `material-design/typography/*` text styles by name; do not hand-set fontName / size / line-height.
 - Apply `material-design/shadows/shadows-N` for elevation; do not hand-author drop shadows.
 - If a token from the catalogue is missing locally, mint it in the local collection with the same name and resolved hex from [`./library-tokens.md`](./library-tokens.md) before authoring. This is mechanical, not a design decision — no `design-token.md` entry needed.

@@ -210,7 +210,7 @@ Skeleton B specs carry the equivalent obligations in `design-token.md` and `stor
 ### §10 Token Glossary (Skeleton A) / §5 Token Glossary (Skeleton B)
 
 - **Seed tokens** (`seed/*`): list the suffixes consumed with roles. Enumerate the families used (`primary`, `danger`, `warning`, `info`, `success`, `secondary`, `tertiary`, `neutral`) — do **not** expand every full name in a giant matrix.
-- **Alias tokens** (`alias/colors/*`, `alias/layout/*`): one row per consumed alias token. **Preserve any known typos in the variable collection as-is** — annotate with `_(sic)_` rather than silently normalizing them. Renaming would break bindings.
+- **Alias tokens** (`alias/colors/*`, `alias/layout/*`): one row per consumed alias token. **Mirror the variable's published name exactly** — including any typos — and annotate with `_(sic)_` if one exists. Silently normalizing a misspelled name in docs while the Figma variable keeps the old spelling will cause readers to bind to a non-existent name.
 - **Component-scoped tokens** (`_components/<comp>/*` legacy convention, `component/<comp>/*` directory-layout convention): list each token, what it resolves to, and what it's used by. Cross-reference the directory's `design-token.md` when one exists.
 - **Effect / shape & elevation**: pin shadow tokens to their published effect styles (`material-design/shadows/shadows-{2,4,6,8}` for MUI elevation). Note `theme.shape.borderRadius`.
 - **Typography**: font family, weight, size/line-height, `text-transform`, letter-spacing. Mark them as MUI-default-resolved until typography tokens exist. When a published Figma text style covers the variant (`material-design/typography/h6`, `material-design/typography/body2`, `button/medium`, `input/label`, `input/value`), bind via `textStyleId` rather than ad-hoc.
@@ -221,7 +221,7 @@ Skeleton B specs carry the equivalent obligations in `design-token.md` and `stor
 
 1. **Figma variable path, not CSS variable, not hex.** Write `seed/primary/main`, not the project's CSS variable name, not `#1976d2`.
 2. **Bind to semantic tokens (`seed/*`, `alias/*`) first; reach into raw palette tokens only when no semantic token fits.** Cite this rule whenever an unusual binding choice (e.g. a component-scoped token resolving to a raw palette value directly) needs justification.
-3. **Preserve known typos.** Match the variable collection as-published; annotate with `_(sic)_`. Renaming silently breaks bindings.
+3. **Mirror published names exactly, typos included.** Match the variable collection as-published; annotate any typo with `_(sic)_`. Renaming in docs without renaming the Figma variable leaves authors binding to a name that doesn't exist.
 4. **Component-scoped tokens carry alpha.** `_components/*` and `component/*` tokens already bake their alpha into the resolved value. Never pair them with a paint `opacity < 1` — Figma flattens to `opacity = 1` on instance creation.
 5. **Stacked fills for theme-color 8 % tints.** A paint with `opacity < 1` plus a bound variable gets flattened on instance creation. Bind to a variable whose resolved value already carries alpha, then stack twice when you need ~8 % from a 4 % token (`1 − (1 − 0.04)² ≈ 0.078`). Document the math in the spec.
 6. **Never paste raw hex, even in documentation tables.** If you must show a resolved value, mark it "reference resolution of the light theme" and bind the actual Figma paint to the token.
