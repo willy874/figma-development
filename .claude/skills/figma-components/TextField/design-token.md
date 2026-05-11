@@ -1,20 +1,20 @@
 ---
 name: figma-component-text-field-design-token
-description: Component-scoped design tokens for `<TextField>`. Defined here because they're MUI-TextField-specific resting-state alphas that don't fit the shared `merak/seed/*` or `merak/alias/*` namespaces and live as **local** variables inside the MUI-Library file (`KQjP6W9Uw1PN0iipwQHyYn`) rather than the published 天璇 collection. Bind TextField paints / strokes to these names rather than literal values; for shared tokens used by TextField (seed primary / danger, alias text colors, alias bg-disabled, paper-elevation-0), see `.claude/skills/figma-create-component/library-tokens.md`.
+description: Component-scoped design tokens for `<TextField>`. Defined here because they're MUI-TextField-specific resting-state alphas that don't fit the shared `mui/seed/*` or `mui/alias/*` namespaces and live as **local** variables inside the MUI-Library file (`KQjP6W9Uw1PN0iipwQHyYn`) rather than the published 天璇 collection. Bind TextField paints / strokes to these names rather than literal values; for shared tokens used by TextField (seed primary / danger, alias text colors, alias bg-disabled, paper-elevation-0), see `.claude/skills/figma-create-component/library-tokens.md`.
 parent_skill: figma-components
 ---
 
 # `<TextField>` Component Tokens
 
-Tokens scoped to `<TextField>` and its variants. Reach for these only inside the TextField component set; for everything else (semantic colors, MD elevations, typography), bind to the shared `merak/*` and `material-design/*` tokens documented in [`design-token.md`](../../figma-create-component/library-tokens.md).
+Tokens scoped to `<TextField>` and its variants. Reach for these only inside the TextField component set; for everything else (semantic colors, MD elevations, typography), bind to the shared `mui/*` and `material-design/*` tokens documented in [`design-token.md`](../../figma-create-component/library-tokens.md).
 
 ## Why these are component-scoped
 
-These values are **MUI-TextField-specific resting alphas** that don't reuse a shared semantic token. The MUI runtime sources them from a mix of `palette.text.primary × α` (with `α` drawn from MUI's `inputAdornedRootStyles` and the `MuiInput-underline` `:before` rules) and `palette.action.disabledBackground` for disabled wrappers. None of these resolve to a single named slot in `palette.*`, so the token surface lives in the local `component/input/*` namespace inside the MUI-Library file rather than the published `merak/seed/*` or `merak/alias/*`.
+These values are **MUI-TextField-specific resting alphas** that don't reuse a shared semantic token. The MUI runtime sources them from a mix of `palette.text.primary × α` (with `α` drawn from MUI's `inputAdornedRootStyles` and the `MuiInput-underline` `:before` rules) and `palette.action.disabledBackground` for disabled wrappers. None of these resolve to a single named slot in `palette.*`, so the token surface lives in the local `component/input/*` namespace inside the MUI-Library file rather than the published `mui/seed/*` or `mui/alias/*`.
 
-These tokens share the same `component/*` prefix as the shared `merak/component/*` namespace documented in `figma-create-component/library-tokens.md`, but they live in the **local** `merak` collection inside the MUI-Library file (`KQjP6W9Uw1PN0iipwQHyYn`) — not the published 天璇 collection. Treat them as local-only; promoting one to the shared collection still requires copying it into the 天璇 file's `merak` collection (and rebinding may be needed if IDs change).
+These tokens share the same `component/*` prefix as the shared `mui/component/*` namespace documented in `figma-create-component/library-tokens.md`, but they live in the **local** `mui` collection inside the MUI-Library file (`KQjP6W9Uw1PN0iipwQHyYn`) — not the published 天璇 collection. Treat them as local-only; promoting one to the shared collection still requires copying it into the 天璇 file's `mui` collection (and rebinding may be needed if IDs change).
 
-Anything that turns out to be reused by another input component (Select, Autocomplete, PinInput) should be promoted to the shared `merak/component/input/*` namespace in the 天璇 file and removed from here.
+Anything that turns out to be reused by another input component (Select, Autocomplete, PinInput) should be promoted to the shared `mui/component/input/*` namespace in the 天璇 file and removed from here.
 
 ## Tokens
 
@@ -53,4 +53,4 @@ These are not Figma variables but design constants worth recording in one place:
 | Helper text padding-top                          | `3 px`            | All Variants                                             |
 | Floated label scale                              | `0.75`            | MUI `Mui-shrunk` label transform                         |
 
-Anything in this table that gains a project-level token (e.g. `merak/typography/input-*`) should be lifted out of this file into the shared collection and removed here.
+Anything in this table that gains a project-level token (e.g. `mui/typography/input-*`) should be lifted out of this file into the shared collection and removed here.

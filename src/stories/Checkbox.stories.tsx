@@ -3,19 +3,19 @@ import { Checkbox, Stack, type CheckboxProps } from '@mui/material';
 
 // MUI Checkbox `color` accepts the full palette set: default / primary /
 // secondary / error / info / success / warning. The Figma `Color` axis
-// publishes the same seven values; the right-hand label documents the Merak
+// publishes the same seven values; the right-hand label documents the MUI
 // design-system value a host app would pass.
-const MERAK_COLORS: Array<{
-  merak: string;
+const MUI_COLORS: Array<{
+  name: string;
   mui: NonNullable<CheckboxProps['color']>;
 }> = [
-  { merak: 'default', mui: 'default' },
-  { merak: 'primary', mui: 'primary' },
-  { merak: 'secondary', mui: 'secondary' },
-  { merak: 'danger', mui: 'error' },
-  { merak: 'warning', mui: 'warning' },
-  { merak: 'info', mui: 'info' },
-  { merak: 'success', mui: 'success' },
+  { name: 'default', mui: 'default' },
+  { name: 'primary', mui: 'primary' },
+  { name: 'secondary', mui: 'secondary' },
+  { name: 'danger', mui: 'error' },
+  { name: 'warning', mui: 'warning' },
+  { name: 'info', mui: 'info' },
+  { name: 'success', mui: 'success' },
 ];
 
 // MUI Checkbox ships only `small` and `medium`. The Figma `Size=Large` cell is
@@ -64,9 +64,9 @@ const meta = {
   argTypes: {
     color: {
       control: 'select',
-      options: MERAK_COLORS.map((c) => c.mui),
+      options: MUI_COLORS.map((c) => c.mui),
       description:
-        'MUI palette key. Merak mapping: default→default, primary→primary, secondary→secondary, danger→error, warning→warning, info→info, success→success.',
+        'MUI palette key. MUI mapping: default→default, primary→primary, secondary→secondary, danger→error, warning→warning, info→info, success→success.',
     },
     size: {
       control: 'inline-radio',
@@ -141,10 +141,10 @@ export const ColorMatrix: Story = {
           </span>
         ))}
       </Stack>
-      {MERAK_COLORS.map(({ merak, mui }) => (
-        <Stack key={merak} direction="row" spacing={2} alignItems="center">
+      {MUI_COLORS.map(({ name, mui }) => (
+        <Stack key={name} direction="row" spacing={2} alignItems="center">
           <span style={cellLabel}>
-            {merak}
+            {name}
             <span style={{ color: '#aaa' }}> ({mui})</span>
           </span>
           {VALUE_COMBOS.map(({ label, checked, indeterminate }) => (
@@ -247,10 +247,10 @@ export const DisabledMatrix: Story = {
           </span>
         ))}
       </Stack>
-      {MERAK_COLORS.map(({ merak, mui }) => (
-        <Stack key={merak} direction="row" spacing={2} alignItems="center">
+      {MUI_COLORS.map(({ name, mui }) => (
+        <Stack key={name} direction="row" spacing={2} alignItems="center">
           <span style={cellLabel}>
-            {merak}
+            {name}
             <span style={{ color: '#aaa' }}> ({mui})</span>
           </span>
           {VALUE_COMBOS.map(({ label, checked, indeterminate }) => (

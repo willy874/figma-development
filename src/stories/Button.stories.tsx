@@ -15,16 +15,16 @@ const EndGlyph = () => (
   </svg>
 );
 
-// MerakColorTheme → MUI palette (per .claude/skills/figma-components/Button.md §2.1).
+// MUIColorTheme → MUI palette (per .claude/skills/figma-components/Button.md §2.1).
 // The current src directly re-exports MUI Button, so stories use MUI color names;
-// the right-hand label documents the Merak design-system value a host app would pass.
-const MERAK_COLORS = [
-  { merak: 'default', mui: 'inherit' as const },
-  { merak: 'primary', mui: 'primary' as const },
-  { merak: 'danger', mui: 'error' as const },
-  { merak: 'warning', mui: 'warning' as const },
-  { merak: 'info', mui: 'info' as const },
-  { merak: 'success', mui: 'success' as const },
+// the right-hand label documents the MUI design-system value a host app would pass.
+const MUI_COLORS = [
+  { name: 'default', mui: 'inherit' as const },
+  { name: 'primary', mui: 'primary' as const },
+  { name: 'danger', mui: 'error' as const },
+  { name: 'warning', mui: 'warning' as const },
+  { name: 'info', mui: 'info' as const },
+  { name: 'success', mui: 'success' as const },
 ];
 
 const VARIANTS: Array<NonNullable<ButtonProps['variant']>> = [
@@ -52,9 +52,9 @@ const meta = {
     },
     color: {
       control: 'select',
-      options: MERAK_COLORS.map((c) => c.mui),
+      options: MUI_COLORS.map((c) => c.mui),
       description:
-        'MUI palette key. Merak mapping: default→inherit, primary→primary, danger→error, warning→warning, info→info, success→success.',
+        'MUI palette key. MUI mapping: default→inherit, primary→primary, danger→error, warning→warning, info→info, success→success.',
     },
     size: {
       control: 'inline-radio',
@@ -142,16 +142,16 @@ export const ColorMatrix: Story = {
           </span>
         ))}
       </Stack>
-      {MERAK_COLORS.map(({ merak, mui }) => (
-        <Stack key={merak} direction="row" spacing={2} alignItems="center">
+      {MUI_COLORS.map(({ name, mui }) => (
+        <Stack key={name} direction="row" spacing={2} alignItems="center">
           <span style={cellLabel}>
-            {merak}
+            {name}
             <span style={{ color: '#aaa' }}> ({mui})</span>
           </span>
           {VARIANTS.map((v) => (
             <div key={v} style={{ width: 120 }}>
               <Button {...args} variant={v} color={mui}>
-                {merak}
+                {name}
               </Button>
             </div>
           ))}

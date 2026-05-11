@@ -1,6 +1,6 @@
 ---
 name: figma-component-iconbutton-spec
-description: Figma component specification for `<IconButton>` — design counterpart of MUI `<IconButton>` consumed by `src/stories/IconButton.stories.tsx`. Documents the variant matrix (Color × Variant × State, Size=Medium), source-to-Figma mapping, the per-cell Render Binding Matrix (§6) that pins every fill / stroke / shadow / foreground to a named token, and the divergence between MUI's native `IconButton` (no `variant` prop) and the Merak Figma extension that adds Text / Outlined / Contained. For component-scoped tokens see `design-token.md`; for runtime measurements see `storybook.render.md`.
+description: Figma component specification for `<IconButton>` — design counterpart of MUI `<IconButton>` consumed by `src/stories/IconButton.stories.tsx`. Documents the variant matrix (Color × Variant × State, Size=Medium), source-to-Figma mapping, the per-cell Render Binding Matrix (§6) that pins every fill / stroke / shadow / foreground to a named token, and the divergence between MUI's native `IconButton` (no `variant` prop) and the MUI Figma extension that adds Text / Outlined / Contained. For component-scoped tokens see `design-token.md`; for runtime measurements see `storybook.render.md`.
 parent_skill: figma-components
 figma_file_key: KQjP6W9Uw1PN0iipwQHyYn
 figma_node_id: '1:4571'
@@ -11,25 +11,25 @@ figma_component_set_id: '1:4571'
 
 ## 1. Overview
 
-`<IconButton>` is the Figma counterpart of MUI's `IconButton` consumed in `src/stories/IconButton.stories.tsx`. The package re-exports MUI IconButton; the Storybook story wraps it as `MerakIconButton` so the Merak `Variant` axis (Text / Outlined / Contained) — which has no equivalent on MUI's native IconButton — can be rendered via `sx` overrides for parity with Figma. The Figma encodes the prop surface (`color`, plus Merak `variant`, plus interaction state) as variant axes.
+`<IconButton>` is the Figma counterpart of MUI's `IconButton` consumed in `src/stories/IconButton.stories.tsx`. The package re-exports MUI IconButton; the Storybook story wraps it as `MUIIconButton` so the MUI `Variant` axis (Text / Outlined / Contained) — which has no equivalent on MUI's native IconButton — can be rendered via `sx` overrides for parity with Figma. The Figma encodes the prop surface (`color`, plus MUI `variant`, plus interaction state) as variant axes.
 
 | Aspect            | Value                                                                                |
 | ----------------- | ------------------------------------------------------------------------------------ |
 | Source story      | `src/stories/IconButton.stories.tsx`                                                 |
-| Underlying source | `@mui/material` `IconButton` (re-exported by this package, wrapped as `MerakIconButton` in the story) |
+| Underlying source | `@mui/material` `IconButton` (re-exported by this package, wrapped as `MUIIconButton` in the story) |
 | Figma frame       | `<IconButton>` (`1:4571`) on page **Components**                                     |
 | Total variants    | **90** (6 Colors × 3 Variants × 5 States, Size=Medium only)                          |
 | Icon slot         | `24 × 24 px` (MUI default; Figma cells currently authored at 20 px — see §7 sizing)  |
-| Borrowed behaviors | Variant paint model, hover/pressed background ramp, focus ring, and elevation steps mirror `<Button>` (`figma.spec.md`) — `<IconButton>` is the icon-only sibling of `<Button>` in the Merak system |
+| Borrowed behaviors | Variant paint model, hover/pressed background ramp, focus ring, and elevation steps mirror `<Button>` (`figma.spec.md`) — `<IconButton>` is the icon-only sibling of `<Button>` in the MUI system |
 
-**MUI native vs Merak extension.** MUI's `IconButton` has only `color`, `size`, `edge`, `disabled`, `loading`. It does not expose a `variant` prop and renders as a transparent circular button (visually equivalent to Merak's `Variant=Text`). The Merak `Variant` axis (`Contained`, `Outlined`, `Text`) is a design-system extension authored in Figma; the runtime story applies it via `sx`. When this spec changes, the story `sx` must change in the same PR (§8).
+**MUI native vs MUI extension.** MUI's `IconButton` has only `color`, `size`, `edge`, `disabled`, `loading`. It does not expose a `variant` prop and renders as a transparent circular button (visually equivalent to MUI's `Variant=Text`). The MUI `Variant` axis (`Contained`, `Outlined`, `Text`) is a design-system extension authored in Figma; the runtime story applies it via `sx`. When this spec changes, the story `sx` must change in the same PR (§8).
 
 ## 2. Source-to-Figma Property Mapping
 
 | MUI prop / source     | Figma property | Type    | Notes                                                                       |
 | --------------------- | -------------- | ------- | --------------------------------------------------------------------------- |
-| `color`               | `Color`        | VARIANT | Merak design-system key; mapping in §2.1                                    |
-| _(Merak extension)_   | `Variant`      | VARIANT | `Text` / `Outlined` / `Contained` — applied via `sx` at runtime             |
+| `color`               | `Color`        | VARIANT | MUI design-system key; mapping in §2.1                                    |
+| _(MUI extension)_   | `Variant`      | VARIANT | `Text` / `Outlined` / `Contained` — applied via `sx` at runtime             |
 | _(interaction state)_ | `State`        | VARIANT | `Enabled` / `Hovered` / `Focused` / `Pressed` / `Disabled`                  |
 | `size`                | `Size`         | VARIANT | Only `Medium` is shipped on canvas; Small / Large are runtime-only (`storybook.render.md` §5) |
 | `disabled`            | —              | —       | Encoded as `State=Disabled`                                                 |
@@ -39,9 +39,9 @@ figma_component_set_id: '1:4571'
 
 ### 2.1 Color value mapping
 
-The Merak design-system color keys map to MUI palette names; designers pick the Merak name in Figma. Bind every Figma fill / stroke to the listed token family — never paste raw hex.
+The MUI design-system color keys map to MUI palette names; designers pick the MUI name in Figma. Bind every Figma fill / stroke to the listed token family — never paste raw hex.
 
-| Merak key (source) | MUI palette key | Figma token family                                                              | Figma `Color` value |
+| MUI key (source) | MUI palette key | Figma token family                                                              | Figma `Color` value |
 | ------------------ | --------------- | ------------------------------------------------------------------------------- | ------------------- |
 | `default`          | `inherit` / `default` | `alias/colors/text-default` _(non-contained)_ + IconButton-scoped tokens (§5.5) | **Default**         |
 | `primary`          | `primary`       | `seed/primary/*`                                                                | **Primary**         |
@@ -77,7 +77,7 @@ The published frame `1:4571` already enumerates every cell; verify the count aft
 
 ### 4.1 Picking a variant
 
-1. Pick `Color` matching the source `color` prop via §2.1 (Merak name, not MUI palette name).
+1. Pick `Color` matching the source `color` prop via §2.1 (MUI name, not MUI palette name).
 2. Pick `Variant` by emphasis: `Contained` for high-emphasis icon actions (e.g. floating "Add" on a list header), `Outlined` for medium-emphasis, `Text` for inline / table-row actions.
 3. Pick `State` only for flow / state demos — production screens stay on `Enabled`. `Disabled` for `disabled={true}`.
 4. Swap the `Icon` instance to the host glyph (`@mui/icons-material` or the project icon set). Do not detach to recolor — the variant's foreground token already drives icon `color` via `currentColor`.
@@ -107,7 +107,7 @@ The published frame `1:4571` already enumerates every cell; verify the count aft
 
 ## 5. Token Glossary
 
-Token names below are **Figma variable paths** in the `merak` collection — see [`.claude/skills/figma-create-component/library-tokens.md`](../../figma-create-component/library-tokens.md). Bind every Figma paint / stroke to one of these — never to a literal hex.
+Token names below are **Figma variable paths** in the `mui` collection — see [`.claude/skills/figma-create-component/library-tokens.md`](../../figma-create-component/library-tokens.md). Bind every Figma paint / stroke to one of these — never to a literal hex.
 
 ### 5.1 Seed color tokens (`seed/<C>/*`)
 
@@ -154,7 +154,7 @@ n/a — `<IconButton>` has no text. The icon is a vector glyph whose `color` inh
 | `component/button/contained-default-bg`     | `Color=Default, Variant=Contained, State=Enabled` fill |
 | `component/button/outlined-default-border`  | `Color=Default, Variant=Outlined` border (87 % black, **not** the 50 %-α `outlineBorder` pattern) |
 
-See [`../Button/design-token.md`](../Button/design-token.md) for resolver notes. If/when a third consumer needs them, promote both to `merak/alias/colors/*` (e.g. `bg-default-strong`, `border-default-strong`) and update both component dirs in the same PR. `<IconButton>`'s own [`./design-token.md`](./design-token.md) covers only IconButton-specific layout values (focus-ring width, elevation aliases).
+See [`../Button/design-token.md`](../Button/design-token.md) for resolver notes. If/when a third consumer needs them, promote both to `mui/alias/colors/*` (e.g. `bg-default-strong`, `border-default-strong`) and update both component dirs in the same PR. `<IconButton>`'s own [`./design-token.md`](./design-token.md) covers only IconButton-specific layout values (focus-ring width, elevation aliases).
 
 ## 6. Render Binding Matrix
 
@@ -255,4 +255,4 @@ When any of the following changes, update this spec **and** the named files in t
 | `src/stories/IconButton.stories.tsx` `variantSx` changes                   | `figma.spec.md` §6, `storybook.render.md` §4 (if Hovered/Pressed alters)                                   |
 | Figma frame `1:4571` variant axes / cell count change                      | `figma.spec.md` §3, refresh `figma.config.json` via `figma-init/config-init.md`                            |
 | `seed/*` or `alias/*` tokens used by IconButton are renamed in Figma       | `figma.spec.md` §5 + §6, `figma-create-component/library-tokens.md`                                              |
-| Default-color `contained-bg` / `outlined-default-border` are promoted from `component/button/*` to a shared `merak/*` token | `figma.spec.md` §5.5 + §6, `design-token.md` (this dir), and Button's `design-token.md` |
+| Default-color `contained-bg` / `outlined-default-border` are promoted from `component/button/*` to a shared `mui/*` token | `figma.spec.md` §5.5 + §6, `design-token.md` (this dir), and Button's `design-token.md` |

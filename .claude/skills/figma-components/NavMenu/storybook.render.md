@@ -1,6 +1,6 @@
 ---
 name: figma-component-navmenu-storybook-render
-description: Computed-style matrix for `<NavMenu>` and `<NavMenuItem>` (MerakNavMenu v1) measured against `src/stories/NavMenu.stories.tsx` via Chrome DevTools MCP. Documents per-cell box / paint / typography numbers across the State surface and the wrapper IsOpen=False/True composition. Companion to `figma.spec.md` (the contract).
+description: Computed-style matrix for `<NavMenu>` and `<NavMenuItem>` (MUINavMenu v1) measured against `src/stories/NavMenu.stories.tsx` via Chrome DevTools MCP. Documents per-cell box / paint / typography numbers across the State surface and the wrapper IsOpen=False/True composition. Companion to `figma.spec.md` (the contract).
 parent_skill: figma-components
 ---
 
@@ -8,11 +8,11 @@ parent_skill: figma-components
 
 Computed-style snapshot probed with Chrome DevTools MCP against `src/stories/NavMenu.stories.tsx`. Stories used: `StateMatrix` (5-state column for the leaf `<NavMenuItem>` at width 280 with leading + trailing icons + secondary text) and `NavMenuOpenStateMatrix` (the wrapper `<NavMenu>` at IsOpen=False / True with 4 nested children, the third Selected).
 
-The package re-exports MUI's `<List>`, `<ListItemButton>`, `<ListItemAvatar>`, `<ListItemText>`, `<ListItemIcon>`, and `<Collapse>` directly — there is no source-side wrapper component. The stories declare `MerakNavMenuItem` / `MerakNavMenu` story-local components that compose those primitives with project-specific layout (8 px gutters, 24 × 24 avatar / chevron, 40 px nested indent). Every measurement below is for that fixed composition.
+The package re-exports MUI's `<List>`, `<ListItemButton>`, `<ListItemAvatar>`, `<ListItemText>`, `<ListItemIcon>`, and `<Collapse>` directly — there is no source-side wrapper component. The stories declare `MUINavMenuItem` / `MUINavMenu` story-local components that compose those primitives with project-specific layout (8 px gutters, 24 × 24 avatar / chevron, 40 px nested indent). Every measurement below is for that fixed composition.
 
 ## 1. Item-axis invariants (single NavMenuItem, Default state, leading + trailing icon, with secondary text)
 
-The 5 `State` values share these geometry / typography invariants. Numbers come from the leaf `<MerakNavMenuItem>` cell rendered inside `StateMatrix`.
+The 5 `State` values share these geometry / typography invariants. Numbers come from the leaf `<MUINavMenuItem>` cell rendered inside `StateMatrix`.
 
 | Property                        | Value                                                                                                                |
 | ------------------------------- | -------------------------------------------------------------------------------------------------------------------- |
@@ -45,7 +45,7 @@ Probed via `StateMatrix`. `Hovered` cannot render statically without `storybook-
 | `cursor`         | `pointer`                        | `pointer`                         | `pointer`                           | `pointer`                     | `pointer`                                         | `default`                         |
 | `pointer-events` | `auto`                           | `auto`                            | `auto`                              | `auto`                        | `auto`                                            | `none`                            |
 
-¹ **Mui-focusVisible stand-in.** This is what the StateMatrix actually renders for the "Hover" row because `:hover` is pseudo-class. The 12 % overlay is `palette.action.focus`, not `palette.action.hover`. **Do not** copy this number into the Figma cell — bind the Hover variant to the 4 % `alias/colors/bg-outline-hover` token instead. `Mui-focusVisible` would correspond to a separate `State=Focused` axis if Merak ever ships one (tracked in §6 drift checks).
+¹ **Mui-focusVisible stand-in.** This is what the StateMatrix actually renders for the "Hover" row because `:hover` is pseudo-class. The 12 % overlay is `palette.action.focus`, not `palette.action.hover`. **Do not** copy this number into the Figma cell — bind the Hover variant to the 4 % `alias/colors/bg-outline-hover` token instead. `Mui-focusVisible` would correspond to a separate `State=Focused` axis if MUI ever ships one (tracked in §6 drift checks).
 
 ² **True `:hover` runtime.** Sourced from `node_modules/@mui/material/ListItemButton/ListItemButton.js`: `'&:hover': { backgroundColor: theme.palette.action.hover }`. The `palette.action.hover` token resolves to `rgba(0, 0, 0, 0.04)` in the default light theme — the **4 %** value the Figma cell must bind to.
 
@@ -96,7 +96,7 @@ If a Storybook re-measure produces values that disagree with the tables above, t
 
 1. **MUI upgrade** — `@mui/material` major bumps may change the hard-coded `palette.action.{hover, focus, selected, disabledOpacity}` values, the default `selectedOpacity` (currently `0.08`), or the default `padding` ramp on `<ListItemButton>` (currently `8 px` vertical, `16 px` horizontal with default gutters — note we override `padding` in the story to `8 px` flat). Update `figma.spec.md` §1 MUI version row alongside this file.
 2. **Theme override** — if `mui-theme.ts` introduces a `MuiListItemButton` / `MuiListItem` `defaultProps` / `styleOverrides` block (this project has none today), document it in §1 and re-derive §1–§4 values.
-3. **Hover stand-in vs. true hover** — the Figma `State=Hover` cell binds to **4 % black** (`alias/colors/bg-outline-hover`, matching `palette.action.hover`), not the **12 %** the StateMatrix renders for its `Mui-focusVisible` row. If Merak adds a separate `State=Focused` axis later, that one would bind to the 12 % `palette.action.focus` token. Tracked in `figma.spec.md` §7.
+3. **Hover stand-in vs. true hover** — the Figma `State=Hover` cell binds to **4 % black** (`alias/colors/bg-outline-hover`, matching `palette.action.hover`), not the **12 %** the StateMatrix renders for its `Mui-focusVisible` row. If MUI adds a separate `State=Focused` axis later, that one would bind to the 12 % `palette.action.focus` token. Tracked in `figma.spec.md` §7.
 4. **Active runtime divergence** — runtime renders no static `:active` paint (Touch Ripple instead). The Figma `State=Active` cell bakes a 12 % black overlay for design-mockup parity. Documented divergence — see `figma.spec.md` §7.
 5. **Selected label tint** — the Figma cell currently keeps the label / icon at neutral defaults (matches MUI runtime). If the design ever wants a primary-tinted label on Selected (e.g. `seed/primary/main` foreground), that's a §8 sync trigger and would need a paint rebind in both Figma and a story-level `sx` override.
 6. **Chevron rotation on expand** — if a future redesign rotates the trailing chevron 90° when `IsOpen=True`, both `figma.spec.md` §6 and a story-level `transform: rotate(90deg)` on `IsOpen=True` would need to be added in lockstep.

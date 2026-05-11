@@ -1,6 +1,8 @@
 # Component Index
 
-Source: [Figma file `KQjP6W9Uw1PN0iipwQHyYn`](https://www.figma.com/design/KQjP6W9Uw1PN0iipwQHyYn/MUI-Library)
+Source: see [`figma.config.json`](../../../figma.config.json) `.library.fileUrl` (single source of truth for the published file key — the link below is for human navigation only).
+
+[Figma file `KQjP6W9Uw1PN0iipwQHyYn`](https://www.figma.com/design/KQjP6W9Uw1PN0iipwQHyYn/MUI-Library)
 
 Total: **93 components** on 1 page (31 component sets / primitives + 62 icon library entries). Before creating anything new, grep this file for the name — if it exists, import via `importComponentByKeyAsync` / `importComponentSetByKeyAsync` and reuse. Never recreate an existing component.
 

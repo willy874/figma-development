@@ -15,17 +15,17 @@ const Glyph = () => (
   </svg>
 );
 
-// MerakColorTheme → MUI palette (mirrors `<Button>` mapping).
-const MERAK_COLORS = [
-  { merak: 'default', mui: 'default' as const },
-  { merak: 'primary', mui: 'primary' as const },
-  { merak: 'danger', mui: 'error' as const },
-  { merak: 'warning', mui: 'warning' as const },
-  { merak: 'info', mui: 'info' as const },
-  { merak: 'success', mui: 'success' as const },
+// MUIColorTheme → MUI palette (mirrors `<Button>` mapping).
+const MUI_COLORS = [
+  { name: 'default', mui: 'default' as const },
+  { name: 'primary', mui: 'primary' as const },
+  { name: 'danger', mui: 'error' as const },
+  { name: 'warning', mui: 'warning' as const },
+  { name: 'info', mui: 'info' as const },
+  { name: 'success', mui: 'success' as const },
 ];
 
-// Merak `<IconButton>` extends MUI's IconButton with a `Variant` axis
+// MUI `<IconButton>` extends MUI's IconButton with a `Variant` axis
 // (Contained / Outlined / Text). MUI native IconButton has no `variant`
 // prop, so the visual treatment is applied via `sx` here so every
 // Figma cell has a runtime equivalent for step-2 measurement.
@@ -112,18 +112,18 @@ function hexToRgb(hex: string): string {
   return `${parseInt(m[1], 16)}, ${parseInt(m[2], 16)}, ${parseInt(m[3], 16)}`;
 }
 
-interface MerakIconButtonProps extends Omit<IconButtonProps, 'color'> {
+interface MUIIconButtonProps extends Omit<IconButtonProps, 'color'> {
   variant?: Variant;
   color?: IconButtonProps['color'];
 }
 
-const MerakIconButton = ({
+const MUIIconButton = ({
   variant = 'text',
   color = 'default',
   sx,
   children,
   ...rest
-}: MerakIconButtonProps) => (
+}: MUIIconButtonProps) => (
   <IconButton
     color={color === 'default' ? 'inherit' : color}
     sx={[variantSx(variant, color), ...(Array.isArray(sx) ? sx : [sx])]}
@@ -135,7 +135,7 @@ const MerakIconButton = ({
 
 const meta = {
   title: 'Components/IconButton',
-  component: MerakIconButton,
+  component: MUIIconButton,
   tags: ['autodocs'],
   parameters: {
     docs: {
@@ -150,9 +150,9 @@ const meta = {
     color: {
       control: 'select',
       // Only the 6 colors with Figma cells. MUI's native `secondary` /
-      // `inherit` have no Merak counterpart — adding them here would offer
+      // `inherit` have no MUI counterpart — adding them here would offer
       // a control that has no design representation.
-      options: MERAK_COLORS.map((c) => c.mui),
+      options: MUI_COLORS.map((c) => c.mui),
     },
     size: {
       control: 'inline-radio',
@@ -162,7 +162,7 @@ const meta = {
     disabled: { control: 'boolean' },
   },
   args: { variant: 'text', color: 'primary', size: 'medium' },
-} satisfies Meta<typeof MerakIconButton>;
+} satisfies Meta<typeof MUIIconButton>;
 
 export default meta;
 
@@ -204,15 +204,15 @@ export const ColorMatrix: Story = {
           </span>
         ))}
       </Stack>
-      {MERAK_COLORS.map(({ merak, mui }) => (
-        <Stack key={merak} direction="row" spacing={2} alignItems="center">
+      {MUI_COLORS.map(({ name, mui }) => (
+        <Stack key={name} direction="row" spacing={2} alignItems="center">
           <span style={cellLabel}>
-            {merak}
+            {name}
             <span style={{ color: '#aaa' }}> ({mui})</span>
           </span>
           {VARIANTS.map((v) => (
             <div key={v} style={{ width: 80 }}>
-              <MerakIconButton variant={v} color={mui} />
+              <MUIIconButton variant={v} color={mui} />
             </div>
           ))}
         </Stack>
@@ -245,7 +245,7 @@ export const StateMatrix: Story = {
           <span style={cellLabel}>{label}</span>
           {VARIANTS.map((v) => (
             <div key={v} style={{ width: 80 }}>
-              <MerakIconButton {...args} {...extra} variant={v} />
+              <MUIIconButton {...args} {...extra} variant={v} />
             </div>
           ))}
         </Stack>

@@ -37,7 +37,7 @@ The variant-bearing surfaces in the Figma library are:
 
 **MUI native vs Figma extension.** This Table set covers the most common Figma authoring surface — single-line cells with the standard MUI props. The compositional layout (rows-in-table, table-in-container, sort labels, pagination footers) is left to the consumer. Out of the published Figma library scope: `<TableSortLabel>` (rendered inline inside head cell content; see §5), `<TablePagination>` (separate composed reference, not yet authored), `<TableContainer>` (delegates to the published `<Paper>` set).
 
-**Local-only token bindings.** Per the project directive, every paint / stroke / text-fill in the Table component sets binds to the **MUI Library Figma file's local `merak` collection** — never to the published library copy. Component-scoped tokens (the primary-themed selected-row overlays) live in the file's local collection and are documented in [`./design-token.md`](./design-token.md). If the published library renames or removes a token, the local file does not break automatically; track the divergence in §8.
+**Local-only token bindings.** Per the project directive, every paint / stroke / text-fill in the Table component sets binds to the **MUI Library Figma file's local `mui` collection** — never to the published library copy. Component-scoped tokens (the primary-themed selected-row overlays) live in the file's local collection and are documented in [`./design-token.md`](./design-token.md). If the published library renames or removes a token, the local file does not break automatically; track the divergence in §8.
 
 ## 2. Source-to-Figma Property Mapping
 
@@ -141,9 +141,9 @@ Source-of-truth files any token claim below must reconcile against:
 - `node_modules/@mui/material/TableCell/TableCell.js` — MUI cell paint defaults (border colour, padding ramp, font weight).
 - `node_modules/@mui/material/TableRow/TableRow.js` — MUI row paint defaults (selected overlay).
 - `src/lib/mui-theme.ts` — project theme overrides (none registered for Table at the time of writing).
-- `figma-create-component/library-tokens.md` — published variable catalogue (the source of every `merak/*` / `material-design/*` token name).
+- `figma-create-component/library-tokens.md` — published variable catalogue (the source of every `mui/*` / `material-design/*` token name).
 
-Every paint **must** be bound to a Variable in the file's local `merak` collection; hex values are never pasted. Hex values appear inline only as **reference resolutions of the light theme**.
+Every paint **must** be bound to a Variable in the file's local `mui` collection; hex values are never pasted. Hex values appear inline only as **reference resolutions of the light theme**.
 
 ### 4.1 Sizing
 
@@ -263,7 +263,7 @@ Specifically:
 - The `<TableSortLabel>` graduating to its own component set ⇒ add §3.3 + §5 axis tables for it; demote the inline mention.
 - The `<TablePagination>` graduating to its own component set ⇒ add a separate spec under `.claude/skills/figma-components/TablePagination/`.
 
-A token **value** change in the local `merak` collection (e.g. `seed/primary/main` shifts) needs **no** spec edit — variables resolve by name, paints follow. A token **name** change (e.g. `border-defalt` typo finally fixed) requires updating every reference in §2.3, §4.2, §4.3, §10.
+A token **value** change in the local `mui` collection (e.g. `seed/primary/main` shifts) needs **no** spec edit — variables resolve by name, paints follow. A token **name** change (e.g. `border-defalt` typo finally fixed) requires updating every reference in §2.3, §4.2, §4.3, §10.
 
 ## 9. Quick Reference
 
@@ -352,5 +352,5 @@ The MUI Library file owns **no local text styles** (`figma.getLocalTextStylesAsy
 5. **`State=Disabled` on cells** — not authored; MUI has no built-in disabled cell affordance. Add when a project pattern emerges.
 6. **`<TableSortLabel>` / `<TablePagination>` as standalone sets** — currently inline in the composed reference. Promote to their own component sets when a usage justifies the matrix.
 7. **Active sort-label arrow alpha** — runtime `0.54`-α vs Figma binding `text-default` (`0.87`-α). No 0.54-α neutral alias is published; rebind once one ships.
-8. **Local text styles** — MUI Library file owns no local text styles; cell typography is hand-set. Mint `merak/typography/table-head` + `merak/typography/table-body` and rebind cells when an audit takes this on.
+8. **Local text styles** — MUI Library file owns no local text styles; cell typography is hand-set. Mint `mui/typography/table-head` + `mui/typography/table-body` and rebind cells when an audit takes this on.
 9. **`CellSizeMatrix` does not exercise `Padding=Checkbox` at `Size=Small`** — the storybook story currently uses `Padding=Normal` for the size axis. Extend the matrix when measuring the Small/Checkbox cell becomes load-bearing.

@@ -47,8 +47,8 @@ The unchecked outer ring uses `currentColor` for the SVG `fill`; the inner check
 Notes:
 
 - **`Color=Default` does not tint the checked glyph.** The default fill stays at `text.secondary` (`#000000` / `0.6α`) instead of resolving to a primary / grey hue. The Figma `Color=Default, Checked=True` cell should mirror this (a dark-neutral checked indicator), not a primary-blue checked indicator.
-- The seven palette `*.main` values match the project's `merak/seed/{primary | secondary | danger | warning | info | success}/main` exactly (cross-reference `figma-create-component/library-tokens.md`). MUI `error` ↔ Merak `seed/danger`.
-- `secondary` (purple) has no Merak `seed/secondary/hover-bg` token in the catalogue — it uses `outline-hover` instead. This is a tokenizing convention, not a runtime difference.
+- The seven palette `*.main` values match the project's `mui/seed/{primary | secondary | danger | warning | info | success}/main` exactly (cross-reference `figma-create-component/library-tokens.md`). MUI `error` ↔ MUI `seed/danger`.
+- `secondary` (purple) has no MUI `seed/secondary/hover-bg` token in the catalogue — it uses `outline-hover` instead. This is a tokenizing convention, not a runtime difference.
 
 ## 3. State axis (Medium, Color=Primary, value combos)
 

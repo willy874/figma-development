@@ -38,7 +38,7 @@ The design system pre-ships almost every MUI Typography variant as a published t
 | `variant`            | `Variant`       | VARIANT | One of 13 — see §3. MUI also accepts `inherit` at runtime (passes through to parent typography); `inherit` is not exposed as a Figma variant value.   |
 | _(synthetic)_        | `Bold`          | VARIANT | `Off` / `On`. **No MUI counterpart** — Figma-only extension. Picks between the base text style for the chosen Variant (`Off`, default) and its bold-weight companion (`On`). At handoff, `Bold=On` translates to either `<strong>` / `font-weight: 700` styling or a different MUI variant — designers note the intent in dev annotations. See §4.1. |
 | `children`           | `Label`         | TEXT    | Master default `Sample` — short placeholder so the 13 × 2 grid stays compact on canvas. The story file (`Typography.stories.tsx`) still uses the pangram `The quick brown fox jumps over the lazy dog` for individual variant demos and matrix renders; the Figma master picks a one-word default that designers replace per instance. |
-| `color`              | —               | —       | **Not a Figma axis** (removed on 2026-05-08 — older revisions of this spec exposed a 9-value `Color` axis multiplying the matrix to 117 cells). Designers override the cell's inner TEXT fill on the instance, picking from the merak variables listed in §2.1. Rationale: the Color axis added 9× cells with no per-color geometry / typography differences — the same paint rebind on the inner TEXT does the job at the instance level without exploding the variant set. |
+| `color`              | —               | —       | **Not a Figma axis** (removed on 2026-05-08 — older revisions of this spec exposed a 9-value `Color` axis multiplying the matrix to 117 cells). Designers override the cell's inner TEXT fill on the instance, picking from the mui variables listed in §2.1. Rationale: the Color axis added 9× cells with no per-color geometry / typography differences — the same paint rebind on the inner TEXT does the job at the instance level without exploding the variant set. |
 | `align`              | —               | —       | Instance-level override on the cell's inner TEXT — designers set `textAlignHorizontal` directly on the instance (Figma allows this without detaching). Not a Figma Variant axis. |
 | `gutterBottom`       | —               | —       | Auto Layout `itemSpacing` on the surrounding column — not a Figma property. Per-Variant resolved px values are recorded in `storybook.render.md` §4.1 for reference.                |
 | `noWrap`             | —               | —       | Instance-level override on the cell's inner TEXT — designers set `textTruncation: ENDING` directly on the instance and constrain the host frame's max-width. |
@@ -49,9 +49,9 @@ The design system pre-ships almost every MUI Typography variant as a published t
 
 ### 2.1 Color value mapping (instance-level overrides)
 
-The story exposes nine `MERAK_COLORS` entries that map Merak design-system color keys to MUI Typography color tokens. The Figma master no longer exposes Color as a Variant axis — but designers still need to know which token to bind on the inner TEXT when overriding. Pick the merak variable that corresponds to the source `color` prop and rebind the cell's TEXT fill on the instance; never paste raw hex.
+The story exposes nine `MUI_COLORS` entries that map MUI design-system color keys to MUI Typography color tokens. The Figma master no longer exposes Color as a Variant axis — but designers still need to know which token to bind on the inner TEXT when overriding. Pick the mui variable that corresponds to the source `color` prop and rebind the cell's TEXT fill on the instance; never paste raw hex.
 
-| Merak key (story)   | MUI prop value (`color=…`) | Figma token to bind on inner TEXT fill |
+| MUI key (story)   | MUI prop value (`color=…`) | Figma token to bind on inner TEXT fill |
 | ------------------- | -------------------------- | -------------------------------------- |
 | `default`           | `textPrimary`              | `alias/colors/text-default`            |
 | `secondary-text`    | `textSecondary`            | `alias/colors/text-sub`                |
@@ -63,7 +63,7 @@ The story exposes nine `MERAK_COLORS` entries that map Merak design-system color
 | `info`              | `info`                     | `seed/info/main`                       |
 | `success`           | `success`                  | `seed/success/main`                    |
 
-¹ The merak `danger` key targets `seed/danger/*` (the project's Merak-named token family for MUI `palette.error.*`). Story uses `color="error"` directly — same convention as `<Button>` / `<Chip>`.
+¹ The mui `danger` key targets `seed/danger/*` (the project's MUI-named token family for MUI `palette.error.*`). Story uses `color="error"` directly — same convention as `<Button>` / `<Chip>`.
 
 ## 3. Variant Property Matrix
 
@@ -86,7 +86,7 @@ Clean Cartesian product — no sparse exclusions. Each cell is a single TEXT nod
 
 `color`, `align`, `gutterBottom`, and `noWrap` are intentionally **not** exposed as Figma component properties — see §2 for the rationale (each would either explode the matrix, require a screen-level layout decision the master can't honestly model, or duplicate work the inner TEXT can do directly). Designers override them on the instance's inner TEXT directly:
 
-- **Color** — select the inner TEXT inside the instance and rebind its single SOLID fill to one of the merak variables in §2.1 (or any other token from `figma-create-component/library-tokens.md`). Figma allows the rebind without detaching.
+- **Color** — select the inner TEXT inside the instance and rebind its single SOLID fill to one of the mui variables in §2.1 (or any other token from `figma-create-component/library-tokens.md`). Figma allows the rebind without detaching.
 - **Alignment** — select the inner TEXT and set `textAlignHorizontal` (`LEFT` / `CENTER` / `RIGHT` / `JUSTIFIED`).
 - **No-wrap / truncation** — select the inner TEXT and toggle `textTruncation: ENDING`. The host frame must constrain `width` for the ellipsis to engage.
 - **Gutter bottom** — use Auto Layout `itemSpacing` on the surrounding column, picking the Variant-appropriate value from `storybook.render.md` §4.1 (e.g. `5.6 px` for `body1`).
@@ -147,7 +147,7 @@ Every bold companion uses **Noto Sans TC Bold** (or **Inter Bold** for `H2` / `H
 
 ### 4.2 Color token bindings — text fill
 
-The master cell binds its single SOLID fill to **`alias/colors/text-default`** (`#000000DE` reference resolution). All 26 cells share the binding. Designers override the inner TEXT fill at the instance level when a different color is needed — see §2.1 for the variable-to-merak-key crosswalk and §3.1 for the override mechanic.
+The master cell binds its single SOLID fill to **`alias/colors/text-default`** (`#000000DE` reference resolution). All 26 cells share the binding. Designers override the inner TEXT fill at the instance level when a different color is needed — see §2.1 for the variable-to-mui-key crosswalk and §3.1 for the override mechanic.
 
 ### 4.3 Cell-level rules
 
@@ -183,7 +183,7 @@ Documentation frame (`<Typography>`, `821:11807`) on page **Foundation Component
 1. **Pick the `Variant`** matching the source `variant` prop. `subtitle1` / `subtitle2` are heading-adjacent — they share `<h6>` semantically with `H6` but differ visually.
 2. **Pick the `Bold`** value. `Off` is the runtime weight (Light / Regular / Medium per `storybook.render.md` §1). `On` is the bold-weight companion. Use `Bold=On` for emphasis runs (`<strong>`, `<b>`, or a different MUI variant) — note the intent in handoff so the developer picks the right HTML / `font-weight` value.
 3. **Override the `Label`** to the actual screen text. Long Latin labels behave well; CJK labels rely on Noto Sans TC's CJK glyphs (already bundled in the project text style).
-4. **Override the inner TEXT fill** when the source `color` prop is anything other than `textPrimary`. Pick from the merak variable list in §2.1 — never paste raw hex.
+4. **Override the inner TEXT fill** when the source `color` prop is anything other than `textPrimary`. Pick from the mui variable list in §2.1 — never paste raw hex.
 5. **For non-default alignment**, select the inner TEXT node inside the instance and set `textAlignHorizontal` (`LEFT` / `CENTER` / `RIGHT` / `JUSTIFIED`). Figma allows this override without detaching the instance.
 6. **For truncation**, select the inner TEXT and toggle `textTruncation: ENDING`; constrain the host frame's max-width so the ellipsis engages.
 7. **For paragraph spacing** (the `gutterBottom` flag in source), set Auto Layout `itemSpacing` on the surrounding column to the per-Variant value in `storybook.render.md` §4.1 (e.g. `5.6 px` for `body1`).
@@ -200,7 +200,7 @@ Documentation frame (`<Typography>`, `821:11807`) on page **Foundation Component
 
 ### 7.3 Don'ts
 
-- ❌ Don't detach the Typography instance to recolor it — rebind the inner TEXT fill to a different merak variable (§2.1) on the instance instead. Detached instances drift from `seed/*` / `alias/*` values when the theme is re-keyed.
+- ❌ Don't detach the Typography instance to recolor it — rebind the inner TEXT fill to a different mui variable (§2.1) on the instance instead. Detached instances drift from `seed/*` / `alias/*` values when the theme is re-keyed.
 - ❌ Don't paint a Typography cell with a raw hex value. Every text fill must resolve to a local variable (see §4.2 / §1 local-only rule).
 - ❌ Don't hand-set `fontName` / `fontSize` / `lineHeight` on a cell — apply the `textStyleId` from §4.1 instead. The local component-scoped styles for `Button` / `Overline` / every bold companion are minted exactly so this rule holds across the 26 cells.
 - ❌ Don't rebind `Variant=Button` from `component/typography/button` to `material-design/typography/subtitle2` "because it's the same size" — the local style bakes `textCase: UPPER`, the design-system style does not.
@@ -217,7 +217,7 @@ This document and the source must move together. Files that, when changed, force
 3. `node_modules/@mui/material/styles/createTypography.js` — MUI's default Typography object. A version bump in `package.json` (`@mui/material`) requires re-running `storybook.render.md` §1 measurements.
 4. `.storybook/preview.tsx` — adding a `createTheme({ typography: ... })` override in the Storybook decorator means the runtime measurements no longer reflect the design system; both this spec and `storybook.render.md` need to be re-probed.
 5. `figma-create-component/library-tokens.md` §3 (`material-design/typography/*` text styles) — a renamed / removed text style needs every `textStyleId` reference in §4.1 updated.
-6. `figma-create-component/library-tokens.md` §1 (`merak/alias/colors/*` and `merak/seed/*/main`) — a renamed / removed color variable needs every reference in §2.1 / §4.2 updated.
+6. `figma-create-component/library-tokens.md` §1 (`mui/alias/colors/*` and `mui/seed/*/main`) — a renamed / removed color variable needs every reference in §2.1 / §4.2 updated.
 7. `design-token.md` (next to this file) — the local component-scoped text styles. A change to any local style's font / weight / size / line-height is a spec-affecting edit.
 
 Specifically:

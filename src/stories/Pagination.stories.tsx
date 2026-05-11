@@ -33,7 +33,7 @@ const ChevronRightGlyph = () => (
   </svg>
 );
 
-const MerakIconSm = ({ children }: { children: React.ReactNode }) => (
+const MUIIconSm = ({ children }: { children: React.ReactNode }) => (
   <Box
     aria-hidden
     sx={{
@@ -52,15 +52,15 @@ const MerakIconSm = ({ children }: { children: React.ReactNode }) => (
 );
 
 const PreviousIcon = () => (
-  <MerakIconSm>
+  <MUIIconSm>
     <ChevronLeftGlyph />
-  </MerakIconSm>
+  </MUIIconSm>
 );
 
 const NextIcon = () => (
-  <MerakIconSm>
+  <MUIIconSm>
     <ChevronRightGlyph />
-  </MerakIconSm>
+  </MUIIconSm>
 );
 
 const PAGINATION_ITEM_SLOTS = { previous: PreviousIcon, next: NextIcon };
@@ -68,15 +68,15 @@ const PAGINATION_ITEM_SLOTS = { previous: PreviousIcon, next: NextIcon };
 // ─── Color mapping ──────────────────────────────────────────────────────────
 //
 // MUI Pagination only natively supports `color: 'standard' | 'primary' |
-// 'secondary'`. Merak Figma exposes 6 theme colors (default / primary /
+// 'secondary'`. MUI Figma exposes 6 theme colors (default / primary /
 // danger / warning / info / success). Non-native colors are applied at story
 // time via PaginationItem `sx`, mirroring the IconButton stories pattern —
 // every Figma cell has a runtime equivalent for measurement.
 
-type MerakColor = 'default' | 'primary' | 'danger' | 'warning' | 'info' | 'success';
+type MUIColor = 'default' | 'primary' | 'danger' | 'warning' | 'info' | 'success';
 
 const PALETTE_KEY: Record<
-  Exclude<MerakColor, 'default'>,
+  Exclude<MUIColor, 'default'>,
   'primary' | 'error' | 'warning' | 'info' | 'success'
 > = {
   primary: 'primary',
@@ -86,13 +86,13 @@ const PALETTE_KEY: Record<
   success: 'success',
 };
 
-const MERAK_COLORS: Array<{ merak: MerakColor; mui: PaginationProps['color'] }> = [
-  { merak: 'default', mui: 'standard' },
-  { merak: 'primary', mui: 'primary' },
-  { merak: 'danger', mui: 'primary' }, // sx-overridden
-  { merak: 'warning', mui: 'primary' },
-  { merak: 'info', mui: 'primary' },
-  { merak: 'success', mui: 'primary' },
+const MUI_COLORS: Array<{ name: MUIColor; mui: PaginationProps['color'] }> = [
+  { name: 'default', mui: 'standard' },
+  { name: 'primary', mui: 'primary' },
+  { name: 'danger', mui: 'primary' }, // sx-overridden
+  { name: 'warning', mui: 'primary' },
+  { name: 'info', mui: 'primary' },
+  { name: 'success', mui: 'primary' },
 ];
 
 const SIZES: Array<NonNullable<PaginationProps['size']>> = ['small', 'medium', 'large'];
@@ -103,13 +103,13 @@ function hexToRgb(hex: string): string {
   return `${parseInt(m[1], 16)}, ${parseInt(m[2], 16)}, ${parseInt(m[3], 16)}`;
 }
 
-// `sx` for a single PaginationItem to render Merak themed colors that MUI
+// `sx` for a single PaginationItem to render MUI themed colors that MUI
 // doesn't expose natively (danger/warning/info/success). Default + primary
 // fall through to the MUI built-ins. Treatment matches Figma node 1:5098:
 //   - Hovered: bg = 4% tint, border + fg stay neutral (alias defaults)
 //   - Selected: bg = 8% tint (single solid here; Figma stacks two 4% layers
 //     to dodge variable-binding alpha flattening), border = 50% tint, fg = main
-function paginationItemSx(color: MerakColor): SxProps<Theme> {
+function paginationItemSx(color: MUIColor): SxProps<Theme> {
   return (theme) => {
     if (color === 'default' || color === 'primary') return {};
     const key = PALETTE_KEY[color];
@@ -132,13 +132,13 @@ function paginationItemSx(color: MerakColor): SxProps<Theme> {
 }
 
 // MUI Pagination's `color` prop only accepts standard|primary|secondary, so
-// we map every Merak color to `primary` and override the visual via sx on
+// we map every MUI color to `primary` and override the visual via sx on
 // each PaginationItem. The wrapper itself just owns variant/shape/size.
-interface MerakPaginationProps extends Omit<PaginationProps, 'color'> {
-  color?: MerakColor;
+interface MUIPaginationProps extends Omit<PaginationProps, 'color'> {
+  color?: MUIColor;
 }
 
-const MerakPagination = ({ color = 'default', ...rest }: MerakPaginationProps) => (
+const MUIPagination = ({ color = 'default', ...rest }: MUIPaginationProps) => (
   <Pagination
     variant="outlined"
     shape="rounded"
@@ -156,7 +156,7 @@ const MerakPagination = ({ color = 'default', ...rest }: MerakPaginationProps) =
 
 const meta = {
   title: 'Components/Pagination',
-  component: MerakPagination,
+  component: MUIPagination,
   tags: ['autodocs'],
   parameters: {
     docs: {
@@ -169,7 +169,7 @@ const meta = {
   argTypes: {
     color: {
       control: 'inline-radio',
-      options: MERAK_COLORS.map((c) => c.merak),
+      options: MUI_COLORS.map((c) => c.name),
     },
     size: { control: 'inline-radio', options: SIZES },
     count: { control: { type: 'number', min: 1, max: 99 } },
@@ -182,7 +182,7 @@ const meta = {
     count: 10,
     page: 5,
   },
-} satisfies Meta<typeof MerakPagination>;
+} satisfies Meta<typeof MUIPagination>;
 
 export default meta;
 
@@ -247,12 +247,12 @@ export const ColorSizeMatrix: Story = {
           </span>
         ))}
       </Stack>
-      {MERAK_COLORS.map(({ merak }) => (
-        <Stack key={merak} direction="row" spacing={2} alignItems="center">
-          <span style={cellLabel}>{merak}</span>
+      {MUI_COLORS.map(({ name }) => (
+        <Stack key={name} direction="row" spacing={2} alignItems="center">
+          <span style={cellLabel}>{name}</span>
           {SIZES.map((s) => (
             <div key={s} style={{ width: 380 }}>
-              <MerakPagination color={merak} size={s} count={10} page={5} />
+              <MUIPagination color={name} size={s} count={10} page={5} />
             </div>
           ))}
         </Stack>
@@ -274,13 +274,13 @@ export const DisabledMatrix: Story = {
           </span>
         ))}
       </Stack>
-      {MERAK_COLORS.map(({ merak }) => (
-        <Stack key={merak} direction="row" spacing={2} alignItems="center">
-          <span style={cellLabel}>{merak}</span>
+      {MUI_COLORS.map(({ name }) => (
+        <Stack key={name} direction="row" spacing={2} alignItems="center">
+          <span style={cellLabel}>{name}</span>
           {SIZES.map((s) => (
             <div key={s} style={{ width: 380 }}>
-              <MerakPagination
-                color={merak}
+              <MUIPagination
+                color={name}
                 size={s}
                 count={10}
                 page={5}
@@ -351,7 +351,7 @@ export const ItemTypeStateMatrix: Story = {
                 page={t.page ?? 1}
                 {...extra}
                 slots={PAGINATION_ITEM_SLOTS}
-                sx={paginationItemSx(color as MerakColor)}
+                sx={paginationItemSx(color as MUIColor)}
               />
             </div>
           ))}
@@ -380,20 +380,20 @@ export const ItemSelectedColorSizeMatrix: Story = {
           </span>
         ))}
       </Stack>
-      {MERAK_COLORS.map(({ merak }) => (
-        <Stack key={merak} direction="row" spacing={2} alignItems="center">
-          <span style={cellLabel}>{merak}</span>
+      {MUI_COLORS.map(({ name }) => (
+        <Stack key={name} direction="row" spacing={2} alignItems="center">
+          <span style={cellLabel}>{name}</span>
           {SIZES.map((s) => (
             <div key={s} style={{ width: 64 }}>
               <PaginationItem
                 variant="outlined"
                 shape="rounded"
-                color={merak === 'default' ? 'standard' : 'primary'}
+                color={name === 'default' ? 'standard' : 'primary'}
                 size={s}
                 type="page"
                 page={1}
                 selected
-                sx={paginationItemSx(merak)}
+                sx={paginationItemSx(name)}
               />
             </div>
           ))}

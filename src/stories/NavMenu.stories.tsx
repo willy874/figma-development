@@ -32,7 +32,7 @@ const PersonGlyph = () => (
   </svg>
 );
 
-const MerakChevron = ({ size = 24 }: { size?: number }) => (
+const MUIChevron = ({ size = 24 }: { size?: number }) => (
   <Box
     aria-hidden
     sx={{
@@ -50,7 +50,7 @@ const MerakChevron = ({ size = 24 }: { size?: number }) => (
   </Box>
 );
 
-// ─── MerakNavMenuItem story wrapper ─────────────────────────────────────────
+// ─── MUINavMenuItem story wrapper ─────────────────────────────────────────
 //
 // The leaf nav row. Composes MUI `<ListItemButton>` + `<ListItemAvatar>` +
 // `<ListItemText>` + a trailing chevron. State is driven by MUI props /
@@ -69,7 +69,7 @@ interface NavMenuItemProps extends Omit<ListItemButtonProps, 'children'> {
   nested?: boolean;
 }
 
-function MerakNavMenuItem({
+function MUINavMenuItem({
   label = 'List Item',
   secondary,
   leadingIcon = true,
@@ -121,14 +121,14 @@ function MerakNavMenuItem({
       />
       {trailingIcon && (
         <ListItemIcon sx={{ minWidth: 24, color: 'rgba(0,0,0,0.54)' }}>
-          <MerakChevron size={24} />
+          <MUIChevron size={24} />
         </ListItemIcon>
       )}
     </ListItemButton>
   );
 }
 
-// ─── MerakNavMenu story wrapper ─────────────────────────────────────────────
+// ─── MUINavMenu story wrapper ─────────────────────────────────────────────
 //
 // The collapsible wrapper. Header is a NavMenuItem with `selected` toggling
 // open/closed. Children render inside `<Collapse>`. The `isOpen` prop is
@@ -143,7 +143,7 @@ interface NavMenuProps {
   disabled?: boolean;
 }
 
-function MerakNavMenu({
+function MUINavMenu({
   header,
   headerSecondary,
   isOpen: controlled,
@@ -156,7 +156,7 @@ function MerakNavMenu({
 
   return (
     <List disablePadding sx={{ width: 280 }}>
-      <MerakNavMenuItem
+      <MUINavMenuItem
         label={header}
         secondary={headerSecondary}
         disabled={disabled}
@@ -173,7 +173,7 @@ function MerakNavMenu({
 
 const meta = {
   title: 'Components/NavMenu',
-  component: MerakNavMenuItem,
+  component: MUINavMenuItem,
   tags: ['autodocs'],
   parameters: {
     docs: {
@@ -199,7 +199,7 @@ const meta = {
     trailingIcon: true,
     nested: false,
   },
-} satisfies Meta<typeof MerakNavMenuItem>;
+} satisfies Meta<typeof MUINavMenuItem>;
 
 export default meta;
 
@@ -279,7 +279,7 @@ export const StateMatrix: Story = {
         <Stack key={label} direction="row" spacing={2} alignItems="center">
           <span style={cellLabel}>{label}</span>
           <Box sx={{ width: 280 }}>
-            <MerakNavMenuItem {...args} {...extra} />
+            <MUINavMenuItem {...args} {...extra} />
           </Box>
         </Stack>
       ))}
@@ -296,24 +296,24 @@ export const StateMatrix: Story = {
 export const NavMenuClosed: StoryObj = {
   parameters: { controls: { disable: true } },
   render: () => (
-    <MerakNavMenu header="List Item" headerSecondary="Secondary" isOpen={false}>
-      <MerakNavMenuItem label="List Item" trailingIcon={false} nested />
-      <MerakNavMenuItem label="List Item" trailingIcon={false} nested />
-      <MerakNavMenuItem label="List Item" trailingIcon={false} nested selected />
-      <MerakNavMenuItem label="List Item" trailingIcon={false} nested />
-    </MerakNavMenu>
+    <MUINavMenu header="List Item" headerSecondary="Secondary" isOpen={false}>
+      <MUINavMenuItem label="List Item" trailingIcon={false} nested />
+      <MUINavMenuItem label="List Item" trailingIcon={false} nested />
+      <MUINavMenuItem label="List Item" trailingIcon={false} nested selected />
+      <MUINavMenuItem label="List Item" trailingIcon={false} nested />
+    </MUINavMenu>
   ),
 };
 
 export const NavMenuOpen: StoryObj = {
   parameters: { controls: { disable: true } },
   render: () => (
-    <MerakNavMenu header="List Item" headerSecondary="Secondary" isOpen>
-      <MerakNavMenuItem label="List Item" trailingIcon={false} nested />
-      <MerakNavMenuItem label="List Item" trailingIcon={false} nested />
-      <MerakNavMenuItem label="List Item" trailingIcon={false} nested selected />
-      <MerakNavMenuItem label="List Item" trailingIcon={false} nested />
-    </MerakNavMenu>
+    <MUINavMenu header="List Item" headerSecondary="Secondary" isOpen>
+      <MUINavMenuItem label="List Item" trailingIcon={false} nested />
+      <MUINavMenuItem label="List Item" trailingIcon={false} nested />
+      <MUINavMenuItem label="List Item" trailingIcon={false} nested selected />
+      <MUINavMenuItem label="List Item" trailingIcon={false} nested />
+    </MUINavMenu>
   ),
 };
 
@@ -323,18 +323,18 @@ export const NavMenuOpenStateMatrix: StoryObj = {
     <Stack direction="row" spacing={3}>
       <Stack spacing={1}>
         <span style={cellLabel}>IsOpen=False</span>
-        <MerakNavMenu header="List Item" headerSecondary="Secondary" isOpen={false}>
-          <MerakNavMenuItem label="Item 1" trailingIcon={false} nested />
-        </MerakNavMenu>
+        <MUINavMenu header="List Item" headerSecondary="Secondary" isOpen={false}>
+          <MUINavMenuItem label="Item 1" trailingIcon={false} nested />
+        </MUINavMenu>
       </Stack>
       <Stack spacing={1}>
         <span style={cellLabel}>IsOpen=True</span>
-        <MerakNavMenu header="List Item" headerSecondary="Secondary" isOpen>
-          <MerakNavMenuItem label="Item 1" trailingIcon={false} nested />
-          <MerakNavMenuItem label="Item 2" trailingIcon={false} nested />
-          <MerakNavMenuItem label="Item 3" trailingIcon={false} nested selected />
-          <MerakNavMenuItem label="Item 4" trailingIcon={false} nested />
-        </MerakNavMenu>
+        <MUINavMenu header="List Item" headerSecondary="Secondary" isOpen>
+          <MUINavMenuItem label="Item 1" trailingIcon={false} nested />
+          <MUINavMenuItem label="Item 2" trailingIcon={false} nested />
+          <MUINavMenuItem label="Item 3" trailingIcon={false} nested selected />
+          <MUINavMenuItem label="Item 4" trailingIcon={false} nested />
+        </MUINavMenu>
       </Stack>
     </Stack>
   ),

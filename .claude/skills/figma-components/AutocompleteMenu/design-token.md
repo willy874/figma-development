@@ -1,12 +1,12 @@
 ---
 name: figma-component-autocomplete-menu-design-token
-description: Component-scoped design tokens for `<AutocompleteMenu>` (and its option-row companion `<AutocompleteOption>`). Defined here because they're MUI-Autocomplete-specific pre-alpha'd primary tints (option Selected / Selected+Focused) that don't fit the shared `merak/seed/*` or `merak/alias/*` namespaces and live as **local** variables inside the MUI-Library file (`KQjP6W9Uw1PN0iipwQHyYn`). Bind option Selected backgrounds to these names rather than literal values; for shared tokens used by AutocompleteMenu (alias text colors, alias bg-outline-hover, paper-elevation-0, shadows-1) see `.claude/skills/figma-create-component/library-tokens.md`.
+description: Component-scoped design tokens for `<AutocompleteMenu>` (and its option-row companion `<AutocompleteOption>`). Defined here because they're MUI-Autocomplete-specific pre-alpha'd primary tints (option Selected / Selected+Focused) that don't fit the shared `mui/seed/*` or `mui/alias/*` namespaces and live as **local** variables inside the MUI-Library file (`KQjP6W9Uw1PN0iipwQHyYn`). Bind option Selected backgrounds to these names rather than literal values; for shared tokens used by AutocompleteMenu (alias text colors, alias bg-outline-hover, paper-elevation-0, shadows-1) see `.claude/skills/figma-create-component/library-tokens.md`.
 parent_skill: figma-components
 ---
 
 # `<AutocompleteMenu>` Component Tokens
 
-Tokens scoped to `<AutocompleteMenu>` and its companion `<AutocompleteOption>`. Reach for these only inside the AutocompleteMenu component set; for everything else (semantic colors, shadows, typography, paper background), bind to the shared `merak/*` and `material-design/*` tokens documented in [`design-token.md`](../../figma-create-component/library-tokens.md).
+Tokens scoped to `<AutocompleteMenu>` and its companion `<AutocompleteOption>`. Reach for these only inside the AutocompleteMenu component set; for everything else (semantic colors, shadows, typography, paper background), bind to the shared `mui/*` and `material-design/*` tokens documented in [`design-token.md`](../../figma-create-component/library-tokens.md).
 
 ## Why these are component-scoped
 
@@ -14,9 +14,9 @@ These values are **MUI-Autocomplete-specific pre-alpha'd primary tints** that do
 
 The closest shared token is `seed/primary/hover-bg` (`#1976D20A`, `0.04α`) — exactly half of the option-selected alpha and a third of the option-selected-focused alpha. Stacking two / three copies of `hover-bg` in Figma would composite to `0.08` / `0.12`, but the visual result depends on Figma's blend math (it composites in sRGB, not linear), so the rendered hex would diverge from MUI's flat-alpha runtime. Pre-alpha'd locals avoid the discrepancy.
 
-These tokens share the same `component/*` prefix as the shared `merak/component/*` namespace, but they live in the **local** `merak` collection inside the MUI-Library file (`KQjP6W9Uw1PN0iipwQHyYn`) — not the published 天璇 collection. Treat them as local-only; promoting one to the shared collection still requires copying it into the 天璇 file's `merak` collection (and rebinding may be needed if IDs change).
+These tokens share the same `component/*` prefix as the shared `mui/component/*` namespace, but they live in the **local** `mui` collection inside the MUI-Library file (`KQjP6W9Uw1PN0iipwQHyYn`) — not the published 天璇 collection. Treat them as local-only; promoting one to the shared collection still requires copying it into the 天璇 file's `mui` collection (and rebinding may be needed if IDs change).
 
-Anything that turns out to be reused by another listbox-bearing component (Select, Menu, Popper-based DatePicker) should be promoted to the shared `merak/component/listbox/*` namespace in the 天璇 file and removed from here.
+Anything that turns out to be reused by another listbox-bearing component (Select, Menu, Popper-based DatePicker) should be promoted to the shared `mui/component/listbox/*` namespace in the 天璇 file and removed from here.
 
 ## Tokens
 
@@ -56,4 +56,4 @@ These are not Figma variables but design constants worth recording in one place:
 | End-adornment button padding                     | `2 px` (popup) / `4 px` (clear) | Inner padding around the glyph              |
 | Popup-arrow rotation (Open=True)                 | `180°`            | The arrow flips when the popper is open                   |
 
-Anything in this table that gains a project-level token (e.g. `merak/component/listbox/popper-radius`) should be lifted out of this file into the shared collection and removed here.
+Anything in this table that gains a project-level token (e.g. `mui/component/listbox/popper-radius`) should be lifted out of this file into the shared collection and removed here.

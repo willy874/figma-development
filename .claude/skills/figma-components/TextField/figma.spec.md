@@ -13,7 +13,7 @@ figma_component_set_id: '1:6266'
 
 `<TextField>` is the Figma counterpart of the MUI `<TextField>` consumed in `src/stories/TextField.stories.tsx`. The package re-exports MUI directly — there is no in-repo wrapper — so the Figma component encodes the MUI prop surface (`variant`, `size`, `disabled`, `error`, `focused`, `value`, `label`, `placeholder`, `helperText`, `InputProps.startAdornment` / `endAdornment`) plus a native `Autocomplete` slot for SearchInput-style children.
 
-The Figma cells already match this contract — every paint, stroke, text fill, and underline is bound to a named variable in the MUI-Library file's local collection (`KQjP6W9Uw1PN0iipwQHyYn`). The `component/input/*` family of tokens (documented in [`design-token.md`](./design-token.md)) carries MUI-specific resting alphas; semantic tokens come from the published `merak/seed/*` and `merak/alias/*` namespaces (see [`library-tokens.md`](../../figma-create-component/library-tokens.md)).
+The Figma cells already match this contract — every paint, stroke, text fill, and underline is bound to a named variable in the MUI-Library file's local collection (`KQjP6W9Uw1PN0iipwQHyYn`). The `component/input/*` family of tokens (documented in [`design-token.md`](./design-token.md)) carries MUI-specific resting alphas; semantic tokens come from the published `mui/seed/*` and `mui/alias/*` namespaces (see [`library-tokens.md`](../../figma-create-component/library-tokens.md)).
 
 | Aspect            | Value                                                                                  |
 | ----------------- | -------------------------------------------------------------------------------------- |
@@ -333,7 +333,7 @@ This document and the source must move together. When **any** of the following c
 1. `src/stories/TextField.stories.tsx` (variants, args, adornment / helper-text wiring)
 2. The Figma `<TextField>` component set at `1:6266` (variants, properties, token bindings)
 3. The local `component/input/*` tokens documented in [`design-token.md`](./design-token.md), or the local `text/disabled`, `background/paper-elevation-0`, `input/label` variables
-4. The shared `merak/seed/*`, `merak/alias/*` tokens consumed in §4.2 — particularly `seed/primary/main`, `seed/danger/main`, `alias/colors/{text-sub,text-default,text-disabled,bg-disabled}`
+4. The shared `mui/seed/*`, `mui/alias/*` tokens consumed in §4.2 — particularly `seed/primary/main`, `seed/danger/main`, `alias/colors/{text-sub,text-default,text-disabled,bg-disabled}`
 5. `.storybook/preview.tsx` (theme overrides via `createTheme`) — today this is an empty `createTheme()`; introducing typography / palette / `MuiTextField.defaultProps` overrides forces a re-measure
 6. The shared `<Icon>` component set (`3:2722`) — variants added/removed/renamed, or the size-to-pixel mapping changes
 7. `package.json` `@mui/material` peer / dev version (currently `^7.3.10` / peer `>=7`)
@@ -344,7 +344,7 @@ This document and the source must move together. When **any** of the following c
 - Adding `Pressed` to the `State` axis → update §3, add a row to §4.3.
 - Changing the fixed `minRows` for `Multiline=True` (today `3`, contributing the `+46 px` wrapper-height delta) → update §2 mapping note, §3 matrix note, §4.1 Multiline rows, §6 row bands, §6.1 Multiline cell composition, and re-measure via `MultilineMatrix` in `storybook.render.md` §7.
 - Adding `maxRows` as a Figma axis (e.g. capped multiline) → introduce a new variant property, multiply variant count in §3, document the cap in §4.1.
-- Token rename / removal in `merak/alias/*` or `merak/seed/*` → update every reference in §2, §4, §10 and rename the matching variable in the local Figma collection.
+- Token rename / removal in `mui/alias/*` or `mui/seed/*` → update every reference in §2, §4, §10 and rename the matching variable in the local Figma collection.
 - Token value change in `component/input/*` → no edit to this spec is required (Figma resolves through the same name); `design-token.md` records the resolution chain.
 - Renaming the slot keys (`Start Adorn` / `End Adorn` / `Autocomplete`) or changing the adornment frame size from `24 × 24` → update §3.1, §5, §6.
 - Surfacing the `Placeholder` property visibly (e.g. by adding a "no-label" sub-variant) → update §4.3, §7, and add the new variant axis in §3.
@@ -392,7 +392,7 @@ Figma Component Set: <TextField>  (1:6266)
 
 The complete set of tokens consumed by `<TextField>`. Names are **Figma variable paths**; bind every paint / stroke / text-fill to one of these — never to a literal value.
 
-### 10.1 Seed tokens (`merak/seed/*`, from 天璇 file)
+### 10.1 Seed tokens (`mui/seed/*`, from 天璇 file)
 
 `<TextField>` consumes `primary` and `danger` only — there is no Color axis.
 
@@ -401,7 +401,7 @@ The complete set of tokens consumed by `<TextField>`. Names are **Figma variable
 | `seed/primary/main` | Label + underline + outline on `State=Focused` (non-Error) | Focus accent (`#1976D2`)          |
 | `seed/danger/main`  | Label + helper text + underline + outline on `State=Error` | Error accent (`#D32F2F`)          |
 
-### 10.2 Alias tokens (`merak/alias/colors/*`)
+### 10.2 Alias tokens (`mui/alias/colors/*`)
 
 | Token                         | Used by                                                                  | Role                              |
 | ----------------------------- | ------------------------------------------------------------------------ | --------------------------------- |
@@ -425,7 +425,7 @@ Documented in detail in [`design-token.md`](./design-token.md). Listed here for 
 
 ### 10.4 Other local variables
 
-These live in the MUI-Library file's local collection (not in `merak/*`) and are referenced by the cells:
+These live in the MUI-Library file's local collection (not in `mui/*`) and are referenced by the cells:
 
 | Token                          | Used by                                          | Role                                                  |
 | ------------------------------ | ------------------------------------------------ | ----------------------------------------------------- |
@@ -450,4 +450,4 @@ These live in the MUI-Library file's local collection (not in `merak/*`) and are
 - Floated label: `12 px` (text style `input/label`), lh `12 px`, ls `0.15 px`
 - Helper text: `12 px`, lh `19.92 px` runtime / `16.6 px` Figma, ls `0.4 px`
 
-If the project introduces typography tokens (e.g. `merak/typography/input-*`), update §4.1 and §10.6 to bind to them.
+If the project introduces typography tokens (e.g. `mui/typography/input-*`), update §4.1 and §10.6 to bind to them.

@@ -201,7 +201,7 @@ This document and the source must move together. When **any** of the following c
 1. `src/stories/Autocomplete.stories.tsx` (matrices, args, popper / loading / no-options handling)
 2. The Figma `<AutocompleteMenu>` component set at `534:7976` (variants, properties, token bindings)
 3. The Figma `<AutocompleteOption>` component set at `439:7109` — AutocompleteMenu stamps it inside the Default-state listbox; any change to its variant axes / token bindings cascades here
-4. The shared `merak/seed/*`, `merak/alias/*` tokens consumed in §4.2 — particularly `seed/primary/main`, `alias/colors/text-sub`
+4. The shared `mui/seed/*`, `mui/alias/*` tokens consumed in §4.2 — particularly `seed/primary/main`, `alias/colors/text-sub`
 5. The local `component/autocomplete/option-*` tokens documented in `design-token.md`, or the local `background/paper-elevation-0`, `material-design/shadows/shadows-1` styles
 6. `.storybook/preview.tsx` (theme overrides) — today this is an empty `createTheme()`; introducing typography / palette / `MuiAutocomplete.defaultProps` overrides forces a re-measure
 7. `package.json` `@mui/material` peer / dev version (currently `^7.3.10` / peer `>=7`)
@@ -212,7 +212,7 @@ This document and the source must move together. When **any** of the following c
 - **Promoting `Width` to a Figma property** — currently the cell is fixed at `280 px`. Hosts at non-default widths resize manually; if a host uses a consistently different width (e.g. `360 px` for compact toolbars), promote to a property and document.
 - **Adding `Has Group Header` BOOLEAN** when group headers are stamped at the top of the listbox.
 - **Adding `Option Count` as a Figma property** — currently designers stamp instances manually. Promoting to a property would automate the cell height math but would require nested instance overrides.
-- **Token rename / removal in `merak/alias/*` or `merak/seed/*`** → update every reference in §2, §4, §10 and rename the matching variable in the local Figma collection.
+- **Token rename / removal in `mui/alias/*` or `mui/seed/*`** → update every reference in §2, §4, §10 and rename the matching variable in the local Figma collection.
 - **Token value change in `component/autocomplete/option-*`** → no edit to this spec is required (Figma resolves through the same name); `design-token.md` records the resolution chain.
 - **`@mui/material` major bump** → re-run `storybook.render.md` drift checks; bump the version row in §1; reconcile any new computed-style values against §4.
 
@@ -272,13 +272,13 @@ The Default-state listbox holds a vertical Auto Layout stack of `<AutocompleteOp
 
 The complete set of tokens consumed by `<AutocompleteMenu>` directly. Tokens consumed via the nested `<AutocompleteOption>` instances are documented in §9.1 and the design-token.md.
 
-### 10.1 Seed tokens (`merak/seed/*`)
+### 10.1 Seed tokens (`mui/seed/*`)
 
 | Token               | Used by                                                                  | Role                              |
 | ------------------- | ------------------------------------------------------------------------ | --------------------------------- |
 | `seed/primary/main` | Resolution chain for `component/autocomplete/option-selected-*` tokens (consumed via `<AutocompleteOption>`)   | Primary accent (`#1976D2`)        |
 
-### 10.2 Alias tokens (`merak/alias/colors/*`)
+### 10.2 Alias tokens (`mui/alias/colors/*`)
 
 | Token                          | Used by                                                                  | Role                              |
 | ------------------------------ | ------------------------------------------------------------------------ | --------------------------------- |
@@ -320,4 +320,4 @@ Documented in `design-token.md`. Listed here for completeness:
 - Option text: `16 / 24 px`, ls `0.15 px` — via `<AutocompleteOption>`
 - Loading / no-options message: `14 / 20 px`, ls `0.15 px`
 
-If the project introduces typography tokens (e.g. `merak/typography/option-*`), update §4.1 and §10.6 to bind to them.
+If the project introduces typography tokens (e.g. `mui/typography/option-*`), update §4.1 and §10.6 to bind to them.

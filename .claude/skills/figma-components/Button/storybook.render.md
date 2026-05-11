@@ -1,6 +1,6 @@
 ---
 name: figma-component-button-storybook-render
-description: Computed-style matrix for `<Button>` (MerakButton v2) measured against `src/stories/Button.stories.tsx` via Chrome DevTools MCP. Documents the runtime per-variant box / paint / typography numbers, the color × state grid, icon spacing, the size axis (small/medium/large), the MUI theme custom properties exposed on `.MuiButton-root`, and the drift-check protocol that decides whether a divergence is a spec bug, a MUI upgrade, or browser rounding. Companion to `figma.spec.md` (the contract) and `figma.render.md` (Figma-side rendering).
+description: Computed-style matrix for `<Button>` (MUIButton v2) measured against `src/stories/Button.stories.tsx` via Chrome DevTools MCP. Documents the runtime per-variant box / paint / typography numbers, the color × state grid, icon spacing, the size axis (small/medium/large), the MUI theme custom properties exposed on `.MuiButton-root`, and the drift-check protocol that decides whether a divergence is a spec bug, a MUI upgrade, or browser rounding. Companion to `figma.spec.md` (the contract) and `figma.render.md` (Figma-side rendering).
 parent_skill: figma-components
 ---
 
@@ -42,13 +42,13 @@ Reference per-color widths at label `"BUTTON"` (sub-pixel float math, FYI):
 
 ## 2. Color axis — palette resolution (Enabled)
 
-`ColorMatrix` confirms each Merak color resolves to the documented MUI palette hex; the per-variant paint rules are mechanical:
+`ColorMatrix` confirms each MUI color resolves to the documented MUI palette hex; the per-variant paint rules are mechanical:
 
 - **contained** → `background-color = palette.<color>.main`, `color = palette.<color>.contrastText` (always `#fff` for the 5 themed colors, `rgba(0,0,0,0.87)` for `inherit`).
 - **outlined** → `background-color = transparent`, `color = palette.<color>.main`, `border = 1 px solid palette.<color>.main × 0.5α`.
 - **text** → `background-color = transparent`, `color = palette.<color>.main`, no border.
 
-| Merak (MUI key) | `palette.<color>.main` | contained bg          | outlined / text fg    | outlined border (`.5α`)         |
+| MUI (MUI key) | `palette.<color>.main` | contained bg          | outlined / text fg    | outlined border (`.5α`)         |
 | --------------- | ---------------------- | --------------------- | --------------------- | ------------------------------- |
 | default (inherit) | n/a (uses `grey-300`)| `rgb(224, 224, 224)`  | `rgba(0, 0, 0, 0.87)` | `rgba(0, 0, 0, 0.87)` (no α)¹  |
 | primary         | `#1976d2`              | `rgb(25, 118, 210)`   | `rgb(25, 118, 210)`   | `rgba(25, 118, 210, 0.5)`       |
@@ -124,7 +124,7 @@ The MUI runtime appends these CSS custom properties to every `.MuiButton-root`. 
 | info    | `#0288d1`               | `#fff`                     | `#0288d1`                 | `rgba(2, 136, 209, 0.5)`           | `#0288d1`             |
 | success | `#2e7d32`               | `#fff`                     | `#2e7d32`                 | `rgba(46, 125, 50, 0.5)`           | `#2e7d32`             |
 
-`inherit` (Merak `default`) intentionally leaves the themed slots blank because MUI's `colorInherit` style branch reads from `currentColor` rather than these vars. This is why §2 calls out `outlinedInherit` as the one variant whose border is solid (no `0.5α` blend).
+`inherit` (MUI `default`) intentionally leaves the themed slots blank because MUI's `colorInherit` style branch reads from `currentColor` rather than these vars. This is why §2 calls out `outlinedInherit` as the one variant whose border is solid (no `0.5α` blend).
 
 ## 7. Drift checks
 

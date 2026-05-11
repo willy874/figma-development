@@ -13,7 +13,7 @@ figma_component_set_id: '342:7102'
 
 `<Chip>` is the Figma counterpart of the MUI `<Chip>` consumed in `src/stories/Chip.stories.tsx`. The package re-exports MUI Chip directly — there is no wrapper — so the Figma component encodes the MUI prop surface (`color`, `variant`, plus interaction state) as variant axes, and exposes `icon` / `avatar` / `onDelete` / `label` as component properties.
 
-The design system already pre-shipped Chip-scoped tokens in the shared `merak` collection (`component/chip/fill`, `component/chip/outline`, `component/chip/focus-fill`, `component/chip/disabled-opacity`) and the Chip-specific text style (`material-design/components/chip` — Noto Sans TC Regular 12/18). This spec binds against those wherever they exist; new component-scoped tokens are minted as **local-only** in this file's collection (§4 of `design-token.md`).
+The design system already pre-shipped Chip-scoped tokens in the shared `mui` collection (`component/chip/fill`, `component/chip/outline`, `component/chip/focus-fill`, `component/chip/disabled-opacity`) and the Chip-specific text style (`material-design/components/chip` — Noto Sans TC Regular 12/18). This spec binds against those wherever they exist; new component-scoped tokens are minted as **local-only** in this file's collection (§4 of `design-token.md`).
 
 | Aspect              | Value                                                                                |
 | ------------------- | ------------------------------------------------------------------------------------ |
@@ -32,7 +32,7 @@ The design system already pre-shipped Chip-scoped tokens in the shared `merak` c
 
 | MUI prop                | Figma property | Type    | Notes                                                                                                                |
 | ----------------------- | -------------- | ------- | -------------------------------------------------------------------------------------------------------------------- |
-| `color`                 | `Color`        | VARIANT | Merak design-system key; mapping in §2.1                                                                             |
+| `color`                 | `Color`        | VARIANT | MUI design-system key; mapping in §2.1                                                                             |
 | `variant`               | `Variant`      | VARIANT | `Filled` / `Outlined` (MUI default `filled`)                                                                         |
 | _(interaction state)_   | `State`        | VARIANT | `Enabled` / `Hovered` / `Focused` / `Pressed` / `Disabled`                                                           |
 | `size`                  | `Size`         | VARIANT | `Medium` (MUI default) / `Small`. Both Sizes are now published — see §3 / §6.1 for per-Size dimensions and `storybook.render.md` §5 for runtime numbers. |
@@ -48,9 +48,9 @@ The design system already pre-shipped Chip-scoped tokens in the shared `merak` c
 
 ### 2.1 Color value mapping
 
-The Merak design-system color keys map to MUI palette names; in Figma, designers pick the Merak name. Bind the Figma fill / stroke to the listed token family — never paste raw hex.
+The MUI design-system color keys map to MUI palette names; in Figma, designers pick the MUI name. Bind the Figma fill / stroke to the listed token family — never paste raw hex.
 
-| Merak key (source) | MUI palette key | Figma token family                                                          | Figma `Color` value |
+| MUI key (source) | MUI palette key | Figma token family                                                          | Figma `Color` value |
 | ------------------ | --------------- | --------------------------------------------------------------------------- | ------------------- |
 | `default`          | `default`       | `alias/colors/text-default` _(text)_ + Chip-scoped tokens (§4 in `design-token.md`) | **Default**  |
 | `primary`          | `primary`       | `seed/primary/*`                                                            | **Primary**         |
@@ -59,7 +59,7 @@ The Merak design-system color keys map to MUI palette names; in Figma, designers
 | `info`             | `info`          | `seed/info/*`                                                               | **Info**            |
 | `success`          | `success`       | `seed/success/*`                                                            | **Success**         |
 
-¹ The Figma `Color=Error` value targets `seed/danger/*` (the project's Merak-named token family for MUI `palette.error.*`). Stories and runtime use `color="error"` directly; `danger` is the Merak alias the design system applies internally.
+¹ The Figma `Color=Error` value targets `seed/danger/*` (the project's MUI-named token family for MUI `palette.error.*`). Stories and runtime use `color="error"` directly; `danger` is the MUI alias the design system applies internally.
 
 ## 3. Variant Property Matrix
 
@@ -93,7 +93,7 @@ Both Sizes mirror MUI's runtime `size` prop. Per-Size dimensions live in §6.1; 
 
 ### 4.1 Picking a variant
 
-1. **Pick the Color** that matches the source `color` prop — Merak `danger` → Figma `Error`, etc. (§2.1).
+1. **Pick the Color** that matches the source `color` prop — MUI `danger` → Figma `Error`, etc. (§2.1).
 2. **Pick the Variant** — `Filled` for the default chip; `Outlined` for low-emphasis status tags or low-density UI.
 3. **Pick the State** — `Enabled` is the resting cell; `Hovered`, `Focused`, `Pressed` mirror runtime interactive states (only fire when `clickable` or `onDelete` is set at runtime — see §2 note); `Disabled` is the dimmed read-only cell.
 4. **Pick the Size** — `Medium` (height 32) is the default and matches MUI's `size="medium"`; `Small` (height 24) matches `size="small"` and is intended for dense UIs (filter rows, table cells, tags inside cards). The Color × Variant × State paint bindings are identical between Sizes; only the box / slot / typography metrics differ (§6.1).
@@ -120,7 +120,7 @@ This section names every token consumed. For component-scoped tokens, `design-to
 
 ### 5.1 Seed (themable)
 
-Per family `<C>` ∈ {`primary`, `danger`, `warning`, `info`, `success`} (no `secondary` — MUI exposes it but Merak does not):
+Per family `<C>` ∈ {`primary`, `danger`, `warning`, `info`, `success`} (no `secondary` — MUI exposes it but MUI does not):
 
 - `seed/<C>/main` — themed Filled background, themed Outlined foreground.
 - `seed/<C>/hover` — themed hover/focus background for Filled (resolves to `palette.<color>.dark`).
@@ -315,7 +315,7 @@ This document and the source must move together. A change in any of the followin
 3. `package.json` (and `pnpm-lock.yaml` / `package-lock.json`) — pin of `@mui/material`. Bump §1's `Underlying MUI` row whenever the resolved version changes.
 4. `.storybook/preview.tsx` — global theme decorator. If the project introduces a custom MUI theme override (palette / typography / shape / shadows), update §1, §5, §6 and re-derive `storybook.render.md` paint values.
 5. The published Figma `<Chip>` component set (file `KQjP6W9Uw1PN0iipwQHyYn`, frame `301:6271`) — once published, set the `figma_component_set_id` frontmatter and reflect any axis additions / component-property additions in §3.
-6. The Merak variable collection (`material-design` + `merak` collections in this Figma file) — if a token is renamed, removed, or its `resolvedType` changes, update every reference in §2.1, §5, §6. **Token-value changes alone do not require a spec edit** — variables resolve by name.
+6. The MUI variable collection (`material-design` + `mui` collections in this Figma file) — if a token is renamed, removed, or its `resolvedType` changes, update every reference in §2.1, §5, §6. **Token-value changes alone do not require a spec edit** — variables resolve by name.
 7. `material-design/components/chip` text style — if the design system retires it or changes its font / size / line-height, update §1, §5.5, and §6.1's Label row.
 8. `.claude/skills/figma-create-component/library-tokens.md` — the project token catalogue. If a Chip-relevant `seed/*` family adds a `hover-bg` / `outline-hover` token, audit §6 to see if Chip should consume it.
 9. This file's neighbouring `design-token.md` — if Chip-scoped tokens are minted to close the §7 divergences, update §5.3 and the Render Binding Matrix accordingly.

@@ -1,12 +1,12 @@
 ---
 name: figma-component-table-design-token
-description: Component-scoped tokens minted in the MUI Library Figma file's local `merak` collection for `<Table>`. Documents two pre-α'd primary-themed selected-row overlays that the catalogue's seed/alias families do not cover, plus the chosen text-style bindings for Head vs Body cells. Companion to `figma.spec.md` (the contract) and `storybook.render.md` (the runtime measurements).
+description: Component-scoped tokens minted in the MUI Library Figma file's local `mui` collection for `<Table>`. Documents two pre-α'd primary-themed selected-row overlays that the catalogue's seed/alias families do not cover, plus the chosen text-style bindings for Head vs Body cells. Companion to `figma.spec.md` (the contract) and `storybook.render.md` (the runtime measurements).
 parent_skill: figma-components
 ---
 
 # `<Table>` Component-scoped Tokens
 
-The Table cell + row sets bind every paint to the file's local `merak` collection per the project's local-only directive (`figma.spec.md` §1). Two roles are not covered by the shared `seed/*` or `alias/*` families and require **component-scoped** tokens minted in the local collection. Both bake their alpha into the resolved value so the bound paint can stay at `opacity: 1` (Figma flattens `paint.opacity < 1` when bound to a variable on instance creation — see `component-spec-guide` §4.4–§4.5).
+The Table cell + row sets bind every paint to the file's local `mui` collection per the project's local-only directive (`figma.spec.md` §1). Two roles are not covered by the shared `seed/*` or `alias/*` families and require **component-scoped** tokens minted in the local collection. Both bake their alpha into the resolved value so the bound paint can stay at `opacity: 1` (Figma flattens `paint.opacity < 1` when bound to a variable on instance creation — see `component-spec-guide` §4.4–§4.5).
 
 The third entry below is **not** a new variable — it documents the chosen text-style binding for head cells, since the catalogue does not ship a Roboto-Medium 14/24 body style.
 
@@ -54,17 +54,17 @@ We deliberately do **not** stack the 4 %-α `bg-outline-hover` on top of a `sele
 - Head cells: `Roboto Medium 14 / 24`, `letter-spacing 0.14994 px` (matches `storybook.render.md` §1.1).
 - Body cells: `Roboto Regular 14 / 20.02`, `letter-spacing 0.14994 px`.
 
-**When to revisit.** If the file mints local equivalents (e.g. `merak/typography/table-head` and `merak/typography/table-body`) under the local-only rule, rebind cell text via `setTextStyleIdAsync` and drop the hand-set values. Tracked in `figma.spec.md` §8.
+**When to revisit.** If the file mints local equivalents (e.g. `mui/typography/table-head` and `mui/typography/table-body`) under the local-only rule, rebind cell text via `setTextStyleIdAsync` and drop the hand-set values. Tracked in `figma.spec.md` §8.
 
 ---
 
 ## 5. Pre-flight check before authoring (Step 5 of `figma-create-component`)
 
-Before any `use_figma` write to the cell / row sets, confirm the variables in §1 and §2 already exist in the local `merak` collection. If not, mint them via `use_figma`:
+Before any `use_figma` write to the cell / row sets, confirm the variables in §1 and §2 already exist in the local `mui` collection. If not, mint them via `use_figma`:
 
 ```js
 const collection = (await figma.variables.getLocalVariableCollectionsAsync())
-  .find(c => c.name === 'merak');
+  .find(c => c.name === 'mui');
 const seedPrimaryMain = (await figma.variables.getLocalVariablesAsync('COLOR'))
   .find(v => v.name === 'seed/primary/main');
 

@@ -1,18 +1,18 @@
 ---
 name: figma-component-pagination-storybook-render
-description: Computed-style matrix for `<Pagination>` and `<PaginationItem>` (MerakPagination v1) measured against `src/stories/Pagination.stories.tsx` via Chrome DevTools MCP. Documents per-cell box / paint / typography numbers across the Color × Type × Size × State surface, the wrapper layout, and the divergences between MUI's stock paint values and the Merak Figma component-set bindings. Companion to `figma.spec.md` (the contract).
+description: Computed-style matrix for `<Pagination>` and `<PaginationItem>` (MUIPagination v1) measured against `src/stories/Pagination.stories.tsx` via Chrome DevTools MCP. Documents per-cell box / paint / typography numbers across the Color × Type × Size × State surface, the wrapper layout, and the divergences between MUI's stock paint values and the MUI Figma component-set bindings. Companion to `figma.spec.md` (the contract).
 parent_skill: figma-components
 ---
 
 # `<Pagination>` Storybook Render Measurements (v1)
 
-Computed-style snapshot probed with Chrome DevTools MCP against `src/stories/Pagination.stories.tsx`. Stories used: `Default` (wrapper, color=default, page=5/10), `ColorSizeMatrix` (6 colors × 3 sizes wrappers), `ItemTypeStateMatrix` (4 types × 4 states for color=primary, size=medium), `ItemSelectedColorSizeMatrix` (6 colors × 3 sizes selected page items). The Storybook is hard-coded to MUI Pagination's `variant="outlined"` + `shape="rounded"` (per Merak design decision); these are not runtime variant axes — every measurement below is for that fixed treatment.
+Computed-style snapshot probed with Chrome DevTools MCP against `src/stories/Pagination.stories.tsx`. Stories used: `Default` (wrapper, color=default, page=5/10), `ColorSizeMatrix` (6 colors × 3 sizes wrappers), `ItemTypeStateMatrix` (4 types × 4 states for color=primary, size=medium), `ItemSelectedColorSizeMatrix` (6 colors × 3 sizes selected page items). The Storybook is hard-coded to MUI Pagination's `variant="outlined"` + `shape="rounded"` (per MUI design decision); these are not runtime variant axes — every measurement below is for that fixed treatment.
 
-The themed colors danger / warning / info / success are **not** native to MUI Pagination (only `standard | primary | secondary` are). The story applies them via PaginationItem `sx` so every Figma cell has a runtime equivalent. Where the Merak `sx` diverges from MUI's native primary path (notably the Selected bg %), this file records both numbers so authoring can pick.
+The themed colors danger / warning / info / success are **not** native to MUI Pagination (only `standard | primary | secondary` are). The story applies them via PaginationItem `sx` so every Figma cell has a runtime equivalent. Where the MUI `sx` diverges from MUI's native primary path (notably the Selected bg %), this file records both numbers so authoring can pick.
 
 ## 1. Item-axis invariants (Medium, Enabled, color=primary)
 
-The 4 `Type` values × 4 `State` values × the same `(color, size)` share these properties. Numbers come from the Page column unless noted; Previous / Next swap the inner text node for a 20×20 SVG (story overrides MUI's default `slots.previous` / `slots.next` with `ChevronLeft` / `ChevronRight` glyphs wrapped in a `MerakIconSm` 20×20 box — see §1.1).
+The 4 `Type` values × 4 `State` values × the same `(color, size)` share these properties. Numbers come from the Page column unless noted; Previous / Next swap the inner text node for a 20×20 SVG (story overrides MUI's default `slots.previous` / `slots.next` with `ChevronLeft` / `ChevronRight` glyphs wrapped in a `MUIIconSm` 20×20 box — see §1.1).
 
 | Property                        | Page                             | Previous (icon)                                   | Next (icon)                                   | Ellipsis                              |
 | ------------------------------- | -------------------------------- | ------------------------------------------------- | --------------------------------------------- | ------------------------------------- |
@@ -24,11 +24,11 @@ The 4 `Type` values × 4 `State` values × the same `(color, size)` share these 
 | `border` (Enabled / Hovered / Disabled) | `1 px solid rgba(0, 0, 0, 0.23)` | same                                      | same                                          | same                                  |
 | `box-shadow`                    | `none`                           | `none`                                            | `none`                                        | `none`                                |
 | `font` (label / glyph)          | `14 / 20.02 px Roboto Regular`, `letter-spacing: 0.14994 px` | same | same                                          | same (renders the literal `…` U+2026 character) |
-| icon glyph (Previous / Next)    | n/a                              | `MerakIconSm` 20×20 box around inline `ChevronLeft` SVG (material-symbols `keyboard-arrow-left`), `color: inherit` → `currentColor` | same with `ChevronRight` (material-symbols `keyboard-arrow-right`) | n/a                                   |
+| icon glyph (Previous / Next)    | n/a                              | `MUIIconSm` 20×20 box around inline `ChevronLeft` SVG (material-symbols `keyboard-arrow-left`), `color: inherit` → `currentColor` | same with `ChevronRight` (material-symbols `keyboard-arrow-right`) | n/a                                   |
 | `cursor` (Enabled / Selected)   | `pointer`                        | `pointer`                                         | `pointer`                                     | `default` (MUI sets ellipsis non-interactive) |
 | `pointer-events` (Disabled)     | `none`                           | `none`                                            | `none`                                        | n/a                                   |
 
-> The `0.23 black` outlined-border value is **not** a Merak alias token — MUI hard-codes it inside PaginationItem.js as `theme.palette.mode === 'light' ? 'rgba(0,0,0,0.23)' : 'rgba(255,255,255,0.23)'`. The Figma component binds the border to `alias/colors/border-defalt` (`rgba(0,0,0,0.12)`) instead, so dark mode flips automatically. This is a deliberate Figma ↔ runtime divergence, not a measurement bug — see §6 drift checks.
+> The `0.23 black` outlined-border value is **not** a MUI alias token — MUI hard-codes it inside PaginationItem.js as `theme.palette.mode === 'light' ? 'rgba(0,0,0,0.23)' : 'rgba(255,255,255,0.23)'`. The Figma component binds the border to `alias/colors/border-defalt` (`rgba(0,0,0,0.12)`) instead, so dark mode flips automatically. This is a deliberate Figma ↔ runtime divergence, not a measurement bug — see §6 drift checks.
 
 ## 2. State axis (Page type, color=primary, size=medium)
 
@@ -63,7 +63,7 @@ Notes:
 
 ¹ **MUI native primary path is 12 % main**. Selected = `alpha(palette.primary.main, 0.12)`. This is hard-coded in PaginationItem.js for `outlinedPrimary` / `outlinedSecondary` / `outlinedStandard` (selected) — see `node_modules/@mui/material/PaginationItem/PaginationItem.js` style block keyed on `selected: true`.
 
-² **Story sx hard-codes 8 %** for danger / warning / info / success because the Merak Figma component bakes 8 % across all themed colors via the stacked-fill pattern (`seed/<C>/hover-bg` × 2 ≈ 7.84 %). Standardising on 8 % is a deliberate Merak design decision — the `primary` MUI 12 % is off-pattern and not reproduced for the other themed colors.
+² **Story sx hard-codes 8 %** for danger / warning / info / success because the MUI Figma component bakes 8 % across all themed colors via the stacked-fill pattern (`seed/<C>/hover-bg` × 2 ≈ 7.84 %). Standardising on 8 % is a deliberate MUI design decision — the `primary` MUI 12 % is off-pattern and not reproduced for the other themed colors.
 
 ## 4. Size axis (Default color, Enabled / Selected)
 
@@ -79,7 +79,7 @@ Notes vs the existing spec's §4.1 (now superseded by these runtime numbers — 
 
 - **Padding**: spec said `4 / 6 / 8`; runtime is `4 / 6 / 10`. Large is 10 px, not 8 px.
 - **Page font-size**: spec said `13 / 14 / 15`; runtime is `14 / 14 / 15`. Small is 14 px, not 13 px.
-- **Icon SVG size**: runtime is **uniform `20 / 20 / 20 px`** since the 2026-04-29 unification — the story overrides `slots.previous` / `slots.next` on `PaginationItem` with a `MerakIconSm` 20×20 wrapper around `ChevronLeft` / `ChevronRight` glyphs, replacing MUI's default `NavigateBeforeIcon` / `NavigateNextIcon` (which scaled 18 / 20 / 22 with `size`). Figma matches at 20×20 across every Pagination `Size`.
+- **Icon SVG size**: runtime is **uniform `20 / 20 / 20 px`** since the 2026-04-29 unification — the story overrides `slots.previous` / `slots.next` on `PaginationItem` with a `MUIIconSm` 20×20 wrapper around `ChevronLeft` / `ChevronRight` glyphs, replacing MUI's default `NavigateBeforeIcon` / `NavigateNextIcon` (which scaled 18 / 20 / 22 with `size`). Figma matches at 20×20 across every Pagination `Size`.
 - **Inter-item gap**: spec said `4 px` flat across all sizes; runtime is `2 / 6 / 6` derived from item `margin: 0 (1|3|3) px`. Figma wrapper auto-layout gap is currently authored at `4 px` — a compromise that's correct for none of the sizes. See §6 drift check 3.
 
 ## 5. Wrapper layout (`<Pagination>` root, color=default, size=medium)
@@ -118,4 +118,4 @@ The following drift items were resolved when the Figma cells were re-authored to
 
 ### Resolved (2026-04-29 icon-source unification pass)
 
-11. ~~**Icon source / size for Previous / Next** (runtime: MUI default `NavigateBeforeIcon` / `NavigateNextIcon` at 18 / 20 / 22 px per Pagination Size; Figma: dedicated `<NavigateBefore>` / `<NavigateNext>` sets at 18 / 20 / 22 px).~~ **Resolved.** The story now overrides `slots.previous` / `slots.next` on `PaginationItem` with a `MerakIconSm` 20×20 wrapper around inline `ChevronLeft` / `ChevronRight` SVGs (material-symbols `keyboard-arrow-left/right`). All three Pagination `Size` values render the chevron at uniform `20 × 20 px`. Figma matches via `<Icon>` `Size=sm` instances with the `Glyph Source` `INSTANCE_SWAP` preset to ChevronLeft (`512:7505`) / ChevronRight (`512:7509`) — see `figma.spec.md` §6.7.
+11. ~~**Icon source / size for Previous / Next** (runtime: MUI default `NavigateBeforeIcon` / `NavigateNextIcon` at 18 / 20 / 22 px per Pagination Size; Figma: dedicated `<NavigateBefore>` / `<NavigateNext>` sets at 18 / 20 / 22 px).~~ **Resolved.** The story now overrides `slots.previous` / `slots.next` on `PaginationItem` with a `MUIIconSm` 20×20 wrapper around inline `ChevronLeft` / `ChevronRight` SVGs (material-symbols `keyboard-arrow-left/right`). All three Pagination `Size` values render the chevron at uniform `20 × 20 px`. Figma matches via `<Icon>` `Size=sm` instances with the `Glyph Source` `INSTANCE_SWAP` preset to ChevronLeft (`512:7505`) / ChevronRight (`512:7509`) — see `figma.spec.md` §6.7.

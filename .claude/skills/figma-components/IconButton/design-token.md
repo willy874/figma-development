@@ -1,12 +1,12 @@
 ---
 name: figma-component-iconbutton-design-token
-description: Component-scoped design tokens for `<IconButton>` (MerakIconButton v1). Covers IconButton-specific layout constants (focus-ring width, elevation aliases). The two `Default`-color resolver tokens (`contained-default-bg`, `outlined-default-border`) are NOT redefined here — `<IconButton>` borrows them from `<Button>`'s `component/button/*` namespace because the values and resolver path are byte-identical. See `figma.spec.md` §5.5 for the borrow list.
+description: Component-scoped design tokens for `<IconButton>` (MUIIconButton v1). Covers IconButton-specific layout constants (focus-ring width, elevation aliases). The two `Default`-color resolver tokens (`contained-default-bg`, `outlined-default-border`) are NOT redefined here — `<IconButton>` borrows them from `<Button>`'s `component/button/*` namespace because the values and resolver path are byte-identical. See `figma.spec.md` §5.5 for the borrow list.
 parent_skill: figma-components
 ---
 
 # `<IconButton>` Component Tokens
 
-Tokens scoped to `<IconButton>`. Reach for these only inside the IconButton component set; for everything else (semantic colors, action overlays, MD elevations), bind to the shared `merak/*` and `material-design/*` tokens documented in [`design-token.md`](../../figma-create-component/library-tokens.md).
+Tokens scoped to `<IconButton>`. Reach for these only inside the IconButton component set; for everything else (semantic colors, action overlays, MD elevations), bind to the shared `mui/*` and `material-design/*` tokens documented in [`design-token.md`](../../figma-create-component/library-tokens.md).
 
 ## Borrowed from `<Button>`
 
@@ -17,7 +17,7 @@ The `Default`-color resolver path is identical between Button and IconButton (bo
 | `component/button/contained-default-bg`     | `Color=Default, Variant=Contained` fill                |
 | `component/button/outlined-default-border`  | `Color=Default, Variant=Outlined` border               |
 
-If a third consumer (Chip, ListItem, …) appears, promote both to `merak/alias/colors/*` and remove the borrow.
+If a third consumer (Chip, ListItem, …) appears, promote both to `mui/alias/colors/*` and remove the borrow.
 
 ## IconButton-scoped tokens
 

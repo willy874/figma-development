@@ -24,7 +24,7 @@ figma_node_id: '1:4109'
 
 | MUI prop                  | Figma property | Type    | Notes                                                                                    |
 | ------------------------- | -------------- | ------- | ---------------------------------------------------------------------------------------- |
-| `color`                   | `Color`        | VARIANT | Merak design-system key; mapping in §2.1                                                 |
+| `color`                   | `Color`        | VARIANT | MUI design-system key; mapping in §2.1                                                 |
 | `variant`                 | `Variant`      | VARIANT | `Text` / `Outlined` / `Contained`                                                        |
 | _(interaction state)_     | `State`        | VARIANT | `Enabled` / `Hovered` / `Focused` / `Pressed` / `Disabled`                               |
 | `size`                    | `Size`         | VARIANT | Only `Medium` is shipped on canvas; Small / Large are runtime-only (see `storybook.render.md` §5) |
@@ -36,9 +36,9 @@ figma_node_id: '1:4109'
 
 ### 2.1 Color value mapping
 
-The Merak design-system color keys map to MUI palette names; in Figma, designers pick the Merak name. Bind the Figma fill / stroke to the listed token family — never paste raw hex.
+The MUI design-system color keys map to MUI palette names; in Figma, designers pick the MUI name. Bind the Figma fill / stroke to the listed token family — never paste raw hex.
 
-| Merak key (source) | MUI palette key | Figma token family                                                          | Figma `Color` value |
+| MUI key (source) | MUI palette key | Figma token family                                                          | Figma `Color` value |
 | ------------------ | --------------- | --------------------------------------------------------------------------- | ------------------- |
 | `default`          | `inherit`       | `alias/colors/text-default` _(non-contained)_ + Button-scoped tokens (§5.5) | **Default**         |
 | `primary`          | `primary`       | `seed/primary/*`                                                            | **Primary**         |
@@ -72,7 +72,7 @@ Color × Variant × State (Size=Medium)   =   6 × 3 × 5   =   90 variants
 
 ### 4.1 Picking a variant
 
-1. Pick `Color` matching the source `color` prop via §2.1 (Merak name, not MUI palette name).
+1. Pick `Color` matching the source `color` prop via §2.1 (MUI name, not MUI palette name).
 2. Pick `Variant` by emphasis: `Contained` for primary action, `Outlined` for secondary, `Text` for tertiary / inline.
 3. Pick `State` only for flow / state demos — production screens stay on `Enabled`. `Disabled` for `disabled={true}`.
 4. Toggle `Start Icon` / `End Icon` to match the source props. Don't leave the default loading glyph on when the source passes no icon.
@@ -98,7 +98,7 @@ Color × Variant × State (Size=Medium)   =   6 × 3 × 5   =   90 variants
 
 ## 5. Token Glossary
 
-Token names below are **Figma variable paths** in the `merak` collection — see [`.claude/skills/figma-create-component/library-tokens.md`](../../figma-create-component/library-tokens.md). Bind every Figma paint / stroke / variable to one of these — never to a literal hex.
+Token names below are **Figma variable paths** in the `mui` collection — see [`.claude/skills/figma-create-component/library-tokens.md`](../../figma-create-component/library-tokens.md). Bind every Figma paint / stroke / variable to one of these — never to a literal hex.
 
 ### 5.1 Seed color tokens (`seed/<C>/*`)
 

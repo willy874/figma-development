@@ -233,7 +233,7 @@ This document and the source must move together. When **any** of the following c
 3. The Figma `<RadioFormControl>` component set — any change to its variant matrix or naming forces the nested instance mirroring contract to be re-validated, and the published axis options here may need to follow
 4. The Figma `<Radio>` component set inside `286:5441` — same as above (transitively)
 5. `src/stories/Radio.stories.tsx` / `src/stories/RadioFormControl.stories.tsx` — any new state / size / color introduced upstream forces a follow-up here
-6. The shared `merak/alias/colors/{text-sub,text-disabled}` and `merak/seed/danger/main` tokens — these are the wrapper's only direct color dependencies
+6. The shared `mui/alias/colors/{text-sub,text-disabled}` and `mui/seed/danger/main` tokens — these are the wrapper's only direct color dependencies
 7. `material-design/typography/{body1,subtitle1,caption}` text styles — typography changes flow into §4.3 / §7 drift
 8. `.storybook/preview.tsx` (theme overrides via `createTheme`) — today this is an empty `createTheme()`; introducing typography / palette / `MuiFormControl.defaultProps` overrides forces a re-measure
 9. `package.json` `@mui/material` peer / dev version (currently `^7.3.10` / peer `>=7`)
@@ -244,7 +244,7 @@ This document and the source must move together. When **any** of the following c
 - Promoting per-option label text to a top-level `TEXT` component property → update §3.1 and §7.1.
 - Replacing the auto-layout `itemSpacing 8 / 16 px` with runtime-faithful `0 / 16 px` margins → update §4.1 / §7 issue 1.
 - Adding a themed Error cascade (auto-setting nested `Color=Error`) → drop §7 issue 5, expand §3 to cover `Color × State=Error` for every Color, regenerate variants.
-- Token rename / removal in `merak/alias/colors/*` or `seed/danger/*` → update every reference in §4.2 and rename the matching variable in the local Figma collection.
+- Token rename / removal in `mui/alias/colors/*` or `seed/danger/*` → update every reference in §4.2 and rename the matching variable in the local Figma collection.
 - `@mui/material` major bump → re-run `storybook.render.md` measurements; bump the version row in §1; reconcile any new computed-style values against §4.
 
 ## 9. Quick Reference

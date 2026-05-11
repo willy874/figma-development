@@ -200,7 +200,7 @@ This document and the source must move together. When **any** of the following c
 2. The Figma `<RadioFormControl>` component set (variants, properties, token bindings)
 3. The Figma `<Radio>` component set inside `286:5441` — any change to its variant matrix or naming forces the nested instance mirroring contract to be re-validated, and the published axis options here may need to follow
 4. `src/stories/Radio.stories.tsx` — any new state / size / color introduced upstream forces a follow-up here
-5. The shared `merak/alias/colors/{text-default,text-disabled}` tokens — these are the wrapper's only direct dependencies
+5. The shared `mui/alias/colors/{text-default,text-disabled}` tokens — these are the wrapper's only direct dependencies
 6. `material-design/typography/body1` text style — typography changes flow into §4.3 / §7 drift
 7. `.storybook/preview.tsx` (theme overrides via `createTheme`) — today this is an empty `createTheme()`; introducing typography / palette / `MuiFormControlLabel.defaultProps` overrides forces a re-measure
 8. `package.json` `@mui/material` peer / dev version (currently `^7.3.10` / peer `>=7`)
@@ -210,7 +210,7 @@ This document and the source must move together. When **any** of the following c
 - Adding `Hovered` / `Focused` / `Pressed` cells here → expand §3 exclusions list, add §4.X halo bindings (mirror the `../Radio/figma.spec.md` §4.2 rows), regenerate the published variants.
 - Promoting label text to a `TEXT` component property → update §3.1 and §7.1.
 - Replacing the auto-layout `itemSpacing 4 px` with runtime-faithful `-11 / 16 px` margins → update §4.1 / §7 issue 1.
-- Token rename / removal in `merak/alias/colors/*` → update every reference in §4.2 and rename the matching variable in the local Figma collection.
+- Token rename / removal in `mui/alias/colors/*` → update every reference in §4.2 and rename the matching variable in the local Figma collection.
 - `@mui/material` major bump → re-run `storybook.render.md` measurements; bump the version row in §1; reconcile any new computed-style values against §4.
 
 ## 9. Quick Reference
@@ -244,7 +244,7 @@ Figma Component Set: <RadioFormControl>  (id assigned at step-5 publish)
 
 The complete set of tokens consumed by `<RadioFormControl>` directly. Names are **Figma variable paths**; the nested `<Radio>` carries its own catalogue (see [`../Radio/figma.spec.md`](../Radio/figma.spec.md) §10).
 
-### 10.1 Alias tokens (`merak/alias/colors/*`)
+### 10.1 Alias tokens (`mui/alias/colors/*`)
 
 | Token                          | Used by                  | Role                                                      |
 | ------------------------------ | ------------------------ | --------------------------------------------------------- |

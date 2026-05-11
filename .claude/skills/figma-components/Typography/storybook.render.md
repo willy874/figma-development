@@ -38,9 +38,9 @@ Runtime context: `@mui/material 7.3.10` (resolved from `package.json` on 2026-05
 
 ## 2. Color axis — palette resolution (variant = `body1`)
 
-`color` is the **only** paint Typography exposes — there is no background, border, or shadow. The runtime resolves each Merak color label (story-side mapping) to a single hex via `palette.text.*` (the three "text" colors) or `palette.<role>.main` (the six themed colors).
+`color` is the **only** paint Typography exposes — there is no background, border, or shadow. The runtime resolves each MUI color label (story-side mapping) to a single hex via `palette.text.*` (the three "text" colors) or `palette.<role>.main` (the six themed colors).
 
-| Merak label (story) | MUI prop value (`color=…`)          | Computed `color`        | MUI palette source         |
+| MUI label (story) | MUI prop value (`color=…`)          | Computed `color`        | MUI palette source         |
 | ------------------- | ----------------------------------- | ----------------------- | -------------------------- |
 | `default`           | `textPrimary`                       | `rgba(0, 0, 0, 0.87)`   | `palette.text.primary`     |
 | `secondary-text`    | `textSecondary`                     | `rgba(0, 0, 0, 0.6)`    | `palette.text.secondary`   |

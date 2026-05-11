@@ -18,19 +18,19 @@ const VARIANTS: Array<NonNullable<TypographyProps['variant']>> = [
   'overline',
 ];
 
-// MerakColor → MUI Typography color. Typography re-exports MUI directly, so the
-// story uses MUI palette/text keys; the `merak` column documents the host-app
+// MUIColor → MUI Typography color. Typography re-exports MUI directly, so the
+// story uses MUI palette/text keys; the `name` column documents the host-app
 // design-system value the Figma component variants will be named after.
-const MERAK_COLORS = [
-  { merak: 'default', mui: 'textPrimary' as const },
-  { merak: 'secondary-text', mui: 'textSecondary' as const },
-  { merak: 'disabled-text', mui: 'textDisabled' as const },
-  { merak: 'primary', mui: 'primary' as const },
-  { merak: 'secondary', mui: 'secondary' as const },
-  { merak: 'danger', mui: 'error' as const },
-  { merak: 'warning', mui: 'warning' as const },
-  { merak: 'info', mui: 'info' as const },
-  { merak: 'success', mui: 'success' as const },
+const MUI_COLORS = [
+  { name: 'default', mui: 'textPrimary' as const },
+  { name: 'secondary-text', mui: 'textSecondary' as const },
+  { name: 'disabled-text', mui: 'textDisabled' as const },
+  { name: 'primary', mui: 'primary' as const },
+  { name: 'secondary', mui: 'secondary' as const },
+  { name: 'danger', mui: 'error' as const },
+  { name: 'warning', mui: 'warning' as const },
+  { name: 'info', mui: 'info' as const },
+  { name: 'success', mui: 'success' as const },
 ];
 
 const meta = {
@@ -52,9 +52,9 @@ const meta = {
     },
     color: {
       control: 'select',
-      options: MERAK_COLORS.map((c) => c.mui),
+      options: MUI_COLORS.map((c) => c.mui),
       description:
-        'MUI palette / text key. Merak mapping: default→textPrimary, secondary-text→textSecondary, disabled-text→textDisabled, primary/secondary/info/warning/success keep their names, danger→error.',
+        'MUI palette / text key. MUI mapping: default→textPrimary, secondary-text→textSecondary, disabled-text→textDisabled, primary/secondary/info/warning/success keep their names, danger→error.',
     },
     align: {
       control: 'inline-radio',
@@ -204,15 +204,15 @@ export const ColorMatrix: Story = {
           </span>
         ))}
       </Stack>
-      {MERAK_COLORS.map(({ merak, mui }) => (
+      {MUI_COLORS.map(({ name, mui }) => (
         <Stack
-          key={merak}
+          key={name}
           direction="row"
           spacing={2}
           alignItems="baseline"
         >
           <span style={cellLabel}>
-            {merak}
+            {name}
             <span style={{ color: '#aaa' }}> ({mui})</span>
           </span>
           {(['h6', 'subtitle1', 'body1', 'caption'] as const).map((v) => (
@@ -240,10 +240,10 @@ export const FullMatrix: Story = {
         <Stack key={v} spacing={0.25}>
           <span style={cellLabel}>{v}</span>
           <Stack direction="row" spacing={2} alignItems="baseline" flexWrap="wrap">
-            {MERAK_COLORS.map(({ merak, mui }) => (
-              <div key={merak} style={{ minWidth: 180 }}>
+            {MUI_COLORS.map(({ name, mui }) => (
+              <div key={name} style={{ minWidth: 180 }}>
                 <Typography variant={v} color={mui}>
-                  {merak}
+                  {name}
                 </Typography>
               </div>
             ))}

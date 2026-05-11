@@ -13,7 +13,7 @@ figma_component_set_id: '1:7228'
 
 `<Checkbox>` is the Figma counterpart of the MUI `<Checkbox>` consumed in `src/stories/Checkbox.stories.tsx`. The package re-exports MUI directly — there is no in-repo wrapper — so the Figma component encodes the MUI prop surface (`color`, `size`, `checked`, `indeterminate`, `disabled`) plus the four interaction states MUI paints via the ripple subtree (`Enabled / Hovered / Focused / Pressed`).
 
-The Figma cells already match this contract — every glyph fill and halo overlay is bound to a named variable in the MUI-Library file's local collection (`KQjP6W9Uw1PN0iipwQHyYn`). All seven MUI palette colors are encoded as the `Color` axis; the runtime equivalents come from the published `merak/seed/*` and `merak/alias/*` namespaces (see [`library-tokens.md`](../../figma-create-component/library-tokens.md)). The component is **self-contained** — every binding resolves to a variable in this file's local collection so the library can be consumed without the 天璇 design-system file loaded next to it. _(Local-only sweep completed 2026-04-29 — see §7 issue 9.)_
+The Figma cells already match this contract — every glyph fill and halo overlay is bound to a named variable in the MUI-Library file's local collection (`KQjP6W9Uw1PN0iipwQHyYn`). All seven MUI palette colors are encoded as the `Color` axis; the runtime equivalents come from the published `mui/seed/*` and `mui/alias/*` namespaces (see [`library-tokens.md`](../../figma-create-component/library-tokens.md)). The component is **self-contained** — every binding resolves to a variable in this file's local collection so the library can be consumed without the 天璇 design-system file loaded next to it. _(Local-only sweep completed 2026-04-29 — see §7 issue 9.)_
 
 | Aspect            | Value                                                                                  |
 | ----------------- | -------------------------------------------------------------------------------------- |
@@ -29,7 +29,7 @@ The Figma cells already match this contract — every glyph fill and halo overla
 
 | MUI prop                                    | Figma property      | Type    | Notes                                                                                                              |
 | ------------------------------------------- | ------------------- | ------- | ------------------------------------------------------------------------------------------------------------------ |
-| `color`                                     | `Color`             | VARIANT | `Default` / `Primary` / `Secondary` / `Error` / `Warning` / `Info` / `Success`. Maps 1:1 to the MUI palette key (Merak `danger ↔ Error`). |
+| `color`                                     | `Color`             | VARIANT | `Default` / `Primary` / `Secondary` / `Error` / `Warning` / `Info` / `Success`. Maps 1:1 to the MUI palette key (MUI `danger ↔ Error`). |
 | `checked` _(true)_                          | `Checked`           | VARIANT | `true` → `Checked=True, Indeterminate=False`.                                                                      |
 | `checked` _(false)_                         | `Checked`           | VARIANT | `false` → `Checked=False, Indeterminate=False` (or paired with `Indeterminate=True`).                              |
 | `indeterminate`                             | `Indeterminate`     | VARIANT | `true` → `Indeterminate=True, Checked=False`. MUI suppresses the check glyph whenever `indeterminate` is set, so `Checked=True, Indeterminate=True` is **not** a published combo. |
@@ -42,9 +42,9 @@ The Figma cells already match this contract — every glyph fill and halo overla
 
 ### 2.1 Color value mapping
 
-The Figma `Color` axis publishes the same seven values MUI's `<Checkbox>` accepts. Token names below are **Figma variable paths** in the local `merak` collection inside the MUI-Library file (mirrored from the published 天璇 catalogue). The `Hovered / Pressed` halo uses the seed catalogue's `4 %` overlay (`hover-bg` / `outline-hover`); the `Focused` halo uses the seed catalogue's `30 %` overlay (`focusVisible`) — the two states intentionally diverge so designers can visually distinguish a focus ring from a plain hover tint. MUI runtime paints both at the same `4 %`; see §7 issue 3 for the divergence.
+The Figma `Color` axis publishes the same seven values MUI's `<Checkbox>` accepts. Token names below are **Figma variable paths** in the local `mui` collection inside the MUI-Library file (mirrored from the published 天璇 catalogue). The `Hovered / Pressed` halo uses the seed catalogue's `4 %` overlay (`hover-bg` / `outline-hover`); the `Focused` halo uses the seed catalogue's `30 %` overlay (`focusVisible`) — the two states intentionally diverge so designers can visually distinguish a focus ring from a plain hover tint. MUI runtime paints both at the same `4 %`; see §7 issue 3 for the divergence.
 
-| MUI `color` | Merak palette | Brand fill (checked / indeterminate) | Halo Hovered / Pressed (`4 %` α)  | Halo Focused (`30 %` α)              | Hex          |
+| MUI `color` | MUI palette | Brand fill (checked / indeterminate) | Halo Hovered / Pressed (`4 %` α)  | Halo Focused (`30 %` α)              | Hex          |
 | ----------- | ------------- | ------------------------------------ | --------------------------------- | ------------------------------------ | ------------ |
 | `default`   | `default`     | `alias/colors/bg-active`             | `alias/colors/bg-outline-hover`   | `seed/neutral/focusVisible`          | `#000000 0.54α` / `#0000000A` / `#0000004D` |
 | `primary`   | `primary`     | `seed/primary/main`                  | `seed/primary/hover-bg`           | `seed/primary/focusVisible`          | `#1976D2`    |
@@ -125,7 +125,7 @@ One row per paint role. Bind the Figma fill / stroke to the variable name in **b
 | Glyph fill — checked / indet., Default  | **`alias/colors/bg-active`**                       | Default does not tint.                                                                                                         |
 | Glyph fill — checked / indet., Primary  | **`seed/primary/main`** _(`#1976D2`)_              | MUI `palette.primary.main`.                                                                                                    |
 | Glyph fill — checked / indet., Secondary | **`seed/secondary/main`** _(`#9C27B0`)_           |                                                                                                                                |
-| Glyph fill — checked / indet., Error    | **`seed/danger/main`** _(`#D32F2F`)_               | Merak `danger ↔ MUI error`.                                                                                                    |
+| Glyph fill — checked / indet., Error    | **`seed/danger/main`** _(`#D32F2F`)_               | MUI `danger ↔ MUI error`.                                                                                                    |
 | Glyph fill — checked / indet., Warning  | **`seed/warning/main`** _(`#ED6C02`)_              |                                                                                                                                |
 | Glyph fill — checked / indet., Info     | **`seed/info/main`** _(`#0288D1`)_                 |                                                                                                                                |
 | Glyph fill — checked / indet., Success  | **`seed/success/main`** _(canonical `#2E7D32`; local `#4CAF50` — see §7 issue 6)_ |                                                                                                |
@@ -233,11 +233,11 @@ Tracked here so the next runtime-truth pass has a punch list:
 3. **Focused halo (30 %) ≠ Hovered/Pressed halo (4 %) in Figma; runtime uses 4 % for both.** MUI 7.3.10 paints `palette.[color].main × 0.04` on both `:hover` and `&.Mui-focusVisible`. The Figma cells deliberately split the two (4 % for hover/pressed, 30 % for focused) so a designer hovering a focused checkbox can read which state is active. Resolve by either (a) keeping the Figma split and accepting the runtime divergence (current decision) or (b) repointing Focused to `seed/<color>/{hover-bg, outline-hover}` to match MUI. Tracked as a runtime-truth pass candidate.
 4. **`Mui-focusVisible` className does not paint the halo statically.** Visual verification of the focus halo requires real keyboard focus; the Figma cell encodes the halo unconditionally. Expected difference between the two surfaces — accept-as-is.
 5. **`Color=Default` checked uses `bg-active` (`0.54α`).** The default checked glyph is the same neutral as unchecked, not a primary tint. Confirmed against runtime — MUI paints `palette.text.secondary` (`0.6α`) for the default unchecked / checked glyph; the Figma cells bind `alias/colors/bg-active` (`palette.action.active`, `0.54α`) instead. Six-percent-α-darker than runtime; visually indistinguishable. Resolve by either (a) accepting the alpha difference (current decision) or (b) repointing `bg-active` → `text-sub` for this use site.
-6. **~~Local `seed/success/main` resolves to `#4CAF50`, not the catalogue's `#2E7D32`.~~ Resolved 2026-04-29.** Pre-flight on 2026-04-29 found the *external* (consumed-library) `seed/success/main` at `#4CAF50`, but the *local* copy in `merak` was already canonical `#2E7D32`. The local-only sweep (issue 9) rebound every Success cell from external → local, so the renders now resolve to `#2E7D32` per runtime. Closed.
+6. **~~Local `seed/success/main` resolves to `#4CAF50`, not the catalogue's `#2E7D32`.~~ Resolved 2026-04-29.** Pre-flight on 2026-04-29 found the *external* (consumed-library) `seed/success/main` at `#4CAF50`, but the *local* copy in `mui` was already canonical `#2E7D32`. The local-only sweep (issue 9) rebound every Success cell from external → local, so the renders now resolve to `#2E7D32` per runtime. Closed.
 7. **Default unchecked glyph drift.** Same `bg-active` (`0.54α`) vs. runtime `text-sub` (`0.6α`) divergence as item 5. Resolve together.
 8. **Disabled glyph uses `text-disabled` (`0.38α`); runtime uses `palette.action.disabled` (`0.26α`).** The Figma cells reach for the typography-family disabled token instead of the icon-family disabled token. Same convention `<Button>` uses (`bg-disabled` for Outlined disabled border). Twelve-percent-α-darker than runtime; visually distinguishable but acceptable since the design intent is "clearly greyed out." Resolve by either (a) accepting the alpha difference (current decision) or (b) minting a local `alias/colors/fg-disabled` (`#00000042`) and rebinding.
 9. **~~Indicator paints (glyphs + unchecked rectangle fill / stroke) bind to external library variables, violating the local-only rule.~~ Resolved 2026-04-29.** Pre-flight on 2026-04-29 found **11** external `VariableID:<sharedKey>/...` references across both Checkbox + CheckboxFormControl: `alias/colors/{bg-default, bg-active, border-defalt(sic), text-default, text-disabled}` and `seed/{primary, secondary, danger, warning, info, success}/main`. The halo tokens were already fully local. The remediation `use_figma` pass:
-    - Phase 0: minted 2 missing locals (`alias/colors/bg-active`, `seed/secondary/main`); the other 9 already existed in the local `merak` collection.
+    - Phase 0: minted 2 missing locals (`alias/colors/bg-active`, `seed/secondary/main`); the other 9 already existed in the local `mui` collection.
     - Phase 1: built an external→local id remap by name match.
     - Phase 2: rebound the Checkbox set — 258 fill rebinds + 87 stroke rebinds across 258 mutated cells.
     - Phase 3: rebound the CheckboxFormControl wrapper — 276 fill rebinds across 276 mutated cells.
@@ -245,7 +245,7 @@ Tracked here so the next runtime-truth pass has a punch list:
 
     The MUI-Library file is now self-contained for `<Checkbox>` and `<CheckboxFormControl>`. Closed.
 
-10. **~~Local `merak` collection is missing `seed/<color>/main`, `bg-active`, `bg-default`, `border-defalt`, `text-disabled`.~~ Resolved 2026-04-29.** Phase 0 of issue 9's resolution minted the 2 genuinely missing locals (`alias/colors/bg-active` `#0000008A`, `seed/secondary/main` `#9C27B0`). The other names listed earlier already existed in the collection — the original audit conflated *consumed-library bindings* with *local-collection membership*. The corrected reading is in issue 9's Phase 0/1 summary. Closed.
+10. **~~Local `mui` collection is missing `seed/<color>/main`, `bg-active`, `bg-default`, `border-defalt`, `text-disabled`.~~ Resolved 2026-04-29.** Phase 0 of issue 9's resolution minted the 2 genuinely missing locals (`alias/colors/bg-active` `#0000008A`, `seed/secondary/main` `#9C27B0`). The other names listed earlier already existed in the collection — the original audit conflated *consumed-library bindings* with *local-collection membership*. The corrected reading is in issue 9's Phase 0/1 summary. Closed.
 
 ## 8. Source Sync Rule
 
@@ -254,7 +254,7 @@ This document and the source must move together. When **any** of the following c
 1. `src/stories/Checkbox.stories.tsx` (variants, args, `color`/`size`/`disabled`/`indeterminate` wiring)
 2. The Figma `<Checkbox>` component set at `1:7228` (variants, properties, token bindings)
 3. The Figma `<CheckboxFormControl>` set at `1:7367` — any change to the nested instance contract here must mirror; see [`../CheckboxFormControl/figma.spec.md`](../CheckboxFormControl/figma.spec.md) §3
-4. The shared `merak/seed/*`, `merak/alias/*` tokens consumed in §4.2 — particularly `seed/{primary,secondary,danger,warning,info,success}/{main,hover-bg,outline-hover}`, `alias/colors/{text-sub,fg-disabled,bg-outline-hover}`
+4. The shared `mui/seed/*`, `mui/alias/*` tokens consumed in §4.2 — particularly `seed/{primary,secondary,danger,warning,info,success}/{main,hover-bg,outline-hover}`, `alias/colors/{text-sub,fg-disabled,bg-outline-hover}`
 5. `.storybook/preview.tsx` (theme overrides via `createTheme`) — today this is an empty `createTheme()`; introducing typography / palette / `MuiCheckbox.defaultProps` overrides forces a re-measure
 6. `package.json` `@mui/material` peer / dev version (currently `^7.3.10` / peer `>=7`)
 
@@ -263,7 +263,7 @@ This document and the source must move together. When **any** of the following c
 - Adding a real `size="large"` prop in MUI (or a project-side `sx` override) → drop the Drift §7 issue 1 footnote, add per-size rows to `storybook.render.md` §4, validate the Figma `Size=Large` cells against new runtime numbers.
 - Introducing a new `Color` value (e.g. `tertiary`) → add the row to §2.1 + §3 + §4.2, mint the local `seed/tertiary/{main,hover-bg}` variables (or alias them from the catalogue) before authoring.
 - Adding `Indeterminate=True, State=Disabled` cells → expand §3 exclusions list and §4.3 row, regenerate the published variants.
-- Token rename / removal in `merak/alias/*` or `merak/seed/*` → update every reference in §2, §4 and rename the matching variable in the local Figma collection.
+- Token rename / removal in `mui/alias/*` or `mui/seed/*` → update every reference in §2, §4 and rename the matching variable in the local Figma collection.
 - Token value change in any consumed token → no edit to this spec is required (Figma resolves through the same name); update the resolution chain in `../../figma-create-component/library-tokens.md` if the catalogue moved.
 - `@mui/material` major bump → re-run `storybook.render.md` §3 / §4 / §5 measurements; bump the version row in §1; reconcile any new computed-style values against §4.2.
 
@@ -300,7 +300,7 @@ Figma Component Set: <Checkbox>  (1:7228)
 
 The complete set of tokens consumed by `<Checkbox>`. Names are **Figma variable paths**; bind every paint to one of these — never to a literal value.
 
-### 10.1 Seed tokens (`merak/seed/*`, mirrored locally)
+### 10.1 Seed tokens (`mui/seed/*`, mirrored locally)
 
 For each of the six themable color families (`primary | secondary | danger | warning | info | success`):
 
@@ -313,7 +313,7 @@ For each of the six themable color families (`primary | secondary | danger | war
 
 Full names: `seed/primary/main`, `seed/primary/hover-bg`, `seed/primary/focusVisible`, `seed/secondary/main`, `seed/secondary/outline-hover`, `seed/secondary/focusVisible`, `seed/danger/main`, `seed/danger/outline-hover`, `seed/danger/focusVisible`, `seed/warning/main`, `seed/warning/outline-hover`, `seed/warning/focusVisible`, `seed/info/main`, `seed/info/hover-bg`, `seed/info/focusVisible`, `seed/success/main`, `seed/success/hover-bg`, `seed/success/focusVisible`. The `Color=Default` axis does not consume any seed family for the brand fill / 4% halo (see §10.2) — the Default Focused 30% halo uses `seed/neutral/focusVisible`.
 
-### 10.2 Alias and neutral tokens (`merak/alias/colors/*` + `merak/seed/neutral/*`)
+### 10.2 Alias and neutral tokens (`mui/alias/colors/*` + `mui/seed/neutral/*`)
 
 | Token                            | Used by                                                | Role                                                                  |
 | -------------------------------- | ------------------------------------------------------ | --------------------------------------------------------------------- |

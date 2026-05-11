@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { Box, Stack, type SxProps, type Theme } from '@mui/material';
 import * as React from 'react';
 
-// Merak `<Icon>` is a sizing wrapper around an SVG glyph — design counterpart of
+// MUI `<Icon>` is a sizing wrapper around an SVG glyph — design counterpart of
 // the Figma component set `<Icon>` (`3:2722`) on the **Foundation Components**
 // page of the MUI Library file. Six Size variants
 // (xs=16 / sm=20 / md=24 / lg=28 / xl=32 / xxl=48) drive the box; the glyph
@@ -11,7 +11,7 @@ import * as React from 'react';
 //
 // `@mui/material/Icon` uses the Material Icons font ligature and only exposes
 // `fontSize: 'small' | 'medium' | 'large' | 'inherit'` — it does not match the
-// six-step Merak axis 1:1, so the story defines its own `MerakIcon` wrapper.
+// six-step MUI axis 1:1, so the story defines its own `MUIIcon` wrapper.
 
 type IconSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'xxl';
 
@@ -26,7 +26,7 @@ const SIZE_PX: Record<IconSize, number> = {
 
 const SIZES: IconSize[] = ['xs', 'sm', 'md', 'lg', 'xl', 'xxl'];
 
-interface MerakIconProps {
+interface MUIIconProps {
   size?: IconSize;
   color?: string;
   sx?: SxProps<Theme>;
@@ -91,13 +91,13 @@ const UserGlyph = () => (
   </svg>
 );
 
-const MerakIcon = ({
+const MUIIcon = ({
   size = 'md',
   color,
   sx,
   children,
   'aria-label': ariaLabel,
-}: MerakIconProps) => {
+}: MUIIconProps) => {
   const px = SIZE_PX[size];
   return (
     <Box
@@ -125,13 +125,13 @@ const MerakIcon = ({
 
 const meta = {
   title: 'Components/Icon',
-  component: MerakIcon,
+  component: MUIIcon,
   tags: ['autodocs'],
   parameters: {
     docs: {
       description: {
         component:
-          'Mirrors `<Icon>` Figma spec at `.claude/skills/figma-components/Icon/figma.spec.md` — 6 Size variants (xs=16, sm=20, md=24, lg=28, xl=32, xxl=48). The Merak `<Icon>` is a sizing wrapper; the glyph itself is supplied via `children` and sourced from Google `material-design-icons` (`material-symbols` outlined, 24×24 viewBox). Color inherits via `currentColor` so the icon picks up its parent text/button paint. `@mui/material/Icon` is **not** used because its `fontSize` prop only exposes 3 sizes and depends on the Material Icons font being loaded.',
+          'Mirrors `<Icon>` Figma spec at `.claude/skills/figma-components/Icon/figma.spec.md` — 6 Size variants (xs=16, sm=20, md=24, lg=28, xl=32, xxl=48). The MUI `<Icon>` is a sizing wrapper; the glyph itself is supplied via `children` and sourced from Google `material-design-icons` (`material-symbols` outlined, 24×24 viewBox). Color inherits via `currentColor` so the icon picks up its parent text/button paint. `@mui/material/Icon` is **not** used because its `fontSize` prop only exposes 3 sizes and depends on the Material Icons font being loaded.',
       },
     },
   },
@@ -146,7 +146,7 @@ const meta = {
     },
   },
   args: { size: 'md' },
-} satisfies Meta<typeof MerakIcon>;
+} satisfies Meta<typeof MUIIcon>;
 
 export default meta;
 
@@ -207,9 +207,9 @@ export const SizeMatrix: Story = {
                 justifyContent: 'flex-start',
               }}
             >
-              <MerakIcon size={s} aria-label={name}>
+              <MUIIcon size={s} aria-label={name}>
                 {render()}
-              </MerakIcon>
+              </MUIIcon>
             </div>
           ))}
         </Stack>
@@ -229,9 +229,9 @@ export const ColorInheritance: Story = {
         ['inherit', 'primary.main', 'error.main', 'success.main'] as const
       ).map((token) => (
         <Box key={token} sx={{ color: token, display: 'flex', gap: 1, alignItems: 'center' }}>
-          <MerakIcon size="lg" aria-label={`Home (${token})`}>
+          <MUIIcon size="lg" aria-label={`Home (${token})`}>
             <HomeGlyph />
-          </MerakIcon>
+          </MUIIcon>
           <span style={{ fontSize: 12 }}>{token}</span>
         </Box>
       ))}

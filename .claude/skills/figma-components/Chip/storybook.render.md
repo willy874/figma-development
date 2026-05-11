@@ -49,7 +49,7 @@ For `color === 'default'`:
 - **filled default** → `background-color = action.selected = rgba(0,0,0,0.08)`, `color = text.primary = rgba(0,0,0,0.87)`. Delete icon = `alpha(text.primary, 0.26)`.
 - **outlined default** → `background-color = transparent`, `color = text.primary`, `border = 1 px solid grey[400] = #bdbdbd`. Delete icon = `alpha(text.primary, 0.26)`.
 
-| Merak (MUI key)   | `palette[color].main` | filled bg                | filled fg / contrastText | outlined fg              | outlined border (`0.7α`)         |
+| MUI (MUI key)   | `palette[color].main` | filled bg                | filled fg / contrastText | outlined fg              | outlined border (`0.7α`)         |
 | ----------------- | --------------------- | ------------------------ | ------------------------ | ------------------------ | -------------------------------- |
 | default (default) | n/a                   | `rgba(0,0,0,0.08)`       | `rgba(0,0,0,0.87)`       | `rgba(0,0,0,0.87)`       | `#bdbdbd` (solid `grey[400]`)¹  |
 | primary           | `#1976d2`             | `rgb(25, 118, 210)`      | `#fff`                   | `rgb(25, 118, 210)`      | `rgba(25, 118, 210, 0.7)`       |
@@ -100,7 +100,7 @@ This is what designers see in real apps. Source: `Chip.js:200-247`.
 
 Resolved per-color hex (themed filled hover/focus = `palette[color].dark`):
 
-| Merak (MUI key)  | `palette[color].dark` |
+| MUI (MUI key)  | `palette[color].dark` |
 | ---------------- | --------------------- |
 | primary          | `#1565c0`             |
 | danger (error)   | `#c62828`             |
@@ -110,7 +110,7 @@ Resolved per-color hex (themed filled hover/focus = `palette[color].dark`):
 
 Resolved themed outlined focus bg (`alpha(main, 0.12)`):
 
-| Merak (MUI key)  | outlined focus bg              |
+| MUI (MUI key)  | outlined focus bg              |
 | ---------------- ------------------------------- |
 | primary          | `rgba(25, 118, 210, 0.12)`     |
 | danger (error)   | `rgba(211, 47, 47, 0.12)`      |
@@ -166,7 +166,7 @@ Disabled is uniform across every (color × variant) cell — MUI just dims the e
 
 Resolved themed delete-icon Enabled colors:
 
-| Merak (MUI key)  | filled enabled (`alpha(contrastText, 0.7)`)  | outlined enabled (`alpha(main, 0.7)`) |
+| MUI (MUI key)  | filled enabled (`alpha(contrastText, 0.7)`)  | outlined enabled (`alpha(main, 0.7)`) |
 | ---------------- | --------------------------------------------- | -------------------------------------- |
 | primary          | `rgba(255, 255, 255, 0.7)`                    | `rgba(25, 118, 210, 0.7)`              |
 | danger           | `rgba(255, 255, 255, 0.7)`                    | `rgba(211, 47, 47, 0.7)`               |

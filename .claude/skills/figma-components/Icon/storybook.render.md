@@ -1,6 +1,6 @@
 ---
 name: figma-component-icon-storybook-render
-description: Computed-style snapshot for `<Icon>` (MerakIcon sizing wrapper) measured against `src/stories/Icon.stories.tsx` via Chrome DevTools MCP. Documents the runtime per-Size box metrics, the `currentColor` inheritance contract that lets the glyph pick up its parent paint, the SVG dimensions inside the wrapper, and the drift-check protocol that decides whether a divergence is a spec bug, a story-file change, or an icon-source swap. Companion to `figma.spec.md` (the contract) and `design-token.md` (component-scoped tokens, when needed).
+description: Computed-style snapshot for `<Icon>` (MUIIcon sizing wrapper) measured against `src/stories/Icon.stories.tsx` via Chrome DevTools MCP. Documents the runtime per-Size box metrics, the `currentColor` inheritance contract that lets the glyph pick up its parent paint, the SVG dimensions inside the wrapper, and the drift-check protocol that decides whether a divergence is a spec bug, a story-file change, or an icon-source swap. Companion to `figma.spec.md` (the contract) and `design-token.md` (component-scoped tokens, when needed).
 parent_skill: figma-components
 ---
 
@@ -10,7 +10,7 @@ Computed-style snapshot probed with Chrome DevTools MCP against `src/stories/Ico
 
 ## 1. Size axis — outer box invariants
 
-The Merak `<Icon>` wrapper is a square `Box` whose only varying dimension is `width = height = SIZE_PX[size]`. Everything else holds across all 6 cells.
+The MUI `<Icon>` wrapper is a square `Box` whose only varying dimension is `width = height = SIZE_PX[size]`. Everything else holds across all 6 cells.
 
 | Property            | xs       | sm       | md       | lg       | xl       | xxl      |
 | ------------------- | -------- | -------- | -------- | -------- | -------- | -------- |
@@ -67,7 +67,7 @@ Every glyph in `Icon.stories.tsx` is an inline `<svg>` with `viewBox="0 0 24 24"
 - **No theme overrides.** Unlike `<Button>` and `<IconButton>`, the project's `mui-theme.ts` does not patch `MuiBox` or any Icon-related slot; everything observed comes from MUI's default `<Box>` baseline (`display: flex` is from the story's `sx`, not a global override).
 - **No transitions.** `transition` is `all 0s ease 0s` — the icon never animates by itself. State-bound color changes ride entirely on the parent's transition (e.g. `<IconButton>`'s `background-color, color 0.25s` ramp).
 - **No focus / disabled deltas.** The wrapper has no interactive state. Disabled visual treatment is owned by the parent (`<IconButton>` paints `color: rgba(0, 0, 0, 0.26)` on `.Mui-disabled`); `<Icon>` has nothing to override.
-- **No size axis exposed via MUI.** `@mui/material/Icon` accepts `fontSize: 'inherit' | 'small' | 'medium' | 'large'` — only 3 size steps and font-driven. The Merak `<Icon>` rejects that contract entirely (no font, 6 size steps); `figma.spec.md` §1 calls this out.
+- **No size axis exposed via MUI.** `@mui/material/Icon` accepts `fontSize: 'inherit' | 'small' | 'medium' | 'large'` — only 3 size steps and font-driven. The MUI `<Icon>` rejects that contract entirely (no font, 6 size steps); `figma.spec.md` §1 calls this out.
 
 ## 5. Drift-check protocol
 

@@ -100,7 +100,7 @@ Every binding entry — whether in §4 (Skeleton A) or §6 Render Binding Matrix
 
 1. **Which node.** Layer-name path from the variant root (`<root> / Container / Label`). Not "the label", not "the inner text".
 2. **Which property.** Figma property by name: `fills[0]`, `strokes[0]`, `paddingLeft`, `itemSpacing`, `effects[0]`, `textStyleId`, `cornerRadius`. Not "the colour", not "spacing".
-3. **Which value.** A constant name from §6.1 or a token path from §4 (`merak/seed/primary/main`, `material-design/typography/body-md`). Never a raw hex / px / number in this column — that defeats the constants-first rule.
+3. **Which value.** A constant name from §6.1 or a token path from §4 (`mui/seed/primary/main`, `material-design/typography/body-md`). Never a raw hex / px / number in this column — that defeats the constants-first rule.
 4. **Which source.** The render-doc section that justifies it (`render.md §3.2 Color × State`) or the Figma reference node id when an editable / reference-only node was supplied.
 
 Skeleton B's Render Binding Matrix already enforces this column shape — Skeleton A authors must shape their §4 sub-tables the same way. An entry missing any of the four is incomplete; both reviewers and the step-5 operator will fail without it.
@@ -117,9 +117,9 @@ Run these checks on the drafted spec; do not advance to step 4 until they pass:
 
 **Goal:** every paint, stroke, effect, and typography rule in the spec is bound to a **local** variable in this file's own collection — sourced from the catalogue in `./library-tokens.md`. The component must be self-contained; no consumed-library dependency is allowed. Anything the catalogue doesn't cover gets minted locally and documented in a component-scoped `design-token.md`.
 
-- Read [`./library-tokens.md`](./library-tokens.md) and reconcile every numeric / hex value from `storybook.render.md` against the catalogue (`merak/*`, `material-design/*`, text styles, shadows).
+- Read [`./library-tokens.md`](./library-tokens.md) and reconcile every numeric / hex value from `storybook.render.md` against the catalogue (`mui/*`, `material-design/*`, text styles, shadows).
 - **Local-only is the project default.** Every binding the component emits must resolve to a variable in this file's own collection — never a `VariableID:<sharedKey>/<id>` from a consumed library. The rule applies to every component built through this pipeline; the design system file is not guaranteed to be loaded next to the consumer, so library files must be self-contained.
-- Default to semantic tokens: `merak/seed/*`, `merak/alias/*`. Drop into `material-design/palette/*` only when no semantic token fits — and justify it inline.
+- Default to semantic tokens: `mui/seed/*`, `mui/alias/*`. Drop into `material-design/palette/*` only when no semantic token fits — and justify it inline.
 - Preserve known typos (`alias/colors/border-defalt` _(sic)_).
 - Apply `material-design/typography/*` text styles by name; do not hand-set fontName / size / line-height.
 - Apply `material-design/shadows/shadows-N` for elevation; do not hand-author drop shadows.
@@ -154,7 +154,7 @@ A Figma file can hold both a **local** variable collection and consume **publish
     - A Figma URL pointing at an existing frame → place the component set inside that frame.
     Do not guess. Re-confirm if the answer is ambiguous.
   - A reference-only node is **never** the authoring target — never write to its file, even if the user pastes its URL by mistake.
-- **Sync component-scoped tokens before authoring any cell.** Read `.claude/skills/figma-components/<Name>/design-token.md` (if it exists) and the `merak/*` / `material-design/*` paths cited in `figma.spec.md` §4 / §6.1. For each token, check whether a variable with that exact name already exists in the file's local collection. Mint the missing ones via `use_figma` (correct `resolvedType`, `scopes`, value or alias to another local variable) **before** writing any cell. Authoring against a not-yet-minted token silently falls back to a raw paint and breaks the local-only rule.
+- **Sync component-scoped tokens before authoring any cell.** Read `.claude/skills/figma-components/<Name>/design-token.md` (if it exists) and the `mui/*` / `material-design/*` paths cited in `figma.spec.md` §4 / §6.1. For each token, check whether a variable with that exact name already exists in the file's local collection. Mint the missing ones via `use_figma` (correct `resolvedType`, `scopes`, value or alias to another local variable) **before** writing any cell. Authoring against a not-yet-minted token silently falls back to a raw paint and breaks the local-only rule.
 - Build the component set following the spec's §3 variant matrix and §4 / §6 token bindings exactly. Use Auto Layout, bind every paint to a variable, apply text styles by id.
 - After authoring, return the resulting page name + node id (or URL) to the user so they can inspect.
 

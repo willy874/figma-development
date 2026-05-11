@@ -51,7 +51,7 @@ A Storybook documentation matrix (`SizeMatrix`, `ActionCountMatrix`, `TitleWithC
 | Shell elevation        | `material-design/shadows/shadows-24` — design-system MD ramp's dialog tier (3-layer drop shadow, see §4.2)                       |
 | Shell radius           | `theme.shape.borderRadius = 4` (`4 px`)                                                                                          |
 
-**Local-only token bindings.** Per the project directive (also followed by `<Pagination>`, `<Button>`, `<TextField>`), every paint / stroke / effect / text style on the four Dialog nodes binds to the **MUI Library Figma file's local `merak` collection** (and locally-minted styles) — never to the published library copy. If the published library renames or removes a token, the local file does not break automatically; track the divergence in §8.
+**Local-only token bindings.** Per the project directive (also followed by `<Pagination>`, `<Button>`, `<TextField>`), every paint / stroke / effect / text style on the four Dialog nodes binds to the **MUI Library Figma file's local `mui` collection** (and locally-minted styles) — never to the published library copy. If the published library renames or removes a token, the local file does not break automatically; track the divergence in §8.
 
 **Runtime-truth pass — 2026-04-29.** The four nodes were reconciled against MUI 7 runtime measurements (see [`./storybook.render.md`](./storybook.render.md)) on 2026-04-29. Reconciled in this pass:
 
@@ -169,7 +169,7 @@ Total variants across all four sets: 5 + 1 + 2 + 1 = 9
 
 ## 4. Design Tokens
 
-All paints, strokes, and effects on the four Dialog nodes **must** be bound to a Variable or published Style in the local `merak` collection. The hex / shadow literals below are reference resolutions of the **light** theme — do not paste them; bind to the token. Dark theme is resolved automatically through the same alias path.
+All paints, strokes, and effects on the four Dialog nodes **must** be bound to a Variable or published Style in the local `mui` collection. The hex / shadow literals below are reference resolutions of the **light** theme — do not paste them; bind to the token. Dark theme is resolved automatically through the same alias path.
 
 ### 4.1 Sizing
 
@@ -305,8 +305,8 @@ The **2026-04-29 runtime-truth pass** reconciled the four nodes against Chrome D
 1. ~~**`<DialogContent Dividers=true>` padding — `16 / 24`, not `20 / 24`.**~~ **Resolved 2026-04-29.** Cell `1:4764` re-authored to `paddingTop = paddingBottom = 16`. Symbol size now `444 × 56` (was `444 × 64`).
 2. ~~**`<DialogActions>` padding — `8 px` all sides, not `16 px`.**~~ **Resolved 2026-04-29.** Component `1:4757` re-authored: `layoutMode = HORIZONTAL`, `padding = 8`, `itemSpacing = 8`, `primaryAxisAlignItems = MAX (flex-end)`, `counterAxisAlignItems = CENTER`. Slot child set to FILL both axes. Symbol size remains `484 × 84` (slot `468 × 68` + 8 padding).
 3. ~~**Shell elevation — `shadows[24]`, not `shadows[8]`.**~~ **Resolved 2026-04-29.** Re-bound to the file's published `material-design/shadows/shadows-24` effect style (3-layer composite: `0 11 15 -7 α0.02`, `0 24 38 3 α0.14`, `0 8 46 8 α0.12` — the design-system MD ramp dialog tier, not MUI's runtime alpha values) and applied to all 5 Size cells.
-4. ~~**Local-only fill on shell — `bg-default` was bound to a consumed-library copy.**~~ **Resolved 2026-04-29.** All 5 shell cells re-bound to local `merak/alias/colors/bg-default` (`VariableID:223:4180`).
-5. ~~**Local-only stroke on `<DialogContent Dividers=true>` — `border-defalt` was bound to a consumed-library copy.**~~ **Resolved 2026-04-29.** Cell `1:4764` re-bound to local `merak/alias/colors/border-defalt` (`VariableID:223:4183`) at α 0.12.
+4. ~~**Local-only fill on shell — `bg-default` was bound to a consumed-library copy.**~~ **Resolved 2026-04-29.** All 5 shell cells re-bound to local `mui/alias/colors/bg-default` (`VariableID:223:4180`).
+5. ~~**Local-only stroke on `<DialogContent Dividers=true>` — `border-defalt` was bound to a consumed-library copy.**~~ **Resolved 2026-04-29.** Cell `1:4764` re-bound to local `mui/alias/colors/border-defalt` (`VariableID:223:4183`) at α 0.12.
 
 ## 8. Source Sync Rule
 
@@ -321,12 +321,12 @@ This document and the source must move together. When **any** of the following c
 | Figma `<DialogTitle>` (`1:4767`) gains a `Close Button` BOOLEAN (or any property)               | `figma.spec.md` §2.2, §3.4, §5; add the supporting token if any                                                            |
 | Figma `<DialogContent>` set (`1:4760`) variant axes / cell count change                         | `figma.spec.md` §3.2 + §4.1 + §4.2 (border binding)                                                                        |
 | Figma `<DialogActions>` (`1:4756`) gains a variant axis (e.g. `Layout=Compact \| Standard`)     | `figma.spec.md` §2.4, §3.3, §3.4                                                                                           |
-| Local `merak/*` tokens used by Dialog are renamed in this Figma file                            | `figma.spec.md` §4.2 + §4.4. **Do not** auto-pull from the published library — Dialog cells bind to the local collection only. |
+| Local `mui/*` tokens used by Dialog are renamed in this Figma file                            | `figma.spec.md` §4.2 + §4.4. **Do not** auto-pull from the published library — Dialog cells bind to the local collection only. |
 | Published library `seed/*` / `alias/*` tokens drift from the local copies                       | `./design-token.md` (record divergence; create the file if it doesn't exist), `figma.spec.md` §1 local-only note. Re-sync values manually if needed. |
 | `material-design/shadows/shadows-24` is renamed or removed from the local effect-style collection | `figma.spec.md` §4.1 + §4.2 + §7.6, `./design-token.md` if a Dialog-scoped replacement is minted                          |
 | Project introduces a `Dialog.tsx` wrapper that defaults `disableBackdropClick=true` (or other behavior) | `figma.spec.md` §1, §2.1; add a §7 callout with an updated `disableBackdropClick` default; mirror in any Dialog usage docs |
 | MUI 7 `<DialogContentText>` default variant changes (e.g. back to `body2`)                      | `figma.spec.md` §1, §2.5, §4.4, §7.3; `storybook.render.md` §4 re-probe                                                   |
-| `alias/layout/mask-bg` is minted in the local `merak` collection (currently absent)             | `figma.spec.md` §4.2 (rebind), §6.2 (rebind), §10.1 (drop "(not yet in catalogue)"), `figma-create-component/library-tokens.md` (add to alias table) |
+| `alias/layout/mask-bg` is minted in the local `mui` collection (currently absent)             | `figma.spec.md` §4.2 (rebind), §6.2 (rebind), §10.1 (drop "(not yet in catalogue)"), `figma-create-component/library-tokens.md` (add to alias table) |
 
 ## 9. Quick Reference
 
@@ -374,7 +374,7 @@ Figma file: KQjP6W9Uw1PN0iipwQHyYn (MUI Library), page "Foundation Components"
 
 ## 10. Token Glossary
 
-The complete set of Merak design tokens consumed by `<Dialog>`. Names below are **Figma variable / style paths** in the local `merak` collection. Bind every Figma paint / stroke / effect / text style to one of these — never to a literal value.
+The complete set of MUI design tokens consumed by `<Dialog>`. Names below are **Figma variable / style paths** in the local `mui` collection. Bind every Figma paint / stroke / effect / text style to one of these — never to a literal value.
 
 ### 10.1 Alias tokens (`alias/*`)
 

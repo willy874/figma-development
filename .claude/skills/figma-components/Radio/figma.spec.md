@@ -13,7 +13,7 @@ figma_component_set_id: '292:6292'
 
 `<Radio>` is the Figma counterpart of the MUI `<Radio>` consumed in `src/stories/Radio.stories.tsx`. The package re-exports MUI directly — there is no in-repo wrapper — so the Figma component encodes the MUI prop surface (`color`, `size`, `checked`, `disabled`) plus the four interaction states MUI paints via the ripple subtree (`Enabled / Hovered / Focused / Pressed`).
 
-The Figma cells are authored against the local `merak` collection inside the MUI-Library file (`KQjP6W9Uw1PN0iipwQHyYn`). The component is **self-contained** — every binding resolves to a variable in this file's local collection so the library can be consumed without the 天璇 design-system file loaded next to it. The naming, axis structure, and token-binding conventions deliberately mirror `<Checkbox>` (`1:7228`); the surface shape is the same except `<Radio>` has no `Indeterminate` axis (Radio is single-select) and uses the stacked `RadioButtonUncheckedIcon` + `RadioButtonCheckedIcon` glyphs instead of a single check / dash glyph.
+The Figma cells are authored against the local `mui` collection inside the MUI-Library file (`KQjP6W9Uw1PN0iipwQHyYn`). The component is **self-contained** — every binding resolves to a variable in this file's local collection so the library can be consumed without the 天璇 design-system file loaded next to it. The naming, axis structure, and token-binding conventions deliberately mirror `<Checkbox>` (`1:7228`); the surface shape is the same except `<Radio>` has no `Indeterminate` axis (Radio is single-select) and uses the stacked `RadioButtonUncheckedIcon` + `RadioButtonCheckedIcon` glyphs instead of a single check / dash glyph.
 
 | Aspect            | Value                                                                                  |
 | ----------------- | -------------------------------------------------------------------------------------- |
@@ -29,7 +29,7 @@ The Figma cells are authored against the local `merak` collection inside the MUI
 
 | MUI prop                                    | Figma property      | Type    | Notes                                                                                                              |
 | ------------------------------------------- | ------------------- | ------- | ------------------------------------------------------------------------------------------------------------------ |
-| `color`                                     | `Color`             | VARIANT | `Default` / `Primary` / `Secondary` / `Error` / `Warning` / `Info` / `Success`. Maps 1:1 to the MUI palette key (Merak `danger ↔ Error`). |
+| `color`                                     | `Color`             | VARIANT | `Default` / `Primary` / `Secondary` / `Error` / `Warning` / `Info` / `Success`. Maps 1:1 to the MUI palette key (MUI `danger ↔ Error`). |
 | `checked` _(true)_                          | `Checked`           | VARIANT | `true` → `Checked=True` (inner `RadioButtonCheckedIcon` overlaid).                                                 |
 | `checked` _(false)_                         | `Checked`           | VARIANT | `false` → `Checked=False` (outer ring only).                                                                       |
 | `size`                                      | `Size`              | VARIANT | `Small` / `Medium` (MUI native) / `Large` (Figma-only — see §7 issue 1).                                           |
@@ -41,9 +41,9 @@ The Figma cells are authored against the local `merak` collection inside the MUI
 
 ### 2.1 Color value mapping
 
-The Figma `Color` axis publishes the same seven values MUI's `<Radio>` accepts. Token names below are **Figma variable paths** in the local `merak` collection inside the MUI-Library file (mirrored from the published 天璇 catalogue). The `Hovered / Pressed` halo uses the seed catalogue's `4 %` overlay (`hover-bg` / `outline-hover`); the `Focused` halo uses the seed catalogue's `30 %` overlay (`focusVisible`) — the two states intentionally diverge so designers can visually distinguish a focus ring from a plain hover tint. MUI runtime paints both at the same `4 %`; see §7 issue 3 for the divergence (mirror of the `<Checkbox>` decision).
+The Figma `Color` axis publishes the same seven values MUI's `<Radio>` accepts. Token names below are **Figma variable paths** in the local `mui` collection inside the MUI-Library file (mirrored from the published 天璇 catalogue). The `Hovered / Pressed` halo uses the seed catalogue's `4 %` overlay (`hover-bg` / `outline-hover`); the `Focused` halo uses the seed catalogue's `30 %` overlay (`focusVisible`) — the two states intentionally diverge so designers can visually distinguish a focus ring from a plain hover tint. MUI runtime paints both at the same `4 %`; see §7 issue 3 for the divergence (mirror of the `<Checkbox>` decision).
 
-| MUI `color` | Merak palette | Brand fill (checked dot)             | Halo Hovered / Pressed (`4 %` α)  | Halo Focused (`30 %` α)              | Hex          |
+| MUI `color` | MUI palette | Brand fill (checked dot)             | Halo Hovered / Pressed (`4 %` α)  | Halo Focused (`30 %` α)              | Hex          |
 | ----------- | ------------- | ------------------------------------ | --------------------------------- | ------------------------------------ | ------------ |
 | `default`   | `default`     | `alias/colors/bg-active`             | `alias/colors/bg-outline-hover`   | `seed/neutral/focusVisible`          | `#000000 0.54α` / `#0000000A` / `#0000004D` |
 | `primary`   | `primary`     | `seed/primary/main`                  | `seed/primary/hover-bg`           | `seed/primary/focusVisible`          | `#1976D2`    |
@@ -120,7 +120,7 @@ One row per paint role. Bind the Figma fill / stroke to the variable name in **b
 | Outer ring fill — checked, Default      | **`alias/colors/bg-active`**                       | Default does not tint.                                                                                                         |
 | Outer ring fill — checked, Primary      | **`seed/primary/main`** _(`#1976D2`)_              | Both outer ring AND inner dot paint the brand color when `Checked=True`. MUI uses `currentColor` on both SVGs; in Figma, bind both vector fills to the same token. |
 | Outer ring fill — checked, Secondary    | **`seed/secondary/main`** _(`#9C27B0`)_            |                                                                                                                                |
-| Outer ring fill — checked, Error        | **`seed/danger/main`** _(`#D32F2F`)_               | Merak `danger ↔ MUI error`.                                                                                                    |
+| Outer ring fill — checked, Error        | **`seed/danger/main`** _(`#D32F2F`)_               | MUI `danger ↔ MUI error`.                                                                                                    |
 | Outer ring fill — checked, Warning      | **`seed/warning/main`** _(`#ED6C02`)_              |                                                                                                                                |
 | Outer ring fill — checked, Info         | **`seed/info/main`** _(`#0288D1`)_                 |                                                                                                                                |
 | Outer ring fill — checked, Success      | **`seed/success/main`** _(`#2E7D32`)_              |                                                                                                                                |
@@ -236,7 +236,7 @@ This document and the source must move together. When **any** of the following c
 1. `src/stories/Radio.stories.tsx` (variants, args, `color`/`size`/`disabled`/`checked` wiring)
 2. The Figma `<Radio>` component set inside `286:5441` (variants, properties, token bindings)
 3. The Figma `<RadioFormControl>` / `<RadioGroup>` sets — any change to the nested instance contract here must mirror; see `../RadioFormControl/figma.spec.md` §3 and `../RadioGroup/figma.spec.md` §3
-4. The shared `merak/seed/*`, `merak/alias/*` tokens consumed in §4.2 — particularly `seed/{primary,secondary,danger,warning,info,success}/{main,hover-bg,outline-hover,focusVisible}`, `alias/colors/{bg-active,text-disabled,bg-outline-hover}`, `seed/neutral/focusVisible`
+4. The shared `mui/seed/*`, `mui/alias/*` tokens consumed in §4.2 — particularly `seed/{primary,secondary,danger,warning,info,success}/{main,hover-bg,outline-hover,focusVisible}`, `alias/colors/{bg-active,text-disabled,bg-outline-hover}`, `seed/neutral/focusVisible`
 5. `.storybook/preview.tsx` (theme overrides via `createTheme`) — today this is an empty `createTheme()`; introducing typography / palette / `MuiRadio.defaultProps` overrides forces a re-measure
 6. `package.json` `@mui/material` peer / dev version (currently `^7.3.10` / peer `>=7`)
 
@@ -244,7 +244,7 @@ This document and the source must move together. When **any** of the following c
 
 - Adding a real `size="large"` prop in MUI (or a project-side `sx` override) → drop the Drift §7 issue 1 footnote, add per-size rows to `storybook.render.md` §4, validate the Figma `Size=Large` cells against new runtime numbers.
 - Introducing a new `Color` value (e.g. `tertiary`) → add the row to §2.1 + §3 + §4.2, mint the local `seed/tertiary/{main,hover-bg}` variables (or alias them from the catalogue) before authoring.
-- Token rename / removal in `merak/alias/*` or `merak/seed/*` → update every reference in §2, §4 and rename the matching variable in the local Figma collection.
+- Token rename / removal in `mui/alias/*` or `mui/seed/*` → update every reference in §2, §4 and rename the matching variable in the local Figma collection.
 - Token value change in any consumed token → no edit to this spec is required (Figma resolves through the same name); update the resolution chain in `../../figma-create-component/library-tokens.md` if the catalogue moved.
 - `@mui/material` major bump → re-run `storybook.render.md` §3 / §4 / §5 measurements; bump the version row in §1; reconcile any new computed-style values against §4.2.
 
@@ -278,7 +278,7 @@ Figma Component Set: <Radio>  (id assigned at step-5 publish; outer frame 286:54
 
 The complete set of tokens consumed by `<Radio>`. Names are **Figma variable paths**; bind every paint to one of these — never to a literal value.
 
-### 10.1 Seed tokens (`merak/seed/*`, mirrored locally)
+### 10.1 Seed tokens (`mui/seed/*`, mirrored locally)
 
 For each of the six themable color families (`primary | secondary | danger | warning | info | success`):
 
@@ -291,7 +291,7 @@ For each of the six themable color families (`primary | secondary | danger | war
 
 Full names: `seed/primary/main`, `seed/primary/hover-bg`, `seed/primary/focusVisible`, `seed/secondary/main`, `seed/secondary/outline-hover`, `seed/secondary/focusVisible`, `seed/danger/main`, `seed/danger/outline-hover`, `seed/danger/focusVisible`, `seed/warning/main`, `seed/warning/outline-hover`, `seed/warning/focusVisible`, `seed/info/main`, `seed/info/hover-bg`, `seed/info/focusVisible`, `seed/success/main`, `seed/success/hover-bg`, `seed/success/focusVisible`. The `Color=Default` axis does not consume any seed family for the brand fill / 4% halo (see §10.2) — the Default Focused 30% halo uses `seed/neutral/focusVisible`.
 
-### 10.2 Alias and neutral tokens (`merak/alias/colors/*` + `merak/seed/neutral/*`)
+### 10.2 Alias and neutral tokens (`mui/alias/colors/*` + `mui/seed/neutral/*`)
 
 | Token                            | Used by                                                | Role                                                                  |
 | -------------------------------- | ------------------------------------------------------ | --------------------------------------------------------------------- |

@@ -1,6 +1,6 @@
 ---
 name: figma-component-navmenu-spec
-description: Figma component specification for `<NavMenu>` and its child `<NavMenuItem>` — design counterpart of the MUI `<List>` + `<ListItemButton>` + `<Collapse>` composition consumed by `src/stories/NavMenu.stories.tsx`. Documents the leaf 5-state surface (`<NavMenuItem>`, 5 variants), the wrapper 2-state collapsible surface (`<NavMenu>`, 2 variants), source-to-Figma mapping for the `MerakNavMenuItem` / `MerakNavMenu` story-local components, and the divergences between MUI's stock `<ListItemButton>` paint values and the Merak token bindings. For component-scoped tokens (one 8 %-α primary `Selected` fill) see `design-token.md`; for runtime measurements see `storybook.render.md`.
+description: Figma component specification for `<NavMenu>` and its child `<NavMenuItem>` — design counterpart of the MUI `<List>` + `<ListItemButton>` + `<Collapse>` composition consumed by `src/stories/NavMenu.stories.tsx`. Documents the leaf 5-state surface (`<NavMenuItem>`, 5 variants), the wrapper 2-state collapsible surface (`<NavMenu>`, 2 variants), source-to-Figma mapping for the `MUINavMenuItem` / `MUINavMenu` story-local components, and the divergences between MUI's stock `<ListItemButton>` paint values and the MUI token bindings. For component-scoped tokens (one 8 %-α primary `Selected` fill) see `design-token.md`; for runtime measurements see `storybook.render.md`.
 parent_skill: figma-components
 figma_file_key: KQjP6W9Uw1PN0iipwQHyYn
 figma_parent_frame_id: '779:11816'
@@ -13,7 +13,7 @@ figma_wrapper_component_set_id: '793:11949'
 
 ## 1. Overview
 
-`<NavMenu>` is the Figma counterpart of the MUI `<List>` + `<ListItemButton>` + `<Collapse>` composition consumed in `src/stories/NavMenu.stories.tsx`. The package re-exports MUI directly — there is no source-side `NavMenu.tsx` / `NavMenuItem.tsx` wrapper. Instead, the Storybook story declares two story-local components — `MerakNavMenuItem` and `MerakNavMenu` — that pin a project-specific layout (8 px gutters, 24 × 24 avatar / chevron, 40 px nested indent, no `disableGutters` override) on top of the MUI primitives so every Figma cell has a runtime equivalent.
+`<NavMenu>` is the Figma counterpart of the MUI `<List>` + `<ListItemButton>` + `<Collapse>` composition consumed in `src/stories/NavMenu.stories.tsx`. The package re-exports MUI directly — there is no source-side `NavMenu.tsx` / `NavMenuItem.tsx` wrapper. Instead, the Storybook story declares two story-local components — `MUINavMenuItem` and `MUINavMenu` — that pin a project-specific layout (8 px gutters, 24 × 24 avatar / chevron, 40 px nested indent, no `disableGutters` override) on top of the MUI primitives so every Figma cell has a runtime equivalent.
 
 The specification covers two related design entities:
 
@@ -23,7 +23,7 @@ The specification covers two related design entities:
 | Aspect                  | Value                                                                                                                                                  |
 | ----------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | Source story            | `src/stories/NavMenu.stories.tsx`                                                                                                                      |
-| Underlying source       | `@mui/material` `List` + `ListItemButton` + `ListItemAvatar` + `ListItemText` + `ListItemIcon` + `Collapse` (re-exported by this package, composed as `MerakNavMenuItem` / `MerakNavMenu` in the story) |
+| Underlying source       | `@mui/material` `List` + `ListItemButton` + `ListItemAvatar` + `ListItemText` + `ListItemIcon` + `Collapse` (re-exported by this package, composed as `MUINavMenuItem` / `MUINavMenu` in the story) |
 | Figma file              | `KQjP6W9Uw1PN0iipwQHyYn` (MUI Library)                                                                                                                  |
 | Parent frame (authoring target) | `779:11816` (currently the empty `Menu` frame at `x=11912, y=0, w=1688, h=1531`)                                                                  |
 | Figma item set          | `<NavMenuItem>` (`790:11848`) on page **Foundation Components**, inside the parent `Menu` frame (`779:11816`)                                          |
@@ -35,18 +35,18 @@ The specification covers two related design entities:
 
 **Reference nodes** (read-only, not the authoring target):
 
-- `765:12320` "Navs: custom components" — the structural pattern source. Mirrored its 5-state `<ListItem>` axis (`Default / Hover / Active / Selected / Disabled`) and the `<Navbar>` `isOpen=False/True` wrapper composition verbatim. NavMenu published in this file is a fresh authoring of the same idea, bound to the local `merak` collection.
-- `1:4108` "Button" — the naming-convention / token-binding exemplar. Mirrored the Merak axis-naming style and the local-only token rule.
+- `765:12320` "Navs: custom components" — the structural pattern source. Mirrored its 5-state `<ListItem>` axis (`Default / Hover / Active / Selected / Disabled`) and the `<Navbar>` `isOpen=False/True` wrapper composition verbatim. NavMenu published in this file is a fresh authoring of the same idea, bound to the local `mui` collection.
+- `1:4108` "Button" — the naming-convention / token-binding exemplar. Mirrored the MUI axis-naming style and the local-only token rule.
 
 **Variant axes are deliberately small.** Unlike Button / Pagination / Chip, `<NavMenuItem>` does **not** expose a `Color` axis — MUI's `<ListItemButton>` has no `color` prop, and the reference `<ListItem>` (765:12320) carried only State. The Selected paint is themed implicitly via `palette.primary.main × 0.08α` (see §6.4); designers needing a non-primary theme override the Selected bg via `sx` at the consuming app, not at the Figma component-set level. If a future product requirement adds a Color axis (e.g. a Danger-themed "destructive nav highlight"), that is a §8 sync trigger and would explode the matrix to 5 × 6 = 30 leaf variants.
 
-**Local-only token bindings.** Per the project directive, every paint / stroke / text-fill in the NavMenu component sets binds to the **MUI Library Figma file's local `merak` collection** — never to the published library copy. The component is built to be self-contained; consumers dropping a `<NavMenuItem>` instance into a different file should not require the published `merak` library to be loaded. If the published library renames or removes a token, the local file does not break automatically; track the divergence in §8.
+**Local-only token bindings.** Per the project directive, every paint / stroke / text-fill in the NavMenu component sets binds to the **MUI Library Figma file's local `mui` collection** — never to the published library copy. The component is built to be self-contained; consumers dropping a `<NavMenuItem>` instance into a different file should not require the published `mui` library to be loaded. If the published library renames or removes a token, the local file does not break automatically; track the divergence in §8.
 
 ## 2. Source-to-Figma Property Mapping
 
 ### 2.1 Leaf item props (`<NavMenuItem>`)
 
-Every prop on `MerakNavMenuItem` (from `src/stories/NavMenu.stories.tsx`) maps to a Figma surface — either the variant axis, a component property, or a layout invariant.
+Every prop on `MUINavMenuItem` (from `src/stories/NavMenu.stories.tsx`) maps to a Figma surface — either the variant axis, a component property, or a layout invariant.
 
 | Story prop                                   | Figma surface                                            | Type              | Notes                                                                                                                                                                                                                                                       |
 | -------------------------------------------- | -------------------------------------------------------- | ----------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -59,7 +59,7 @@ Every prop on `MerakNavMenuItem` (from `src/stories/NavMenu.stories.tsx`) maps t
 | `trailingIcon: boolean`                      | `Trailing Icon` BOOLEAN                                   | BOOLEAN           | Default `true`. Toggles the `<ListItemIcon>` slot. The slot is a `<Icon>` instance (`3:2722`) `Size=md` (24 × 24), `Glyph Source` preset to `ChevronRight` (`512:7509`).                                                                                     |
 | `nested: boolean`                            | `Nested` BOOLEAN                                          | BOOLEAN           | Default `false`. When `true`, padding-left jumps from `8 → 40 px` (`8 outer + 24 avatar slot + 8 gap`) so child labels align under parent labels. Trailing icon is conventionally hidden on nested children — designers must also flip `Trailing Icon = false` when setting `Nested = true`. |
 | `onClick: (e) => void`                       | —                                                         | —                 | Behavior-only, no design representation.                                                                                                                                                                                                                    |
-| `sx={{ pl, pr, py, borderRadius, gap, … }}`  | Hard-coded Figma layout invariants (see §4)               | —                 | The story bakes `pl: 8px` / `pl: 40px` (nested), `pr: 8px`, `py: 8px`, `borderRadius: 4px`, `gap: 8px`. These are not exposed as Figma variant axes — they are invariants of the Merak design.                                                              |
+| `sx={{ pl, pr, py, borderRadius, gap, … }}`  | Hard-coded Figma layout invariants (see §4)               | —                 | The story bakes `pl: 8px` / `pl: 40px` (nested), `pr: 8px`, `py: 8px`, `borderRadius: 4px`, `gap: 8px`. These are not exposed as Figma variant axes — they are invariants of the MUI design.                                                              |
 
 ### 2.2 Wrapper props (`<NavMenu>`)
 
@@ -146,7 +146,7 @@ This mirrors the Pagination pattern (`<Pagination>` `1:5675` § 3.4) — the wra
 
 ## 5. Token Glossary
 
-Token names below are **Figma variable paths** in the local `merak` collection — see [`.claude/skills/figma-create-component/library-tokens.md`](../../figma-create-component/library-tokens.md). Bind every Figma paint / stroke to one of these — never to a literal hex. NavMenu does not mint any component-scoped tokens; the existing alias / seed family covers every paint it needs.
+Token names below are **Figma variable paths** in the local `mui` collection — see [`.claude/skills/figma-create-component/library-tokens.md`](../../figma-create-component/library-tokens.md). Bind every Figma paint / stroke to one of these — never to a literal hex. NavMenu does not mint any component-scoped tokens; the existing alias / seed family covers every paint it needs.
 
 ### 5.1 Alias tokens (`alias/colors/*`)
 
@@ -175,7 +175,7 @@ Only `seed/primary/*` is consumed today — the Selected paint is themed implici
 
 ### 5.3 Component-scoped tokens
 
-Defined in [`./design-token.md`](./design-token.md). One 8 %-α primary token minted in the local `merak` collection so the NavMenuItem `State=Selected` cell can match MUI's runtime `alpha(palette.primary.main, 0.08)`:
+Defined in [`./design-token.md`](./design-token.md). One 8 %-α primary token minted in the local `mui` collection so the NavMenuItem `State=Selected` cell can match MUI's runtime `alpha(palette.primary.main, 0.08)`:
 
 | Token                              | Used by                                                          |
 | ---------------------------------- | ---------------------------------------------------------------- |
@@ -192,7 +192,7 @@ The shared `alias/colors/bg-selected` is 8 %-α **black** (wrong hue), `seed/pri
 
 ### 5.5 Typography
 
-`MerakNavMenuItem` does not override MUI typography (and no project-level `MuiListItemButton` / `MuiListItemText` override exists). Resolved values:
+`MUINavMenuItem` does not override MUI typography (and no project-level `MuiListItemButton` / `MuiListItemText` override exists). Resolved values:
 
 - **Primary label**: `material-design/typography/body2` — Roboto Regular, 14 px, line-height 20 px, `letter-spacing: 0.13132 px` (~`0.01em`), no `text-transform`. Apply via `textStyleId`.
 - **Secondary label**: Roboto Regular, 12 px, line-height 16 px, color `alias/colors/text-sub`. Closest catalogue style is `material-design/typography/caption` (Noto Sans TC Regular 12 / 20) — **but** the line-height does not match (16 vs 20). Until a `material-design/typography/list-item-secondary` style is minted, author the secondary text with `fontName: Roboto Regular, fontSize: 12, lineHeight: { value: 16, unit: 'PIXELS' }` and bind the fill to `alias/colors/text-sub`. Tracked in §8.
@@ -244,7 +244,7 @@ Numbers below are the **Figma-authored values** — runtime-aligned per `storybo
 
 ² **Active is design-only**. MUI runtime emits a Touch Ripple on `:active`; there is no static `:active` background paint. The Figma cell deliberately bakes a 12 %-α black overlay so designers can mock a "pressed" snapshot — the `bg-filled-hover` token (which is `palette.action.focus`) is reused because no shared `palette.action.active-bg` token exists. Documented runtime-divergent design decision; tracked in §7 issue 3.
 
-³ **Selected is themed implicitly via primary 8 %-α**. MUI runtime computes `theme.alpha(palette.primary.main, palette.action.selectedOpacity = 0.08)` inside `ListItemButton.js`. The shared `merak` family does **not** ship a token at this exact alpha + hue, so the Figma cell binds to the locally minted `component/navmenu/selected-bg` token (resolved value `#1976D214` — see [`./design-token.md`](./design-token.md)). **Do not bind to `seed/primary/selected`** — that token aliases `palette.primary.light` (`#42A5F5`), a fully solid color. Promoting `component/navmenu/selected-bg` to a shared `seed/primary/selected-bg @ α=0.08` token is the long-term path; tracked in §7 issue 1.
+³ **Selected is themed implicitly via primary 8 %-α**. MUI runtime computes `theme.alpha(palette.primary.main, palette.action.selectedOpacity = 0.08)` inside `ListItemButton.js`. The shared `mui` family does **not** ship a token at this exact alpha + hue, so the Figma cell binds to the locally minted `component/navmenu/selected-bg` token (resolved value `#1976D214` — see [`./design-token.md`](./design-token.md)). **Do not bind to `seed/primary/selected`** — that token aliases `palette.primary.light` (`#42A5F5`), a fully solid color. Promoting `component/navmenu/selected-bg` to a shared `seed/primary/selected-bg @ α=0.08` token is the long-term path; tracked in §7 issue 1.
 
 ⁴ **Disabled is rendered via wrapper opacity**, not per-fill token swaps. MUI's `<ListItemButton>` runtime applies `opacity: palette.action.disabledOpacity = 0.38` on the root element. Figma reproduces this by setting `opacity = 0.38` on the entire Auto Layout cell — the label / glyph / background fills retain their normal token bindings. This matches the runtime behavior exactly (the cell fades uniformly) and avoids the per-cell paint rebind that Disabled requires for outlined components like Pagination.
 
@@ -287,7 +287,7 @@ Both slots render an **INSTANCE** of the shared `<Icon>` set (`3:2722`) at `Size
 ### Currently open
 
 1. **Selected paint binds to a component-scoped `component/navmenu/selected-bg` (8 %-α primary) instead of a shared token.** No `seed/primary/selected-bg @ α=0.08` exists in the catalogue today. The component-scoped path mirrors Pagination's `component/pagination/selected-bg-*` family. The long-term unification is to promote a shared `seed/primary/selected-bg @ α=0.08` and rebind Pagination's Default-color Selected (currently `alias/colors/bg-selected` 8 %-α **black**) + every other component that wants a themed Selected. Tracked here so the next design-system audit can collapse the divergence.
-2. **`State=Hover` Figma cell vs. `Mui-focusVisible` story stand-in (4 % vs 12 %).** The Figma cell binds to `alias/colors/bg-outline-hover` (4 %-α black, matching MUI runtime `palette.action.hover`). The StateMatrix story renders the Hover row with the `Mui-focusVisible` className, which actually paints 12 %-α (`palette.action.focus`). Reviewers comparing the rendered Storybook screenshot to the Figma cell will see a brightness difference — this is **expected** and documented in `storybook.render.md` §2 / §5. If Merak ever ships a separate `State=Focused` variant, that one would bind to `alias/colors/bg-focus` (12 %-α). Adding it costs `5 → 6` item variants.
+2. **`State=Hover` Figma cell vs. `Mui-focusVisible` story stand-in (4 % vs 12 %).** The Figma cell binds to `alias/colors/bg-outline-hover` (4 %-α black, matching MUI runtime `palette.action.hover`). The StateMatrix story renders the Hover row with the `Mui-focusVisible` className, which actually paints 12 %-α (`palette.action.focus`). Reviewers comparing the rendered Storybook screenshot to the Figma cell will see a brightness difference — this is **expected** and documented in `storybook.render.md` §2 / §5. If MUI ever ships a separate `State=Focused` variant, that one would bind to `alias/colors/bg-focus` (12 %-α). Adding it costs `5 → 6` item variants.
 3. **`State=Active` is design-only.** MUI runtime emits a Touch Ripple, not a static paint. The Figma cell bakes `alias/colors/bg-filled-hover` (12 %-α black) so the visual state is mockable. Documented divergence — `storybook.render.md` §2 / §5.
 4. **Wrapper-level `Disabled` is not exposed.** Designers needing a fully disabled NavMenu compose `IsOpen=False` + a header instance with `State=Disabled` by hand. Adding a wrapper `State=Disabled` axis would propagate `opacity: 0.38` to the entire wrapper (including the Collapse container) and cost `2 → 4` wrapper variants.
 5. **Secondary-text typography lacks a dedicated text style.** The runtime uses Roboto Regular 12 / 16 px; the closest catalogue style (`material-design/typography/caption`) is Noto Sans TC Regular 12 / **20** px. Until a `material-design/typography/list-item-secondary` style is minted, the secondary text node is authored with hand-set font properties bound to `alias/colors/text-sub`. Tracked in §8 below.
@@ -300,13 +300,13 @@ This document and the source must move together. When **any** of the following c
 | Trigger                                                                                                                              | Files to update                                                                                                                                                             |
 | ------------------------------------------------------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `node_modules/@mui/material/ListItemButton/ListItemButton.js` or `…/Collapse/Collapse.js` changes (MUI bump)                          | `figma.spec.md` §1 MUI version row, `storybook.render.md` §1–§4                                                                                                            |
-| `src/stories/NavMenu.stories.tsx` `MerakNavMenuItem` `sx` changes (e.g. `pl: 8 → 12`, `borderRadius: 4 → 6`)                            | `figma.spec.md` §4 / §6.1, `storybook.render.md` §1                                                                                                                         |
-| `src/stories/NavMenu.stories.tsx` `MerakNavMenu` baked nested-child count changes (currently 4)                                        | `figma.spec.md` §3.4 / §4.2 / §6.2 / §6.4, `storybook.render.md` §4                                                                                                          |
-| `src/stories/NavMenu.stories.tsx` adds a Color axis (e.g. story-side `sx` for Selected bg per Merak color)                             | `figma.spec.md` §1 (variant axis count), §3.1 (add `Color` to options), §6.3 (add per-color rows), `storybook.render.md` §3 (add Color axis section). Mint per-color `component/navmenu/selected-bg-<c>` tokens in `design-token.md` (new file). |
+| `src/stories/NavMenu.stories.tsx` `MUINavMenuItem` `sx` changes (e.g. `pl: 8 → 12`, `borderRadius: 4 → 6`)                            | `figma.spec.md` §4 / §6.1, `storybook.render.md` §1                                                                                                                         |
+| `src/stories/NavMenu.stories.tsx` `MUINavMenu` baked nested-child count changes (currently 4)                                        | `figma.spec.md` §3.4 / §4.2 / §6.2 / §6.4, `storybook.render.md` §4                                                                                                          |
+| `src/stories/NavMenu.stories.tsx` adds a Color axis (e.g. story-side `sx` for Selected bg per MUI color)                             | `figma.spec.md` §1 (variant axis count), §3.1 (add `Color` to options), §6.3 (add per-color rows), `storybook.render.md` §3 (add Color axis section). Mint per-color `component/navmenu/selected-bg-<c>` tokens in `design-token.md` (new file). |
 | `src/stories/NavMenu.stories.tsx` adds a `State=Focused` axis                                                                         | `figma.spec.md` §3.1 (add `Focused`), §6.3 (add row binding to `alias/colors/bg-focus`), `storybook.render.md` §2 (add column)                                              |
 | Figma item set variant axes / cell count change                                                                                       | `figma.spec.md` §3.1, refresh `figma.config.json` via `figma-init/config-init.md`                                                                                            |
 | Figma wrapper set variant axes / cell count or composition change                                                                     | `figma.spec.md` §3.3, §6.4, refresh `figma.config.json` via `figma-init/config-init.md`                                                                                      |
-| Local `merak/*` tokens used by NavMenu are renamed in this Figma file                                                                | `figma.spec.md` §5 + §6. **Do not** auto-pull from the published library — the NavMenu cells bind to the local collection only.                                              |
+| Local `mui/*` tokens used by NavMenu are renamed in this Figma file                                                                | `figma.spec.md` §5 + §6. **Do not** auto-pull from the published library — the NavMenu cells bind to the local collection only.                                              |
 | Published library `seed/*` / `alias/*` tokens drift from the local copies                                                            | Track divergence in `figma.spec.md` §1 local-only note. Re-sync values manually if needed.                                                                                  |
 | `<Icon>` set (`3:2722`) variant axes change (e.g. `Size=md` renamed) or its `Glyph Source` `INSTANCE_SWAP` property is renamed       | `figma.spec.md` §6.1 / §6.6 icon mapping (Size=md ID + property name `Glyph Source`)                                                                                        |
 | `ChevronRight` (`512:7509`) glyph component is renamed, moved, or replaced in the Icon library                                       | `figma.spec.md` §6.6 (Glyph Source preset IDs), `../../figma-create-component/library-components.md` §Icon library                                                                       |
@@ -317,8 +317,8 @@ This document and the source must move together. When **any** of the following c
 ## 9. Quick Reference
 
 ```ts
-// Story prop surface (src/stories/NavMenu.stories.tsx :: MerakNavMenuItem)
-interface MerakNavMenuItemProps extends Omit<ListItemButtonProps, 'children'> {
+// Story prop surface (src/stories/NavMenu.stories.tsx :: MUINavMenuItem)
+interface MUINavMenuItemProps extends Omit<ListItemButtonProps, 'children'> {
   label?: string;          // → Figma `Label` TEXT
   secondary?: string;      // → Figma `Secondary` TEXT (+ `Show Secondary` BOOLEAN flips on/off)
   leadingIcon?: boolean;   // → Figma `Leading Icon` BOOLEAN
@@ -329,8 +329,8 @@ interface MerakNavMenuItemProps extends Omit<ListItemButtonProps, 'children'> {
   className?: 'Mui-focusVisible'; // story stand-in for hover; not a Figma surface
 }
 
-// Story prop surface (src/stories/NavMenu.stories.tsx :: MerakNavMenu)
-interface MerakNavMenuProps {
+// Story prop surface (src/stories/NavMenu.stories.tsx :: MUINavMenu)
+interface MUINavMenuProps {
   header: string;            // → nested header instance's `Label` TEXT (no wrapper-level prop)
   headerSecondary?: string;  // → nested header instance's `Secondary` TEXT + `Show Secondary` BOOLEAN
   isOpen?: boolean;          // → Figma `IsOpen` variant

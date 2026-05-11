@@ -1,6 +1,6 @@
 ---
 name: figma-component-typography-design-token
-description: Component-scoped design tokens for `<Typography>`. Two pairs of UPPER-baked local text styles (`component/typography/button[-bold]`, `component/typography/overline[-bold]`) so the corresponding cells can bind without losing `textStyleId`, plus 11 bold-weight companion styles minted under `material-design/typography/<v>-bold` to support the synthetic `Bold` axis. Every other cell binds to a published `material-design/typography/*` style (see `figma-create-component/library-tokens.md` §3); the master cell text fill binds to `merak/alias/colors/text-default` (designer-overrideable per instance).
+description: Component-scoped design tokens for `<Typography>`. Two pairs of UPPER-baked local text styles (`component/typography/button[-bold]`, `component/typography/overline[-bold]`) so the corresponding cells can bind without losing `textStyleId`, plus 11 bold-weight companion styles minted under `material-design/typography/<v>-bold` to support the synthetic `Bold` axis. Every other cell binds to a published `material-design/typography/*` style (see `figma-create-component/library-tokens.md` §3); the master cell text fill binds to `mui/alias/colors/text-default` (designer-overrideable per instance).
 parent_skill: figma-components
 ---
 

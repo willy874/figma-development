@@ -15,18 +15,18 @@ const DeleteGlyph = () => (
   </svg>
 );
 
-// MerakColorTheme → MUI palette (matches `<Button>` Figma spec at
+// MUIColorTheme → MUI palette (matches `<Button>` Figma spec at
 // `.claude/skills/figma-components/Button/figma.spec.md` §2.1). The current src
 // directly re-exports MUI Chip, so stories use MUI color names; the right-hand
-// label documents the Merak design-system value a host app would pass.
+// label documents the MUI design-system value a host app would pass.
 // MUI `secondary` is intentionally omitted to mirror Button's 6-color matrix.
-const MERAK_COLORS = [
-  { merak: 'default', mui: 'default' as const },
-  { merak: 'primary', mui: 'primary' as const },
-  { merak: 'danger', mui: 'error' as const },
-  { merak: 'warning', mui: 'warning' as const },
-  { merak: 'info', mui: 'info' as const },
-  { merak: 'success', mui: 'success' as const },
+const MUI_COLORS = [
+  { name: 'default', mui: 'default' as const },
+  { name: 'primary', mui: 'primary' as const },
+  { name: 'danger', mui: 'error' as const },
+  { name: 'warning', mui: 'warning' as const },
+  { name: 'info', mui: 'info' as const },
+  { name: 'success', mui: 'success' as const },
 ];
 
 const VARIANTS: Array<NonNullable<ChipProps['variant']>> = ['filled', 'outlined'];
@@ -50,9 +50,9 @@ const meta = {
     },
     color: {
       control: 'select',
-      options: MERAK_COLORS.map((c) => c.mui),
+      options: MUI_COLORS.map((c) => c.mui),
       description:
-        'MUI palette key. Merak mapping: default→default, primary→primary, danger→error, warning→warning, info→info, success→success.',
+        'MUI palette key. MUI mapping: default→default, primary→primary, danger→error, warning→warning, info→info, success→success.',
     },
     size: {
       control: 'inline-radio',
@@ -171,15 +171,15 @@ export const ColorMatrix: Story = {
           </span>
         ))}
       </Stack>
-      {MERAK_COLORS.map(({ merak, mui }) => (
-        <Stack key={merak} direction="row" spacing={2} alignItems="center">
+      {MUI_COLORS.map(({ name, mui }) => (
+        <Stack key={name} direction="row" spacing={2} alignItems="center">
           <span style={cellLabel}>
-            {merak}
+            {name}
             <span style={{ color: '#aaa' }}> ({mui})</span>
           </span>
           {VARIANTS.map((v) => (
             <div key={v} style={{ width: 120 }}>
-              <Chip {...args} variant={v} color={mui} label={merak} />
+              <Chip {...args} variant={v} color={mui} label={name} />
             </div>
           ))}
         </Stack>

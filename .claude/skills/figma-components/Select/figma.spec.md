@@ -100,7 +100,7 @@ Property names below are the human-readable keys; Figma's internal property ids 
 
 ## 4. Design Tokens
 
-All paints, strokes, and surfaces bind to local variables in the MUI-Library file (`KQjP6W9Uw1PN0iipwQHyYn`). Hex values appear in this document only as reference resolutions of the light theme — bind to the token, not the hex. **Local-only**: every binding resolves to a variable in this file's own collection — never a `VariableID:<sharedKey>/<id>` from a consumed library. Tokens cited by name from the published `merak/seed/*` and `merak/alias/*` catalogue must already be minted as locals (or get minted before authoring) per the figma-create-component pipeline §4.
+All paints, strokes, and surfaces bind to local variables in the MUI-Library file (`KQjP6W9Uw1PN0iipwQHyYn`). Hex values appear in this document only as reference resolutions of the light theme — bind to the token, not the hex. **Local-only**: every binding resolves to a variable in this file's own collection — never a `VariableID:<sharedKey>/<id>` from a consumed library. Tokens cited by name from the published `mui/seed/*` and `mui/alias/*` catalogue must already be minted as locals (or get minted before authoring) per the figma-create-component pipeline §4.
 
 ### 4.1 Sizing
 
@@ -342,7 +342,7 @@ This document and the source must move together. When **any** of the following c
 1. `src/stories/Select.stories.tsx` (variants, args, chip rendering, chevron / helper-text wiring)
 2. The Figma `<Select>` component set at `587:8542` (variants, properties, token bindings, layout)
 3. The local `component/input/*` tokens documented in `<TextField>`'s [`design-token.md`](../TextField/design-token.md), or the local `background/paper-elevation-0` variable / `input/label` text style
-4. The shared `merak/seed/*`, `merak/alias/*` tokens consumed in §4.2 — particularly `seed/primary/main`, `seed/danger/main`, `alias/colors/{text-sub,text-default,text-disabled,bg-disabled,bg-active,fg-disabled}`
+4. The shared `mui/seed/*`, `mui/alias/*` tokens consumed in §4.2 — particularly `seed/primary/main`, `seed/danger/main`, `alias/colors/{text-sub,text-default,text-disabled,bg-disabled,bg-active,fg-disabled}`
 5. `.storybook/preview.tsx` (theme overrides via `createTheme`) — today this is an empty `createTheme()`; introducing typography / palette / `MuiSelect.defaultProps` overrides forces a re-measure
 6. The published `<SelectArrow>` (`3:2900`), `<ChevronDown>` (`512:7501`), `<Chip>` (`342:7102`), `<Icon>` (`3:2722`), or `<AutocompleteMenu>` (`534:7976`) component sets — variants added/removed/renamed, or the size-to-pixel mapping changes
 7. The reference-only `<TextField>` frame at `1:6156` / component set at `1:6266` — Select inherits its trigger geometry / state paint, so a TextField change must propagate here in lockstep
@@ -354,7 +354,7 @@ This document and the source must move together. When **any** of the following c
 - Adding `Open` as a Figma axis → multiply the matrix in §3 by 2 (240 cells), add chevron-rotated bindings in §4.3, document the menu composition in §6 / §7.2.
 - Adding `Pressed` to the `State` axis → update §3, add a row to §4.3.
 - Promoting `Chip Rows` (single-row vs multi-row) to a Figma property → introduce a new variant property, multiply variant count in §3, document the per-row height growth in §4.1 / §6.
-- Token rename / removal in `merak/alias/*` or `merak/seed/*` → update every reference in §2, §4, §10 and rename the matching variable in the local Figma collection.
+- Token rename / removal in `mui/alias/*` or `mui/seed/*` → update every reference in §2, §4, §10 and rename the matching variable in the local Figma collection.
 - Token value change in `component/input/*` → no edit to this spec is required (Figma resolves through the same name); `<TextField>`'s `design-token.md` records the resolution chain.
 - Renaming the slot key (`Start Adorn`) or the chevron INSTANCE_SWAP key (`Chevron`), or changing the chevron / adornment frame size from `24 × 24` → update §3.1, §5, §6. (Promoting Multiple chip stamping to a formal `Chips` SLOT property is its own listed trigger below.)
 - Surfacing a `Placeholder` property visibly (e.g. by adding a "no-label" sub-variant) → update §4.3, §7, and add the new variant axis in §3.
@@ -405,7 +405,7 @@ Figma Component Set: <Select>  (587:8542) — published 2026-04-29
 
 The complete set of tokens consumed by `<Select>`. Names are **Figma variable paths**; bind every paint / stroke / text-fill to one of these — never to a literal value.
 
-### 10.1 Seed tokens (`merak/seed/*`)
+### 10.1 Seed tokens (`mui/seed/*`)
 
 `<Select>` consumes `primary` and `danger` only — there is no Color axis.
 
@@ -414,7 +414,7 @@ The complete set of tokens consumed by `<Select>`. Names are **Figma variable pa
 | `seed/primary/main` | Label + underline + outline on `State=Focused` (non-Error) | Focus accent (`#1976D2`)          |
 | `seed/danger/main`  | Label + helper text + underline + outline on `State=Error` | Error accent (`#D32F2F`)          |
 
-### 10.2 Alias tokens (`merak/alias/colors/*`)
+### 10.2 Alias tokens (`mui/alias/colors/*`)
 
 | Token                         | Used by                                                                  | Role                              |
 | ----------------------------- | ------------------------------------------------------------------------ | --------------------------------- |
@@ -440,7 +440,7 @@ Documented in detail in [`<TextField>`'s `design-token.md`](../TextField/design-
 
 ### 10.4 Other local variables
 
-These live in the MUI-Library file's local collection (not in `merak/*`) and are referenced by the cells:
+These live in the MUI-Library file's local collection (not in `mui/*`) and are referenced by the cells:
 
 | Token                          | Used by                                          | Role                                                  |
 | ------------------------------ | ------------------------------------------------ | ----------------------------------------------------- |
@@ -466,4 +466,4 @@ These live in the MUI-Library file's local collection (not in `merak/*`) and are
 - Helper text: `12 px`, lh `19.92 px` runtime / `16.6 px` Figma, ls `0.4 px`
 - Chip text (`size=small`): `13 / 19.5 px`, ls `0.16 px` (via published `<Chip>` component)
 
-If the project introduces typography tokens (e.g. `merak/typography/input-*`), update §4.1 and §10.6 to bind to them.
+If the project introduces typography tokens (e.g. `mui/typography/input-*`), update §4.1 and §10.6 to bind to them.

@@ -283,7 +283,7 @@ export const ActionCountMatrix: Story = {
         <DialogTitle>Three-button footer — Tertiary + Cancel + Primary</DialogTitle>
         <DialogContent>
           <SampleBody>
-            Tertiary action sits left of Cancel per Merak convention
+            Tertiary action sits left of Cancel per MUI convention
             (`Save as draft / Discard / Publish`).
           </SampleBody>
         </DialogContent>

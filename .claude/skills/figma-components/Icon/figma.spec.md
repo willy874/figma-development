@@ -1,6 +1,6 @@
 ---
 name: figma-component-icon-spec
-description: Figma component specification for `<Icon>` — design counterpart of the `MerakIcon` sizing wrapper consumed by `src/stories/Icon.stories.tsx`. Documents the single-axis Size matrix (xs/sm/md/lg/xl/xxl), the `Glyph Source` INSTANCE_SWAP slot whose default is the file-local `ArrowSolid` component (`3:2740`), the source-to-Figma mapping, and the inheritance contract that lets the host component (`<IconButton>`, `<Button>`, `<Chip>`, …) drive the glyph's paint via `currentColor`. Companion runtime measurements live in `storybook.render.md`. The shared `<Icon>` set is the wrapper consumers reach for; the 62 named glyph components in the same file (`3:2740` ArrowSolid through `3:2908` Add — see `figma-create-component/library-components.md` §Icon library) are the swap targets.
+description: Figma component specification for `<Icon>` — design counterpart of the `MUIIcon` sizing wrapper consumed by `src/stories/Icon.stories.tsx`. Documents the single-axis Size matrix (xs/sm/md/lg/xl/xxl), the `Glyph Source` INSTANCE_SWAP slot whose default is the file-local `ArrowSolid` component (`3:2740`), the source-to-Figma mapping, and the inheritance contract that lets the host component (`<IconButton>`, `<Button>`, `<Chip>`, …) drive the glyph's paint via `currentColor`. Companion runtime measurements live in `storybook.render.md`. The shared `<Icon>` set is the wrapper consumers reach for; the 62 named glyph components in the same file (`3:2740` ArrowSolid through `3:2908` Add — see `figma-create-component/library-components.md` §Icon library) are the swap targets.
 parent_skill: figma-components
 figma_file_key: KQjP6W9Uw1PN0iipwQHyYn
 figma_node_id: '3:2722'
@@ -11,7 +11,7 @@ figma_component_set_id: '3:2722'
 
 ## 1. Overview
 
-`<Icon>` is the Figma counterpart of the `MerakIcon` sizing wrapper defined in `src/stories/Icon.stories.tsx`. The wrapper is a six-step square box whose only varying axis is `Size`; the actual glyph is supplied via the `Glyph Source` INSTANCE_SWAP slot and inherits its paint from the host through `currentColor`. This is **the** wrapper consumers compose into `<IconButton>`, `<Button>`, `<Chip>`, navigation rows, and form adornments — every other Figma component that exposes an icon slot defaults its slot to one of the six `<Icon>/Size=*` variants (e.g. `<Chip>` defaults `Icon Source` to `3:2731 = Size=sm`).
+`<Icon>` is the Figma counterpart of the `MUIIcon` sizing wrapper defined in `src/stories/Icon.stories.tsx`. The wrapper is a six-step square box whose only varying axis is `Size`; the actual glyph is supplied via the `Glyph Source` INSTANCE_SWAP slot and inherits its paint from the host through `currentColor`. This is **the** wrapper consumers compose into `<IconButton>`, `<Button>`, `<Chip>`, navigation rows, and form adornments — every other Figma component that exposes an icon slot defaults its slot to one of the six `<Icon>/Size=*` variants (e.g. `<Chip>` defaults `Icon Source` to `3:2731 = Size=sm`).
 
 The wrapper deliberately does **not** ship a `Color` axis. The runtime `<Box>` has `color: 'inherit'` and the inline SVG uses `fill="currentColor"`, so the host paint cascade drives the glyph color end-to-end (see `storybook.render.md` §3 for the verified inheritance chain). Authoring an explicit fill on an `<Icon>` cell breaks this contract and forces every consumer to detach.
 
@@ -20,7 +20,7 @@ The icon library backing the swap targets is sourced from Google **`material-des
 | Aspect              | Value                                                                                |
 | ------------------- | ------------------------------------------------------------------------------------ |
 | Source story        | `src/stories/Icon.stories.tsx`                                                       |
-| Underlying source   | `MerakIcon` — local sizing wrapper around `<Box>` from `@mui/material`. Not a re-export of `@mui/material/Icon` (whose `fontSize` only exposes 3 sizes and depends on the Material Icons font; see §7 #1). |
+| Underlying source   | `MUIIcon` — local sizing wrapper around `<Box>` from `@mui/material`. Not a re-export of `@mui/material/Icon` (whose `fontSize` only exposes 3 sizes and depends on the Material Icons font; see §7 #1). |
 | Underlying MUI      | `@mui/material` 7.3.10 (resolved from `package.json` on 2026-04-29)                  |
 | Icon source library | Google **`material-design-icons`** (`material-symbols` outlined / filled, 24 px grid). `@mui/icons-material` is intentionally not a dependency of this package — host apps swap to real icons at consumption. |
 | Figma frame         | `<Icon>` (`3:2722`) on page **Foundation Components**                                |
@@ -192,10 +192,10 @@ A value change in a host's foreground token (e.g. `seed/primary/main` shifts fro
 ## 9. Quick Reference
 
 ```ts
-// src/stories/Icon.stories.tsx — MerakIcon prop surface
+// src/stories/Icon.stories.tsx — MUIIcon prop surface
 type IconSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'xxl';   // → Figma `Size`
 
-interface MerakIconProps {
+interface MUIIconProps {
   size?: IconSize;            // → Figma `Size`         (default md)
   color?: string;             // → not modeled in Figma (use host's foreground token)
   sx?: SxProps<Theme>;        // → behavior-only

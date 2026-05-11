@@ -6,7 +6,7 @@ parent_skill: figma-components
 
 # `<Snackbar>` Component Tokens
 
-Tokens scoped to `<Snackbar>` and the sibling `<SnackbarSeverityIcon>` component set on the MUI Library file. Reach for these only inside those two component sets; for everything else (semantic colors, severity bgs, MD elevations, typography), bind to the shared `merak/*` and `material-design/*` tokens documented in [`design-token.md`](../../figma-create-component/library-tokens.md).
+Tokens scoped to `<Snackbar>` and the sibling `<SnackbarSeverityIcon>` component set on the MUI Library file. Reach for these only inside those two component sets; for everything else (semantic colors, severity bgs, MD elevations, typography), bind to the shared `mui/*` and `material-design/*` tokens documented in [`design-token.md`](../../figma-create-component/library-tokens.md).
 
 ## Why these are component-scoped
 
@@ -15,7 +15,7 @@ These values are either:
 1. **MUI-Snackbar-specific runtime constants** that don't reuse a shared semantic — the SnackbarContent body bg comes from `emphasize(theme.palette.background.default, 0.8)`, which resolves at light theme to `darken('#fff', 0.8) = #323232`. There is no themable color role that maps to this — the value is fixed-luminosity emphasized-greyscale used only by the Snackbar surface.
 2. **Pre-alpha'd alpha-bearing tokens** that exist to dodge Figma's `paint.opacity < 1 + boundVariable` flattening rule. MUI's `<Alert>` AlertIcon styled rule applies `opacity: 0.9` while inheriting `color: #FFFFFF` from the Alert root. In Figma, pairing a `seed/neutral/white` binding with `paint.opacity: 0.9` would flatten on instance creation; pre-alpha'ing into a single `#FFFFFFE6` token keeps the binding stable. The trailing close icon is **not** dimmed and continues to bind to `seed/neutral/white` at 1.0 α.
 
-Anything that turns out to be reused by another component should be promoted to `merak/*` and removed from this file.
+Anything that turns out to be reused by another component should be promoted to `mui/*` and removed from this file.
 
 ## Tokens
 
@@ -79,19 +79,19 @@ mark the divergence resolved in `figma.spec.md` §7 #8 and re-bind to `seed/neut
 - **Why no `component/snackbar/severity-bg-{success,info,warning,error}` tokens** — those values map 1:1 to `seed/<severity>/main` (verified by the `node -e "createTheme(); console.log(t.palette.<severity>.main)"` script in `storybook.render.md` §6). Minting per-severity component-scoped duplicates would just shadow the seed family. Bind directly to `seed/<severity>/main` instead.
 - **Why no `component/snackbar/foreground` token** — every text / close-icon fill resolves to `#FFFFFF`, which already exists in the catalogue as `seed/neutral/white`. Bind to that.
 - **Why no `component/snackbar/elevation` alias** — the `Variant=Default` body uses MD elevation 6 directly via `material-design/shadows/shadows-6`. Aliasing it as `component/snackbar/elevation` would add an indirection layer for a single consumer; bind to the MD shadow style id directly per `figma.spec.md` §5.4.
-- **Pre-flight check** — before authoring any cell in step 5, confirm both tokens exist in the file's local `merak` collection. If missing, mint via `use_figma`:
+- **Pre-flight check** — before authoring any cell in step 5, confirm both tokens exist in the file's local `mui` collection. If missing, mint via `use_figma`:
 
   ```js
   // pseudo-code; actual call uses figma.variables.createVariable + setValueForMode
-  const merak = collectionsByName['merak'];
+  const mui = collectionsByName['mui'];
   if (!variableExists('component/snackbar/default-bg')) {
-    const v = figma.variables.createVariable('component/snackbar/default-bg', merak, 'COLOR');
+    const v = figma.variables.createVariable('component/snackbar/default-bg', mui, 'COLOR');
     v.scopes = ['FRAME_FILL', 'SHAPE_FILL'];
-    v.setValueForMode(merak.modes[0].modeId, { r: 50/255, g: 50/255, b: 50/255, a: 1 });
+    v.setValueForMode(mui.modes[0].modeId, { r: 50/255, g: 50/255, b: 50/255, a: 1 });
   }
   if (!variableExists('component/snackbar/alert-icon-fg')) {
-    const v = figma.variables.createVariable('component/snackbar/alert-icon-fg', merak, 'COLOR');
+    const v = figma.variables.createVariable('component/snackbar/alert-icon-fg', mui, 'COLOR');
     v.scopes = ['FRAME_FILL', 'SHAPE_FILL'];
-    v.setValueForMode(merak.modes[0].modeId, { r: 1, g: 1, b: 1, a: 0.902 });
+    v.setValueForMode(mui.modes[0].modeId, { r: 1, g: 1, b: 1, a: 0.902 });
   }
   ```

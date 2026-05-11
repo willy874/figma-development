@@ -12,17 +12,17 @@ import {
 // `<CheckboxFormControl>` runtime component — the Storybook story is what
 // designers compare the Figma cells against.
 
-const MERAK_COLORS: Array<{
-  merak: string;
+const MUI_COLORS: Array<{
+  name: string;
   mui: NonNullable<CheckboxProps['color']>;
 }> = [
-  { merak: 'default', mui: 'default' },
-  { merak: 'primary', mui: 'primary' },
-  { merak: 'secondary', mui: 'secondary' },
-  { merak: 'danger', mui: 'error' },
-  { merak: 'warning', mui: 'warning' },
-  { merak: 'info', mui: 'info' },
-  { merak: 'success', mui: 'success' },
+  { name: 'default', mui: 'default' },
+  { name: 'primary', mui: 'primary' },
+  { name: 'secondary', mui: 'secondary' },
+  { name: 'danger', mui: 'error' },
+  { name: 'warning', mui: 'warning' },
+  { name: 'info', mui: 'info' },
+  { name: 'success', mui: 'success' },
 ];
 
 const SIZES: Array<NonNullable<CheckboxProps['size']>> = ['small', 'medium'];
@@ -186,10 +186,10 @@ export const ColorMatrix: Story = {
           </span>
         ))}
       </Stack>
-      {MERAK_COLORS.map(({ merak, mui }) => (
-        <Stack key={merak} direction="row" spacing={2} alignItems="center">
+      {MUI_COLORS.map(({ name, mui }) => (
+        <Stack key={name} direction="row" spacing={2} alignItems="center">
           <span style={cellLabel}>
-            {merak}
+            {name}
             <span style={{ color: '#aaa' }}> ({mui})</span>
           </span>
           {VALUE_COMBOS.map(({ label, checked, indeterminate }) => (

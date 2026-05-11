@@ -6,15 +6,15 @@ parent_skill: figma-components
 
 # `<PinInput>` Component-Scoped Design Tokens
 
-**Status: declared-empty.** `<PinInput>` does not mint any tokens of its own. Every paint reaches a token in the shared `merak/*` family (see `figma.spec.md` §10 Token Glossary). This file exists so the spec's `figma.spec.md` link resolves and so a future reviewer can confirm the absence is intentional.
+**Status: declared-empty.** `<PinInput>` does not mint any tokens of its own. Every paint reaches a token in the shared `mui/*` family (see `figma.spec.md` §10 Token Glossary). This file exists so the spec's `figma.spec.md` link resolves and so a future reviewer can confirm the absence is intentional.
 
 ## Why no component-scoped tokens?
 
-`<PinInput>` is a **Wrapper + atom** archetype — every per-cell paint (border, fill, input text) is owned by the nested `<TextField>` instance, which already binds to `merak/seed/*` and `merak/alias/*` plus a small `_components/input/outlined/*` family minted in [`<TextField>`'s design-token.md](../TextField/design-token.md). The wrapper itself only paints three TEXT regions:
+`<PinInput>` is a **Wrapper + atom** archetype — every per-cell paint (border, fill, input text) is owned by the nested `<TextField>` instance, which already binds to `mui/seed/*` and `mui/alias/*` plus a small `_components/input/outlined/*` family minted in [`<TextField>`'s design-token.md](../TextField/design-token.md). The wrapper itself only paints three TEXT regions:
 
-- **FormLabel TEXT fill** → `merak/alias/colors/text-default` (resting — project convention; local collection has no `text-secondary` token), `merak/seed/danger/main` (Error override), `merak/alias/colors/text-disabled` (Disabled override). All three already exist in the shared catalogue (`figma-create-component/library-tokens.md`).
+- **FormLabel TEXT fill** → `mui/alias/colors/text-default` (resting — project convention; local collection has no `text-secondary` token), `mui/seed/danger/main` (Error override), `mui/alias/colors/text-disabled` (Disabled override). All three already exist in the shared catalogue (`figma-create-component/library-tokens.md`).
 - **FormHelperText TEXT fill** → same as FormLabel.
-- **Separator `-` glyph TEXT fill** → `merak/alias/colors/text-default`. Already in the shared catalogue.
+- **Separator `-` glyph TEXT fill** → `mui/alias/colors/text-default`. Already in the shared catalogue.
 
 No paint, stroke, effect, or typography rule on the wrapper requires a value the shared catalogue doesn't cover. There is no per-component pre-alpha'd surface, no themed-Selected stacked-fill, no shadow needing a custom diffusion, no glyph color the alias family doesn't already ship.
 
@@ -24,9 +24,9 @@ When step 5 runs `figma.variables.getLocalVariableCollections()`, confirm the fo
 
 | Token path                                  | Type    | Resolved value (light theme)        | Used as                                                        |
 | ------------------------------------------- | ------- | ----------------------------------- | -------------------------------------------------------------- |
-| `merak/alias/colors/text-default`           | COLOR   | `rgba(0, 0, 0, 0.87)`               | Separator `-` glyph fill **+** FormLabel / FormHelperText resting fill (project convention — the local collection has no `text-secondary` token; see `figma.spec.md` §7 #5) |
-| `merak/alias/colors/text-disabled`          | COLOR   | `rgba(0, 0, 0, 0.38)`               | FormLabel + FormHelperText optional Disabled-state fill (§4.2.1) |
-| `merak/seed/danger/main`                    | COLOR   | `#D32F2F`                           | FormLabel + FormHelperText optional Error-state fill (§4.2.1) |
+| `mui/alias/colors/text-default`           | COLOR   | `rgba(0, 0, 0, 0.87)`               | Separator `-` glyph fill **+** FormLabel / FormHelperText resting fill (project convention — the local collection has no `text-secondary` token; see `figma.spec.md` §7 #5) |
+| `mui/alias/colors/text-disabled`          | COLOR   | `rgba(0, 0, 0, 0.38)`               | FormLabel + FormHelperText optional Disabled-state fill (§4.2.1) |
+| `mui/seed/danger/main`                    | COLOR   | `#D32F2F`                           | FormLabel + FormHelperText optional Error-state fill (§4.2.1) |
 
 If any of these is missing, mint it locally with the resolved value and the standard COLOR scopes (`ALL_FILLS`, `TEXT_FILL`) — but the expectation is that all three already exist because they're shared across the design system. Missing entries indicate a regression in the file's local catalogue, not a PinInput-specific need.
 

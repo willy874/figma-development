@@ -197,7 +197,7 @@ Tracked here so the next runtime-truth pass has a punch list:
 3. **Font family differs.** Figma's `body1` text style uses `Noto Sans TC Regular`; MUI runtime renders `Roboto`. Accepted-as-is — locale-driven defaults; the visual height / spacing is identical.
 4. **`Size=Large` falls back to Medium at runtime.** Inherited from `../Checkbox/figma.spec.md` §7 issue 1 — do not duplicate the resolution here.
 5. **`Hovered / Focused / Pressed` are not published in this set.** Drop a bare `<Checkbox>` and compose the label manually until those variants are added.
-6. **~~Wrapper-direct paints (label text fills) bind to external library variables, violating the local-only rule.~~ Resolved 2026-04-29.** Phase 3 of the local-only sweep rebound 276 fill paints (label text Enabled / Disabled) on this set from external `text-default` / `text-disabled` to the local `merak` equivalents. Verification confirmed 0 external bindings remain (648 paints local + 2 unbound). Inner `<Checkbox>` instances inherit the rebind from the master at `1:7228` (see [`../Checkbox/figma.spec.md`](../Checkbox/figma.spec.md) §7 issue 9). Closed.
+6. **~~Wrapper-direct paints (label text fills) bind to external library variables, violating the local-only rule.~~ Resolved 2026-04-29.** Phase 3 of the local-only sweep rebound 276 fill paints (label text Enabled / Disabled) on this set from external `text-default` / `text-disabled` to the local `mui` equivalents. Verification confirmed 0 external bindings remain (648 paints local + 2 unbound). Inner `<Checkbox>` instances inherit the rebind from the master at `1:7228` (see [`../Checkbox/figma.spec.md`](../Checkbox/figma.spec.md) §7 issue 9). Closed.
 
 ## 8. Source Sync Rule
 
@@ -207,7 +207,7 @@ This document and the source must move together. When **any** of the following c
 2. The Figma `<CheckboxFormControl>` component set at `1:7367` (variants, properties, token bindings)
 3. The Figma `<Checkbox>` component set at `1:7228` — any change to its variant matrix or naming forces the nested instance mirroring contract to be re-validated, and the published axis options here may need to follow
 4. `src/stories/Checkbox.stories.tsx` — any new state / size / color introduced upstream forces a follow-up here
-5. The shared `merak/alias/colors/{text-default,text-disabled}` tokens — these are the wrapper's only direct dependencies
+5. The shared `mui/alias/colors/{text-default,text-disabled}` tokens — these are the wrapper's only direct dependencies
 6. `material-design/typography/body1` text style — typography changes flow into §4.3 / §7 drift
 7. `.storybook/preview.tsx` (theme overrides via `createTheme`) — today this is an empty `createTheme()`; introducing typography / palette / `MuiFormControlLabel.defaultProps` overrides forces a re-measure
 8. `package.json` `@mui/material` peer / dev version (currently `^7.3.10` / peer `>=7`)
@@ -218,7 +218,7 @@ This document and the source must move together. When **any** of the following c
 - Promoting label text to a `TEXT` component property → update §3.1 and §7.1.
 - Replacing the auto-layout `itemSpacing 4 px` with runtime-faithful `-11 / 16 px` margins → update §4.1 / §7 issue 1.
 - Adding `Indeterminate=True, State=Disabled` cells here → update §3 exclusions; mirror `../Checkbox/figma.spec.md`.
-- Token rename / removal in `merak/alias/colors/*` → update every reference in §4.2 and rename the matching variable in the local Figma collection.
+- Token rename / removal in `mui/alias/colors/*` → update every reference in §4.2 and rename the matching variable in the local Figma collection.
 - `@mui/material` major bump → re-run `storybook.render.md` measurements; bump the version row in §1; reconcile any new computed-style values against §4.
 
 ## 9. Quick Reference
@@ -254,7 +254,7 @@ Figma Component Set: <CheckboxFormControl>  (1:7367)
 
 The complete set of tokens consumed by `<CheckboxFormControl>` directly. Names are **Figma variable paths**; the nested `<Checkbox>` carries its own catalogue (see [`../Checkbox/figma.spec.md`](../Checkbox/figma.spec.md) §10).
 
-### 10.1 Alias tokens (`merak/alias/colors/*`)
+### 10.1 Alias tokens (`mui/alias/colors/*`)
 
 | Token                          | Used by                  | Role                                                      |
 | ------------------------------ | ------------------------ | --------------------------------------------------------- |

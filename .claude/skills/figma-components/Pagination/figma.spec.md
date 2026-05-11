@@ -1,6 +1,6 @@
 ---
 name: figma-component-pagination-spec
-description: Figma component specification for `<Pagination>` and its child `<PaginationItem>` — design counterpart of MUI `<Pagination>` / `<PaginationItem>` consumed by `src/stories/Pagination.stories.tsx`. Documents the item-set Render Binding Matrix (Color × Type × Size × State, 288 variants), the wrapper-set static composition (Color × Size × State, 36 variants), source-to-Figma mapping with the hard-coded `variant="outlined"` + `shape="rounded"` rendering, and the divergences between MUI's stock paint values and the Merak token bindings. For component-scoped tokens see `design-token.md`; for runtime measurements see `storybook.render.md`.
+description: Figma component specification for `<Pagination>` and its child `<PaginationItem>` — design counterpart of MUI `<Pagination>` / `<PaginationItem>` consumed by `src/stories/Pagination.stories.tsx`. Documents the item-set Render Binding Matrix (Color × Type × Size × State, 288 variants), the wrapper-set static composition (Color × Size × State, 36 variants), source-to-Figma mapping with the hard-coded `variant="outlined"` + `shape="rounded"` rendering, and the divergences between MUI's stock paint values and the MUI token bindings. For component-scoped tokens see `design-token.md`; for runtime measurements see `storybook.render.md`.
 parent_skill: figma-components
 figma_file_key: KQjP6W9Uw1PN0iipwQHyYn
 figma_node_id: '1:5098'
@@ -12,7 +12,7 @@ figma_wrapper_component_set_id: '1:5675'
 
 ## 1. Overview
 
-`<Pagination>` is the Figma counterpart of MUI's `<Pagination>` + `<PaginationItem>` consumed in `src/stories/Pagination.stories.tsx`. The package re-exports MUI directly — there is no source-side wrapper. Instead, the Storybook story applies a `MerakPagination` wrapper that hard-codes `variant="outlined"` + `shape="rounded"` (the only treatment Merak ships in Figma) and routes the 4 themed colors not natively supported by MUI Pagination (`danger / warning / info / success`) through PaginationItem `sx` so every Figma cell has a runtime equivalent.
+`<Pagination>` is the Figma counterpart of MUI's `<Pagination>` + `<PaginationItem>` consumed in `src/stories/Pagination.stories.tsx`. The package re-exports MUI directly — there is no source-side wrapper. Instead, the Storybook story applies a `MUIPagination` wrapper that hard-codes `variant="outlined"` + `shape="rounded"` (the only treatment MUI ships in Figma) and routes the 4 themed colors not natively supported by MUI Pagination (`danger / warning / info / success`) through PaginationItem `sx` so every Figma cell has a runtime equivalent.
 
 The specification covers two related design entities:
 
@@ -22,19 +22,19 @@ The specification covers two related design entities:
 | Aspect                  | Value                                                                                |
 | ----------------------- | ------------------------------------------------------------------------------------ |
 | Source story            | `src/stories/Pagination.stories.tsx`                                                 |
-| Underlying source       | `@mui/material` `Pagination` + `PaginationItem` (re-exported by this package, wrapped as `MerakPagination` in the story to inject Merak themed colors via `sx`) |
+| Underlying source       | `@mui/material` `Pagination` + `PaginationItem` (re-exported by this package, wrapped as `MUIPagination` in the story to inject MUI themed colors via `sx`) |
 | Figma file              | `KQjP6W9Uw1PN0iipwQHyYn` (MUI Library)                                               |
 | Figma item set          | `<PaginationItem>` (`1:5098`) on page **MUI Library**                                |
 | Figma wrapper set       | `<Pagination>` (`1:5675`) on page **MUI Library**                                    |
 | Item variants           | **288** (6 Colors × 4 Types × 3 Sizes × 4 States) — see §3.1                         |
 | Wrapper variants        | **36** (6 Colors × 3 Sizes × 2 States) — see §3.3                                    |
-| Hard-coded MUI props    | `variant="outlined"`, `shape="rounded"` — applied in the `MerakPagination` story wrapper, not in a source-side wrapper. Not exposed as Figma axes. |
+| Hard-coded MUI props    | `variant="outlined"`, `shape="rounded"` — applied in the `MUIPagination` story wrapper, not in a source-side wrapper. Not exposed as Figma axes. |
 | Underlying MUI version  | `@mui/material@^7.3.10` (per `package.json` peer-dep `>=7`, current pnpm-lock resolution `7.3.10`) |
 | Typography              | Roboto Regular, no `text-transform`, letter-spacing `0.01071em` (resolves to ~`0.14994 px` at 14 px) |
 
-**MUI native vs Merak extension.** MUI Pagination only natively supports `color: 'standard' | 'primary' | 'secondary'`. The Merak Color axis (Default / Primary / Danger / Warning / Info / Success) is a design-system extension authored in Figma; the runtime story maps `default → standard`, `primary → primary` and applies `danger / warning / info / success` via PaginationItem `sx`. When this spec changes, `src/stories/Pagination.stories.tsx` `paginationItemSx` must change in the same PR (§8).
+**MUI native vs MUI extension.** MUI Pagination only natively supports `color: 'standard' | 'primary' | 'secondary'`. The MUI Color axis (Default / Primary / Danger / Warning / Info / Success) is a design-system extension authored in Figma; the runtime story maps `default → standard`, `primary → primary` and applies `danger / warning / info / success` via PaginationItem `sx`. When this spec changes, `src/stories/Pagination.stories.tsx` `paginationItemSx` must change in the same PR (§8).
 
-**Local-only token bindings.** Per the project directive, every paint / stroke / text-fill in the Pagination component sets binds to the **MUI Library Figma file's local `merak` collection** — never to the published library copy. The local collection holds 50 variables (45 shared aliases + seed colors + 5 Pagination-scoped `component/pagination/selected-bg-*`). Five of those are documented in [`./design-token.md`](./design-token.md). If the published library renames or removes a token, the local file does not break automatically; track the divergence in §8.
+**Local-only token bindings.** Per the project directive, every paint / stroke / text-fill in the Pagination component sets binds to the **MUI Library Figma file's local `mui` collection** — never to the published library copy. The local collection holds 50 variables (45 shared aliases + seed colors + 5 Pagination-scoped `component/pagination/selected-bg-*`). Five of those are documented in [`./design-token.md`](./design-token.md). If the published library renames or removes a token, the local file does not break automatically; track the divergence in §8.
 
 ## 2. Source-to-Figma Property Mapping
 
@@ -46,12 +46,12 @@ The specification covers two related design entities:
 | `page: number`                                            | wrapper composition (static)                 | —                 | The published wrapper bakes `page = 5`. Drives which child item carries `State=Selected` at runtime.                                                                                           |
 | `onChange: (e, page) => void`                             | —                                            | —                 | Behavior-only, no design representation                                                                                                                                                        |
 | `disabled: boolean`                                       | `State=Disabled` wrapper variant + `Disabled` BOOLEAN | BOOLEAN + VARIANT | Propagates `State=Disabled` to every child item                                                                                                                                                |
-| `color: 'standard' \| 'primary' \| 'secondary'` _(extended in story to 6 Merak colors)_ | `Color` wrapper + item variant | VARIANT | `default` → MUI `standard`; `primary` → MUI `primary`; `danger / warning / info / success` → MUI `primary` + `sx` overrides (story side). See §2.3.                                            |
+| `color: 'standard' \| 'primary' \| 'secondary'` _(extended in story to 6 MUI colors)_ | `Color` wrapper + item variant | VARIANT | `default` → MUI `standard`; `primary` → MUI `primary`; `danger / warning / info / success` → MUI `primary` + `sx` overrides (story side). See §2.3.                                            |
 | `size: 'small' \| 'medium' \| 'large'`                    | `Size` wrapper + item variant                | VARIANT           | Direct map. Default `medium`.                                                                                                                                                                  |
-| `variant: 'text' \| 'outlined'` _(hard-coded `outlined`)_ | rendered as the only Figma style             | —                 | Not a variant axis — Merak only ships `outlined`. Hard-coded in `MerakPagination` story wrapper.                                                                                                |
-| `shape: 'circular' \| 'rounded'` _(hard-coded `rounded`)_ | rendered as the only Figma style             | —                 | Not a variant axis — Merak only ships `rounded`. Hard-coded in `MerakPagination` story wrapper.                                                                                                |
+| `variant: 'text' \| 'outlined'` _(hard-coded `outlined`)_ | rendered as the only Figma style             | —                 | Not a variant axis — MUI only ships `outlined`. Hard-coded in `MUIPagination` story wrapper.                                                                                                |
+| `shape: 'circular' \| 'rounded'` _(hard-coded `rounded`)_ | rendered as the only Figma style             | —                 | Not a variant axis — MUI only ships `rounded`. Hard-coded in `MUIPagination` story wrapper.                                                                                                |
 | `siblingCount` / `boundaryCount`                          | implicit via the composite layout            | —                 | Wrapper bakes MUI defaults (`siblingCount=1`, `boundaryCount=1`) — yields the 9-item layout in §6.2.                                                                                           |
-| `showFirstButton` / `showLastButton`                      | not provided                                 | —                 | Merak never renders First / Last jump buttons; omitted from the `Type` axis. Adding them requires extending §3.1 per §8.                                                                       |
+| `showFirstButton` / `showLastButton`                      | not provided                                 | —                 | MUI never renders First / Last jump buttons; omitted from the `Type` axis. Adding them requires extending §3.1 per §8.                                                                       |
 | `renderItem`                                              | —                                            | —                 | Behavior-only. The story uses `renderItem` to inject the per-color `sx`; Figma authoring is unaffected.                                                                                        |
 
 ### 2.2 Item properties (`<PaginationItem>`)
@@ -70,9 +70,9 @@ Each child rendered inside `<Pagination>` is an instance of `<PaginationItem>`. 
 
 ### 2.3 Color value mapping
 
-Designers pick the Merak name in Figma. Bind every Figma fill / stroke to the listed token family — never paste raw hex.
+Designers pick the MUI name in Figma. Bind every Figma fill / stroke to the listed token family — never paste raw hex.
 
-| Merak key (story prop) | MUI native `color` (story → MUI) | Figma token family for `Page/Selected` + `Page/Hovered` | Figma `Color` value |
+| MUI key (story prop) | MUI native `color` (story → MUI) | Figma token family for `Page/Selected` + `Page/Hovered` | Figma `Color` value |
 | ---------------------- | -------------------------------- | ------------------------------------------------------- | ------------------- |
 | `default`              | `standard`                       | `alias/colors/*` (neutral) — see §6.2                   | **Default**         |
 | `primary`              | `primary`                        | `seed/primary/*`                                        | **Primary**         |
@@ -131,7 +131,7 @@ A `Current Page` / `Total Pages` TEXT property pair is intentionally omitted —
 
 ### 4.1 Picking a configuration
 
-1. Choose the wrapper `Color` to match the source `color` prop via §2.3 (Merak name, not MUI palette name).
+1. Choose the wrapper `Color` to match the source `color` prop via §2.3 (MUI name, not MUI palette name).
 2. Choose the wrapper `Size` to match surface density: `Small` for dense tables, `Medium` for standard data grids, `Large` for hero layouts.
 3. Drop the wrapper instance onto the screen. The 9-item composition assumes `Total Pages ≥ 7` and a middle-page Selected item. For other scenarios, see §4.4.
 4. Use `State=Disabled` only to demonstrate a disabled snapshot (e.g. while data is loading). Production screens should use `Enabled`.
@@ -156,14 +156,14 @@ A `Current Page` / `Total Pages` TEXT property pair is intentionally omitted —
 ### 4.4 Don'ts
 
 - ❌ Don't detach instances to recolor items — every supported color exists as a variant.
-- ❌ Don't switch `variant` to `text` or `shape` to `circular` by overriding styles — those options aren't shipped. Extend the source story (`MerakPagination`) first per §8.
+- ❌ Don't switch `variant` to `text` or `shape` to `circular` by overriding styles — those options aren't shipped. Extend the source story (`MUIPagination`) first per §8.
 - ❌ Don't add first / last jump chevrons by hand-drawing glyphs. Extend the `Type` axis with `First` / `Last` per §8.
 - ❌ Don't rely on the static wrapper for small `Total Pages`. Geometry assumes `Total Pages ≥ 7` and a middle-page Selected.
 - ❌ Don't use `State=Selected` on `Previous` / `Next` / `Ellipsis` — the treatment isn't defined (see §2.2).
 
 ## 5. Token Glossary
 
-Token names below are **Figma variable paths** in the `merak` collection — see [`.claude/skills/figma-create-component/library-tokens.md`](../../figma-create-component/library-tokens.md). Bind every Figma paint / stroke to one of these — never to a literal hex.
+Token names below are **Figma variable paths** in the `mui` collection — see [`.claude/skills/figma-create-component/library-tokens.md`](../../figma-create-component/library-tokens.md). Bind every Figma paint / stroke to one of these — never to a literal hex.
 
 ### 5.1 Seed color tokens (`seed/<C>/*`)
 
@@ -193,14 +193,14 @@ Per-family token names (4 %-α hover token used for both `Hovered` and `Selected
 | `alias/colors/bg-default`            | Item background, `State ∈ {Enabled, Disabled}`                         | Transparent / surface paint behind the item. |
 | `alias/colors/bg-outline-hover`      | Item background, `State=Hovered` (Default color, all Types)            | 4 %-α black overlay for hover.             |
 | `alias/colors/bg-selected`           | Item background, `State=Selected, Type=Page` (Default color)           | 8 %-α black overlay for selected page.     |
-| `alias/colors/bg-disabled`           | Item border, `State=Disabled` (all Colors)                             | 12 %-α black for desaturated stroke. The token's `bg-` prefix reflects its source role (`palette/action/disabledBackground`), but Merak (and `<Button>` / `<IconButton>`) repurpose the same surface paint as the disabled outline border because MUI uses `theme.palette.action.disabledBackground` for that exact role. Convention is intentional — see `<Button>` spec §5.2 / `<IconButton>` spec §5.2 note. |
+| `alias/colors/bg-disabled`           | Item border, `State=Disabled` (all Colors)                             | 12 %-α black for desaturated stroke. The token's `bg-` prefix reflects its source role (`palette/action/disabledBackground`), but MUI (and `<Button>` / `<IconButton>`) repurpose the same surface paint as the disabled outline border because MUI uses `theme.palette.action.disabledBackground` for that exact role. Convention is intentional — see `<Button>` spec §5.2 / `<IconButton>` spec §5.2 note. |
 | `alias/colors/border-defalt` _(sic)_ | Item border, `State ∈ {Enabled, Hovered, Selected}` (all Colors except `Page/Selected` themed border, which uses `seed/<C>/outlineBorder`) | Default outlined stroke (12 %-α black). Preserve typo as published — see `library-tokens.md`. |
 | `alias/colors/text-default`          | Item foreground + glyph, `State ∈ {Enabled, Hovered, Selected}` (all Colors except `Page/Selected` themed Label, which uses `seed/<C>/main`) | 87 %-α black.                              |
 | `alias/colors/text-disabled`         | Item foreground + glyph, `State=Disabled`                              | 38 %-α black.                              |
 
 ### 5.3 Component-scoped tokens
 
-Defined in [`./design-token.md`](./design-token.md). Five 12 %-α themed Selected-bg tokens minted in the local `merak` collection so themed `Page/<C>/Selected` cells can match MUI's runtime `alpha(palette.<color>.main, 0.12)`:
+Defined in [`./design-token.md`](./design-token.md). Five 12 %-α themed Selected-bg tokens minted in the local `mui` collection so themed `Page/<C>/Selected` cells can match MUI's runtime `alpha(palette.<color>.main, 0.12)`:
 
 | Token                                       | Used by                                                |
 | ------------------------------------------- | ------------------------------------------------------ |
@@ -210,7 +210,7 @@ Defined in [`./design-token.md`](./design-token.md). Five 12 %-α themed Selecte
 | `component/pagination/selected-bg-info`     | `Color=Info, Type=Page, State=Selected` fill           |
 | `component/pagination/selected-bg-success`  | `Color=Success, Type=Page, State=Selected` fill        |
 
-The shared `merak/seed/<C>/hover-bg` family stays at 4 %-α — see `design-token.md` for the rationale.
+The shared `mui/seed/<C>/hover-bg` family stays at 4 %-α — see `design-token.md` for the rationale.
 
 ### 5.4 Shape & elevation
 
@@ -282,7 +282,7 @@ Only `Type=Page, Color=<C>` carries a themed hover tint. Every other (Type × Co
 | `Previous` / `Next`         | Default & `<C>` | `alias/colors/bg-outline-hover` _(neutral, no themed variant)_ | `alias/colors/border-defalt` _(sic)_ | `alias/colors/text-default` (glyph) | —      |
 | `Ellipsis`                  | Default & `<C>` | `alias/colors/bg-outline-hover` _(neutral, no themed variant)_ | `alias/colors/border-defalt` _(sic)_ | `alias/colors/text-default` (glyph) | —      |
 
-> Hovered does **not** tint the border or foreground for any Color — only the background overlay changes, and even then only `Page/<C>` swaps to the themed 4 %-α token. This matches MUI runtime exactly for outlined PaginationItem (`storybook.render.md` §2) and is the deliberate Merak rule: "only `Page/Hovered` and `Page/Selected` differ across Color; every other (Type × State) combination renders identically across the Color axis."
+> Hovered does **not** tint the border or foreground for any Color — only the background overlay changes, and even then only `Page/<C>` swaps to the themed 4 %-α token. This matches MUI runtime exactly for outlined PaginationItem (`storybook.render.md` §2) and is the deliberate MUI rule: "only `Page/Hovered` and `Page/Selected` differ across Color; every other (Type × State) combination renders identically across the Color axis."
 
 ### 6.4 `State=Selected`
 
@@ -294,7 +294,7 @@ Only `Type=Page, Color=<C>` carries a themed hover tint. Every other (Type × Co
 | `Page`                      | `<C>`   | `component/pagination/selected-bg-<c>` (12 %-α themed, single fill) | `seed/<C>/outlineBorder` (50 %-α tint) | `seed/<C>/main` (solid)                 | —      |
 | `Previous` / `Next` / `Ellipsis` | any | _(same paint as State=Enabled — see §6.2)_                    | _(same)_                                     | _(same)_                                | —      |
 
-> **Why pre-alpha'd `component/pagination/selected-bg-*` tokens.** MUI runtime renders outlined `<PaginationItem>` Selected bg as `alpha(palette.<color>.main, 0.12)` — a **12 %-α** themed tint — for every themed color (`primary` natively, plus `danger / warning / info / success` via the story's `paginationItemSx`). The shared `merak/seed/*` family only ships a 4 %-α `hover-bg` token per color, and stacking two layers tops out at `~7.84 %`. To hit MUI's 12 % without breaking the shared seed family's 4 % standard, Pagination owns five 12 %-α tokens locally — see [`./design-token.md`](./design-token.md). `Color=Default` keeps the shared 8 %-α `alias/colors/bg-selected` because MUI's `colorStandard` Selected bg is also 8 %-α (matches).
+> **Why pre-alpha'd `component/pagination/selected-bg-*` tokens.** MUI runtime renders outlined `<PaginationItem>` Selected bg as `alpha(palette.<color>.main, 0.12)` — a **12 %-α** themed tint — for every themed color (`primary` natively, plus `danger / warning / info / success` via the story's `paginationItemSx`). The shared `mui/seed/*` family only ships a 4 %-α `hover-bg` token per color, and stacking two layers tops out at `~7.84 %`. To hit MUI's 12 % without breaking the shared seed family's 4 % standard, Pagination owns five 12 %-α tokens locally — see [`./design-token.md`](./design-token.md). `Color=Default` keeps the shared 8 %-α `alias/colors/bg-selected` because MUI's `colorStandard` Selected bg is also 8 %-α (matches).
 
 > **Why not paint opacity?** Figma stores a fill's `paint.opacity` correctly on the variant, but when a top-level instance of the wrapper set is created on a screen, any `paint.opacity < 1` combined with a bound variable is flattened back to `opacity = 1` in the instance. Binding to a variable whose **resolved value already carries alpha** (12 % in the `component/pagination/selected-bg-*` tokens) avoids that flattening — the instance reads the variable's alpha directly at render time.
 
@@ -338,7 +338,7 @@ The published wrapper bakes `currentPage = 5, totalPages = 10`, so labels are `1
 
 **Why one shared `<Icon>` set, not dedicated chevron sets.** Pagination chevrons used to live in two dedicated component sets — `<NavigateBefore>` (`224:4189`) and `<NavigateNext>` (`224:4199`) — each with three `Size=Small/Medium/Large` variants at 18/20/22 px. The 2026-04-29 unification pass replaced them with one `<Icon>` `Size=sm` instance per cell, plus `Glyph Source` preset to `ChevronLeft` / `ChevronRight` (both published as standalone components in the shared Icon library — see `figma-create-component/library-components.md` §Icon library). One shared set + one swap property is structurally simpler than two dedicated sets, and it lets future direction-aware revisions (RTL chevron, custom glyph) reuse the same Icon library entries instead of minting new component sets.
 
-**Why fixed `20 × 20 px` for every Pagination `Size`.** Storybook hard-codes `width: 20, height: 20` on the icon slot wrapper (`MerakIconSm` in `src/stories/Pagination.stories.tsx`) regardless of the underlying MUI `Pagination` `size` prop. Figma now matches: every `Type ∈ {Previous, Next}` cell, across all three Pagination `Size` values, contains an `<Icon> Size=sm` instance at 20 × 20. The earlier 18/20/22 ramp came from the dedicated `<NavigateBefore>` Size variants and was a Figma-only divergence — MUI runtime never scaled the chevron either.
+**Why fixed `20 × 20 px` for every Pagination `Size`.** Storybook hard-codes `width: 20, height: 20` on the icon slot wrapper (`MUIIconSm` in `src/stories/Pagination.stories.tsx`) regardless of the underlying MUI `Pagination` `size` prop. Figma now matches: every `Type ∈ {Previous, Next}` cell, across all three Pagination `Size` values, contains an `<Icon> Size=sm` instance at 20 × 20. The earlier 18/20/22 ramp came from the dedicated `<NavigateBefore>` Size variants and was a Figma-only divergence — MUI runtime never scaled the chevron either.
 
 **Icon swap on consumer instances.** Because the chevron lives inside an `<Icon>` instance with an exposed `Glyph Source` `INSTANCE_SWAP` property, designers can swap the glyph (e.g. for a localized RTL chevron) directly from the `<PaginationItem>` instance via Figma's nested-property panel — no detach required. Note the **shared-default caveat**: `Glyph Source` defaults are shared across every cell in the Pagination set; the per-direction defaults (ChevronLeft for Previous, ChevronRight for Next) live on the variants themselves, not at the set level.
 
@@ -349,13 +349,13 @@ The runtime-truth pass on **2026-04-28** resolved most of the issues that previo
 ### Currently open
 
 1. **`State=Focused`.** Not represented in either set — MUI emits a focus cue inside the ripple subtree, not on the box, and `outlinedPrimary` already paints the same overlay as `:hover` for `.Mui-focusVisible`. Adding `State=Focused` would cost 72 item variants (3 sizes × 4 types × 6 colors). Tracked per §8.
-2. **`First` / `Last` jump buttons.** Not in the `Type` axis — Merak never renders them. Adding requires §8 trigger (12 new item variants per added type per Size, and re-baking the wrapper composition).
+2. **`First` / `Last` jump buttons.** Not in the `Type` axis — MUI never renders them. Adding requires §8 trigger (12 new item variants per added type per Size, and re-baking the wrapper composition).
 3. **Disabled foreground / outlined-border ↔ runtime divergence.** Figma uses `alias/colors/text-disabled` (38 %-α) for Disabled foreground and `alias/colors/bg-disabled` (12 %-α) for Disabled stroke; MUI runtime keeps `text.primary` (87 %-α) and `0.23 black` respectively (no dim on outlined-disabled). Figma values were intentionally **not** re-aligned in the 2026-04-28 pass — the dimmer Figma rendering offers better disabled-state legibility, and the difference is small. Documented in §6.5 / `storybook.render.md` §2.
 
 ### Resolved (2026-04-28 runtime-truth pass)
 
 1. ~~**Inter-item gap.**~~ **Resolved 2026-04-28.** Wrapper auto-layout `itemSpacing` is now per-Size (`Small=2`, `Medium=6`, `Large=6`) — matches MUI runtime visible gap derived from item `margin: 0 (1|3|3) px`. See §6.6.
-2. ~~**`Page/Selected` bg % (themed).**~~ **Resolved 2026-04-28.** Themed `Page/<C>/Selected` now binds to a single solid `component/pagination/selected-bg-<c>` at 12 %-α (matching MUI's `alpha(palette.<color>.main, 0.12)`). The 5 new tokens are minted in the local `merak` collection; see [`./design-token.md`](./design-token.md). Default-color stays on `alias/colors/bg-selected` (8 %-α black) — already matched MUI's `colorStandard`.
+2. ~~**`Page/Selected` bg % (themed).**~~ **Resolved 2026-04-28.** Themed `Page/<C>/Selected` now binds to a single solid `component/pagination/selected-bg-<c>` at 12 %-α (matching MUI's `alpha(palette.<color>.main, 0.12)`). The 5 new tokens are minted in the local `mui` collection; see [`./design-token.md`](./design-token.md). Default-color stays on `alias/colors/bg-selected` (8 %-α black) — already matched MUI's `colorStandard`.
 4. ~~**Glyph identity for Previous / Next.**~~ **Resolved 2026-04-28.** Replaced unicode `‹` / `›` text nodes with INSTANCE of dedicated chevron component sets (`<NavigateBefore>` / `<NavigateNext>`) at `Size=Small/Medium/Large = 18/20/22`. See §6.7.
 6. ~~**Padding Large divergence.**~~ **Resolved 2026-04-28.** All `Size=Large` cells re-authored to `paddingLeft = paddingRight = 10` (matches MUI's `MuiPaginationItem-sizeLarge`).
 7. ~~**Page font-size Small divergence.**~~ **Resolved 2026-04-28.** All `Color=*, Type=Page, Size=Small` cells re-authored to font-size `14 px`, letter-spacing `0.1499 px` (matches MUI's `pxToRem(14)`).
@@ -363,7 +363,7 @@ The runtime-truth pass on **2026-04-28** resolved most of the issues that previo
 
 ### Resolved (2026-04-29 icon-source unification pass)
 
-9. **Icon source for Previous / Next.** Replaced the dedicated `<NavigateBefore>` (`224:4189`) / `<NavigateNext>` (`224:4199`) component sets — three `Size` variants at 18 / 20 / 22 px each — with a single `<Icon>` (`3:2722`) `Size=sm` (`3:2731`) instance per cell, plus the `Glyph Source` `INSTANCE_SWAP` property preset to `ChevronLeft` (`512:7505`) for Previous or `ChevronRight` (`512:7509`) for Next. All 144 `Type ∈ {Previous, Next}` variants in `1:5098` were swapped in place; the legacy `<NavigateBefore>` / `<NavigateNext>` sets are no longer referenced by Pagination. Icon dims are now uniform `20 × 20 px` for every Pagination `Size`, matching the runtime story's `MerakIconSm` slot wrapper. See §6.7.
+9. **Icon source for Previous / Next.** Replaced the dedicated `<NavigateBefore>` (`224:4189`) / `<NavigateNext>` (`224:4199`) component sets — three `Size` variants at 18 / 20 / 22 px each — with a single `<Icon>` (`3:2722`) `Size=sm` (`3:2731`) instance per cell, plus the `Glyph Source` `INSTANCE_SWAP` property preset to `ChevronLeft` (`512:7505`) for Previous or `ChevronRight` (`512:7509`) for Next. All 144 `Type ∈ {Previous, Next}` variants in `1:5098` were swapped in place; the legacy `<NavigateBefore>` / `<NavigateNext>` sets are no longer referenced by Pagination. Icon dims are now uniform `20 × 20 px` for every Pagination `Size`, matching the runtime story's `MUIIconSm` slot wrapper. See §6.7.
 
 ## 8. Source Sync Rule
 
@@ -373,11 +373,11 @@ This document and the source must move together. When **any** of the following c
 | ------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------- |
 | `node_modules/@mui/material/Pagination/Pagination.js` or `…/PaginationItem/PaginationItem.js` changes (MUI bump) | `figma.spec.md` §1 MUI version row, `storybook.render.md` §1–§4 + §6                                                     |
 | `src/stories/Pagination.stories.tsx` `paginationItemSx` changes (e.g. `0.08 → 0.12` on Selected bg) | `figma.spec.md` §6.4, `storybook.render.md` §3                                                                          |
-| `src/stories/Pagination.stories.tsx` `MerakPagination` adds / removes a hard-coded MUI prop (e.g. unlocks `variant`) | `figma.spec.md` §1 hard-coded MUI props row, §2.1, §3 (+ axis if exposed), §6 (+ rows for new combinations)            |
+| `src/stories/Pagination.stories.tsx` `MUIPagination` adds / removes a hard-coded MUI prop (e.g. unlocks `variant`) | `figma.spec.md` §1 hard-coded MUI props row, §2.1, §3 (+ axis if exposed), §6 (+ rows for new combinations)            |
 | `src/stories/Pagination.stories.tsx` story matrices change (e.g. add `FirstButton` / `LastButton` cases) | `figma.spec.md` §3.1 `Type` options + 12 new item variants per added type per Size, §6.1–§6.5 + §6.6 wrapper composition, `storybook.render.md` §1 |
 | Figma item set `1:5098` variant axes / cell count change                                        | `figma.spec.md` §3.1, refresh `figma.config.json` via `figma-init/config-init.md`                                          |
 | Figma wrapper set `1:5675` variant axes / cell count or composition change                      | `figma.spec.md` §3.3, §6.6, refresh `figma.config.json` via `figma-init/config-init.md`                                    |
-| Local `merak/*` tokens used by Pagination are renamed in this Figma file                        | `figma.spec.md` §5 + §6, `./design-token.md`. **Do not** auto-pull from the published library — the Pagination cells bind to the local collection only. |
+| Local `mui/*` tokens used by Pagination are renamed in this Figma file                        | `figma.spec.md` §5 + §6, `./design-token.md`. **Do not** auto-pull from the published library — the Pagination cells bind to the local collection only. |
 | Published library `seed/*` / `alias/*` tokens drift from the local copies                       | `./design-token.md` (record divergence), `figma.spec.md` §1 local-only note. Re-sync values manually if needed.            |
 | `<Icon>` set (`3:2722`) variant axes change (e.g. `Size=sm` renamed) or its `Glyph Source` `INSTANCE_SWAP` property is renamed | `figma.spec.md` §6.1 / §6.7 icon mapping table (Size=sm `3:2731` ID + property name `Glyph Source`)                       |
 | `ChevronLeft` (`512:7505`) / `ChevronRight` (`512:7509`) glyph components are renamed, moved, or replaced in the Icon library | `figma.spec.md` §6.7 (Glyph Source preset IDs), `../../figma-create-component/library-components.md` §Icon library                    |
@@ -387,8 +387,8 @@ This document and the source must move together. When **any** of the following c
 ## 9. Quick Reference
 
 ```ts
-// Story prop surface (src/stories/Pagination.stories.tsx :: MerakPagination)
-interface MerakPaginationProps extends Omit<PaginationProps, 'color'> {
+// Story prop surface (src/stories/Pagination.stories.tsx :: MUIPagination)
+interface MUIPaginationProps extends Omit<PaginationProps, 'color'> {
   color?: 'default' | 'primary' | 'danger' | 'warning' | 'info' | 'success';
   // PaginationProps from @mui/material:
   //   count?: number;       // → wrapper composition (static, baked count=10)
@@ -399,7 +399,7 @@ interface MerakPaginationProps extends Omit<PaginationProps, 'color'> {
   //   siblingCount?, boundaryCount?: implicit (MUI defaults)
 }
 
-// Hard-coded inside MerakPagination:
+// Hard-coded inside MUIPagination:
 //   variant="outlined"  → fixed in Figma, no Variant axis
 //   shape="rounded"     → fixed in Figma, no Shape axis
 ```

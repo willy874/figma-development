@@ -8,7 +8,7 @@ Placeholder content hides layout bugs. Invented product copy creates downstream 
 
 **Why it matters:** Stakeholders review _content_ and _information hierarchy_, not boxes. Generic placeholders mask truncation bugs, wrap issues, and empty-state problems.
 
-**Fix:** Use realistic, domain-accurate strings. For this repo (Merak / ZTNA), prefer:
+**Fix:** Use realistic, domain-accurate strings. For this repo (MUI / ZTNA), prefer:
 
 - Service names: `payroll-api`, `jira-prod`, `hr-portal`
 - Routes / hosts: `10.0.12.44:5432`, `vpn.corp.internal`

@@ -91,7 +91,7 @@ Source: MUI `FormLabel` resolved against default theme. The composer passes `com
 | `color`          | `rgba(0, 0, 0, 0.6)` — MUI runtime resolves to `text.secondary` (no `text-secondary` token in this file's local collection — published Figma cell rebinds to `alias/colors/text-default`; see `figma.spec.md` §7 #5) | `rgba(0, 0, 0, 0.38)` — `alias/colors/text-disabled` | `rgb(211, 47, 47)` — `seed/danger/main` |
 | Default text     | `"Label"`                                     | `"Label"`                                 | `"Label"`                                   |
 
-> **Project-convention rebind.** MUI runtime resolves the resting FormLabel to `text.secondary` (`60 % α`). The local `merak` collection ships no `text-secondary` token; the reference Figma 天璇 file used `text-default` (`87 % α`), and so does the published `<PinInput>` here. The `text-secondary` reference above describes the **runtime resolution**, not a Figma binding. Captured in `figma.spec.md` §7 #5.
+> **Project-convention rebind.** MUI runtime resolves the resting FormLabel to `text.secondary` (`60 % α`). The local `mui` collection ships no `text-secondary` token; the reference Figma 天璇 file used `text-default` (`87 % α`), and so does the published `<PinInput>` here. The `text-secondary` reference above describes the **runtime resolution**, not a Figma binding. Captured in `figma.spec.md` §7 #5.
 
 ## 5. Helper text — `<FormHelperText>` (only when `helperText` prop is set)
 

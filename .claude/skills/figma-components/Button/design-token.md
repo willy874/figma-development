@@ -1,12 +1,12 @@
 ---
 name: figma-component-button-design-token
-description: Component-scoped design tokens for `<Button>` (MerakButton v2). Defined here because they're either MUI-Button-specific runtime constants (the `inherit-contained` grey, the `outlined-inherit` border, icon layout deltas) or fixed dimensions that don't fit the shared `merak/seed/*` or `merak/alias/*` namespaces. Bind Button paints / strokes / effects to these names rather than literal values; for shared tokens used by Button (seed colors, alias colors, MD shadows), see `.claude/skills/figma-create-component/library-tokens.md`.
+description: Component-scoped design tokens for `<Button>` (MUIButton v2). Defined here because they're either MUI-Button-specific runtime constants (the `inherit-contained` grey, the `outlined-inherit` border, icon layout deltas) or fixed dimensions that don't fit the shared `mui/seed/*` or `mui/alias/*` namespaces. Bind Button paints / strokes / effects to these names rather than literal values; for shared tokens used by Button (seed colors, alias colors, MD shadows), see `.claude/skills/figma-create-component/library-tokens.md`.
 parent_skill: figma-components
 ---
 
 # `<Button>` Component Tokens
 
-Tokens scoped to `<Button>` and its variants in `apps/console/src/components/Button/Button.tsx`. Reach for these only inside the Button component set; for everything else (semantic colors, action overlays, MD elevations, typography), bind to the shared `merak/*` and `material-design/*` tokens documented in [`design-token.md`](../../figma-create-component/library-tokens.md).
+Tokens scoped to `<Button>` and its variants in `src/stories/Button.stories.tsx`. Reach for these only inside the Button component set; for everything else (semantic colors, action overlays, MD elevations, typography), bind to the shared `mui/*` and `material-design/*` tokens documented in [`design-token.md`](../../figma-create-component/library-tokens.md).
 
 ## Why these are component-scoped
 
@@ -15,7 +15,7 @@ These values are either:
 1. **MUI-Button-specific runtime constants** that don't reuse a shared semantic — e.g. the `Color=Default, Variant=Contained` grey is `palette.grey.300`, not `seed/tertiary/main` (`grey.500`); the `Color=Default, Variant=Outlined` border is `palette.text.primary` (full 87% black, used as `currentColor`), not the 50%-α `outlineBorder` pattern that themed colors follow.
 2. **Layout deltas peculiar to Button's `startIcon` / `endIcon` slots** that don't generalize to other components (IconButton, Chip, ListItem icon spacing all differ).
 
-Anything that turns out to be reused by another component should be promoted to `merak/*` and removed from this file.
+Anything that turns out to be reused by another component should be promoted to `mui/*` and removed from this file.
 
 ## Tokens
 

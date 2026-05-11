@@ -19,17 +19,17 @@ import {
 // each row is a multi-select `<Checkbox>` (so the fixture demos
 // unchecked / checked / indeterminate side-by-side instead of single-select).
 
-const MERAK_COLORS: Array<{
-  merak: string;
+const MUI_COLORS: Array<{
+  name: string;
   mui: NonNullable<CheckboxProps['color']>;
 }> = [
-  { merak: 'default', mui: 'default' },
-  { merak: 'primary', mui: 'primary' },
-  { merak: 'secondary', mui: 'secondary' },
-  { merak: 'danger', mui: 'error' },
-  { merak: 'warning', mui: 'warning' },
-  { merak: 'info', mui: 'info' },
-  { merak: 'success', mui: 'success' },
+  { name: 'default', mui: 'default' },
+  { name: 'primary', mui: 'primary' },
+  { name: 'secondary', mui: 'secondary' },
+  { name: 'danger', mui: 'error' },
+  { name: 'warning', mui: 'warning' },
+  { name: 'info', mui: 'info' },
+  { name: 'success', mui: 'success' },
 ];
 
 const SIZES: Array<NonNullable<CheckboxProps['size']>> = ['small', 'medium'];
@@ -213,10 +213,10 @@ export const ColorMatrix: Story = {
           </span>
         ))}
       </Stack>
-      {MERAK_COLORS.map(({ merak, mui }) => (
-        <Stack key={merak} direction="row" spacing={2} alignItems="flex-start">
+      {MUI_COLORS.map(({ name, mui }) => (
+        <Stack key={name} direction="row" spacing={2} alignItems="flex-start">
           <span style={cellLabel}>
-            {merak}
+            {name}
             <span style={{ color: '#aaa' }}> ({mui})</span>
           </span>
           {DIRECTIONS.map(({ label, row }) => (

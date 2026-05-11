@@ -1,18 +1,20 @@
 # Design Tokens
 
-Source: [Figma file `KQjP6W9Uw1PN0iipwQHyYn`](https://www.figma.com/design/KQjP6W9Uw1PN0iipwQHyYn/MUI-Library) (MUI-Library)
+Source: see [`figma.config.json`](../../../figma.config.json) `.library.fileUrl` (single source of truth — the link below is for human navigation only).
 
-One variable collection (`merak`, 78 vars) + 28 text styles + 24 effect styles. **When building in Figma, bind to these tokens — never hard-code hex/px values.**
+[Figma file `KQjP6W9Uw1PN0iipwQHyYn`](https://www.figma.com/design/KQjP6W9Uw1PN0iipwQHyYn/MUI-Library) (MUI-Library)
+
+One variable collection (`mui`, 78 vars) + 28 text styles + 24 effect styles. **When building in Figma, bind to these tokens — never hard-code hex/px values.**
 
 ## Collection structure
 
 | Collection | Modes        | Vars | Purpose                                          |
 | ---------- | ------------ | ---- | ------------------------------------------------ |
-| `merak`    | 1 (`Mode 1`) | 78   | The project's semantic + component token layer. |
+| `mui`    | 1 (`Mode 1`) | 78   | The project's semantic + component token layer. |
 
 > **No raw palette collection.** The previous `material-design` collection (~300 vars) is gone — every value here is already at the semantic / component layer. If a needed value is missing, add a new semantic token rather than hard-coding hex.
 >
-> 14 of the 78 are **local mirrors** of upstream `merak` tokens (description: "Local mirror of merak `<name>` — opacity baked in"). Added so Checkbox State variants can swap fills without alpha-inheritance issues. Reuse by name; do not duplicate.
+> 14 of the 78 are **local mirrors** of upstream `mui` tokens (description: "Local mirror of mui `<name>` — opacity baked in"). Added so Checkbox State variants can swap fills without alpha-inheritance issues. Reuse by name; do not duplicate.
 
 ---
 
@@ -325,7 +327,7 @@ None defined — all paints / strokes are driven by Variables. Do not create par
 ## Usage guidelines
 
 1. **Semantic first.** Bind to `alias/colors/*`, `seed/*`, or `component/*`. There is no raw palette collection — if a needed value is missing, add a new semantic token rather than hard-coding hex.
-2. **Local mirrors.** 14 tokens carry a "Local mirror of merak `<name>` (opacity baked in)" description. They duplicate upstream `merak` tokens with the alpha pre-flattened so Checkbox State variants can swap fills cleanly. Reuse them by name; check before creating more.
+2. **Local mirrors.** 14 tokens carry a "Local mirror of mui `<name>` (opacity baked in)" description. They duplicate upstream `mui` tokens with the alpha pre-flattened so Checkbox State variants can swap fills cleanly. Reuse them by name; check before creating more.
 3. **Set `variable.scopes` explicitly when creating new variables.** Existing tokens are scoped to specific surfaces (`FRAME_FILL,SHAPE_FILL` is the most common; also `STROKE_COLOR`, `TEXT_FILL`, `OPACITY`). Match the scope to the intended surface; avoid `ALL_SCOPES` unless truly universal.
 4. **Typography:** apply text styles, don't set `fontName` / `fontSize` / `lineHeight` manually. Remember to `await figma.loadFontAsync({ family: "Noto Sans TC", style: "Regular" })` (and `Light` / `Medium` / `Bold` variants, plus `Inter Light` / `Regular` / `Bold`) before writing text.
 5. **Elevation:** apply `material-design/shadows/shadows-N` effect style; do not hand-author drop shadows.
