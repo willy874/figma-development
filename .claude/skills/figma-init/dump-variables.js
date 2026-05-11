@@ -16,7 +16,7 @@
 // variableId into a single global stream — so OFFSET indexes the global
 // stream, not a per-collection list. `assemble-variables.sh` uses the meta
 // payload to know which variable belongs to which collection, then merges
-// into `.variables.collections[]` inside figma.config.json.
+// into `.library.variables.collections[]` inside figma.config.json.
 
 const collectionsRaw = await figma.variables.getLocalVariableCollectionsAsync();
 

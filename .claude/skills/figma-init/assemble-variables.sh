@@ -1,13 +1,14 @@
 #!/usr/bin/env bash
 # Merge variable chunks dumped via use_figma into figma.config.json under
-# the `.variables` key. Reads /tmp/figma-init-variables/, writes the project
-# root figma.config.json in place (preserving every other top-level field).
+# the `.library.variables` key. Reads /tmp/figma-init-variables/, writes the
+# project root figma.config.json in place (preserving every other top-level
+# field, including `.projects`).
 #
 # Each chunk file is the verbatim use_figma tool result for that slice — a
 # COMPACT JSON string, possibly with HTML entities (`&lt;`, `&gt;`, `&amp;`,
 # `&quot;`, `&#39;`) baked in by the tool plumbing. This script decodes
 # those entities, restitches the chunks in offset order, and folds the
-# result into figma.config.json's `.variables.collections[]`.
+# result into figma.config.json's `.library.variables.collections[]`.
 #
 # Expected chunk filenames in /tmp/figma-init-variables/:
 #
@@ -123,14 +124,17 @@ CHUNK_DIR="$CHUNK_DIR" CONFIG="$CONFIG" node -e '
   }));
 
   const cfg = JSON.parse(fs.readFileSync(CONFIG, "utf8"));
-  cfg.variables = {
+  if (!cfg.library || typeof cfg.library !== "object") {
+    throw new Error("figma.config.json is missing top-level .library — run config-init.md first");
+  }
+  cfg.library.variables = {
     extractedAt: new Date().toISOString().slice(0, 10),
     collections,
   };
   fs.writeFileSync(CONFIG, JSON.stringify(cfg, null, 2) + "\n");
 
   process.stdout.write(
-    "figma.config.json .variables: " + collections.length + " collection" +
+    "figma.config.json .library.variables: " + collections.length + " collection" +
     (collections.length === 1 ? "" : "s") + ", " + total + " variables\n"
   );
 ' || fail "assembler failed"
