@@ -14,7 +14,7 @@ Load alongside `figma-operator-guide` (for Figma authoring rules) and `figma:fig
 ## Submodule index
 
 - **[design-token.md](design-token.md)** — The single `merak` variable collection (78 vars: `alias/colors/*`, `seed/*`, `component/*`, plus a few top-level), 28 text styles (`material-design/typography/*` + `component/typography/*`, each with a `-bold` sibling), and 24 `material-design/shadows/shadows-{1..24}` effect styles. Use whenever you need a real token name (color, typography, shadow). Bind to existing tokens by name — there is no raw palette layer to fall back on.
-- **[components.md](components.md)** — The published component inventory (names, node IDs, variant counts) in the MUI Library file. Grep this list before creating any new component — if it exists, import via `importComponentByKeyAsync` / `importComponentSetByKeyAsync` and reuse.
+- **[components.md](components.md)** — The published component inventory (names, variant counts) in the MUI Library file. Grep this list before creating any new component — if it exists, import via `importComponentByKeyAsync` / `importComponentSetByKeyAsync` and reuse. **Node IDs are not in this file** — look them up in [`figma.config.json`](../../../figma.config.json) under `index.componentSetsAndPrimitives.<Name>.nodeId`, `index.icons.<Name>.nodeId`, or `index.componentSpecs.<Name>.*` (the single source of truth).
 
 ---
 
@@ -22,6 +22,7 @@ Load alongside `figma-operator-guide` (for Figma authoring rules) and `figma:fig
 
 - About to call `setBoundVariableForPaint` / `setBoundVariableForTextProperty` / similar → load `design-token.md`.
 - About to create a button / input / dialog / chip / icon / any UI primitive → load `components.md` first to check for an existing match.
+- Need a node ID for an existing component (to import, find children, attach instance, etc.) → read it from `figma.config.json`, not `components.md`.
 - Reviewing design output for token/component coverage → load both.
 
 ---
