@@ -6,7 +6,7 @@ parent_skill: figma-components
 
 # `<Table>` Component-scoped Tokens
 
-The Table cell + row sets bind every paint to the file's local `merak` collection per the project's local-only directive (`figma.spec.md` §1). Two roles are not covered by the shared `seed/*` or `alias/*` families and require **component-scoped** tokens minted in the local collection. Both bake their alpha into the resolved value so the bound paint can stay at `opacity: 1` (Figma flattens `paint.opacity < 1` when bound to a variable on instance creation — see `figma-component-spec-guide` §4.4–§4.5).
+The Table cell + row sets bind every paint to the file's local `merak` collection per the project's local-only directive (`figma.spec.md` §1). Two roles are not covered by the shared `seed/*` or `alias/*` families and require **component-scoped** tokens minted in the local collection. Both bake their alpha into the resolved value so the bound paint can stay at `opacity: 1` (Figma flattens `paint.opacity < 1` when bound to a variable on instance creation — see `component-spec-guide` §4.4–§4.5).
 
 The third entry below is **not** a new variable — it documents the chosen text-style binding for head cells, since the catalogue does not ship a Roboto-Medium 14/24 body style.
 

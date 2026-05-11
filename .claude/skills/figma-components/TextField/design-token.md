@@ -29,7 +29,7 @@ Anything that turns out to be reused by another input component (Select, Autocom
 
 ## Notes
 
-- **Pre-alpha'd, never stack opacity.** Every token in this file already resolves to an alpha-baked hex. Pairing them with a Figma `paint.opacity < 1` flattens to `opacity = 1` on instance creation (see `figma-component-spec-guide` §4.4) and silently destroys the alpha. Bind directly; never re-alpha.
+- **Pre-alpha'd, never stack opacity.** Every token in this file already resolves to an alpha-baked hex. Pairing them with a Figma `paint.opacity < 1` flattens to `opacity = 1` on instance creation (see `component-spec-guide` §4.4) and silently destroys the alpha. Bind directly; never re-alpha.
 - **The two `hoverBorder` tokens converge on `text.primary` (0.87 α).** Both Standard and Outlined hover-state strokes paint at `text.primary` per MUI default. They are kept as separate names so a future per-variant divergence (e.g. Outlined retinting to `seed/primary/hover-bg` on hover) can be expressed without renaming.
 - **`outlined/enabledBorder` drift open** — the runtime computed style is `rgba(0, 0, 0, 0.23)` per `MuiOutlinedInput-notchedOutline`, but this token resolves to `0.12α`. The Figma cells therefore render lighter than runtime by ~10 percentage points of black. Tracked in `figma.spec.md` §7 issue 1; resolve by either repointing this token to `0.23α` or minting a `mui-outline` companion.
 - **`filled/hoverFill` drift open** — runtime keeps the wrapper at `enabledFill` (`0.06α`) on `:focus-visible`, but the Figma cells reuse `hoverFill` (`0.09α`) for both `Hovered` and `Focused`. The Figma cell adds extra darkening on focus that MUI does not render. Tracked in `figma.spec.md` §7 issue 4.

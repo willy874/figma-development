@@ -29,5 +29,5 @@ Load alongside `figma-operator-guide` (for Figma authoring rules) and `figma:fig
 ## Related skills
 
 - `figma-operator-guide` — authoring rules (discovery, layout, hygiene, accessibility).
-- `figma-component-spec-guide` — authoring component specifications under `.claude/skills/figma-components/`.
+- [`figma-create-component/component-spec-guide.md`](../figma-create-component/component-spec-guide.md) — submodule covering authoring of component specifications under `.claude/skills/figma-components/`.
 - `figma:figma-use` — required before any `use_figma` call.

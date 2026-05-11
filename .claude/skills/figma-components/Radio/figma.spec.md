@@ -142,7 +142,7 @@ One row per paint role. Bind the Figma fill / stroke to the variable name in **b
 | Halo overlay — Focused, Success         | **`seed/success/focusVisible`** _(`#2E7D32 0.30α`)_ |                                                                                                                              |
 | Halo overlay — Disabled                 | _(transparent)_                                    | Disabled does not paint the halo.                                                                                              |
 
-> **Pre-alpha'd seed tokens — do not stack `paint.opacity < 1`.** Every `seed/*/hover-bg`, `seed/*/outline-hover`, and `seed/*/focusVisible` already carries its alpha; pairing them with a Figma `paint.opacity < 1` flattens to `opacity = 1` on instance creation (see `figma-component-spec-guide` §4.4) and silently destroys the alpha. Bind directly; never re-alpha.
+> **Pre-alpha'd seed tokens — do not stack `paint.opacity < 1`.** Every `seed/*/hover-bg`, `seed/*/outline-hover`, and `seed/*/focusVisible` already carries its alpha; pairing them with a Figma `paint.opacity < 1` flattens to `opacity = 1` on instance creation (see `component-spec-guide` §4.4) and silently destroys the alpha. Bind directly; never re-alpha.
 
 ### 4.3 State rules
 

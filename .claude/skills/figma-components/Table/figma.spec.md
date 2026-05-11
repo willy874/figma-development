@@ -77,7 +77,7 @@ Table does not expose a runtime `color` prop. The single themed paint is the **s
 | Row `Selected + Hover` background  | `rgba(25, 118, 210, 0.12)`       | **`component/table/selected-hover-bg`** → resolves to `seed/primary/main` × 12 %-α  |
 | Row `Hover` (non-selected) background | `rgba(0, 0, 0, 0.04)`         | **`alias/colors/bg-outline-hover`** (existing alias; same value used by Pagination Hover) |
 
-Pre-α'd component-scoped tokens are required because Figma flattens `paint.opacity < 1` to `1` when bound to a variable on instance creation (`figma-component-spec-guide` §4.4–§4.5). The selected-bg tokens carry the alpha in their resolved value, so the cell's paint stays at `opacity: 1`.
+Pre-α'd component-scoped tokens are required because Figma flattens `paint.opacity < 1` to `1` when bound to a variable on instance creation (`component-spec-guide` §4.4–§4.5). The selected-bg tokens carry the alpha in their resolved value, so the cell's paint stays at `opacity: 1`.
 
 ## 3. Variant Property Matrix
 

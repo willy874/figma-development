@@ -161,7 +161,7 @@ One row per paint role. Bind the Figma fill / stroke / text-fill to the variable
 | Helper text — Disabled                     | **`alias/colors/text-disabled`**                                          | Helper text retints to disabled tone alongside label / value.                                                                  |
 | Helper text — Error                        | **`seed/danger/main`**                                                    |                                                                                                                                |
 
-> The `component/input/*` tokens are component-scoped aliases that already carry alpha; never pair them with a paint `opacity < 1` — Figma flattens on instance creation. See [`figma-component-spec-guide`](../../figma-component-spec-guide/SKILL.md) §4 for the stacking rule.
+> The `component/input/*` tokens are component-scoped aliases that already carry alpha; never pair them with a paint `opacity < 1` — Figma flattens on instance creation. See [`figma-create-component/component-spec-guide.md`](../../figma-create-component/component-spec-guide.md) §4 for the stacking rule.
 
 ### 4.3 State rules
 

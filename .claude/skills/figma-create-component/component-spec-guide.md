@@ -1,16 +1,10 @@
----
-name: figma-component-spec-guide
-description: Authoring guide for Figma component specifications under `.claude/skills/figma-components/`. Load when writing a new spec, updating an existing spec because the source component / Figma component set / variable collection changed, or reviewing a PR that touches `src/stories/*.stories.tsx` or `.claude/skills/figma-components/`.
-parent_skill: figma-components
----
-
-# Figma Component Spec — Authoring Guide
+# figma-create-component · Component Spec Authoring Guide
 
 This submodule teaches operators how to author a Figma component specification under `.claude/skills/figma-components/`. A spec is the **contract** between a Storybook story (`src/stories/<Name>.stories.tsx`) and its Figma twin: it freezes the variant surface, token bindings, layout metrics, and sync obligations so neither side can drift silently.
 
-Load this skill whenever you are:
+Load this guide whenever you are:
 
-- Writing a **new** spec for a component being mirrored into Figma.
+- Writing a **new** spec for a component being mirrored into Figma (pipeline step 3).
 - **Updating** an existing spec because the source, the Figma component set, or a variable collection changed.
 - Reviewing a PR that touches `src/stories/` **or** `.claude/skills/figma-components/` — per the sync rule in every spec, both must move together.
 
@@ -283,7 +277,7 @@ When updating, re-run steps 1–4 before editing. For Skeleton B, re-probe the S
 ## 8. Cross-references
 
 - [`figma-design-guide`](../figma-design-guide/SKILL.md) — project-specific design system inventory (variable collections, text styles, elevation, published component IDs). Spec frontmatter IDs and every token path in §4 / §10 must reconcile against this skill's submodules.
+- Parent skill: [`figma-create-component`](./SKILL.md) — the end-to-end pipeline this guide plugs into (step 3 of the pipeline drafts the spec described here).
 - Sibling skills:
-  - `figma-component-sync` — bulk-extract every variant of a component set into per-variant JSON.
-  - `figma-init` — force-overwrite variable values from a JSON snapshot.
+  - `figma-init` — force-overwrite variable values from a JSON snapshot; also produces `figma.config.json` via `config-init.md`.
   - `figma:figma-use` — required before any `use_figma` write.

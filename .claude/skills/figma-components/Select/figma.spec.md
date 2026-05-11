@@ -180,7 +180,7 @@ One row per paint role. Bind the Figma fill / stroke / text-fill to the variable
 | Helper text — Error                        | **`seed/danger/main`**                                                    |                                                                                                                                |
 | Chip stack (`Multiple=True`)               | _(via `<Chip>` instance — `342:7102`, dropped at instance level)_         | When `Multiple=True`, the cell hides the `Value` text and leaves the Combobox row empty. Designers drop `<Chip size="small">` instances into the empty row at instance level; chip paint roles bind via the published Chip's own variant axis. The cell does not formally expose a Chips SLOT property today (track in §8). |
 
-> The `component/input/*` tokens are component-scoped aliases that already carry alpha; never pair them with a paint `opacity < 1` — Figma flattens on instance creation. See [`figma-component-spec-guide`](../../figma-component-spec-guide/SKILL.md) §4 for the stacking rule.
+> The `component/input/*` tokens are component-scoped aliases that already carry alpha; never pair them with a paint `opacity < 1` — Figma flattens on instance creation. See [`figma-create-component/component-spec-guide.md`](../../figma-create-component/component-spec-guide.md) §4 for the stacking rule.
 
 ### 4.3 State rules
 

@@ -58,7 +58,7 @@ Execute the steps in order. Do not skip ahead — each step's output is an input
 
 **Goal:** capture the runtime computed-style numbers a Figma authoring pass must reproduce.
 
-- Load `figma-component-spec-guide` and follow its rules for the `storybook.render.md` companion document.
+- Read [`./component-spec-guide.md`](./component-spec-guide.md) and follow its rules for the `storybook.render.md` companion document.
 - Use Chrome DevTools MCP (`mcp__chrome-devtools__navigate_page`, `take_snapshot`, `evaluate_script`) against the Storybook story file from step 1.
 - Probe the full Color × Variant × State surface plus icon variants and any size axis. Sample one representative cell per axis-combination, not every cell — call out where the matrix is regular vs. where it diverges.
 - Record: box metrics (min-width, height, padding, border, radius), paints (background, color, border-color), effects (shadow), typography (`font-family`, weight, size, line-height, letter-spacing, `text-transform`), state-specific deltas, and any custom CSS properties the library exposes.
@@ -77,7 +77,7 @@ The Constants block is the **single source of truth** for every distinct numeric
 
 **Goal:** the contract between source and Figma — variant surface, property API, layout, sync rules.
 
-- Load `figma-component-spec-guide` and pick a skeleton:
+- Read [`./component-spec-guide.md`](./component-spec-guide.md) and pick a skeleton:
   - **Skeleton A (long-form)** — default for slot-based, wrapper, and most components.
   - **Skeleton B (Render Binding Matrix)** — only when the Color × Variant × State surface is dense enough to warrant cell-by-cell paint bindings, **and** step 2 produced runtime measurements that can back the Constants table.
 - If an *editable Figma spec* was supplied, **do not draft from scratch** — open the existing file and update sections in place. Keep its skeleton choice, frontmatter ids, variant axes, property names, and defaults unless step 1/2 produced explicit evidence they are wrong; record any divergence in §8 with the trigger that justified it. Treat the existing spec's token bindings as the starting point for step 4.
@@ -196,7 +196,7 @@ The review must cover:
 
 - **Spec ↔ render alignment** — extract every numeric / hex value cited in `figma.spec.md` (e.g. via `grep -E '\b\d+(\.\d+)?(px|%|em|rem)?\b'`). For each: confirm it appears in §6.1 Constants under a name, and that the same name + value exists in `storybook.render.md`'s Canonical Constants block. A re-typed value that happens to match is **still a fail** — the rule is "cite by name", not "re-type but get it right." Only exception: §7 reference-resolution callouts that quote the light-theme hex inline.
 - **Spec ↔ Figma alignment** — the published component set's variant axes, property names, defaults, and total variant count match `figma.spec.md` §3. Spot-check at least one cell per state for paint / stroke / effect bindings.
-- **Spec ↔ `figma-component-spec-guide`** — frontmatter fields present, chosen skeleton followed, §8 sync rule is component-specific, variant-count math is shown, no raw hex outside reference resolutions, no Figma property id suffixes (`#1234:5`) outside frontmatter.
+- **Spec ↔ [`./component-spec-guide.md`](./component-spec-guide.md)** — frontmatter fields present, chosen skeleton followed, §8 sync rule is component-specific, variant-count math is shown, no raw hex outside reference resolutions, no Figma property id suffixes (`#1234:5`) outside frontmatter.
 - **Figma ↔ `figma-operator-guide`** — every paint bound to a variable, text styles applied by id, Auto Layout used (no absolute positioning except where layout.md allows), no detached instances, hygienic layer names, accessibility minimums met.
 - **Local-only bindings** — sample 4–6 cells across the matrix and confirm every `boundVariables` id starts with `VariableID:<localId>` (no `VariableID:<sharedKey>/...` consumed-library references). Any component-scoped tokens that aren't in `figma-design-guide/design-token.md` must be documented in `.claude/skills/figma-components/<Name>/design-token.md` with a resolution chain.
 - **`design-token.md` ↔ local variables** — for every entry in the component's `design-token.md`, confirm a local variable with the same name exists in the file (matching `resolvedType` and resolved value). Missing entries mean step 5's pre-flight was skipped — flag as fail.
@@ -255,7 +255,7 @@ After a runtime-truth pass, add a sentence to `figma.spec.md` §1 noting the dat
 
 ## When NOT to use this skill
 
-- The component already has a spec under `.claude/skills/figma-components/<Name>/` — load `figma-component-spec-guide` directly and update what changed. This skill is for **new** components.
+- The component already has a spec under `.claude/skills/figma-components/<Name>/` — read [`./component-spec-guide.md`](./component-spec-guide.md) directly and update what changed. This skill is for **new** components.
 - The user only wants to update the Storybook story without touching Figma — use the story file directly.
 - The user only wants to push an arbitrary screen / page composition into Figma — use `figma:figma-generate-design` instead.
 - The component is an icon glyph — track it via `figma-design-guide` instead.
@@ -264,8 +264,7 @@ After a runtime-truth pass, add a sentence to `figma.spec.md` §1 noting the dat
 
 ## Cross-references
 
-- `figma-component-spec-guide` — authoring rules for `figma.spec.md`, `storybook.render.md`, and `design-token.md`. Loaded in steps 2 and 3.
+- [`./component-spec-guide.md`](./component-spec-guide.md) — submodule covering authoring rules for `figma.spec.md`, `storybook.render.md`, and `design-token.md`. Loaded in steps 2 and 3.
 - `figma-design-guide` — published variable collection, text styles, elevation, components inventory. Loaded in step 4 (and consulted throughout).
 - `figma-operator-guide` — situational submodules for any `use_figma` write. Loaded in step 5.
 - `figma:figma-use` — mandatory before any `use_figma` call.
-- `figma-component-sync` — sibling skill for snapshotting an authored component back out to per-variant JSON (useful as a post-step verification artefact, not part of this pipeline).

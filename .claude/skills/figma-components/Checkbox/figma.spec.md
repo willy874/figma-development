@@ -146,7 +146,7 @@ One row per paint role. Bind the Figma fill / stroke to the variable name in **b
 | Halo overlay — Focused, Success         | **`seed/success/focusVisible`** _(`#2E7D32 0.30α`)_ |                                                                                                                              |
 | Halo overlay — Disabled                 | _(transparent)_                                    | Disabled does not paint the halo.                                                                                              |
 
-> **Pre-alpha'd seed tokens — do not stack `paint.opacity < 1`.** Every `seed/*/hover-bg`, `seed/*/outline-hover`, and `seed/*/focusVisible` already carries its alpha; pairing them with a Figma `paint.opacity < 1` flattens to `opacity = 1` on instance creation (see `figma-component-spec-guide` §4.4) and silently destroys the alpha. Bind directly; never re-alpha.
+> **Pre-alpha'd seed tokens — do not stack `paint.opacity < 1`.** Every `seed/*/hover-bg`, `seed/*/outline-hover`, and `seed/*/focusVisible` already carries its alpha; pairing them with a Figma `paint.opacity < 1` flattens to `opacity = 1` on instance creation (see `component-spec-guide` §4.4) and silently destroys the alpha. Bind directly; never re-alpha.
 >
 > **Hovered / Pressed (4 %) ≠ Focused (30 %) in Figma.** The Figma cells deliberately split the two halos at different alphas so a designer hovering a focused checkbox can read which state is active. MUI runtime paints both at the same 4 % overlay; see §7 issue 3.
 

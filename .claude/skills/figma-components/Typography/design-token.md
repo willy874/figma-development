@@ -79,7 +79,7 @@ Figma text styles and Figma variables are different objects: `textStyleId` is se
 
 ## Why we don't override `textCase` at the node level
 
-Figma's text-style binding model: the moment a node-level `textCase` (or `setRangeTextCase`) override is applied, Figma sets the node's `textStyleId` to the empty string. `figma-component-spec-guide` §4 reinforces the rule: "apply text styles, don't set fontName / fontSize / lineHeight manually" — and `textCase` belongs to the same bundle. The two ways to keep the binding intact are (a) mint a style with the desired case baked in, or (b) accept the detachment. We pick (a). The cost is one extra style per UPPER-cased Variant per Bold value (four total: button, button-bold, overline, overline-bold); the win is a clean `boundVariables` / `textStyleId` audit trail across all 26 cells.
+Figma's text-style binding model: the moment a node-level `textCase` (or `setRangeTextCase`) override is applied, Figma sets the node's `textStyleId` to the empty string. `component-spec-guide` §4 reinforces the rule: "apply text styles, don't set fontName / fontSize / lineHeight manually" — and `textCase` belongs to the same bundle. The two ways to keep the binding intact are (a) mint a style with the desired case baked in, or (b) accept the detachment. We pick (a). The cost is one extra style per UPPER-cased Variant per Bold value (four total: button, button-bold, overline, overline-bold); the win is a clean `boundVariables` / `textStyleId` audit trail across all 26 cells.
 
 ## Why the bold companions live under `material-design/typography/*`
 

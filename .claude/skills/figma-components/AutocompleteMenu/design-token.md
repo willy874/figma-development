@@ -10,7 +10,7 @@ Tokens scoped to `<AutocompleteMenu>` and its companion `<AutocompleteOption>`. 
 
 ## Why these are component-scoped
 
-These values are **MUI-Autocomplete-specific pre-alpha'd primary tints** that don't reuse a shared semantic token. MUI sources them at runtime from a stack of opacities (`palette.primary.main × palette.action.selectedOpacity`, optionally + `palette.action.focusOpacity` when both classes apply), but Figma cannot stack `paint.opacity < 1` on a bound variable without flattening on instance creation (see `figma-component-spec-guide` §4.4). The only honest way to render the `0.08α` and `0.12α` tints is a pre-alpha'd local variable per stack.
+These values are **MUI-Autocomplete-specific pre-alpha'd primary tints** that don't reuse a shared semantic token. MUI sources them at runtime from a stack of opacities (`palette.primary.main × palette.action.selectedOpacity`, optionally + `palette.action.focusOpacity` when both classes apply), but Figma cannot stack `paint.opacity < 1` on a bound variable without flattening on instance creation (see `component-spec-guide` §4.4). The only honest way to render the `0.08α` and `0.12α` tints is a pre-alpha'd local variable per stack.
 
 The closest shared token is `seed/primary/hover-bg` (`#1976D20A`, `0.04α`) — exactly half of the option-selected alpha and a third of the option-selected-focused alpha. Stacking two / three copies of `hover-bg` in Figma would composite to `0.08` / `0.12`, but the visual result depends on Figma's blend math (it composites in sRGB, not linear), so the rendered hex would diverge from MUI's flat-alpha runtime. Pre-alpha'd locals avoid the discrepancy.
 
@@ -34,7 +34,7 @@ Both tokens are derived from `seed/primary/main` (`#1976D2` = `palette.primary.m
 
 ## Notes
 
-- **Pre-alpha'd, never stack opacity.** Both tokens already resolve to alpha-baked hex. Pairing them with a Figma `paint.opacity < 1` flattens to `opacity = 1` on instance creation (see `figma-component-spec-guide` §4.4) and silently destroys the alpha. Bind directly; never re-alpha.
+- **Pre-alpha'd, never stack opacity.** Both tokens already resolve to alpha-baked hex. Pairing them with a Figma `paint.opacity < 1` flattens to `opacity = 1` on instance creation (see `component-spec-guide` §4.4) and silently destroys the alpha. Bind directly; never re-alpha.
 - **No `option-hover-bg` token.** Hovered (un-selected) options bind to the shared `alias/colors/bg-outline-hover` (`#0000000A`, `0.04α` = `palette.action.hover`). MUI does not retint hover with the primary color — it uses the same neutral hover paint as buttons / list items. No need for a local token.
 - **No `option-disabled-bg` token.** Disabled options keep the resting transparent background and only retint the text via `alias/colors/text-disabled`. No bg-fill needed.
 - **Theme retunes change these tokens.** A custom `palette.primary.main` (red branding, dark mode) or custom `action.selectedOpacity` / `action.focusOpacity` requires re-resolving these tokens. The two values are independent; a project bumping `selectedOpacity` to `0.12` would set `option-selected-bg` to `0.12α` and `option-selected-focused-bg` to `0.16α`, etc.
