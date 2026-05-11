@@ -23,7 +23,7 @@ This skill is **config-driven**. There is no `/tmp/params.json`. Before anything
 
 1. **Check `figma.config.json` at the repo root.** Read `.library.fileKey` — this is the file to pull from.
 2. **If `figma.config.json` is missing** (fresh clone, deleted, etc.) **or `.projects` is empty / absent**: run the `config-init.md` pipeline first to bootstrap the identifier index and collect at least one referenced project, then retry step 1.
-3. **If `.library.fileKey` is empty** after init: the source `.md` is incomplete. Fix `.claude/skills/figma-create-component/library-components.md` (the Source link in `library-tokens.md` should expose the file key), rerun `config-init.md`, then retry.
+3. **If `.library.fileKey` is empty** after init: the URL paste step of `config-init.md` did not complete (the user cancelled, or pasted a URL without a `node-id`). Rerun `config-init.md` and paste a Figma page URL that has the page open in the browser — i.e. the URL must contain a `node-id` query parameter.
 
 Do not hand-edit `figma.config.json`. The identifier sections and projects come from `config-init.md`; the `.library.variables` section comes from this main flow.
 

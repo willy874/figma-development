@@ -48,3 +48,4 @@ coverage/
 # MCP server config — contains tokens / secrets, never commit
 .mcp.json
 figma.config.json
+.projects/
