@@ -1,98 +1,96 @@
 ---
 name: figma-init
-description: Force-overwrite every variable value in a target Figma file from a JSON snapshot. Reads parameters from /tmp/params.json. Procedural — the upload pipeline does not let the model inspect, interpret, or merge values; every key is overwritten as-is. Use when the user invokes /figma-init, or asks to upload / sync a variables.json snapshot into a Figma file with parameters already prepared in /tmp/params.json.
+description: Pull the full variable values (valuesByMode) of every local Figma variable in the project's design file into `figma.config.json` under the `.variables` block. Reads the target file key from `figma.config.json` itself — no `/tmp/params.json` needed. If `figma.config.json` is missing, runs the `config-init.md` bootstrap first. Use when the user invokes `/figma-init`, or asks to refresh / snapshot variable values into the local config.
 ---
 
 # figma-init
 
-Bulk-overwrite Figma variables from a JSON snapshot. The model orchestrates only — parameter validation, packing, chunk-splitting, and JS rendering all happen inside fixed scripts. The model never reads or substitutes variable data.
+Pull-into-config workflow for the project's Figma variables.
+
+Resolves the target file key from `figma.config.json`, dumps every local variable collection from that file via chunked `use_figma`, and merges the result into `figma.config.json` under the `.variables` block. This is the **single source of truth** for variable values in the repo — `design-token.md` and skill prose reference token names but **must not** restate hex / px values; readers resolve them via this config.
+
+The model orchestrates the steps and reports a summary. It never inspects, parses, or interprets variable values mid-flight — `dump-variables.js` and `assemble-variables.sh` are the only places data is touched.
 
 ## Files in this skill
 
-- `pack.sh` — reads `/tmp/params.json` + the variables JSON, writes one or more pack files per collection, prints a manifest
-- `render.sh` — given `<collection-name> <pack-path>`, prints the ready-to-execute use_figma JavaScript on stdout. The JS template is embedded in this file as a heredoc; edit the JS body there when changing upload semantics.
+- `dump-variables.js` — Plugin-API payload (parameterised via `TYPE` / `OFFSET` / `LIMIT` constants the caller prepends) that returns one slice of variable collections or one slice of variable details as compact JSON. Designed to fit under the 20 KB `use_figma` tool-result limit.
+- `assemble-variables.sh` — Reads every chunk in `/tmp/figma-init-variables/`, validates offset coverage, and splices the merged `collections[]` into `figma.config.json` under `.variables`.
+- `config-init.md` — Identifier-index bootstrap that produces the rest of `figma.config.json` (file/page metadata, `index.componentSetsAndPrimitives`, `index.icons`, `index.componentSpecs`). Run automatically when this skill notices `figma.config.json` is missing.
 
-## Required input — `/tmp/params.json`
+## Resolving missing parameters
 
-Must exist before invocation:
+This skill is **config-driven**. There is no `/tmp/params.json`. Before anything else:
 
-```json
-{
-  "fileKey": "stse2CgIzOugynEdDSexS4",
-  "variablesPath": "src/figma/variables.json"
-}
-```
+1. **Check `figma.config.json` at the repo root.** Read `figma.defaultFileKey` — this is the file to pull from.
+2. **If `figma.config.json` is missing** (fresh clone, deleted, etc.): run the `config-init.md` pipeline first to bootstrap the identifier index, then retry step 1.
+3. **If `figma.defaultFileKey` is empty** after init: the source `.md` is incomplete. Fix `.claude/skills/figma-design-guide/components.md` (the Source link in `design-token.md` should expose the file key), rerun `config-init.md`, then retry.
 
-- `fileKey` — target Figma file key (from `https://www.figma.com/design/<fileKey>/...`)
-- `variablesPath` — path to the JSON snapshot (absolute or relative to repo root)
-
-`pack.sh` validates this file. If it is missing, malformed, or any field is empty, `pack.sh` prints `ERROR: <reason>` to stdout and exits non-zero. Surface that error to the user verbatim and stop.
+Do not hand-edit `figma.config.json`. The identifier sections come from `config-init.md`; the `.variables` section comes from this main flow.
 
 ## Procedure
 
-Execute steps verbatim. Do not open or read variable values from `variables.json`, any pack file, or any rendered JS. Your role: run the scripts, feed each manifest line through `use_figma`, aggregate results.
+Execute steps verbatim. Run all `use_figma` calls sequentially — never parallelise. Pass `skillNames: "figma-init,figma-use"` and `fileKey` = the resolved `defaultFileKey` on every call.
 
-### Step 1 — pack
-
-Run the packer (requires `jq` and `bash`):
+### Step 0 — Ensure config exists
 
 ```bash
-.claude/skills/figma-init/pack.sh
+test -f figma.config.json || echo "config-missing"
 ```
 
-`pack.sh` reads `/tmp/params.json`, packs each collection, and auto-splits any pack that would exceed the `use_figma` 50000-character code limit. Each line of stdout is a manifest entry (TAB-separated):
+If "config-missing": load `config-init.md` and run that pipeline to completion before continuing. Re-check afterwards; if the bootstrap still cannot produce a `defaultFileKey`, surface the error verbatim and stop.
 
-```
-<collection-name>\t<pack-path>\t<entry-count>
-```
+### Step 1 — Clear chunk staging
 
-A single collection may appear on multiple manifest lines if it was split (`<safe-name>-part0.json`, `<safe-name>-part1.json`, …).
-
-If any stdout line begins with `ERROR:` or the script exits non-zero, abort and surface the message.
-
-### Step 2 — render and upload each manifest entry
-
-For every manifest line, in order:
-
-1. Run the renderer:
-   ```bash
-   .claude/skills/figma-init/render.sh "<collection-name>" "<pack-path>"
-   ```
-   Capture stdout. This is the ready-to-execute JavaScript for that pack — the embedded template with the pack JSON content and the JSON-encoded collection name spliced in.
-2. Call `use_figma` with:
-   - `fileKey` from `/tmp/params.json`
-   - `skillNames: "figma-init,figma-use"`
-   - `code` = the captured stdout (verbatim, do not modify)
-
-Run calls **sequentially**. Never parallelise.
-
-If `render.sh` exits non-zero, abort and surface its stderr.
-
-The `use_figma` script returns an object of shape:
-
-```
-{ collection: string, attempted: number, writtenCount: number, errorCount: number, errors: object[], mutatedNodeIds: string[] }
+```bash
+rm -rf /tmp/figma-init-variables && mkdir -p /tmp/figma-init-variables
 ```
 
-### Step 3 — report
+### Step 2 — Get meta
 
-Aggregate `attempted`, `writtenCount`, `errorCount` across every `use_figma` call. Multiple sub-pack calls for the same collection collapse into one row by summing the three counters. Print one row per collection plus a total, e.g.:
+Read `dump-variables.js`. Call `use_figma` with `code` =
+
+```js
+const TYPE = "meta"; const OFFSET = 0; const LIMIT = 0;
+<body of dump-variables.js>
+```
+
+Use the Write tool to save the raw response string to `/tmp/figma-init-variables/meta.json` **verbatim**. The payload lists every collection with its `variableIds` array — sum `totalVariables` across collections to get the global variable count.
+
+### Step 3 — Pull each chunk
+
+Use `LIMIT = 40` for the first slice and follow-up slices covering the remainder. For each `(OFFSET, LIMIT)` pair call `use_figma` with `code` =
+
+```js
+const TYPE = "vars"; const OFFSET = <n>; const LIMIT = 40;
+<body of dump-variables.js>
+```
+
+Save each response **verbatim** to `/tmp/figma-init-variables/vars-<offset>.json` (e.g. `vars-0.json`, `vars-40.json`). Continue until cumulative chunk lengths cover the global total.
+
+### Step 4 — Assemble into config
+
+```bash
+.claude/skills/figma-init/assemble-variables.sh
+```
+
+The script HTML-decodes every chunk, validates that offsets cover `[0, total)` exactly, maps each variable back to its parent collection by id, and writes the merged result into `figma.config.json`'s top-level `.variables` block. Every other top-level key (`figma`, `sources`, `index`, `version`) is preserved.
+
+### Step 5 — Report
+
+`assemble-variables.sh` prints one summary line, e.g.:
 
 ```
-<collection-a>: <attempted> attempted, <written> written, <errors> errors
-<collection-b>: <attempted> attempted, <written> written, <errors> errors
-total:          <attempted> attempted, <written> written, <errors> errors
+figma.config.json .variables: 1 collection, 78 variables
 ```
 
-If any collection has errors, print up to the first 10 error entries from that collection.
+Surface that line in the run report.
 
 ## Constraints
 
-- **Force-overwrite only.** Do not diff, merge, skip "matching" values, or ask whether to proceed. Every key in the JSON gets written.
-- **No model interpretation of values.** `pack.sh` and `render.sh` are the only places data is read. Do not parse, reformat, quote, or substitute values from `variables.json`, any pack file, or any rendered JS in conversation.
-- **Variables in JSON missing from Figma** are reported as errors. Do not create them.
-- **Variables in Figma absent from JSON** are left untouched.
-- **Only `valuesByMode` is written.** `scopes`, `codeSyntax`, `description`, and `name` are ignored.
-- **Multi-mode is supported**: every mode present in the JSON for a variable is written to the matching mode (by name) in Figma.
+- **Pull-only, file-scoped.** This skill reads from one Figma file (`defaultFileKey`) and writes to one local file (`figma.config.json`). It does **not** push back to Figma, does **not** mutate any other repo file, and does **not** create new variables on the Figma side.
+- **No model interpretation of values.** `dump-variables.js` and `assemble-variables.sh` are the only places data is read. The model never parses, reformats, quotes, or substitutes values mid-flight.
+- **Force-overwrite.** The `.variables` block is replaced wholesale every run. Local edits to `.variables` are lost — they belong in Figma, not in the config.
+- **All other top-level keys are preserved.** `assemble-variables.sh` round-trips `figma`, `sources`, `index`, and any future top-level field.
 - **Sequential `use_figma` calls only.** Never parallelise.
-- **The upload template lives inside `render.sh`** (in a quoted heredoc). All edits to the use_figma JavaScript happen there; placeholder lines `__PACK_PLACEHOLDER__` and `__COLL_PLACEHOLDER__` must remain on their own line.
+- **Verbatim chunk writes.** Each `use_figma` response must be written exactly as returned — do not parse, re-stringify, re-indent, or strip anything before saving. The assembler expects the literal bytes returned by the tool (it handles HTML-entity decoding internally).
+- **Stop on first chunk error.** Do not run the assembler against an incomplete chunk set — it will refuse with `offset gap` / `count mismatch`, but failing fast is better than relying on that.

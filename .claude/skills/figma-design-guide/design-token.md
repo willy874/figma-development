@@ -2,11 +2,6 @@
 
 Source: [Figma file `KQjP6W9Uw1PN0iipwQHyYn`](https://www.figma.com/design/KQjP6W9Uw1PN0iipwQHyYn/MUI-Library) (MUI-Library)
 
-Local snapshots in this repo:
-
-- `src/figma/variables.json` — variable collection snapshot
-- `src/figma/styles.json` — text + effect style snapshot
-
 One variable collection (`merak`, 78 vars) + 28 text styles + 24 effect styles. **When building in Figma, bind to these tokens — never hard-code hex/px values.**
 
 ## Collection structure
@@ -218,48 +213,102 @@ Per-color selected-state backgrounds (paired with `seed/<role>/main`):
 
 ## 5. Typography — Text Styles (28)
 
-Two namespaces: `material-design/typography/*` (13 base sizes) and `component/typography/*` (`button`, `overline`). Every style has a matching `-bold` variant — 14 default + 14 bold = **28 styles**.
+Two namespaces, **15 base + 13 bold = 28** styles:
 
-| Style                               | Font                 | Size | Line height |
-| ----------------------------------- | -------------------- | ---- | ----------- |
-| `material-design/typography/h1`     | Noto Sans TC Light   | 96   | 112         |
-| `material-design/typography/h2`     | Inter Light          | 60   | 72          |
-| `material-design/typography/h3`     | Noto Sans TC Regular | 48   | 60          |
-| `material-design/typography/h4`     | Noto Sans TC Regular | 34   | 42          |
-| `material-design/typography/h5`     | Inter Regular        | 24   | 32          |
-| `material-design/typography/h6`     | Noto Sans TC Medium  | 20   | 32          |
-| `material-design/typography/title1` | Noto Sans TC Medium  | 18   | 26          |
-| `material-design/typography/subtitle1` | Noto Sans TC Regular | 16 | 28          |
-| `material-design/typography/subtitle2` | Noto Sans TC Regular | 14 | 20          |
-| `material-design/typography/body1`  | Noto Sans TC Regular | 16   | 24          |
-| `material-design/typography/body2`  | Noto Sans TC Regular | 14   | 20          |
-| `material-design/typography/caption`| Noto Sans TC Regular | 12   | 20          |
-| `material-design/typography/overline` | Noto Sans TC Regular | 12 | 32          |
-| `component/typography/button`       | Noto Sans TC Medium  | 14   | 24          |
-| `component/typography/overline`     | Noto Sans TC Regular | 12   | 32          |
+- `material-design/typography/*` — 13 base (h1–h6, title1, subtitle1–2, body1–2, caption, overline) + 11 `-bold` companions = **24**
+- `component/typography/*` — 2 base (`button`, `overline`, both `textCase: UPPER`) + 2 `-bold` companions = **4**
 
-> Each row above has a `*-bold` sibling that swaps the font style to **Bold** (Noto Sans TC Bold or Inter Bold). Same size/line height, just the weight changes.
+### Base styles
 
-All styles share: `letterSpacing: 0%`, `paragraphSpacing: 0`, `textCase: ORIGINAL`, `textDecoration: NONE`.
+| Style                                  | Font                 | Size | LH  | Case     | Has `-bold`? |
+| -------------------------------------- | -------------------- | ---- | --- | -------- | ------------ |
+| `material-design/typography/h1`        | Noto Sans TC Light   | 96   | 112 | ORIGINAL | ✓            |
+| `material-design/typography/h2`        | Inter Light          | 60   | 72  | ORIGINAL | ✓            |
+| `material-design/typography/h3`        | Noto Sans TC Regular | 48   | 60  | ORIGINAL | ✓            |
+| `material-design/typography/h4`        | Noto Sans TC Regular | 34   | 42  | ORIGINAL | ✓            |
+| `material-design/typography/h5`        | Inter Regular        | 24   | 32  | ORIGINAL | ✓            |
+| `material-design/typography/h6`        | Noto Sans TC Medium  | 20   | 32  | ORIGINAL | ✓            |
+| `material-design/typography/title1`    | Noto Sans TC Medium  | 18   | 26  | ORIGINAL | ✗            |
+| `material-design/typography/subtitle1` | Noto Sans TC Regular | 16   | 28  | ORIGINAL | ✓            |
+| `material-design/typography/subtitle2` | Noto Sans TC Regular | 14   | 20  | ORIGINAL | ✓            |
+| `material-design/typography/body1`     | Noto Sans TC Regular | 16   | 24  | ORIGINAL | ✓            |
+| `material-design/typography/body2`     | Noto Sans TC Regular | 14   | 20  | ORIGINAL | ✓            |
+| `material-design/typography/caption`   | Noto Sans TC Regular | 12   | 20  | ORIGINAL | ✓            |
+| `material-design/typography/overline`  | Noto Sans TC Regular | 12   | 32  | ORIGINAL | ✗ (see below) |
+| `component/typography/button`          | Noto Sans TC Medium  | 14   | 24  | **UPPER**| ✓            |
+| `component/typography/overline`        | Noto Sans TC Regular | 12   | 32  | **UPPER**| ✓            |
 
-Primary font: **Noto Sans TC** (Traditional Chinese). `Inter` is used for `h2` and `h5` only — intentional for numeric / Latin-heavy headings.
+### Bold companions (`*-bold`)
+
+Each `-bold` style mirrors its sibling exactly — same size, line height, letterSpacing, textCase — and only swaps the font style to **Bold** (`Noto Sans TC Bold`, or `Inter Bold` for h2/h5).
+
+Bold variants are **local-only**: the upstream design-system file does not yet ship bold typography. They exist so the Figma `<Typography>` component set can resolve `Bold=On`.
+
+The 13 bold styles:
+
+```
+material-design/typography/{h1,h2,h3,h4,h5,h6,subtitle1,subtitle2,body1,body2,caption}-bold
+component/typography/{button,overline}-bold
+```
+
+### Intentional gaps
+
+- **No `material-design/typography/button`.** The design-system convention zeroes `textCase` on every `material-design/typography/*` style, so MUI's uppercase Button label cannot live there. `component/typography/button` (UPPER) fills the gap.
+- **No `material-design/typography/overline-bold`.** Same reasoning — `component/typography/overline` already bakes `textCase: UPPER` into the cell so it keeps its `textStyleId`. The bold companion stays in the component namespace as `component/typography/overline-bold`.
+- **No `material-design/typography/title1-bold`.** title1 simply has no bold variant; `<Typography Variant=title1 Bold=On>` is unsupported.
+
+### Shared properties (all 28)
+
+- `letterSpacing`: `0%`
+- `paragraphIndent`: `0`
+- `paragraphSpacing`: `0`
+- `textDecoration`: `NONE`
+- `textCase`: `ORIGINAL` for all except the **four** `component/typography/{button,button-bold,overline,overline-bold}` styles, which are `UPPER`.
+
+Primary font: **Noto Sans TC** (Traditional Chinese). `Inter` is used for `h2` / `h5` (and their bold companions) only — intentional for numeric / Latin-heavy headings. Required font load list before writing text:
+
+```
+Noto Sans TC — Light, Regular, Medium, Bold
+Inter        — Light, Regular, Bold
+```
 
 ---
 
 ## 6. Elevation — Effect Styles (24)
 
-Namespace: `material-design/shadows/shadows-{1..24}`.
+Namespace: `material-design/shadows/shadows-{1..24}`. Standard MD elevation ramp.
 
-Standard MD elevation ramp. Each shadow is composed of **three stacked `DROP_SHADOW` layers** (umbra / penumbra / ambient) with black at opacities:
+Each style is composed of **three stacked `DROP_SHADOW` layers** (umbra / penumbra / ambient), all black, all `blendMode: NORMAL`, all `showShadowBehindNode: false`, all `offset.x: 0`:
 
-- Layer 1 (key light):    `rgba(0,0,0, 0.02)` — tight, offset-y positive, negative spread
-- Layer 2 (ambient mid):  `rgba(0,0,0, 0.14)` — wider, main visual shadow
-- Layer 3 (ambient far):  `rgba(0,0,0, 0.12)` — soft, small offset
+| Layer | Role        | Alpha  | Notes                                             |
+| ----- | ----------- | ------ | ------------------------------------------------- |
+| 1     | key light   | `0.02` | tight radius, positive `offset.y`, negative spread |
+| 2     | ambient mid | `0.14` | the dominant visual shadow                        |
+| 3     | ambient far | `0.12` | soft, small `offset.y`                            |
 
-Radius / offset / spread scale linearly with the elevation number (1 → 24). Use:
+> **Exception:** `shadows-11` layer 1 uses **`0.04`** alpha (everything else uses `0.02`). This mirrors the upstream MD ramp — do not "correct" without coordination.
+
+`shadows-24` carries the description `MUI Paper elevation={24}: composite of 3 drop shadows (umbra/penumbra/ambient).` — confirms the three-layer structure is intentional across the ramp.
+
+### Ramp values
+
+Radius / offset.y / spread per layer scale roughly linearly with the elevation number. Reference points:
+
+| Style        | L1 (r, y, spread) | L2 (r, y, spread) | L3 (r, y, spread) |
+| ------------ | ----------------- | ----------------- | ----------------- |
+| `shadows-1`  | 1, 2, -1          | 1, 1, 0           | 3, 1, 0           |
+| `shadows-2`  | 1, 3, -2          | 2, 2, 0           | 5, 1, 0           |
+| `shadows-4`  | 4, 2, -1          | 5, 4, 0           | 10, 1, 0          |
+| `shadows-6`  | 5, 3, -2          | 10, 6, 1          | 14, 1, 1          |
+| `shadows-8`  | 5, 5, -3          | 10, 8, 1          | 14, 3, 2          |
+| `shadows-12` | 8, 7, -4          | 17, 12, 2         | 22, 5, 4          |
+| `shadows-16` | 10, 8, -5         | 24, 16, 2         | 30, 6, 5          |
+| `shadows-24` | 15, 11, -7        | 38, 24, 3         | 46, 8, 8          |
+
+### Usage cheat sheet
 
 - `shadows-1` / `shadows-2` — cards, inputs at rest
-- `shadows-3` to `shadows-6` — raised buttons, app bars
+- `shadows-3` – `shadows-6` — raised buttons, app bars
 - `shadows-8` — menus, popovers
 - `shadows-12` — nav drawer
 - `shadows-16` — modal drawer

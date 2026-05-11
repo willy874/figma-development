@@ -1,0 +1,68 @@
+{
+  "version": 1,
+  "figma": {
+    "projectId": "<FIGMA_PROJECT_OR_FILE_KEY>",
+    "defaultFileKey": "<FIGMA_FILE_KEY>",
+    "defaultFileUrl": "https://www.figma.com/design/<FIGMA_FILE_KEY>/<FILE_NAME>",
+    "defaultFileName": "<FILE_NAME>",
+    "defaultPageId": "<PAGE_NODE_ID>",
+    "defaultPageName": "<PAGE_NAME>"
+  },
+  "sources": {
+    "designGuideComponents": ".claude/skills/figma-design-guide/components.md",
+    "designGuideTokens": ".claude/skills/figma-design-guide/design-token.md",
+    "componentSpecsGlob": ".claude/skills/figma-components/*/figma.spec.md"
+  },
+  "index": {
+    "componentSetsAndPrimitives": {
+      "Button": {
+        "nodeId": "<NODE_ID>",
+        "variantCount": 90,
+        "notes": "SET (<COUNT>)"
+      }
+    },
+    "icons": {
+      "Search": {
+        "nodeId": "<NODE_ID>",
+        "glyphSource": "<ICON_GLYPH_SOURCE>"
+      }
+    },
+    "componentSpecs": {
+      "Button": {
+        "figma_file_key": "<FIGMA_FILE_KEY>",
+        "figma_node_id": "<NODE_ID>",
+        "figma_component_set_id": "<COMPONENT_SET_NODE_ID>",
+        "specPath": ".claude/skills/figma-components/Button/figma.spec.md"
+      }
+    }
+  },
+  "variables": {
+    "extractedAt": "<YYYY-MM-DD>",
+    "collections": [
+      {
+        "id": "<VARIABLE_COLLECTION_ID>",
+        "name": "<COLLECTION_NAME>",
+        "key": "<COLLECTION_KEY>",
+        "modes": [{ "modeId": "<MODE_ID>", "name": "<MODE_NAME>" }],
+        "defaultModeId": "<MODE_ID>",
+        "remote": false,
+        "totalVariables": 0,
+        "variables": [
+          {
+            "id": "<VARIABLE_ID>",
+            "name": "<token/path/name>",
+            "key": "<VARIABLE_KEY>",
+            "resolvedType": "COLOR | FLOAT | STRING | BOOLEAN",
+            "valuesByMode": {
+              "<MODE_ID>": "<value — number / boolean / string / {r,g,b,a} / VARIABLE_ALIAS>"
+            },
+            "scopes": ["<SCOPE>"],
+            "codeSyntax": {},
+            "description": "",
+            "remote": false
+          }
+        ]
+      }
+    ]
+  }
+}
