@@ -1,6 +1,6 @@
 ---
 name: figma-component-icon-spec
-description: Figma component specification for `<Icon>` — design counterpart of the `MerakIcon` sizing wrapper consumed by `src/stories/Icon.stories.tsx`. Documents the single-axis Size matrix (xs/sm/md/lg/xl/xxl), the `Glyph Source` INSTANCE_SWAP slot whose default is the file-local `ArrowSolid` component (`3:2740`), the source-to-Figma mapping, and the inheritance contract that lets the host component (`<IconButton>`, `<Button>`, `<Chip>`, …) drive the glyph's paint via `currentColor`. Companion runtime measurements live in `storybook.render.md`. The shared `<Icon>` set is the wrapper consumers reach for; the 62 named glyph components in the same file (`3:2740` ArrowSolid through `3:2908` Add — see `figma-design-guide/components.md` §Icon library) are the swap targets.
+description: Figma component specification for `<Icon>` — design counterpart of the `MerakIcon` sizing wrapper consumed by `src/stories/Icon.stories.tsx`. Documents the single-axis Size matrix (xs/sm/md/lg/xl/xxl), the `Glyph Source` INSTANCE_SWAP slot whose default is the file-local `ArrowSolid` component (`3:2740`), the source-to-Figma mapping, and the inheritance contract that lets the host component (`<IconButton>`, `<Button>`, `<Chip>`, …) drive the glyph's paint via `currentColor`. Companion runtime measurements live in `storybook.render.md`. The shared `<Icon>` set is the wrapper consumers reach for; the 62 named glyph components in the same file (`3:2740` ArrowSolid through `3:2908` Add — see `figma-create-component/library-components.md` §Icon library) are the swap targets.
 parent_skill: figma-components
 figma_file_key: KQjP6W9Uw1PN0iipwQHyYn
 figma_node_id: '3:2722'
@@ -28,7 +28,7 @@ The icon library backing the swap targets is sourced from Google **`material-des
 | Total variants      | **6** (Size only — xs / sm / md / lg / xl / xxl)                                     |
 | Re-probe stories    | `SizeMatrix` (Storybook id `components-icon--size-matrix`) — the canonical 6 × 8 grid for `storybook.render.md` §1 numbers. `ColorInheritance` (`components-icon--color-inheritance`) — the verification harness for `currentColor` propagation in §3 of `storybook.render.md`. |
 | Glyph slot default  | `<ArrowSolid>` (`3:2740`) — file-local component inside the same page's Icon library |
-| Companion sets      | 62 named glyph components on the same page (`3:2740` ArrowSolid … `3:2908` Add — see `figma-design-guide/components.md` §Icon library) plus the visual catalogue Row at `3:2738`. These are the swap targets, not part of this set. |
+| Companion sets      | 62 named glyph components on the same page (`3:2740` ArrowSolid … `3:2908` Add — see `figma-create-component/library-components.md` §Icon library) plus the visual catalogue Row at `3:2738`. These are the swap targets, not part of this set. |
 | Local-only bindings | **Required.** The wrapper has no paints of its own; the only "binding" is the `Glyph Source` instance default (a file-local component id), so the local-only contract is satisfied trivially. No `VariableID:<sharedKey>/...` consumed-library references are permitted in any cell. |
 
 ## 2. Source-to-Figma Property Mapping
@@ -127,7 +127,7 @@ Cells are horizontally centered inside the parent frame (each cell's `x` recente
 
 ### 6.2 Surrounding documentation frame
 
-The 61 named glyph components live in the **same page** but a separate documentation frame: the visual catalogue **Row** at `3:2738`. The Row is **read-only** for `<Icon>` authoring — modifying the Row does not affect the `<Icon>` set's variants. When adding a new glyph to the library, publish a new top-level `COMPONENT` and append it to the Row (and to `figma-design-guide/components.md` §Icon library).
+The 61 named glyph components live in the **same page** but a separate documentation frame: the visual catalogue **Row** at `3:2738`. The Row is **read-only** for `<Icon>` authoring — modifying the Row does not affect the `<Icon>` set's variants. When adding a new glyph to the library, publish a new top-level `COMPONENT` and append it to the Row (and to `figma-create-component/library-components.md` §Icon library).
 
 ## 7. Usage Guidelines
 

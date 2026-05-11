@@ -6,7 +6,7 @@ parent_skill: figma-components
 
 # `<IconButton>` Component Tokens
 
-Tokens scoped to `<IconButton>`. Reach for these only inside the IconButton component set; for everything else (semantic colors, action overlays, MD elevations), bind to the shared `merak/*` and `material-design/*` tokens documented in [`design-token.md`](../../figma-design-guide/design-token.md).
+Tokens scoped to `<IconButton>`. Reach for these only inside the IconButton component set; for everything else (semantic colors, action overlays, MD elevations), bind to the shared `merak/*` and `material-design/*` tokens documented in [`design-token.md`](../../figma-create-component/library-tokens.md).
 
 ## Borrowed from `<Button>`
 

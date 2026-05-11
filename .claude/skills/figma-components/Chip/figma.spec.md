@@ -317,7 +317,7 @@ This document and the source must move together. A change in any of the followin
 5. The published Figma `<Chip>` component set (file `KQjP6W9Uw1PN0iipwQHyYn`, frame `301:6271`) — once published, set the `figma_component_set_id` frontmatter and reflect any axis additions / component-property additions in §3.
 6. The Merak variable collection (`material-design` + `merak` collections in this Figma file) — if a token is renamed, removed, or its `resolvedType` changes, update every reference in §2.1, §5, §6. **Token-value changes alone do not require a spec edit** — variables resolve by name.
 7. `material-design/components/chip` text style — if the design system retires it or changes its font / size / line-height, update §1, §5.5, and §6.1's Label row.
-8. `.claude/skills/figma-design-guide/design-token.md` — the project token catalogue. If a Chip-relevant `seed/*` family adds a `hover-bg` / `outline-hover` token, audit §6 to see if Chip should consume it.
+8. `.claude/skills/figma-create-component/library-tokens.md` — the project token catalogue. If a Chip-relevant `seed/*` family adds a `hover-bg` / `outline-hover` token, audit §6 to see if Chip should consume it.
 9. This file's neighbouring `design-token.md` — if Chip-scoped tokens are minted to close the §7 divergences, update §5.3 and the Render Binding Matrix accordingly.
 
 Specifically:

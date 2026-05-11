@@ -15,7 +15,7 @@ figma_component_set_id: '844:16739'
 
 Typography is **non-interactive**: there is no `:hover`, `:active`, `:focus`, or `disabled` state surface, so the Figma matrix has no `State` axis (compare to `<Button>`, which expands to five states). MUI's `disabled` color value (`palette.text.disabled`) is just one of the colors a designer may set on an instance; it is not a state.
 
-The design system pre-ships almost every MUI Typography variant as a published text style (`material-design/typography/h1` … `typography/overline`; see `figma-design-guide/design-token.md` §3). The Figma cells therefore bind via `textStyleId` rather than hand-setting font / size / line-height. To support the new `Bold` axis, this spec adds **13 bold-weight companion text styles** to the Figma file's Styles namespace — 11 live under `material-design/typography/<v>-bold` (the design-system convention path; minted locally because the design-system file does not yet ship them) and 2 live under `component/typography/<v>-bold` (the component-scoped path used by `Variant=Button` and `Variant=Overline`, both of which already need component-scoped local styles to bake `textCase: UPPER`). See `design-token.md` next to this file for the complete list and resolution chain. **Local-only is the project default**: every paint and every text style the cell uses must resolve to a variable / style in this Figma file's own collection — never a `VariableID:<sharedKey>/...` consumed-library binding (the component must be self-contained).
+The design system pre-ships almost every MUI Typography variant as a published text style (`material-design/typography/h1` … `typography/overline`; see `figma-create-component/library-tokens.md` §3). The Figma cells therefore bind via `textStyleId` rather than hand-setting font / size / line-height. To support the new `Bold` axis, this spec adds **13 bold-weight companion text styles** to the Figma file's Styles namespace — 11 live under `material-design/typography/<v>-bold` (the design-system convention path; minted locally because the design-system file does not yet ship them) and 2 live under `component/typography/<v>-bold` (the component-scoped path used by `Variant=Button` and `Variant=Overline`, both of which already need component-scoped local styles to bake `textCase: UPPER`). See `design-token.md` next to this file for the complete list and resolution chain. **Local-only is the project default**: every paint and every text style the cell uses must resolve to a variable / style in this Figma file's own collection — never a `VariableID:<sharedKey>/...` consumed-library binding (the component must be self-contained).
 
 | Aspect                | Value                                                                                                                            |
 | --------------------- | -------------------------------------------------------------------------------------------------------------------------------- |
@@ -86,7 +86,7 @@ Clean Cartesian product — no sparse exclusions. Each cell is a single TEXT nod
 
 `color`, `align`, `gutterBottom`, and `noWrap` are intentionally **not** exposed as Figma component properties — see §2 for the rationale (each would either explode the matrix, require a screen-level layout decision the master can't honestly model, or duplicate work the inner TEXT can do directly). Designers override them on the instance's inner TEXT directly:
 
-- **Color** — select the inner TEXT inside the instance and rebind its single SOLID fill to one of the merak variables in §2.1 (or any other token from `figma-design-guide/design-token.md`). Figma allows the rebind without detaching.
+- **Color** — select the inner TEXT inside the instance and rebind its single SOLID fill to one of the merak variables in §2.1 (or any other token from `figma-create-component/library-tokens.md`). Figma allows the rebind without detaching.
 - **Alignment** — select the inner TEXT and set `textAlignHorizontal` (`LEFT` / `CENTER` / `RIGHT` / `JUSTIFIED`).
 - **No-wrap / truncation** — select the inner TEXT and toggle `textTruncation: ENDING`. The host frame must constrain `width` for the ellipsis to engage.
 - **Gutter bottom** — use Auto Layout `itemSpacing` on the surrounding column, picking the Variant-appropriate value from `storybook.render.md` §4.1 (e.g. `5.6 px` for `body1`).
@@ -98,7 +98,7 @@ Source-of-truth files for any token claim:
 - `src/stories/Typography.stories.tsx` — the story file (variant + color enumerations).
 - `node_modules/@mui/material/styles/createTypography.js` — the MUI default theme's Typography object (resolved from `@mui/material 7.3.10`).
 - `.storybook/preview.tsx` — the Storybook decorator wraps every story in `ThemeProvider theme={createTheme()}` (no project-level overrides — see `storybook.render.md` runtime-context paragraph).
-- `figma-design-guide/design-token.md` §3 — the published `material-design/typography/*` text styles in the design-system file (`stse2CgIzOugynEdDSexS4`).
+- `figma-create-component/library-tokens.md` §3 — the published `material-design/typography/*` text styles in the design-system file (`stse2CgIzOugynEdDSexS4`).
 - `design-token.md` (next to this file) — the local component-scoped text styles minted to (a) fill the missing `material-design/typography/button` slot, (b) bake `textCase: UPPER` for `overline`, and (c) provide bold-weight companions for every Variant.
 
 Every text fill **must** be bound to a Figma variable in this file's local collection; every typography rule **must** be applied via `textStyleId`. Hex / numeric values appear in this section only as **reference resolutions of the light theme** — bind the actual Figma paint / text node to the named token.
@@ -216,20 +216,20 @@ This document and the source must move together. Files that, when changed, force
 2. The published Figma component set inside frame `821:11807` (`figma_node_id` in frontmatter) — variant axes / property defaults / text-style bindings.
 3. `node_modules/@mui/material/styles/createTypography.js` — MUI's default Typography object. A version bump in `package.json` (`@mui/material`) requires re-running `storybook.render.md` §1 measurements.
 4. `.storybook/preview.tsx` — adding a `createTheme({ typography: ... })` override in the Storybook decorator means the runtime measurements no longer reflect the design system; both this spec and `storybook.render.md` need to be re-probed.
-5. `figma-design-guide/design-token.md` §3 (`material-design/typography/*` text styles) — a renamed / removed text style needs every `textStyleId` reference in §4.1 updated.
-6. `figma-design-guide/design-token.md` §1 (`merak/alias/colors/*` and `merak/seed/*/main`) — a renamed / removed color variable needs every reference in §2.1 / §4.2 updated.
+5. `figma-create-component/library-tokens.md` §3 (`material-design/typography/*` text styles) — a renamed / removed text style needs every `textStyleId` reference in §4.1 updated.
+6. `figma-create-component/library-tokens.md` §1 (`merak/alias/colors/*` and `merak/seed/*/main`) — a renamed / removed color variable needs every reference in §2.1 / §4.2 updated.
 7. `design-token.md` (next to this file) — the local component-scoped text styles. A change to any local style's font / weight / size / line-height is a spec-affecting edit.
 
 Specifically:
 
 - **Add a Typography variant to MUI** (e.g. MUI 8 ships `display1`): add the variant to `Typography.stories.tsx` (export + matrix arrays), append a row to `storybook.render.md` §1, append rows to §4.1 here (both base + bold), and add the variant to the Figma component set's `Variant` axis options. Mint the corresponding bold-companion local style.
 - **Drop a Typography variant**: remove from the story, the matrix arrays, §3 / §4.1, and de-publish the corresponding cells from the Figma set. Remove the bold-companion local style.
-- **Promote a bold style to the design system**: when `figma-design-guide/design-token.md` §3 starts shipping `material-design/typography/<v>-bold` as a real published style, delete the local copy in this file and re-bind the `Bold=On` cell to the shared style. Update §4.1 and `design-token.md` accordingly.
+- **Promote a bold style to the design system**: when `figma-create-component/library-tokens.md` §3 starts shipping `material-design/typography/<v>-bold` as a real published style, delete the local copy in this file and re-bind the `Bold=On` cell to the shared style. Update §4.1 and `design-token.md` accordingly.
 - **Change the project's text-style sizes / weights / line-heights** (e.g. design-system bumps `typography/h6` from 20 / 32 to 22 / 32): the Figma cell still resolves correctly because it binds by `textStyleId`. Only update §4.1's "Resolves to (project)" column. Mint a matching update in the bold companion if the change should apply there too.
 - **Rename a text style** (e.g. `material-design/typography/h6` → `material-design/typography/heading-6`): every `textStyleId` reference in §4.1 needs the new name, and every Figma cell needs to be re-bound. This is a token-name change, not a token-value change.
 - **MUI changes the default-tag mapping** (`subtitle1` → no longer `<h6>`): purely a runtime concern — update `storybook.render.md` §1 "Default tag" column and §7.2 of this spec.
 
-The token-value vs. token-name distinction matters: a value change in `figma-design-guide/design-token.md` (e.g. `seed/danger/main` re-resolves from `#D32F2F` to `#C62828`) needs **no** spec edit (variables resolve by name). A rename or removal forces an update to every reference in §2.1, §4.1, §4.2.
+The token-value vs. token-name distinction matters: a value change in `figma-create-component/library-tokens.md` (e.g. `seed/danger/main` re-resolves from `#D32F2F` to `#C62828`) needs **no** spec edit (variables resolve by name). A rename or removal forces an update to every reference in §2.1, §4.1, §4.2.
 
 ## 9. Quick Reference
 
@@ -322,4 +322,4 @@ n/a — Typography has no shadow, no border, no border-radius surface.
 
 `component/typography/button`, `component/typography/button-bold`, `component/typography/overline`, `component/typography/overline-bold` (see `design-token.md`).
 
-Project text styles use Noto Sans TC (Inter for `h2` / `h5`), letter-spacing 0% — see `figma-design-guide/design-token.md` §3 for the full per-style definition. Documented divergences from MUI runtime (font-family swap, zeroed letter-spacing, `subtitle2` weight / line-height rounding, the `button` / `overline` UPPER baking, the synthetic `Bold` axis) are listed in `storybook.render.md` §5–§6 and `design-token.md`.
+Project text styles use Noto Sans TC (Inter for `h2` / `h5`), letter-spacing 0% — see `figma-create-component/library-tokens.md` §3 for the full per-style definition. Documented divergences from MUI runtime (font-family swap, zeroed letter-spacing, `subtitle2` weight / line-height rounding, the `button` / `overline` UPPER baking, the synthetic `Bold` axis) are listed in `storybook.render.md` §5–§6 and `design-token.md`.

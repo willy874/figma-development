@@ -1,6 +1,6 @@
 ---
 name: figma-component-checkbox-spec
-description: Figma component specification for `<Checkbox>` — design counterpart of the MUI `<Checkbox>` consumed by `src/stories/Checkbox.stories.tsx`. Documents the Color × Checked × Indeterminate × Size × State variant matrix, source-to-Figma mapping, and the token bindings that pin every glyph fill / halo paint to a named token. For runtime measurements see `storybook.render.md`; the design system catalogue lives at `figma-design-guide/design-token.md`.
+description: Figma component specification for `<Checkbox>` — design counterpart of the MUI `<Checkbox>` consumed by `src/stories/Checkbox.stories.tsx`. Documents the Color × Checked × Indeterminate × Size × State variant matrix, source-to-Figma mapping, and the token bindings that pin every glyph fill / halo paint to a named token. For runtime measurements see `storybook.render.md`; the design system catalogue lives at `figma-create-component/library-tokens.md`.
 parent_skill: figma-components
 figma_file_key: KQjP6W9Uw1PN0iipwQHyYn
 figma_node_id: '1:7228'
@@ -13,7 +13,7 @@ figma_component_set_id: '1:7228'
 
 `<Checkbox>` is the Figma counterpart of the MUI `<Checkbox>` consumed in `src/stories/Checkbox.stories.tsx`. The package re-exports MUI directly — there is no in-repo wrapper — so the Figma component encodes the MUI prop surface (`color`, `size`, `checked`, `indeterminate`, `disabled`) plus the four interaction states MUI paints via the ripple subtree (`Enabled / Hovered / Focused / Pressed`).
 
-The Figma cells already match this contract — every glyph fill and halo overlay is bound to a named variable in the MUI-Library file's local collection (`KQjP6W9Uw1PN0iipwQHyYn`). All seven MUI palette colors are encoded as the `Color` axis; the runtime equivalents come from the published `merak/seed/*` and `merak/alias/*` namespaces (see [`figma-design-guide`](../../figma-design-guide/design-token.md)). The component is **self-contained** — every binding resolves to a variable in this file's local collection so the library can be consumed without the 天璇 design-system file loaded next to it. _(Local-only sweep completed 2026-04-29 — see §7 issue 9.)_
+The Figma cells already match this contract — every glyph fill and halo overlay is bound to a named variable in the MUI-Library file's local collection (`KQjP6W9Uw1PN0iipwQHyYn`). All seven MUI palette colors are encoded as the `Color` axis; the runtime equivalents come from the published `merak/seed/*` and `merak/alias/*` namespaces (see [`library-tokens.md`](../../figma-create-component/library-tokens.md)). The component is **self-contained** — every binding resolves to a variable in this file's local collection so the library can be consumed without the 天璇 design-system file loaded next to it. _(Local-only sweep completed 2026-04-29 — see §7 issue 9.)_
 
 | Aspect            | Value                                                                                  |
 | ----------------- | -------------------------------------------------------------------------------------- |
@@ -264,7 +264,7 @@ This document and the source must move together. When **any** of the following c
 - Introducing a new `Color` value (e.g. `tertiary`) → add the row to §2.1 + §3 + §4.2, mint the local `seed/tertiary/{main,hover-bg}` variables (or alias them from the catalogue) before authoring.
 - Adding `Indeterminate=True, State=Disabled` cells → expand §3 exclusions list and §4.3 row, regenerate the published variants.
 - Token rename / removal in `merak/alias/*` or `merak/seed/*` → update every reference in §2, §4 and rename the matching variable in the local Figma collection.
-- Token value change in any consumed token → no edit to this spec is required (Figma resolves through the same name); update the resolution chain in `../../figma-design-guide/design-token.md` if the catalogue moved.
+- Token value change in any consumed token → no edit to this spec is required (Figma resolves through the same name); update the resolution chain in `../../figma-create-component/library-tokens.md` if the catalogue moved.
 - `@mui/material` major bump → re-run `storybook.render.md` §3 / §4 / §5 measurements; bump the version row in §1; reconcile any new computed-style values against §4.2.
 
 ## 9. Quick Reference

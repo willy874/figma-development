@@ -1,6 +1,6 @@
 ---
 name: figma-component-radio-spec
-description: Figma component specification for `<Radio>` — design counterpart of the MUI `<Radio>` consumed by `src/stories/Radio.stories.tsx`. Documents the Color × Checked × Size × State variant matrix, source-to-Figma mapping, and the token bindings that pin every glyph fill / halo paint to a named token. For runtime measurements see `storybook.render.md`; the design system catalogue lives at `figma-design-guide/design-token.md`.
+description: Figma component specification for `<Radio>` — design counterpart of the MUI `<Radio>` consumed by `src/stories/Radio.stories.tsx`. Documents the Color × Checked × Size × State variant matrix, source-to-Figma mapping, and the token bindings that pin every glyph fill / halo paint to a named token. For runtime measurements see `storybook.render.md`; the design system catalogue lives at `figma-create-component/library-tokens.md`.
 parent_skill: figma-components
 figma_file_key: KQjP6W9Uw1PN0iipwQHyYn
 figma_node_id: '292:6292'
@@ -245,7 +245,7 @@ This document and the source must move together. When **any** of the following c
 - Adding a real `size="large"` prop in MUI (or a project-side `sx` override) → drop the Drift §7 issue 1 footnote, add per-size rows to `storybook.render.md` §4, validate the Figma `Size=Large` cells against new runtime numbers.
 - Introducing a new `Color` value (e.g. `tertiary`) → add the row to §2.1 + §3 + §4.2, mint the local `seed/tertiary/{main,hover-bg}` variables (or alias them from the catalogue) before authoring.
 - Token rename / removal in `merak/alias/*` or `merak/seed/*` → update every reference in §2, §4 and rename the matching variable in the local Figma collection.
-- Token value change in any consumed token → no edit to this spec is required (Figma resolves through the same name); update the resolution chain in `../../figma-design-guide/design-token.md` if the catalogue moved.
+- Token value change in any consumed token → no edit to this spec is required (Figma resolves through the same name); update the resolution chain in `../../figma-create-component/library-tokens.md` if the catalogue moved.
 - `@mui/material` major bump → re-run `storybook.render.md` §3 / §4 / §5 measurements; bump the version row in §1; reconcile any new computed-style values against §4.2.
 
 ## 9. Quick Reference

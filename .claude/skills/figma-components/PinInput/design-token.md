@@ -12,7 +12,7 @@ parent_skill: figma-components
 
 `<PinInput>` is a **Wrapper + atom** archetype — every per-cell paint (border, fill, input text) is owned by the nested `<TextField>` instance, which already binds to `merak/seed/*` and `merak/alias/*` plus a small `_components/input/outlined/*` family minted in [`<TextField>`'s design-token.md](../TextField/design-token.md). The wrapper itself only paints three TEXT regions:
 
-- **FormLabel TEXT fill** → `merak/alias/colors/text-default` (resting — project convention; local collection has no `text-secondary` token), `merak/seed/danger/main` (Error override), `merak/alias/colors/text-disabled` (Disabled override). All three already exist in the shared catalogue (`figma-design-guide/design-token.md`).
+- **FormLabel TEXT fill** → `merak/alias/colors/text-default` (resting — project convention; local collection has no `text-secondary` token), `merak/seed/danger/main` (Error override), `merak/alias/colors/text-disabled` (Disabled override). All three already exist in the shared catalogue (`figma-create-component/library-tokens.md`).
 - **FormHelperText TEXT fill** → same as FormLabel.
 - **Separator `-` glyph TEXT fill** → `merak/alias/colors/text-default`. Already in the shared catalogue.
 

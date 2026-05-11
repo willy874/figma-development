@@ -46,7 +46,7 @@ The unchecked glyph is `CheckBoxOutlineBlankIcon` for every color × every state
 Notes:
 
 - **`Color=Default` does not tint the checked glyph.** The default fill stays at `text.secondary` (`#000000` / `0.6α`) instead of resolving to a primary / grey hue. The Figma `Color=Default, Checked=True` cell should mirror this (a dark-neutral checked indicator), not a primary-blue checked indicator.
-- The seven palette `*.main` values match the project's `merak/seed/{primary | secondary | danger | warning | info | success}/main` exactly (cross-reference `figma-design-guide/design-token.md` §1). MUI `error` ↔ Merak `seed/danger`.
+- The seven palette `*.main` values match the project's `merak/seed/{primary | secondary | danger | warning | info | success}/main` exactly (cross-reference `figma-create-component/library-tokens.md` §1). MUI `error` ↔ Merak `seed/danger`.
 - `secondary` (purple) has no Merak `seed/secondary/hover-bg` token in the catalogue — it uses `outline-hover` instead. This is a tokenizing convention, not a runtime difference.
 
 ## 3. State axis (Medium, Color=Primary, value combos)

@@ -112,7 +112,7 @@ The `Bold=On` cells bind to local text styles minted in this Figma file (under `
 
 ## 6. Project text style ↔ MUI runtime divergence
 
-The project ships its own `material-design/typography/*` text-style namespace (see `figma-design-guide/design-token.md` §3) that the Figma component will bind via `textStyleId`. The styles match MUI's runtime sizes / weights / line-heights for the headings + body variants, but diverge in three places worth recording so the Figma render is not mistaken for a runtime regression.
+The project ships its own `material-design/typography/*` text-style namespace (see `figma-create-component/library-tokens.md` §3) that the Figma component will bind via `textStyleId`. The styles match MUI's runtime sizes / weights / line-heights for the headings + body variants, but diverge in three places worth recording so the Figma render is not mistaken for a runtime regression.
 
 | Field          | MUI runtime                                                                 | Project text style                                                          | Verdict                                                                                                                       |
 | -------------- | --------------------------------------------------------------------------- | --------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------- |

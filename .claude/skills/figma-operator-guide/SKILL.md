@@ -39,7 +39,7 @@ Each submodule lists its own `triggers:` block. Load the ones that match.
 - **[component-rules.md](references/component-rules.md)** — Inserting, duplicating, or creating any reusable UI (button, input, card, tag, modal). Or designing a component's variant/property API. **Always load before calling `addComponentProperty`** — the slot-first decision rule (SLOT vs INSTANCE_SWAP) lives there, and the default is SLOT whenever sub-components are involved or the React counterpart uses `children`.
 - **[layout.md](references/layout.md)** — Creating a container frame, setting `x`/`y`/`width`/`height`, or considering `layoutPositioning: "ABSOLUTE"`.
 - **[tokens.md](references/tokens.md)** — Applying any color, spacing, radius, shadow, or typography value. **Required** whenever you call `setBoundVariableForPaint` — see "Plugin API binding" section for the mandatory helper pattern that prevents silent black-fill failures.
-- **`figma-design-guide`** (sister skill) — The **actual inventory** of this project's tokens (`design-token.md`) and published components (`components.md`). Load whenever you need a real token name or want to check whether a component already exists before creating one.
+- **Library inventory** (`figma-create-component/library-tokens.md` + `figma-create-component/library-components.md`) — The **actual inventory** of this project's tokens and published components. Read whenever you need a real token name or want to check whether a component already exists before creating one. Node IDs for every entry resolve via `figma.config.json` under `library.index.*`.
 - **[content.md](references/content.md)** — Filling text, table rows, labels, or reaching for Lorem ipsum / generic placeholder data.
 
 ### Phase 3 — Before you declare done (always)
@@ -55,8 +55,8 @@ Each submodule lists its own `triggers:` block. Load the ones that match.
 
 1. **Discover** → [discovery.md](references/discovery.md)
 2. **Build containers** → [layout.md](references/layout.md)
-3. **Insert components, not geometry** → [component-rules.md](references/component-rules.md) + `figma-design-guide/components.md`
-4. **Bind tokens** → [tokens.md](references/tokens.md) + `figma-design-guide/design-token.md`
+3. **Insert components, not geometry** → [component-rules.md](references/component-rules.md) + `figma-create-component/library-components.md`
+4. **Bind tokens** → [tokens.md](references/tokens.md) + `figma-create-component/library-tokens.md`
 5. **Fill real content** → [content.md](references/content.md)
 6. **Cover states** → [states.md](references/states.md)
 7. **Final review** → [accessibility.md](references/accessibility.md) + [hygiene.md](references/hygiene.md) + [handoff.md](references/handoff.md)

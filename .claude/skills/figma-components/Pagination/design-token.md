@@ -1,12 +1,12 @@
 ---
 name: figma-component-pagination-design-token
-description: Component-scoped design tokens for `<Pagination>` / `<PaginationItem>`. Covers the 5 themed `Selected` background tints minted to match MUI's runtime `12 %` overlay (the shared `seed/<C>/hover-bg` family is only `4 %`, so a dedicated 12 %-α token per family is required). All tokens live in the **MUI Library Figma file's local `merak` collection** — Pagination binds only to local variables; nothing reaches into a published library. For shared semantic tokens used by Pagination (`alias/colors/*`, `seed/<C>/{main, outlineBorder, hover-bg | outline-hover}`), see `figma.spec.md` §5 and `../../figma-design-guide/design-token.md`.
+description: Component-scoped design tokens for `<Pagination>` / `<PaginationItem>`. Covers the 5 themed `Selected` background tints minted to match MUI's runtime `12 %` overlay (the shared `seed/<C>/hover-bg` family is only `4 %`, so a dedicated 12 %-α token per family is required). All tokens live in the **MUI Library Figma file's local `merak` collection** — Pagination binds only to local variables; nothing reaches into a published library. For shared semantic tokens used by Pagination (`alias/colors/*`, `seed/<C>/{main, outlineBorder, hover-bg | outline-hover}`), see `figma.spec.md` §5 and `../../figma-create-component/library-tokens.md`.
 parent_skill: figma-components
 ---
 
 # `<Pagination>` Component Tokens
 
-Tokens scoped to `<Pagination>` and authored in the **local `merak` collection** of the MUI Library Figma file (`KQjP6W9Uw1PN0iipwQHyYn`). Reach for these only inside the Pagination component sets; for everything else (semantic colors, action overlays), bind to the shared `merak/seed/*` and `merak/alias/*` tokens documented in [`../../figma-design-guide/design-token.md`](../../figma-design-guide/design-token.md).
+Tokens scoped to `<Pagination>` and authored in the **local `merak` collection** of the MUI Library Figma file (`KQjP6W9Uw1PN0iipwQHyYn`). Reach for these only inside the Pagination component sets; for everything else (semantic colors, action overlays), bind to the shared `merak/seed/*` and `merak/alias/*` tokens documented in [`../../figma-create-component/library-tokens.md`](../../figma-create-component/library-tokens.md).
 
 ## Why these are component-scoped
 

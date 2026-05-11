@@ -141,7 +141,7 @@ Source-of-truth files any token claim below must reconcile against:
 - `node_modules/@mui/material/TableCell/TableCell.js` — MUI cell paint defaults (border colour, padding ramp, font weight).
 - `node_modules/@mui/material/TableRow/TableRow.js` — MUI row paint defaults (selected overlay).
 - `src/lib/mui-theme.ts` — project theme overrides (none registered for Table at the time of writing).
-- `figma-design-guide/design-token.md` — published variable catalogue (the source of every `merak/*` / `material-design/*` token name).
+- `figma-create-component/library-tokens.md` — published variable catalogue (the source of every `merak/*` / `material-design/*` token name).
 
 Every paint **must** be bound to a Variable in the file's local `merak` collection; hex values are never pasted. Hex values appear inline only as **reference resolutions of the light theme**.
 
@@ -196,7 +196,7 @@ Cells never paint their own background. Selected / Hover overlays live on the ro
 
 The Table component sets do not own a dedicated icon slot. Two related icon usages appear inside cells:
 
-- **Sort arrow** (`<TableSortLabel>` slot inside head cells) — rendered inline as an instance of the published `<Icon>` set at `Size=sm` (20 px container, 18×18 glyph). Glyph default: material-symbols `arrow-downward` (`512:7517` in `figma-design-guide`). Visibility / direction toggled via the consumer's own variant logic; authored statically in the composed reference frame.
+- **Sort arrow** (`<TableSortLabel>` slot inside head cells) — rendered inline as an instance of the published `<Icon>` set at `Size=sm` (20 px container, 18×18 glyph). Glyph default: material-symbols `arrow-downward` (`512:7517` in `library-components.md`). Visibility / direction toggled via the consumer's own variant logic; authored statically in the composed reference frame.
 - **Checkbox glyph** (`Padding=Checkbox` cells) — slot accepts an instance of the published `<Checkbox>` set. Default: `<Checkbox>` `State=Default, Checked=Off`. The cell's `Padding=Checkbox` is `2 px` on all sides inside a fixed `36 × 36` frame (updated 2026-04-30; superseded the earlier `0 0 0 4 px` ramp).
 
 Neither slot is exposed as `INSTANCE_SWAP` on the cell set itself — they are dropped into the cell's generic `Slot` (§3.1.1). Designers right-click → Swap Instance to change the icon glyph or checkbox state.
@@ -251,7 +251,7 @@ This document and the source must move together. When any of these change, updat
 2. `node_modules/@mui/material` — the MUI version pinned in `package.json` (currently `^7.3.10`). A major bump may move the cell padding ramp, the head font weight, the selected overlay alpha, or the divider colour resolution.
 3. `src/lib/mui-theme.ts` — currently registers no `MuiTable` / `MuiTableRow` / `MuiTableCell` block. Adding one (e.g. a `defaultProps.size` or `styleOverrides.root`) requires updating §4.
 4. The Figma component sets `<TableCell>` and `<TableRow>` themselves — adding a Variant value, renaming a property, or changing a default forces an edit to §3.
-5. `figma-design-guide/design-token.md` — the canonical token catalogue. Token renames / removals propagate into §4.2, [`./design-token.md`](./design-token.md), and (if needed) the file's local variable collection.
+5. `figma-create-component/library-tokens.md` — the canonical token catalogue. Token renames / removals propagate into §4.2, [`./design-token.md`](./design-token.md), and (if needed) the file's local variable collection.
 
 Specifically:
 

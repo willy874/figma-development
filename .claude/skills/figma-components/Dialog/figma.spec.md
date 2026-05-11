@@ -55,7 +55,7 @@ A Storybook documentation matrix (`SizeMatrix`, `ActionCountMatrix`, `TitleWithC
 
 **Runtime-truth pass — 2026-04-29.** The four nodes were reconciled against MUI 7 runtime measurements (see [`./storybook.render.md`](./storybook.render.md)) on 2026-04-29. Reconciled in this pass:
 
-- Shell shadow rebound from `material-design/shadows/shadows-8` (consumed-library) to the local published `material-design/shadows/shadows-24` — the design-system MD elevation ramp's dialog tier (matches `figma-design-guide/design-token.md` §4: "shadows-24 — dialogs").
+- Shell shadow rebound from `material-design/shadows/shadows-8` (consumed-library) to the local published `material-design/shadows/shadows-24` — the design-system MD elevation ramp's dialog tier (matches `figma-create-component/library-tokens.md` §4: "shadows-24 — dialogs").
 - Shell `bg-default` fill rebound from consumed-library `VariableID:0ac39446.../742:2677` to local `VariableID:223:4180`.
 - `<DialogContent Dividers=true>` border rebound from consumed-library `VariableID:900cc3a1.../742:2673` to local `VariableID:223:4183`; padding tightened from `20 / 24` to `16 / 24` (MUI 7 default).
 - `<DialogActions>` flipped from VERTICAL `padding 16` `align-items: center` to HORIZONTAL `padding 8` `gap 8` `justify-content: flex-end`.
@@ -186,7 +186,7 @@ All paints, strokes, and effects on the four Dialog nodes **must** be bound to a
 | `xl`   | `1536`     | `120` (hugs content when populated) | `4`           | `material-design/shadows/shadows-24` |
 
 - Corner radius matches `theme.shape.borderRadius = 4`. Figma hard-codes `cornerRadius = 4` until a dedicated modal-radius token exists.
-- Elevation binds to the published effect style **`material-design/shadows/shadows-24`** — the design system's MD elevation ramp dialog tier per `figma-design-guide/design-token.md` §4. Three-layer drop shadow: `0 11 15 -7 α0.02` + `0 24 38 3 α0.14` + `0 8 46 8 α0.12`. (The whole `shadows-1…24` ramp uses the same `α0.02 / 0.14 / 0.12` triplet — this is the design-system convention, **not** MUI's runtime `α0.2 / 0.14 / 0.12`. The visual softness is intentional and matches every other elevated surface — Card, Menu, Drawer — across the library.)
+- Elevation binds to the published effect style **`material-design/shadows/shadows-24`** — the design system's MD elevation ramp dialog tier per `figma-create-component/library-tokens.md` §4. Three-layer drop shadow: `0 11 15 -7 α0.02` + `0 24 38 3 α0.14` + `0 8 46 8 α0.12`. (The whole `shadows-1…24` ramp uses the same `α0.02 / 0.14 / 0.12` triplet — this is the design-system convention, **not** MUI's runtime `α0.2 / 0.14 / 0.12`. The visual softness is intentional and matches every other elevated surface — Card, Menu, Drawer — across the library.)
 - Height hugs the stacked slots (title + content + actions) via vertical Auto Layout once the `slot` is populated.
 
 #### Slots — runtime-aligned
@@ -326,7 +326,7 @@ This document and the source must move together. When **any** of the following c
 | `material-design/shadows/shadows-24` is renamed or removed from the local effect-style collection | `figma.spec.md` §4.1 + §4.2 + §7.6, `./design-token.md` if a Dialog-scoped replacement is minted                          |
 | Project introduces a `Dialog.tsx` wrapper that defaults `disableBackdropClick=true` (or other behavior) | `figma.spec.md` §1, §2.1; add a §7 callout with an updated `disableBackdropClick` default; mirror in any Dialog usage docs |
 | MUI 7 `<DialogContentText>` default variant changes (e.g. back to `body2`)                      | `figma.spec.md` §1, §2.5, §4.4, §7.3; `storybook.render.md` §4 re-probe                                                   |
-| `alias/layout/mask-bg` is minted in the local `merak` collection (currently absent)             | `figma.spec.md` §4.2 (rebind), §6.2 (rebind), §10.1 (drop "(not yet in catalogue)"), `figma-design-guide/design-token.md` (add to alias table) |
+| `alias/layout/mask-bg` is minted in the local `merak` collection (currently absent)             | `figma.spec.md` §4.2 (rebind), §6.2 (rebind), §10.1 (drop "(not yet in catalogue)"), `figma-create-component/library-tokens.md` (add to alias table) |
 
 ## 9. Quick Reference
 
@@ -384,7 +384,7 @@ The complete set of Merak design tokens consumed by `<Dialog>`. Names below are 
 | `alias/colors/text-default`  | `<DialogTitle>` text; `<DialogContent>` text (when caller passes `color="text.primary"`) | 87 % black.                                                       |
 | `alias/colors/text-sub`      | `<DialogContentText>` default text fill                | 60 % black — MUI's `text.secondary`.                                                 |
 | `alias/colors/text-disabled` | Disabled body content (rare; usually inherited from caller's component) | 38 % black.                                                          |
-| `alias/colors/border-defalt` _(sic)_ | `<DialogContent Dividers=true>` top + bottom borders | 1 px strokes around the content region. Preserve the typo as published — see `figma-design-guide`.    |
+| `alias/colors/border-defalt` _(sic)_ | `<DialogContent Dividers=true>` top + bottom borders | 1 px strokes around the content region. Preserve the typo as published — see `library-tokens.md`.    |
 
 ### 10.2 Effect / shadow tokens
 
@@ -396,7 +396,7 @@ The complete set of Merak design tokens consumed by `<Dialog>`. Names below are 
 
 - Corner radius: `theme.shape.borderRadius = 4`. Figma hard-codes `cornerRadius = 4` until a dedicated modal-radius token exists.
 - Elevation: `material-design/shadows/shadows-24` — design-system MD ramp dialog tier; all five `Size` variants share the same effect style.
-- Backdrop opacity: `0.5` hard-coded in MUI; bind via a future `alias/layout/mask-bg` once the alias is minted in `figma-design-guide` (currently absent — see §7.1 #4 and §8). Until then, use a raw paint on the per-screen overlay and flag for follow-up.
+- Backdrop opacity: `0.5` hard-coded in MUI; bind via a future `alias/layout/mask-bg` once the alias is minted in `library-tokens.md` (currently absent — see §7.1 #4 and §8). Until then, use a raw paint on the per-screen overlay and flag for follow-up.
 
 ### 10.4 Typography
 

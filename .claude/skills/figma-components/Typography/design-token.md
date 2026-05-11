@@ -1,12 +1,12 @@
 ---
 name: figma-component-typography-design-token
-description: Component-scoped design tokens for `<Typography>`. Two pairs of UPPER-baked local text styles (`component/typography/button[-bold]`, `component/typography/overline[-bold]`) so the corresponding cells can bind without losing `textStyleId`, plus 11 bold-weight companion styles minted under `material-design/typography/<v>-bold` to support the synthetic `Bold` axis. Every other cell binds to a published `material-design/typography/*` style (see `figma-design-guide/design-token.md` §3); the master cell text fill binds to `merak/alias/colors/text-default` (designer-overrideable per instance).
+description: Component-scoped design tokens for `<Typography>`. Two pairs of UPPER-baked local text styles (`component/typography/button[-bold]`, `component/typography/overline[-bold]`) so the corresponding cells can bind without losing `textStyleId`, plus 11 bold-weight companion styles minted under `material-design/typography/<v>-bold` to support the synthetic `Bold` axis. Every other cell binds to a published `material-design/typography/*` style (see `figma-create-component/library-tokens.md` §3); the master cell text fill binds to `merak/alias/colors/text-default` (designer-overrideable per instance).
 parent_skill: figma-components
 ---
 
 # `<Typography>` Component Tokens
 
-Tokens scoped to the `<Typography>` Figma component set published inside frame `821:11807` of `KQjP6W9Uw1PN0iipwQHyYn`. For shared tokens (semantic color variables, the 11 base-weight `material-design/typography/*` styles), bind to the shared definitions in [`figma-design-guide/design-token.md`](../../figma-design-guide/design-token.md).
+Tokens scoped to the `<Typography>` Figma component set published inside frame `821:11807` of `KQjP6W9Uw1PN0iipwQHyYn`. For shared tokens (semantic color variables, the 11 base-weight `material-design/typography/*` styles), bind to the shared definitions in [`figma-create-component/library-tokens.md`](../../figma-create-component/library-tokens.md).
 
 ## Why these are component-scoped
 
@@ -99,4 +99,4 @@ These tokens must move together with:
 1. `figma.spec.md` §4.1 — every text-style row references one of these names.
 2. `storybook.render.md` §1 — the runtime numbers for the `button` and `overline` variants. A MUI version bump that changes either runtime typography requires re-resolving the corresponding rounded values here.
 3. The published `<Typography>` component set in Figma — every cell's `textStyleId` binding.
-4. `figma-design-guide/design-token.md` §3 — if a future design-system pass mints `material-design/components/button` (or any of the bold companions, or a UPPER-baked `material-design/typography/overline`), promote the corresponding local style by deleting it and re-binding the affected cells to the shared style. Update §4.1 of `figma.spec.md` and the §10 token glossary entries accordingly.
+4. `figma-create-component/library-tokens.md` §3 — if a future design-system pass mints `material-design/components/button` (or any of the bold companions, or a UPPER-baked `material-design/typography/overline`), promote the corresponding local style by deleting it and re-binding the affected cells to the shared style. Update §4.1 of `figma.spec.md` and the §10 token glossary entries accordingly.

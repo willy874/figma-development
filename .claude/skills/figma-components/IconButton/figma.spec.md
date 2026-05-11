@@ -107,7 +107,7 @@ The published frame `1:4571` already enumerates every cell; verify the count aft
 
 ## 5. Token Glossary
 
-Token names below are **Figma variable paths** in the `merak` collection — see [`.claude/skills/figma-design-guide/design-token.md`](../../figma-design-guide/design-token.md). Bind every Figma paint / stroke to one of these — never to a literal hex.
+Token names below are **Figma variable paths** in the `merak` collection — see [`.claude/skills/figma-create-component/library-tokens.md`](../../figma-create-component/library-tokens.md). Bind every Figma paint / stroke to one of these — never to a literal hex.
 
 ### 5.1 Seed color tokens (`seed/<C>/*`)
 
@@ -254,5 +254,5 @@ When any of the following changes, update this spec **and** the named files in t
 | `mui-theme.ts` adds/changes a `MuiIconButton` override                     | `figma.spec.md` §1, `storybook.render.md` §1 + §3                                                          |
 | `src/stories/IconButton.stories.tsx` `variantSx` changes                   | `figma.spec.md` §6, `storybook.render.md` §4 (if Hovered/Pressed alters)                                   |
 | Figma frame `1:4571` variant axes / cell count change                      | `figma.spec.md` §3, refresh `figma.config.json` via `figma-init/config-init.md`                            |
-| `seed/*` or `alias/*` tokens used by IconButton are renamed in Figma       | `figma.spec.md` §5 + §6, `figma-design-guide/design-token.md`                                              |
+| `seed/*` or `alias/*` tokens used by IconButton are renamed in Figma       | `figma.spec.md` §5 + §6, `figma-create-component/library-tokens.md`                                              |
 | Default-color `contained-bg` / `outlined-default-border` are promoted from `component/button/*` to a shared `merak/*` token | `figma.spec.md` §5.5 + §6, `design-token.md` (this dir), and Button's `design-token.md` |

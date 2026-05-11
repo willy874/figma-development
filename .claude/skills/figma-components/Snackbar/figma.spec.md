@@ -331,7 +331,7 @@ This document and the source must move together. A change in any of the followin
 7. The published Figma `<Snackbar>` component set (file `KQjP6W9Uw1PN0iipwQHyYn`, frame `846:11794`) — once published, set the `figma_component_set_id` frontmatter and reflect any axis additions / component-property additions in §3.
 8. The published Figma `<SnackbarSeverityIcon>` component set (sibling of `<Snackbar>` in the same file, see §6.5) — once published, document its node id in §6.5 and update Snackbar's Severity cell INSTANCE references.
 9. The Merak variable collection (`material-design` + `merak` collections in this Figma file) — if a token is renamed, removed, or its `resolvedType` changes, update every reference in §5, §6.1, §6.2, §6.4. **Token-value changes alone do not require a spec edit** — variables resolve by name.
-10. `.claude/skills/figma-design-guide/design-token.md` — the project token catalogue. If `seed/<severity>/main`, `seed/primary/main`, or `seed/neutral/white` change, propagate to §5.1–§5.2.
+10. `.claude/skills/figma-create-component/library-tokens.md` — the project token catalogue. If `seed/<severity>/main`, `seed/primary/main`, or `seed/neutral/white` change, propagate to §5.1–§5.2.
 11. `.claude/skills/figma-components/Snackbar/design-token.md` — component-scoped tokens. Any addition / removal there requires a §5.3 update here.
 
 Specifically:

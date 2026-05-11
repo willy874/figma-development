@@ -4,7 +4,7 @@ Source: [Figma file `KQjP6W9Uw1PN0iipwQHyYn`](https://www.figma.com/design/KQjP6
 
 Total: **93 components** on 1 page (31 component sets / primitives + 62 icon library entries). Before creating anything new, grep this file for the name — if it exists, import via `importComponentByKeyAsync` / `importComponentSetByKeyAsync` and reuse. Never recreate an existing component.
 
-**Node IDs** are not listed here. The single source of truth is [`figma.config.json`](../../../figma.config.json) under `index.componentSetsAndPrimitives.<Name>.nodeId`, `index.icons.<Name>.nodeId`, and `index.componentSpecs.<Name>.*`. Look up the ID there at use time — duplicating it in this doc lets the two drift.
+**Node IDs** are not listed here. The single source of truth is [`figma.config.json`](../../../figma.config.json) under `library.index.componentSetsAndPrimitives.<Name>.nodeId`, `library.index.icons.<Name>.nodeId`, and `library.index.componentSpecs.<Name>.*`. Look up the ID there at use time — duplicating it in this doc lets the two drift.
 
 **Variant counts** in parentheses indicate the node is a `COMPONENT_SET` with that many variants; entries without a count are single `COMPONENT` nodes.
 

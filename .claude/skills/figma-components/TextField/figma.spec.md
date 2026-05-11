@@ -13,7 +13,7 @@ figma_component_set_id: '1:6266'
 
 `<TextField>` is the Figma counterpart of the MUI `<TextField>` consumed in `src/stories/TextField.stories.tsx`. The package re-exports MUI directly — there is no in-repo wrapper — so the Figma component encodes the MUI prop surface (`variant`, `size`, `disabled`, `error`, `focused`, `value`, `label`, `placeholder`, `helperText`, `InputProps.startAdornment` / `endAdornment`) plus a native `Autocomplete` slot for SearchInput-style children.
 
-The Figma cells already match this contract — every paint, stroke, text fill, and underline is bound to a named variable in the MUI-Library file's local collection (`KQjP6W9Uw1PN0iipwQHyYn`). The `component/input/*` family of tokens (documented in [`design-token.md`](./design-token.md)) carries MUI-specific resting alphas; semantic tokens come from the published `merak/seed/*` and `merak/alias/*` namespaces (see [`figma-design-guide`](../../figma-design-guide/design-token.md)).
+The Figma cells already match this contract — every paint, stroke, text fill, and underline is bound to a named variable in the MUI-Library file's local collection (`KQjP6W9Uw1PN0iipwQHyYn`). The `component/input/*` family of tokens (documented in [`design-token.md`](./design-token.md)) carries MUI-specific resting alphas; semantic tokens come from the published `merak/seed/*` and `merak/alias/*` namespaces (see [`library-tokens.md`](../../figma-create-component/library-tokens.md)).
 
 | Aspect            | Value                                                                                  |
 | ----------------- | -------------------------------------------------------------------------------------- |

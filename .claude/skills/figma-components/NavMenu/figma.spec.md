@@ -146,7 +146,7 @@ This mirrors the Pagination pattern (`<Pagination>` `1:5675` § 3.4) — the wra
 
 ## 5. Token Glossary
 
-Token names below are **Figma variable paths** in the local `merak` collection — see [`.claude/skills/figma-design-guide/design-token.md`](../../figma-design-guide/design-token.md). Bind every Figma paint / stroke to one of these — never to a literal hex. NavMenu does not mint any component-scoped tokens; the existing alias / seed family covers every paint it needs.
+Token names below are **Figma variable paths** in the local `merak` collection — see [`.claude/skills/figma-create-component/library-tokens.md`](../../figma-create-component/library-tokens.md). Bind every Figma paint / stroke to one of these — never to a literal hex. NavMenu does not mint any component-scoped tokens; the existing alias / seed family covers every paint it needs.
 
 ### 5.1 Alias tokens (`alias/colors/*`)
 
@@ -309,10 +309,10 @@ This document and the source must move together. When **any** of the following c
 | Local `merak/*` tokens used by NavMenu are renamed in this Figma file                                                                | `figma.spec.md` §5 + §6. **Do not** auto-pull from the published library — the NavMenu cells bind to the local collection only.                                              |
 | Published library `seed/*` / `alias/*` tokens drift from the local copies                                                            | Track divergence in `figma.spec.md` §1 local-only note. Re-sync values manually if needed.                                                                                  |
 | `<Icon>` set (`3:2722`) variant axes change (e.g. `Size=md` renamed) or its `Glyph Source` `INSTANCE_SWAP` property is renamed       | `figma.spec.md` §6.1 / §6.6 icon mapping (Size=md ID + property name `Glyph Source`)                                                                                        |
-| `ChevronRight` (`512:7509`) glyph component is renamed, moved, or replaced in the Icon library                                       | `figma.spec.md` §6.6 (Glyph Source preset IDs), `../../figma-design-guide/components.md` §Icon library                                                                       |
+| `ChevronRight` (`512:7509`) glyph component is renamed, moved, or replaced in the Icon library                                       | `figma.spec.md` §6.6 (Glyph Source preset IDs), `../../figma-create-component/library-components.md` §Icon library                                                                       |
 | `mui-theme.ts` adds a `MuiListItemButton` / `MuiListItemText` / `MuiList` override (this project has none today)                     | `figma.spec.md` §1, `storybook.render.md` §1–§4                                                                                                                            |
-| A `material-design/typography/list-item-secondary` text style is minted in the design-guide                                          | `figma.spec.md` §5.5 / §6.1 (rebind secondary text to the new `textStyleId`), `../../figma-design-guide/design-token.md`                                                     |
-| A shared `seed/primary/selected-bg @ α=0.08` token is minted (resolves §7 issue 1)                                                   | `figma.spec.md` §5.2 / §5.3 / §6.3 (rebind Selected fill from `component/navmenu/selected-bg` to the new shared token); `./design-token.md` (delete the promoted token, point at new shared family); `../../figma-design-guide/design-token.md` |
+| A `material-design/typography/list-item-secondary` text style is minted in the design-guide                                          | `figma.spec.md` §5.5 / §6.1 (rebind secondary text to the new `textStyleId`), `../../figma-create-component/library-tokens.md`                                                     |
+| A shared `seed/primary/selected-bg @ α=0.08` token is minted (resolves §7 issue 1)                                                   | `figma.spec.md` §5.2 / §5.3 / §6.3 (rebind Selected fill from `component/navmenu/selected-bg` to the new shared token); `./design-token.md` (delete the promoted token, point at new shared family); `../../figma-create-component/library-tokens.md` |
 
 ## 9. Quick Reference
 

@@ -1,12 +1,12 @@
 ---
 name: figma-component-snackbar-design-token
-description: Component-scoped design tokens for `<Snackbar>`. Defined here because they're either MUI-Snackbar-specific runtime constants (the SnackbarContent emphasized-grey bg, computed via `emphasize(palette.background.default, 0.8)`) or pre-alpha'd tokens needed to dodge Figma's `paint.opacity < 1 + bound variable` flattening rule (the leading severity icon's 90 % α white). Bind Snackbar paints / strokes / effects to these names rather than literal values; for shared tokens used by Snackbar (seed colors, alias colors, MD shadows), see `.claude/skills/figma-design-guide/design-token.md`.
+description: Component-scoped design tokens for `<Snackbar>`. Defined here because they're either MUI-Snackbar-specific runtime constants (the SnackbarContent emphasized-grey bg, computed via `emphasize(palette.background.default, 0.8)`) or pre-alpha'd tokens needed to dodge Figma's `paint.opacity < 1 + bound variable` flattening rule (the leading severity icon's 90 % α white). Bind Snackbar paints / strokes / effects to these names rather than literal values; for shared tokens used by Snackbar (seed colors, alias colors, MD shadows), see `.claude/skills/figma-create-component/library-tokens.md`.
 parent_skill: figma-components
 ---
 
 # `<Snackbar>` Component Tokens
 
-Tokens scoped to `<Snackbar>` and the sibling `<SnackbarSeverityIcon>` component set on the MUI Library file. Reach for these only inside those two component sets; for everything else (semantic colors, severity bgs, MD elevations, typography), bind to the shared `merak/*` and `material-design/*` tokens documented in [`design-token.md`](../../figma-design-guide/design-token.md).
+Tokens scoped to `<Snackbar>` and the sibling `<SnackbarSeverityIcon>` component set on the MUI Library file. Reach for these only inside those two component sets; for everything else (semantic colors, severity bgs, MD elevations, typography), bind to the shared `merak/*` and `material-design/*` tokens documented in [`design-token.md`](../../figma-create-component/library-tokens.md).
 
 ## Why these are component-scoped
 

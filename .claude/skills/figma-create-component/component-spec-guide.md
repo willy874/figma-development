@@ -29,11 +29,11 @@ Component archetypes you'll encounter, named by shape:
 
 **Skip a spec when:**
 
-- The node is an icon glyph inside the shared `<Icon>` set — track it via [`figma-design-guide`](../figma-design-guide/SKILL.md) instead.
+- The node is an icon glyph inside the shared `<Icon>` set — track it via [`./library-components.md`](./library-components.md) instead.
 - The component is a one-off screen composition rather than a reusable primitive.
 - The Figma node is a wireframe / placeholder.
 
-If you're unsure, check the component inventory in [`figma-design-guide`](../figma-design-guide/SKILL.md) for the node ID — if it's listed with a variant count, it deserves a spec.
+If you're unsure, check the component inventory in [`./library-components.md`](./library-components.md) for the node ID — if it's listed with a variant count, it deserves a spec.
 
 ---
 
@@ -243,7 +243,7 @@ Skeleton B specs carry the equivalent obligations in `design-token.md` and `stor
 
 1. **Open the source.** Read the story file end-to-end. List every prop, every default, every hard-coded MUI option. For re-exports of MUI primitives, open the MUI source to confirm the prop surface.
 2. **Open the Figma component set.** Use `mcp__plugin_figma_figma__get_metadata` to enumerate variants and component properties. For Skeleton B specs, also pull `mcp__plugin_figma_figma__get_screenshot` to verify per-cell appearance.
-3. **Check the project component inventory** in [`figma-design-guide`](../figma-design-guide/SKILL.md). Confirm the node IDs and variant count you're about to record match what's published.
+3. **Check the project component inventory** in [`./library-components.md`](./library-components.md). Confirm the node IDs and variant count you're about to record match what's published.
 4. **Resolve the tokens.** For every paint role, locate the exact Figma variable path. Hex values appear in the spec only as reference resolutions.
 5. **For Skeleton B (directory layout)**: probe the runtime with Chrome DevTools MCP against the Storybook story to populate `storybook.render.md`. Cover the full Color × Variant × State surface (`ColorMatrix`, `StateMatrix`, `WithStartIcon`, etc.).
 6. **Draft the spec** following the chosen skeleton. Use the nearest exemplar as a structural template — copy section headings verbatim.
@@ -276,7 +276,8 @@ When updating, re-run steps 1–4 before editing. For Skeleton B, re-probe the S
 
 ## 8. Cross-references
 
-- [`figma-design-guide`](../figma-design-guide/SKILL.md) — project-specific design system inventory (variable collections, text styles, elevation, published component IDs). Spec frontmatter IDs and every token path in §4 / §10 must reconcile against this skill's submodules.
+- [`./library-components.md`](./library-components.md) — published component / icon inventory. Spec frontmatter IDs (`figma_node_id`, `figma_component_set_id`, etc.) must reconcile against this list and against `figma.config.json`'s `library.index.*`.
+- [`./library-tokens.md`](./library-tokens.md) — published variable collections, text styles, elevation. Every token path in §4 / §10 must resolve to a name listed here.
 - Parent skill: [`figma-create-component`](./SKILL.md) — the end-to-end pipeline this guide plugs into (step 3 of the pipeline drafts the spec described here).
 - Sibling skills:
   - `figma-init` — force-overwrite variable values from a JSON snapshot; also produces `figma.config.json` via `config-init.md`.

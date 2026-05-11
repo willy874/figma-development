@@ -1,12 +1,12 @@
 ---
 name: figma-component-autocomplete-menu-design-token
-description: Component-scoped design tokens for `<AutocompleteMenu>` (and its option-row companion `<AutocompleteOption>`). Defined here because they're MUI-Autocomplete-specific pre-alpha'd primary tints (option Selected / Selected+Focused) that don't fit the shared `merak/seed/*` or `merak/alias/*` namespaces and live as **local** variables inside the MUI-Library file (`KQjP6W9Uw1PN0iipwQHyYn`). Bind option Selected backgrounds to these names rather than literal values; for shared tokens used by AutocompleteMenu (alias text colors, alias bg-outline-hover, paper-elevation-0, shadows-1) see `.claude/skills/figma-design-guide/design-token.md`.
+description: Component-scoped design tokens for `<AutocompleteMenu>` (and its option-row companion `<AutocompleteOption>`). Defined here because they're MUI-Autocomplete-specific pre-alpha'd primary tints (option Selected / Selected+Focused) that don't fit the shared `merak/seed/*` or `merak/alias/*` namespaces and live as **local** variables inside the MUI-Library file (`KQjP6W9Uw1PN0iipwQHyYn`). Bind option Selected backgrounds to these names rather than literal values; for shared tokens used by AutocompleteMenu (alias text colors, alias bg-outline-hover, paper-elevation-0, shadows-1) see `.claude/skills/figma-create-component/library-tokens.md`.
 parent_skill: figma-components
 ---
 
 # `<AutocompleteMenu>` Component Tokens
 
-Tokens scoped to `<AutocompleteMenu>` and its companion `<AutocompleteOption>`. Reach for these only inside the AutocompleteMenu component set; for everything else (semantic colors, shadows, typography, paper background), bind to the shared `merak/*` and `material-design/*` tokens documented in [`design-token.md`](../../figma-design-guide/design-token.md).
+Tokens scoped to `<AutocompleteMenu>` and its companion `<AutocompleteOption>`. Reach for these only inside the AutocompleteMenu component set; for everything else (semantic colors, shadows, typography, paper background), bind to the shared `merak/*` and `material-design/*` tokens documented in [`design-token.md`](../../figma-create-component/library-tokens.md).
 
 ## Why these are component-scoped
 
