@@ -5,7 +5,7 @@
 整個 repo 是一組互相搭配的 **Claude Code skills**,分成兩個叢集,共用一個資料源:
 
 - **叢集 A — Figma 元件生產**:`figma-create-component` 串起 Storybook → runtime 量測 → spec → token → Figma 發佈 → subagent review 的完整 pipeline。
-- **叢集 B — 資料快照**:`figma-init` + `add-project` 把 Figma 檔的變數值、樣式、元件、頁面索引拉進 `figma.config.json`,當作整個 repo 解析 token 真值的單一來源。
+- **叢集 B — 資料快照**:`figma-init` + `add-project` / `update-project` 把 Figma 檔的變數值、樣式、元件、頁面索引拉進 `figma.config.json`,當作整個 repo 解析 token 真值的單一來源。
 
 兩個叢集共用 `figma:figma-use`(寫 `use_figma` 的前置 skill),以及 `library-tokens.md` / `library-components.md` 兩份 catalog。
 
@@ -42,6 +42,8 @@
 │    └─ bootstrap .library.* + 觸發 add-project loop    │
 │  add-project                                            │
 │    └─ append .projects[] + .projects/<name>/*.json     │
+│  update-project                                         │
+│    └─ re-sync .projects/<name>/*.json(線上 → 本地)   │
 └─────────────────────────────────────────────────────────┘
 ```
 
@@ -57,6 +59,7 @@
 | [`figma-operator-guide`](./.claude/skills/figma-operator-guide/SKILL.md) | A | 任何 `use_figma` 寫入前的 router:phase 1 `discovery.md`,phase 2 `layout / tokens / component-rules / content`,phase 3 `states / accessibility / hygiene / handoff` |
 | [`figma-init`](./.claude/skills/figma-init/SKILL.md) | B | Main flow:把 library 檔的所有變數值 snapshot 進 `.library.variables`。Bootstrap(config 不存在)時自動跑 [`config-init.md`](./.claude/skills/figma-init/config-init.md) |
 | [`add-project`](./.claude/skills/add-project/SKILL.md) | B | 註冊一個下游 application 檔到 `.projects[]`,並把它的 variables / styles / components / pages 寫進 `.projects/<name>/` |
+| [`update-project`](./.claude/skills/update-project/SKILL.md) | B | 以線上 Figma 為主,重新拉取既有 `.projects[]` 條目的 variables / styles / components / pages,覆寫 `.projects/<name>/`;順手把 `fileName` / `defaultPageName` 從 meta 同步回 entry。共用 `add-project` 的 dump/assemble 腳本 |
 
 > **特殊資料夾**:`.claude/skills/figma-components/` 不是 skill(沒有 `SKILL.md`),它是 `figma-create-component` 的產出落地處 — 每個元件一個資料夾(`figma.spec.md` + `storybook.render.md` + 可選的 `design-token.md`)。
 
@@ -88,6 +91,10 @@
 
 # 後續再加 project 檔
 /add-project
+
+# 既有 project 檔索引過期了,重新從 Figma 拉一次
+/update-project          # 互動選單;或 /update-project <name> / all / <figma-url>
+                         #   貼 URL 會解析 fileKey 反查 .projects[],找不到就建議改跑 /add-project
 ```
 
 產出:
@@ -97,7 +104,7 @@
   - `.library.index.{componentSetsAndPrimitives, icons, componentSpecs}` — 從 `library-components.md` 與 `figma-components/*/figma.spec.md` 解析出的 nodeId 索引。
   - `.library.variables` — 每個 local variable 的 `valuesByMode`(`figma-init` main flow 負責灌)。
   - `.projects[]` — 每個下游 application 檔的識別。
-- `.projects/<name>/{index,variables,styles,components}.json` — 該 project 檔的輕量索引(`add-project` 負責灌,不含 `valuesByMode`)。
+- `.projects/<name>/{index,variables,styles,components}.json` — 該 project 檔的輕量索引(`add-project` 首次灌、`update-project` 重新同步,均不含 `valuesByMode`)。
 
 叢集 A 的所有 skill / 規格文件都假設這份 config 是新的。Spec / render / design-token 文件**不會**直接寫 hex / px,只引用 token 名;讀者透過 `figma.config.json` 解析真值。
 
@@ -151,6 +158,8 @@ npx github:willy874/figma-development#v1.0.0
     SKILL.md
     dump-project-index.js
     assemble-project-index.sh
+  update-project/                     # 叢集 B 重新同步 project 索引
+    SKILL.md                          # reuse add-project 的 dump/assemble
   figma-components/                   # ← 不是 skill,是 pipeline 產出存放區
     <ComponentName>/
       figma.spec.md
