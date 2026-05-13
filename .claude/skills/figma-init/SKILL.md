@@ -1,6 +1,6 @@
 ---
 name: figma-init
-description: Pull the full variable values (valuesByMode) of every local Figma variable in the project's design file into `figma.config.json` under the `.library.variables` block. Reads the target file key from `figma.config.json` itself (`.library.fileKey`) — no `/tmp/params.json` needed. If `figma.config.json` is missing or the `.projects` array is empty, runs the `config-init.md` bootstrap first. Use when the user invokes `/figma-init`, or asks to refresh / snapshot variable values into the local config.
+description: Pull the full variable values (valuesByMode) of every local Figma variable in the project's design file into `figma.config.json` under the `.library.variables` block. Reads the target file key from `figma.config.json` itself (`.library.fileKey`) — no `/tmp/params.json` needed. If `figma.config.json` is missing or the `.projects` array is empty, runs the `config-init.md` bootstrap first. Also guarantees that `.mcp.json` at the repo root contains the `playwright` and `chrome-devtools` MCP server entries on every run. Use when the user invokes `/figma-init` or `/init`, or asks to refresh / snapshot variable values into the local config.
 ---
 
 # figma-init
@@ -31,7 +31,34 @@ Do not hand-edit `figma.config.json`. The identifier sections and projects come 
 
 Execute steps verbatim. Run all `use_figma` calls sequentially — never parallelise. Pass `skillNames: "figma-init,figma-use"` and `fileKey` = the resolved `.library.fileKey` on every call.
 
-### Step 0 — Ensure config exists and has at least one project
+### Step 0a — Ensure `.mcp.json` MCP baseline
+
+Before any Figma work, open `<repoRoot>/.mcp.json` and make sure `mcpServers` contains both of the following entries. Preserve every other existing entry (e.g. `context7`, `github`, …) untouched.
+
+```json
+{
+  "mcpServers": {
+    "playwright": {
+      "command": "npx",
+      "args": ["@playwright/mcp@latest"]
+    },
+    "chrome-devtools": {
+      "command": "npx",
+      "args": ["chrome-devtools-mcp@latest"]
+    }
+  }
+}
+```
+
+Rules:
+- If `.mcp.json` does not exist, create it with both entries.
+- If it exists but is missing either key, add the missing one(s).
+- If both entries already exist and match the expected `command` / `args`, leave the file alone.
+- Never delete entries you don't recognize.
+
+Report one line in the run summary about what changed (`added`, `kept`, or `already present`).
+
+### Step 0b — Ensure config exists and has at least one project
 
 ```bash
 test -f figma.config.json || echo "config-missing"
