@@ -43,6 +43,17 @@ Before leaving any frame:
 
 If the answer is no, Auto Layout is missing or wrong — fix it before moving on.
 
+## HTML → Figma：以結構為主、computed style 為輔
+
+當輸入來源是 HTML（live DOM、screenshot + DOM、或一段 markup）時：
+
+- **以 HTML 結構組成 Frame 階層** — 每個 block-level / flex / grid container 對應一個 Auto Layout Frame，子元素順序與巢狀關係必須與 DOM tree 一致。不要把多個兄弟節點壓成單一 Frame，也不要為了視覺上的方便重排節點。
+- **以 computed style（不是 source CSS、不是目測）補足視覺屬性** — `padding` / `margin` / `gap` 取自 `getComputedStyle()`，顏色取自 `color` / `background-color` 的 computed 值，排列方式從 `display` / `flex-direction` / `justify-content` / `align-items` 推導到 `layoutMode` / `primaryAxisAlignItems` / `counterAxisAlignItems`。
+- **margin → itemSpacing / padding** — HTML 的 margin 不存在於 Figma；把相鄰兄弟的 margin 折算成父層的 `itemSpacing`，把外側 margin 折算成祖父層的 padding。不要為了還原 margin 而使用絕對定位。
+- **仍然要過 token 對齊** — computed style 給出的是 raw 數值，最後一步仍須對應到設計系統的 spacing / color token；off-scale 的數值要 snap 到 scale 上（見 [tokens.md](tokens.md)）。
+
+順序：先依 DOM 落出 Frame 骨架 → 套 Auto Layout 與 sizing → 用 computed style 填 padding / gap / 顏色 → 對 token。
+
 ## Off-scale spacing
 
 Spacing values should live on the 4/8-pt scale (or whatever scale the system publishes). If you're writing `13px` / `17px` / `22px`, you measured the screenshot instead of looking up the token — snap to the scale. See [tokens.md](tokens.md).
