@@ -51,3 +51,12 @@ CLAUDE.local.md
 .mcp.json
 figma.config.json
 .projects/
+
+# Playwright (MCP, CLI, reports, caches, artifacts)
+.playwright/
+.playwright-*/
+playwright/.cache/
+playwright-report/
+playwright-results/
+test-results/
+.last-run.json
