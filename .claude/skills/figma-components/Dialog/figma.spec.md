@@ -2,16 +2,16 @@
 name: figma-component-dialog
 description: Figma component specification for the `<Dialog>` family — design counterpart of MUI's `<Dialog>` / `<DialogTitle>` / `<DialogContent>` / `<DialogActions>` re-exported via `src/stories/Dialog.stories.tsx`. Documents the modal shell (`<Dialog>` 5 `Size` variants), slot components, source-to-Figma mapping, design tokens (light theme), divider behavior, action-row geometry, and source sync rules. For runtime measurements see `storybook.render.md`; for component-scoped tokens see `design-token.md` (only if minted).
 parent_skill: figma-components
-figma_file_key: KQjP6W9Uw1PN0iipwQHyYn
-figma_node_id: '1:4772'
-figma_component_set_id: '1:4772'
-figma_dialog_title_component_id: '1:4768'
-figma_dialog_content_component_set_id: '1:4761'
-figma_dialog_actions_component_id: '1:4757'
-figma_dialog_doc_frame_id: '1:4771'
-figma_dialog_title_doc_frame_id: '1:4767'
-figma_dialog_content_doc_frame_id: '1:4760'
-figma_dialog_actions_doc_frame_id: '1:4756'
+figma_file_key: <FIGMA_FILE_KEY>
+figma_node_id: '<NODE_ID>'
+figma_component_set_id: '<NODE_ID>'
+figma_dialog_title_component_id: '<NODE_ID>'
+figma_dialog_content_component_set_id: '<NODE_ID>'
+figma_dialog_actions_component_id: '<NODE_ID>'
+figma_dialog_doc_frame_id: '<NODE_ID>'
+figma_dialog_title_doc_frame_id: '<NODE_ID>'
+figma_dialog_content_doc_frame_id: '<NODE_ID>'
+figma_dialog_actions_doc_frame_id: '<NODE_ID>'
 ---
 
 # `<Dialog>` Figma Component Specification
@@ -27,16 +27,16 @@ The `Dialog` family in Figma is the design counterpart of MUI's `Dialog` primiti
 
 `<DialogContentText>` (description body) is also referenced in §4.4; it has no dedicated Figma component because it renders inline inside `<DialogContent>` using the standard `body1` text style.
 
-> **Terminology:** The Figma authoring target lives on the **MUI Library** Figma file (`KQjP6W9Uw1PN0iipwQHyYn`). The frames sit on a single page that already holds the four editable nodes pinned in the frontmatter. The Figma component sets and the MUI source both use the canonical names.
+> **Terminology:** The Figma authoring target lives on the **MUI Library** Figma file (`<FIGMA_FILE_KEY>`). The frames sit on a single page that already holds the four editable nodes pinned in the frontmatter. The Figma component sets and the MUI source both use the canonical names.
 
 The Figma surface is split into four published nodes. Each node has two ids: the **doc frame** (the labeled wrapper visible on the page) and the actual **Component / Component Set** that lives inside it. The Component / Component Set is the published artifact that screens consume; the doc frame is documentation chrome only.
 
 | `<Component>`           | Doc frame id    | Component id    | Kind          | Role                                                                                              |
 | ----------------------- | --------------- | --------------- | ------------- | ------------------------------------------------------------------------------------------------- |
-| `<Dialog>`              | `1:4771`        | `1:4772`        | Component Set | Modal shell — background, radius, shadow; **5** `Size` variants (xs / sm / md / lg / xl).         |
-| `<DialogTitle>`         | `1:4767`        | `1:4768`        | Component     | Title slot — no variant axis. Symbol size `444 × 68`.                                             |
-| `<DialogContent>`       | `1:4760`        | `1:4761`        | Component Set | Body slot — **2** `Dividers` variants (`false` / `true`); cell ids `1:4762` (false) / `1:4764` (true). |
-| `<DialogActions>`       | `1:4756`        | `1:4757`        | Component     | Actions slot — no variant axis; whole-row Slot. Symbol size `484 × 84`.                           |
+| `<Dialog>`              | `<NODE_ID>`        | `<NODE_ID>`        | Component Set | Modal shell — background, radius, shadow; **5** `Size` variants (xs / sm / md / lg / xl).         |
+| `<DialogTitle>`         | `<NODE_ID>`        | `<NODE_ID>`        | Component     | Title slot — no variant axis. Symbol size `444 × 68`.                                             |
+| `<DialogContent>`       | `<NODE_ID>`        | `<NODE_ID>`        | Component Set | Body slot — **2** `Dividers` variants (`false` / `true`); cell ids `<NODE_ID>` (false) / `<NODE_ID>` (true). |
+| `<DialogActions>`       | `<NODE_ID>`        | `<NODE_ID>`        | Component     | Actions slot — no variant axis; whole-row Slot. Symbol size `484 × 84`.                           |
 
 A Storybook documentation matrix (`SizeMatrix`, `ActionCountMatrix`, `TitleWithCloseButton`) demonstrates the most common compositions; production screens compose modals the same way by nesting slot instances inside the `<Dialog>` shell's `slot` Slot.
 
@@ -44,7 +44,7 @@ A Storybook documentation matrix (`SizeMatrix`, `ActionCountMatrix`, `TitleWithC
 | ---------------------- | -------------------------------------------------------------------------------------------------------------------------------- |
 | Source story           | `src/stories/Dialog.stories.tsx`                                                                                                 |
 | Underlying source      | `@mui/material` `Dialog` + `DialogTitle` + `DialogContent` + `DialogActions` (re-exported by this package; no project wrapper)   |
-| Figma file             | `KQjP6W9Uw1PN0iipwQHyYn` (MUI Library)                                                                                           |
+| Figma file             | `<FIGMA_FILE_KEY>` (MUI Library)                                                                                           |
 | Underlying MUI version | `@mui/material@^7.3.10` (per `package.json` peer-dep `>=7`, current pnpm-lock resolution `7.3.10`)                              |
 | Title typography       | Roboto Medium 500, `20 / 32 px`, letter-spacing `0.15 px` — MUI `h6`                                                            |
 | Body typography (default `<DialogContentText>`) | Roboto Regular 400, `16 / 24 px`, letter-spacing `0.15008 px` — MUI `body1`                                |
@@ -56,8 +56,8 @@ A Storybook documentation matrix (`SizeMatrix`, `ActionCountMatrix`, `TitleWithC
 **Runtime-truth pass — 2026-04-29.** The four nodes were reconciled against MUI 7 runtime measurements (see [`./storybook.render.md`](./storybook.render.md)) on 2026-04-29. Reconciled in this pass:
 
 - Shell shadow rebound from `material-design/shadows/shadows-8` (consumed-library) to the local published `material-design/shadows/shadows-24` — the design-system MD elevation ramp's dialog tier (matches `figma-create-component/library-tokens.md` §4: "shadows-24 — dialogs").
-- Shell `bg-default` fill rebound from consumed-library `VariableID:0ac39446.../742:2677` to local `VariableID:223:4180`.
-- `<DialogContent Dividers=true>` border rebound from consumed-library `VariableID:900cc3a1.../742:2673` to local `VariableID:223:4183`; padding tightened from `20 / 24` to `16 / 24` (MUI 7 default).
+- Shell `bg-default` fill rebound from consumed-library `VariableID:<ID>ac39446.../742:2677` to local `VariableID:<ID>`.
+- `<DialogContent Dividers=true>` border rebound from consumed-library `VariableID:<ID>cc3a1.../742:2673` to local `VariableID:<ID>`; padding tightened from `20 / 24` to `16 / 24` (MUI 7 default).
 - `<DialogActions>` flipped from VERTICAL `padding 16` `align-items: center` to HORIZONTAL `padding 8` `gap 8` `justify-content: flex-end`.
 
 Items deferred (still open) live in §7.
@@ -193,7 +193,7 @@ All paints, strokes, and effects on the four Dialog nodes **must** be bound to a
 
 | Slot              | Component symbol size                                          | Padding (T R B L)                                                                          | Item gap                  | Font size / line-height | Font family    | Weight  | Notes                                                                                                                                              |
 | ----------------- | -------------------------------------------------------------- | ------------------------------------------------------------------------------------------ | ------------------------- | ----------------------- | -------------- | ------- | -------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `<DialogTitle>`   | `444 × 68`                                                     | `16 / 24 / 16 / 24`                                                                        | —                         | `20 / 32` (h6)          | Roboto         | Medium  | Once embedded in a shell, the row hugs its content. The 444 × 68 symbol size is the published `<DialogTitle>` cell at id `1:4768`.                  |
+| `<DialogTitle>`   | `444 × 68`                                                     | `16 / 24 / 16 / 24`                                                                        | —                         | `20 / 32` (h6)          | Roboto         | Medium  | Once embedded in a shell, the row hugs its content. The 444 × 68 symbol size is the published `<DialogTitle>` cell at id `<NODE_ID>`.                  |
 | `<DialogContent>` | `444 × 44` (`Dividers=false`) / `444 × 56` (`Dividers=true`)   | `0 / 24 / 20 / 24` (`Dividers=false`) ; `16 / 24 / 16 / 24` (`Dividers=true`)              | `8` (between text blocks) | `16 / 24` (body1)       | Roboto         | Regular | Width inherits from the shell. `Dividers=true` is taller because MUI re-introduces `16 px` top + bottom padding so text doesn't clip the strokes. |
 | `<DialogActions>` | `484 × 84`                                                     | `8 / 8 / 8 / 8` (all sides)                                                                | `8`                       | inherits from `<Button>` | —             | —       | Once embedded in a shell, the row hugs its content. Horizontal Auto Layout, `justify-content: flex-end`. **Padding is `8`, not `16`.**             |
 
@@ -244,7 +244,7 @@ MUI's `DialogTitle` + `DialogContent` + `DialogActions` exchange padding to avoi
 
 ### 6.1 Shell component set layout
 
-`<Dialog>` (`1:4771`) is laid out as **5 vertically stacked rows**, one per `Size`, each at the placeholder 120 px height:
+`<Dialog>` (`<NODE_ID>`) is laid out as **5 vertically stacked rows**, one per `Size`, each at the placeholder 120 px height:
 
 | Row | `Size` | Width | Left x (px) | Top y (px) |
 | --- | ------ | ----- | ----------- | ---------- |
@@ -302,11 +302,11 @@ The **2026-04-29 runtime-truth pass** reconciled the four nodes against Chrome D
 
 ### 7.2 Resolved in the 2026-04-29 runtime-truth pass
 
-1. ~~**`<DialogContent Dividers=true>` padding — `16 / 24`, not `20 / 24`.**~~ **Resolved 2026-04-29.** Cell `1:4764` re-authored to `paddingTop = paddingBottom = 16`. Symbol size now `444 × 56` (was `444 × 64`).
-2. ~~**`<DialogActions>` padding — `8 px` all sides, not `16 px`.**~~ **Resolved 2026-04-29.** Component `1:4757` re-authored: `layoutMode = HORIZONTAL`, `padding = 8`, `itemSpacing = 8`, `primaryAxisAlignItems = MAX (flex-end)`, `counterAxisAlignItems = CENTER`. Slot child set to FILL both axes. Symbol size remains `484 × 84` (slot `468 × 68` + 8 padding).
+1. ~~**`<DialogContent Dividers=true>` padding — `16 / 24`, not `20 / 24`.**~~ **Resolved 2026-04-29.** Cell `<NODE_ID>` re-authored to `paddingTop = paddingBottom = 16`. Symbol size now `444 × 56` (was `444 × 64`).
+2. ~~**`<DialogActions>` padding — `8 px` all sides, not `16 px`.**~~ **Resolved 2026-04-29.** Component `<NODE_ID>` re-authored: `layoutMode = HORIZONTAL`, `padding = 8`, `itemSpacing = 8`, `primaryAxisAlignItems = MAX (flex-end)`, `counterAxisAlignItems = CENTER`. Slot child set to FILL both axes. Symbol size remains `484 × 84` (slot `468 × 68` + 8 padding).
 3. ~~**Shell elevation — `shadows[24]`, not `shadows[8]`.**~~ **Resolved 2026-04-29.** Re-bound to the file's published `material-design/shadows/shadows-24` effect style (3-layer composite: `0 11 15 -7 α0.02`, `0 24 38 3 α0.14`, `0 8 46 8 α0.12` — the design-system MD ramp dialog tier, not MUI's runtime alpha values) and applied to all 5 Size cells.
-4. ~~**Local-only fill on shell — `bg-default` was bound to a consumed-library copy.**~~ **Resolved 2026-04-29.** All 5 shell cells re-bound to local `mui/alias/colors/bg-default` (`VariableID:223:4180`).
-5. ~~**Local-only stroke on `<DialogContent Dividers=true>` — `border-default` was bound to a consumed-library copy.**~~ **Resolved 2026-04-29.** Cell `1:4764` re-bound to local `mui/alias/colors/border-default` (`VariableID:223:4183`) at α 0.12.
+4. ~~**Local-only fill on shell — `bg-default` was bound to a consumed-library copy.**~~ **Resolved 2026-04-29.** All 5 shell cells re-bound to local `mui/alias/colors/bg-default` (`VariableID:<ID>`).
+5. ~~**Local-only stroke on `<DialogContent Dividers=true>` — `border-default` was bound to a consumed-library copy.**~~ **Resolved 2026-04-29.** Cell `<NODE_ID>` re-bound to local `mui/alias/colors/border-default` (`VariableID:<ID>`) at α 0.12.
 
 ## 8. Source Sync Rule
 
@@ -317,10 +317,10 @@ This document and the source must move together. When **any** of the following c
 | `node_modules/@mui/material/Dialog/Dialog.js` (or `DialogTitle.js` / `DialogContent.js` / `DialogActions.js` / `DialogContentText.js`) changes (MUI bump) | `figma.spec.md` §1 MUI version row, `storybook.render.md` §1–§5 + §6                                                     |
 | `src/stories/Dialog.stories.tsx` adds/removes a Size variant or composition pattern             | `figma.spec.md` §3.1 + §6.3, `storybook.render.md` §1.1                                                                   |
 | `src/stories/Dialog.stories.tsx` introduces a project wrapper (e.g. `Dialog.tsx` defaulting `disableBackdropClick=true`) | `figma.spec.md` §1 (terminology), §2.1 (props), §3 if new axes/booleans, §4 if new tokens; `storybook.render.md` re-probe |
-| Figma shell set `1:4771` variant axes / cell count change                                       | `figma.spec.md` §3.1 + §6.1, refresh `figma.config.json` via `figma-init/config-init.md`                                   |
-| Figma `<DialogTitle>` (`1:4767`) gains a `Close Button` BOOLEAN (or any property)               | `figma.spec.md` §2.2, §3.4, §5; add the supporting token if any                                                            |
-| Figma `<DialogContent>` set (`1:4760`) variant axes / cell count change                         | `figma.spec.md` §3.2 + §4.1 + §4.2 (border binding)                                                                        |
-| Figma `<DialogActions>` (`1:4756`) gains a variant axis (e.g. `Layout=Compact \| Standard`)     | `figma.spec.md` §2.4, §3.3, §3.4                                                                                           |
+| Figma shell set `<NODE_ID>` variant axes / cell count change                                       | `figma.spec.md` §3.1 + §6.1, refresh `figma.config.json` via `figma-init/config-init.md`                                   |
+| Figma `<DialogTitle>` (`<NODE_ID>`) gains a `Close Button` BOOLEAN (or any property)               | `figma.spec.md` §2.2, §3.4, §5; add the supporting token if any                                                            |
+| Figma `<DialogContent>` set (`<NODE_ID>`) variant axes / cell count change                         | `figma.spec.md` §3.2 + §4.1 + §4.2 (border binding)                                                                        |
+| Figma `<DialogActions>` (`<NODE_ID>`) gains a variant axis (e.g. `Layout=Compact \| Standard`)     | `figma.spec.md` §2.4, §3.3, §3.4                                                                                           |
 | Local `mui/*` tokens used by Dialog are renamed in this Figma file                            | `figma.spec.md` §4.2 + §4.4. **Do not** auto-pull from the published library — Dialog cells bind to the local collection only. |
 | Published library `seed/*` / `alias/*` tokens drift from the local copies                       | `./design-token.md` (record divergence; create the file if it doesn't exist), `figma.spec.md` §1 local-only note. Re-sync values manually if needed. |
 | `material-design/shadows/shadows-24` is renamed or removed from the local effect-style collection | `figma.spec.md` §4.1 + §4.2 + §7.6, `./design-token.md` if a Dialog-scoped replacement is minted                          |
@@ -341,7 +341,7 @@ This document and the source must move together. When **any** of the following c
 ```
 
 ```
-Figma file: KQjP6W9Uw1PN0iipwQHyYn (MUI Library), page "Foundation Components"
+Figma file: <FIGMA_FILE_KEY> (MUI Library), page "Foundation Components"
 
 <Dialog>  doc frame 1:4771 — component set 1:4772
   Variant axes : Size

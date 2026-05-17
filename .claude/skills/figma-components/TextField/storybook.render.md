@@ -72,7 +72,7 @@ Notes:
 | Outlined  | Small  | `40 px`      | `40 px`        | `8.5 14 8.5 14`         | `(14, -9 px)`             |
 | Outlined  | Medium | `56 px`      | `56 px`        | `16.5 14 16.5 14`       | `(14, -9 px)`             |
 
-These match the Figma frame heights at `1:6266` to within ±0.3 px (Figma cells: Std-Sm `45.26`, Std-Md `48.26`, Fld-Sm `48.27`, Fld-Md `56.27`, Out-Sm `40.24`, Out-Md `56.24`). Font size / weight stays at `16 / 23 px` regardless of size — MUI shrinks padding, not type.
+These match the Figma frame heights at `<NODE_ID>` to within ±0.3 px (Figma cells: Std-Sm `45.26`, Std-Md `48.26`, Fld-Sm `48.27`, Fld-Md `56.27`, Out-Sm `40.24`, Out-Md `56.24`). Font size / weight stays at `16 / 23 px` regardless of size — MUI shrinks padding, not type.
 
 ## 4. Has Value axis (Outlined Medium, Enabled)
 

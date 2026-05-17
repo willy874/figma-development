@@ -16,7 +16,7 @@ import {
 // ─── Inline 24×24 glyphs ────────────────────────────────────────────────────
 //
 // `@mui/icons-material` is intentionally not a dependency of this package.
-// The chevron mirrors `<Icon> Glyph Source = ChevronRight` (`512:7509`) at
+// The chevron mirrors `<Icon> Glyph Source = ChevronRight` (`<NODE_ID>`) at
 // the 24×24 grid used by Icon.stories.tsx so `currentColor` inheritance
 // through ListItemIcon's text paint is preserved.
 

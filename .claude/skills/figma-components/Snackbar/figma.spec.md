@@ -2,10 +2,10 @@
 name: figma-component-snackbar-spec
 description: Figma component specification for `<Snackbar>` — design counterpart of the MUI `<Snackbar>` consumed by `src/stories/Snackbar.stories.tsx`. Documents the variant matrix (Variant × Action = 5 × 3 = 15), the `Message` / `Action Label` TEXT properties, the dual-content model (Default → SnackbarContent grey body, Severity → Alert filled body), source-to-Figma mapping, layout / token bindings, and the divergences from MUI runtime (anchorOrigin not modeled, AlertTitle not modeled, Roboto over Noto Sans TC, MUI primary blue for Default-variant action). For runtime measurements see `storybook.render.md`; component-scoped tokens are documented in `design-token.md`.
 parent_skill: figma-components
-figma_file_key: KQjP6W9Uw1PN0iipwQHyYn
-figma_node_id: '846:11794'
-figma_component_set_id: '860:11925'
-figma_severity_icon_set_id: '855:11806'
+figma_file_key: <FIGMA_FILE_KEY>
+figma_node_id: '<NODE_ID>'
+figma_component_set_id: '<NODE_ID>'
+figma_severity_icon_set_id: '<NODE_ID>'
 ---
 
 # `<Snackbar>` Figma Component Specification
@@ -19,7 +19,7 @@ figma_severity_icon_set_id: '855:11806'
 
 The Figma component therefore models 5 × 3 = 15 variants — 5 Variants × 3 Action modes (`None`, `Button` for text-style actions like UNDO, `Close` for the X icon-button). The screen-level `anchorOrigin` axis is **not** part of the variant matrix because it has no body delta (only changes the wrapper's `top / bottom / left / right` offsets) — see §7 #2.
 
-The editable Figma node `846:11794` on the **Foundation Components** page was an empty white frame at the start of this pipeline; the **first published version** of the COMPONENT_SET (`860:11925`) plus the sibling `<SnackbarSeverityIcon>` set (`855:11806`) now live inside it (the frame currently measures 1293 × 1299 — sized to fit both sets side-by-side). Frontmatter `figma_node_id` pins the parent frame; `figma_component_set_id` pins the published Snackbar set; `figma_severity_icon_set_id` pins the severity-icon set.
+The editable Figma node `<NODE_ID>` on the **Foundation Components** page was an empty white frame at the start of this pipeline; the **first published version** of the COMPONENT_SET (`<NODE_ID>`) plus the sibling `<SnackbarSeverityIcon>` set (`<NODE_ID>`) now live inside it (the frame currently measures 1293 × 1299 — sized to fit both sets side-by-side). Frontmatter `figma_node_id` pins the parent frame; `figma_component_set_id` pins the published Snackbar set; `figma_severity_icon_set_id` pins the severity-icon set.
 
 **Runtime-aligned reconciliation — 2026-05-08.** The published cells were re-validated against `storybook.render.md` on 2026-05-08 and four Figma-side drifts were corrected: (a) all 12 Severity cells' root `counterAxisAlignItems` was switched from `CENTER` to `MIN` so the icon, message, and action slots top-align like MUI's `<Alert align-items: flex-start>` (was previously vertically-centering against the message); (b) the 4 vectors inside `<SnackbarSeverityIcon>` had their paint-level `opacity: 0.902` cleared to `1` so the bound `component/snackbar/alert-icon-fg` token (already 0.9 α) is the sole α source — pre-fix the icons were doubly attenuated to ≈0.81 α; (c) the `Variant=Default, Action=Button` cell's `Action Label` TEXT was rebound from `seed/neutral/white` to `seed/primary/main` per §6.4.1; (d) cell padding was reverted from `14/16` back to MUI's `6/16` and the message wrapper's `8 0` padding was relocated to a new `Message Container` Auto Layout VERTICAL frame that wraps the `Message Slot` (the inner SLOT keeps `padding: 0` per `figma-operator-guide` component-rules.md §4). The previous "absorb 8/0 into the cell" encoding inflated every Severity and Default×Action≠None cell by 11–16 px because the message column's missing 8/0 stopped contributing to the row's max height; the wrapper restores the 36 px message column so all 15 cells now resolve to 48 px tall, matching MUI runtime exactly. No variant axes, property surface, axis names, defaults, or token bindings changed.
 
@@ -28,10 +28,10 @@ The editable Figma node `846:11794` on the **Foundation Components** page was an
 | Source story        | `src/stories/Snackbar.stories.tsx`                                                   |
 | Underlying source   | `@mui/material` `Snackbar` + `SnackbarContent` + `Alert` (re-exported by this package) |
 | Underlying MUI      | `@mui/material` 7.3.10 (resolved from `package.json` on 2026-05-08)                  |
-| Figma file          | `KQjP6W9Uw1PN0iipwQHyYn` (MUI-Library)                                               |
-| Figma frame         | `Snackbar` (`846:11794`) — 1293 × 1299, page **Foundation Components**               |
-| Component Set       | `<Snackbar>` (`860:11925`) — published 2026-05-08, 15 variants                       |
-| Sibling set         | `<SnackbarSeverityIcon>` (`855:11806`) — 4 variants (Severity), 22 × 22 cells        |
+| Figma file          | `<FIGMA_FILE_KEY>` (MUI-Library)                                               |
+| Figma frame         | `Snackbar` (`<NODE_ID>`) — 1293 × 1299, page **Foundation Components**               |
+| Component Set       | `<Snackbar>` (`<NODE_ID>`) — published 2026-05-08, 15 variants                       |
+| Sibling set         | `<SnackbarSeverityIcon>` (`<NODE_ID>`) — 4 variants (Severity), 22 × 22 cells        |
 | Total variants      | **15** (5 Variants × 3 Actions); plus 4 sibling severity-icon cells                  |
 | Typography          | Roboto Regular 14 / 20 px (Message body, all 5 Variants — see §7 #7 for the Severity-Medium divergence resolution), Roboto Medium 13 / 22.75 px uppercase (Action Button label). Hand-set on TEXT nodes — the design system has no `material-design/components/snackbar` text style and the project's other MUI re-exports (Button / Tooltip / Chip) also hand-set Roboto for variant-label parity. See §7 #3 for the design-system divergence (Noto Sans TC vs Roboto). |
 | Local-only bindings | **Required.** Every paint / stroke / effect / shadow resolves to a variable in this file's local collection. Two component-scoped tokens are minted (`component/snackbar/default-bg = #323232`, `component/snackbar/alert-icon-fg = #FFFFFFE6`) — see `.claude/skills/figma-components/Snackbar/design-token.md` for the resolution chain. No `VariableID:<sharedKey>/...` consumed-library bindings are permitted. |
@@ -273,7 +273,7 @@ The 4 severity icons (check-circle outlined / info-circle outlined / warning-tri
 | Glyph paths         | derived from MUI's `internal/svg-icons/{SuccessOutlined, InfoOutlined, ReportProblemOutlined, ErrorOutline}` — copy the `<path>` data verbatim or use the MUI source as visual reference |
 | Glyph fill          | bound to `component/snackbar/alert-icon-fg` (default; consumers can rebind via instance override) |
 
-Storage: published as a sibling COMPONENT_SET inside the `846:11794` frame (or in a sibling frame on the same page if space allows). The Snackbar's Severity cells reference it via nested INSTANCE, with the `Severity` axis driven by an `Instance Swap`-equivalent override per cell. (Concretely, since Figma can't INSTANCE_SWAP across variant axes of a sibling SET via the Snackbar's variant-property surface, the spec authorizes 4 independent INSTANCE references — one per Severity Variant cell — each pointing at the matching `<SnackbarSeverityIcon Severity=…>` cell. See step 5's "structural replacements" phase.)
+Storage: published as a sibling COMPONENT_SET inside the `<NODE_ID>` frame (or in a sibling frame on the same page if space allows). The Snackbar's Severity cells reference it via nested INSTANCE, with the `Severity` axis driven by an `Instance Swap`-equivalent override per cell. (Concretely, since Figma can't INSTANCE_SWAP across variant axes of a sibling SET via the Snackbar's variant-property surface, the spec authorizes 4 independent INSTANCE references — one per Severity Variant cell — each pointing at the matching `<SnackbarSeverityIcon Severity=…>` cell. See step 5's "structural replacements" phase.)
 
 If a future PR adds the 4 severity glyphs into the existing `<Icon>` component set with a compatible axis (`Glyph=success-outlined / info-outlined / warning-outlined / error-outlined`), retire `<SnackbarSeverityIcon>` and re-bind the Snackbar cells to the existing `<Icon>` set.
 
@@ -328,7 +328,7 @@ This document and the source must move together. A change in any of the followin
 4. `node_modules/@mui/material/Alert/Alert.js` — Severity Variant body source. A bump that changes paddings, the icon's `font-size: 22` or `opacity: 0.9`, or the filled-variant's `fontWeight: 500` rule updates §3 / §6.2 / §6.3 here and `storybook.render.md` §3.
 5. `package.json` (and `pnpm-lock.yaml`) — pin of `@mui/material`. Bump §1's `Underlying MUI` row whenever the resolved version changes.
 6. `.storybook/preview.tsx` — global theme decorator. If the project introduces a custom MUI theme override (`palette.background.default`, `palette.<severity>.main`, `cssVariables: true`, or a dark-mode preview), update §1, §5, §6 and re-derive `storybook.render.md` paint values. Specifically, turning on `theme.vars` switches the SnackbarContent bg from `emphasize(...)` to `vars.palette.SnackbarContent.bg`, and the Alert filled bg from `palette[color].main` to `vars.palette.Alert[<color>FilledBg]` — both alter the divergence resolution.
-7. The published Figma `<Snackbar>` component set (file `KQjP6W9Uw1PN0iipwQHyYn`, frame `846:11794`) — once published, set the `figma_component_set_id` frontmatter and reflect any axis additions / component-property additions in §3.
+7. The published Figma `<Snackbar>` component set (file `<FIGMA_FILE_KEY>`, frame `<NODE_ID>`) — once published, set the `figma_component_set_id` frontmatter and reflect any axis additions / component-property additions in §3.
 8. The published Figma `<SnackbarSeverityIcon>` component set (sibling of `<Snackbar>` in the same file, see §6.5) — once published, document its node id in §6.5 and update Snackbar's Severity cell INSTANCE references.
 9. The MUI variable collection (`material-design` + `mui` collections in this Figma file) — if a token is renamed, removed, or its `resolvedType` changes, update every reference in §5, §6.1, §6.2, §6.4. **Token-value changes alone do not require a spec edit** — variables resolve by name.
 10. `.claude/skills/figma-create-component/library-tokens.md` — the project token catalogue. If `seed/<severity>/main`, `seed/primary/main`, or `seed/neutral/white` change, propagate to §5.1–§5.2.
@@ -394,7 +394,7 @@ type AlertProps = {
 
 ```
 Component: <Snackbar>
-File:      KQjP6W9Uw1PN0iipwQHyYn (MUI Library)
+File:      <FIGMA_FILE_KEY> (MUI Library)
 Frame:     Snackbar / `<Snackbar>` (846:11794)
 
 Variant axes (15 cells):

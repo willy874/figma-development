@@ -6,7 +6,7 @@ parent_skill: figma-components
 
 # `<Pagination>` Component Tokens
 
-Tokens scoped to `<Pagination>` and authored in the **local `mui` collection** of the MUI Library Figma file (`KQjP6W9Uw1PN0iipwQHyYn`). Reach for these only inside the Pagination component sets; for everything else (semantic colors, action overlays), bind to the shared `mui/seed/*` and `mui/alias/*` tokens documented in [`../../figma-create-component/library-tokens.md`](../../figma-create-component/library-tokens.md).
+Tokens scoped to `<Pagination>` and authored in the **local `mui` collection** of the MUI Library Figma file (`<FIGMA_FILE_KEY>`). Reach for these only inside the Pagination component sets; for everything else (semantic colors, action overlays), bind to the shared `mui/seed/*` and `mui/alias/*` tokens documented in [`../../figma-create-component/library-tokens.md`](../../figma-create-component/library-tokens.md).
 
 ## Why these are component-scoped
 

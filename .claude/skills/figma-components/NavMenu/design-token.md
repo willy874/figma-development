@@ -6,7 +6,7 @@ parent_skill: figma-components
 
 # `<NavMenu>` Component Tokens
 
-Tokens scoped to `<NavMenu>` / `<NavMenuItem>` and authored in the **local `mui` collection** of the MUI Library Figma file (`KQjP6W9Uw1PN0iipwQHyYn`). Reach for these only inside the NavMenu component sets; for everything else (semantic colors, action overlays, MD typography), bind to the shared `mui/seed/*` and `mui/alias/*` tokens documented in [`../../figma-create-component/library-tokens.md`](../../figma-create-component/library-tokens.md).
+Tokens scoped to `<NavMenu>` / `<NavMenuItem>` and authored in the **local `mui` collection** of the MUI Library Figma file (`<FIGMA_FILE_KEY>`). Reach for these only inside the NavMenu component sets; for everything else (semantic colors, action overlays, MD typography), bind to the shared `mui/seed/*` and `mui/alias/*` tokens documented in [`../../figma-create-component/library-tokens.md`](../../figma-create-component/library-tokens.md).
 
 ## Why this is component-scoped
 

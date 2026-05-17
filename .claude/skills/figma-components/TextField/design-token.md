@@ -1,6 +1,6 @@
 ---
 name: figma-component-text-field-design-token
-description: Component-scoped design tokens for `<TextField>`. Defined here because they're MUI-TextField-specific resting-state alphas that don't fit the shared `mui/seed/*` or `mui/alias/*` namespaces and live as **local** variables inside the MUI-Library file (`KQjP6W9Uw1PN0iipwQHyYn`) rather than the published 天璇 collection. Bind TextField paints / strokes to these names rather than literal values; for shared tokens used by TextField (seed primary / danger, alias text colors, alias bg-disabled, paper-elevation-0), see `.claude/skills/figma-create-component/library-tokens.md`.
+description: Component-scoped design tokens for `<TextField>`. Defined here because they're MUI-TextField-specific resting-state alphas that don't fit the shared `mui/seed/*` or `mui/alias/*` namespaces and live as **local** variables inside the MUI-Library file (`<FIGMA_FILE_KEY>`) rather than the published 天璇 collection. Bind TextField paints / strokes to these names rather than literal values; for shared tokens used by TextField (seed primary / danger, alias text colors, alias bg-disabled, paper-elevation-0), see `.claude/skills/figma-create-component/library-tokens.md`.
 parent_skill: figma-components
 ---
 
@@ -12,7 +12,7 @@ Tokens scoped to `<TextField>` and its variants. Reach for these only inside the
 
 These values are **MUI-TextField-specific resting alphas** that don't reuse a shared semantic token. The MUI runtime sources them from a mix of `palette.text.primary × α` (with `α` drawn from MUI's `inputAdornedRootStyles` and the `MuiInput-underline` `:before` rules) and `palette.action.disabledBackground` for disabled wrappers. None of these resolve to a single named slot in `palette.*`, so the token surface lives in the local `component/input/*` namespace inside the MUI-Library file rather than the published `mui/seed/*` or `mui/alias/*`.
 
-These tokens share the same `component/*` prefix as the shared `mui/component/*` namespace documented in `figma-create-component/library-tokens.md`, but they live in the **local** `mui` collection inside the MUI-Library file (`KQjP6W9Uw1PN0iipwQHyYn`) — not the published 天璇 collection. Treat them as local-only; promoting one to the shared collection still requires copying it into the 天璇 file's `mui` collection (and rebinding may be needed if IDs change).
+These tokens share the same `component/*` prefix as the shared `mui/component/*` namespace documented in `figma-create-component/library-tokens.md`, but they live in the **local** `mui` collection inside the MUI-Library file (`<FIGMA_FILE_KEY>`) — not the published 天璇 collection. Treat them as local-only; promoting one to the shared collection still requires copying it into the 天璇 file's `mui` collection (and rebinding may be needed if IDs change).
 
 Anything that turns out to be reused by another input component (Select, Autocomplete, PinInput) should be promoted to the shared `mui/component/input/*` namespace in the 天璇 file and removed from here.
 

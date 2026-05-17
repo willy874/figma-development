@@ -2,9 +2,9 @@
 name: figma-component-text-field-spec
 description: Figma component specification for `<TextField>` — design counterpart of the MUI `<TextField>` consumed by `src/stories/TextField.stories.tsx`. Documents the variant matrix (Variant × Size × State × Has Value × Multiline), component properties (Label / Placeholder / Value / Helper Text Content + adornment / autocomplete slots), source-to-Figma mapping, and the token bindings that pin every fill / stroke / underline to a named token. For component-scoped tokens see `design-token.md` in this directory; for runtime measurements see `storybook.render.md`.
 parent_skill: figma-components
-figma_file_key: KQjP6W9Uw1PN0iipwQHyYn
-figma_node_id: '1:6266'
-figma_component_set_id: '1:6266'
+figma_file_key: <FIGMA_FILE_KEY>
+figma_node_id: '<NODE_ID>'
+figma_component_set_id: '<NODE_ID>'
 ---
 
 # `<TextField>` Figma Component Specification
@@ -13,16 +13,16 @@ figma_component_set_id: '1:6266'
 
 `<TextField>` is the Figma counterpart of the MUI `<TextField>` consumed in `src/stories/TextField.stories.tsx`. The package re-exports MUI directly — there is no in-repo wrapper — so the Figma component encodes the MUI prop surface (`variant`, `size`, `disabled`, `error`, `focused`, `value`, `label`, `placeholder`, `helperText`, `InputProps.startAdornment` / `endAdornment`) plus a native `Autocomplete` slot for SearchInput-style children.
 
-The Figma cells already match this contract — every paint, stroke, text fill, and underline is bound to a named variable in the MUI-Library file's local collection (`KQjP6W9Uw1PN0iipwQHyYn`). The `component/input/*` family of tokens (documented in [`design-token.md`](./design-token.md)) carries MUI-specific resting alphas; semantic tokens come from the published `mui/seed/*` and `mui/alias/*` namespaces (see [`library-tokens.md`](../../figma-create-component/library-tokens.md)).
+The Figma cells already match this contract — every paint, stroke, text fill, and underline is bound to a named variable in the MUI-Library file's local collection (`<FIGMA_FILE_KEY>`). The `component/input/*` family of tokens (documented in [`design-token.md`](./design-token.md)) carries MUI-specific resting alphas; semantic tokens come from the published `mui/seed/*` and `mui/alias/*` namespaces (see [`library-tokens.md`](../../figma-create-component/library-tokens.md)).
 
 | Aspect            | Value                                                                                  |
 | ----------------- | -------------------------------------------------------------------------------------- |
 | Source story      | `src/stories/TextField.stories.tsx`                                                    |
 | Underlying source | `@mui/material@^7.3.10` `TextField` (re-exported by this package, no wrapper)          |
-| Figma file        | [MUI-Library](https://www.figma.com/design/KQjP6W9Uw1PN0iipwQHyYn) (`KQjP6W9Uw1PN0iipwQHyYn`) |
-| Figma frame       | `TextField` (`1:6156`) on page **Foundation Components** (`0:1`) — outer documentation frame (`2928.91 × 3606.33 px`) housing both the variant grid (`1:6266`) at `x=24` and the `UseCase` panel (`1:6157`) at `x=1575.96`. Frame height grows with the multiline block; Auto Layout determines the actual value. |
-| Component Set     | `<TextField>` (`1:6266`) — variant grid (`1449.14 × 2088.32 px`)                       |
-| UseCase panel     | `UseCase` (`1:6157`) — curated examples (`1260 × 2137.12 px`); see §6.2                |
+| Figma file        | [MUI-Library](https://www.figma.com/design/<FIGMA_FILE_KEY>) (`<FIGMA_FILE_KEY>`) |
+| Figma frame       | `TextField` (`<NODE_ID>`) on page **Foundation Components** (`<NODE_ID>`) — outer documentation frame (`2928.91 × 3606.33 px`) housing both the variant grid (`<NODE_ID>`) at `x=24` and the `UseCase` panel (`<NODE_ID>`) at `x=1575.96`. Frame height grows with the multiline block; Auto Layout determines the actual value. |
+| Component Set     | `<TextField>` (`<NODE_ID>`) — variant grid (`1449.14 × 2088.32 px`)                       |
+| UseCase panel     | `UseCase` (`<NODE_ID>`) — curated examples (`1260 × 2137.12 px`); see §6.2                |
 | Total variants    | **120** (3 Variants × 2 Sizes × 5 States × 2 Has Value × 2 Multiline)                  |
 | Typography        | Roboto Regular, value `16 / 24 px` ls `0.15 px`; floated label text style `input/label` (`12 / 12 px`, ls `0.15 px`) |
 
@@ -88,7 +88,7 @@ Property names below are the human-readable keys; Figma's internal property ids 
 
 ## 4. Design Tokens
 
-All paints, strokes, and surfaces bind to local variables in the MUI-Library file (`KQjP6W9Uw1PN0iipwQHyYn`). Hex values appear in this document only as reference resolutions of the light theme — bind to the token, not the hex.
+All paints, strokes, and surfaces bind to local variables in the MUI-Library file (`<FIGMA_FILE_KEY>`). Hex values appear in this document only as reference resolutions of the light theme — bind to the token, not the hex.
 
 ### 4.1 Sizing
 
@@ -189,14 +189,14 @@ Notes:
 | Start adornment | `Adorn. Start`   | `Start Adorn` | `false`            | `24 × 24`  | `Start Adorn`  |
 | End adornment   | `Adorn. End`     | `End Adorn`   | `false`            | `24 × 24`  | `End Adorn`    |
 
-- **Slot type**: native Figma `SLOT` (not `INSTANCE_SWAP`). Designers drop any node into the slot at instance level — typically an instance of the shared `<Icon>` component set (`3:2722`). There is no shared default to maintain at the component-set level.
+- **Slot type**: native Figma `SLOT` (not `INSTANCE_SWAP`). Designers drop any node into the slot at instance level — typically an instance of the shared `<Icon>` component set (`<NODE_ID>`). There is no shared default to maintain at the component-set level.
 - **Glyph fill**: bind the inner Vector fill of the dropped instance to `alias/colors/text-sub` (resting) or `alias/colors/text-disabled` (Disabled). Do not paint with hex.
 - **Slot dimensions**: `24 × 24 px` for both `Size=Small` and `Size=Medium`. Keeping the slot uniform avoids two adornment ramps; the host input shrinks vertically on Small but the adornment frame stays.
 - **Runtime drift**: MUI renders adornment glyphs at `action.active` (`0.54α`); the spec binds `text-sub` (`0.6α`). The visual difference is small — track in §7 to either accept or close by minting a dedicated adornment-fill token.
 
 ## 6. Layout
 
-The Component Set is laid out as a **6-column × 20-row grid** inside the `<TextField>` frame (`1:6266`):
+The Component Set is laid out as a **6-column × 20-row grid** inside the `<TextField>` frame (`<NODE_ID>`):
 
 - **Columns** (left → right) — `Variant × Size`: Standard·Medium, Standard·Small, Filled·Medium, Filled·Small, Outlined·Medium, Outlined·Small. Column origins x = `{24, 260, 496, 732, 968, 1204}`; column stride `236 px` (`220 px` cell + `16 px` gap).
 - **Row bands** (top → bottom) — `State × Has Value × Multiline`. The grid is the single-line block (10 rows, identical to the previous publication) followed immediately by the multiline block (10 more rows in the same `State × Has Value` order):
@@ -225,22 +225,22 @@ The Component Set is laid out as a **6-column × 20-row grid** inside the `<Text
 - Row vertical strides reflect cell heights from §4.1; the `Has Value=False` rows collapse to the un-shrunk-label height (single-line block) or sit at the un-shrunk-label-at-first-row position (multiline block, see §6.1). Multiline rows are uniformly taller — the wrapper grows by `+46 px` regardless of `Has Value`.
 - Frame dimensions grow proportionally — adding the multiline block doubles the row count; the frame's `height` becomes `≈ 1648 px` (single-line block ≈ 826 px + multiline block + Helper Text bands). The exact value is whatever the Auto Layout pack produces; do not hard-code.
 
-The surrounding outer frame `TextField` (`1:6156`) houses both the variant grid and a `UseCase` documentation panel (`1:6157`) at `x=1575.96` — see §6.2 for the panel's section inventory.
+The surrounding outer frame `TextField` (`<NODE_ID>`) houses both the variant grid and a `UseCase` documentation panel (`<NODE_ID>`) at `x=1575.96` — see §6.2 for the panel's section inventory.
 
-### 6.2 `UseCase` documentation panel (`1:6157`)
+### 6.2 `UseCase` documentation panel (`<NODE_ID>`)
 
 Sibling panel to the variant grid, used by designers as a quick-reference catalog of the variant axes plus curated wrapper recipes. Renders nothing in production — it lives in the library file only. Each section pairs a Head (title + caption) with a Body of example instances dropped from the `<TextField>` component set.
 
 | Section node | Name             | Caption (verbatim)                                                                                                                  | Examples (verbatim labels)                                                                                                  |
 | ------------ | ---------------- | ----------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- |
-| `1:6159`     | **Variants**     | `<TextField> variant — standard · filled · outlined`                                                                                | Standard · Filled · Outlined                                                                                                |
-| `1:6173`     | **Sizes**        | `<TextField> size — medium (default) · small`                                                                                       | medium · small                                                                                                              |
-| `1:6184`     | **States**       | `Interaction & validation states — Enabled · Hovered · Focused · Disabled · Error`                                                  | Enabled · Hovered · Focused · Disabled · Error                                                                              |
-| `1:6204`     | **Has Value**    | `True floats label & shows Value · False keeps un-floated label inside input — placeholder stays suppressed`                        | Has Value=True · Has Value=False                                                                                            |
-| `422:7056`   | **Multiline**    | `Multiline=true swaps <input> for <textarea> with fixed minRows=3 — wrapper height grows by +46 px; paint / tokens unchanged`       | Multiline=false · Multiline=true · Multiline=true · Empty                                                                   |
-| `1:6215`     | **Helper Text**  | `Toggle the <FormHelperText> row — pairs with State=Error for inline validation`                                                    | Helper Text=false · Helper Text=true · Error + Helper Text                                                                  |
-| `1:6229`     | **Adornments**   | `prefixNode / suffixNode slots — toggle Adorn. Start / Adorn. End`                                                                  | Adorn. Start · Adorn. End · Both adornments                                                                                 |
-| `1:6243`     | **Common usage** | `Typical <TextField> recipes used across the Console app`                                                                           | SearchInput recipe (Outlined + leading `<SearchIcon>`) · PasswordInput recipe (Outlined + trailing `<EyeIcon>`) · Required field (Filled with helper) · Inline validation (Error with helper message) · Read-only / disabled (pre-filled identifier) · Compact filter (Standard Small) |
+| `<NODE_ID>`     | **Variants**     | `<TextField> variant — standard · filled · outlined`                                                                                | Standard · Filled · Outlined                                                                                                |
+| `<NODE_ID>`     | **Sizes**        | `<TextField> size — medium (default) · small`                                                                                       | medium · small                                                                                                              |
+| `<NODE_ID>`     | **States**       | `Interaction & validation states — Enabled · Hovered · Focused · Disabled · Error`                                                  | Enabled · Hovered · Focused · Disabled · Error                                                                              |
+| `<NODE_ID>`     | **Has Value**    | `True floats label & shows Value · False keeps un-floated label inside input — placeholder stays suppressed`                        | Has Value=True · Has Value=False                                                                                            |
+| `<NODE_ID>`   | **Multiline**    | `Multiline=true swaps <input> for <textarea> with fixed minRows=3 — wrapper height grows by +46 px; paint / tokens unchanged`       | Multiline=false · Multiline=true · Multiline=true · Empty                                                                   |
+| `<NODE_ID>`     | **Helper Text**  | `Toggle the <FormHelperText> row — pairs with State=Error for inline validation`                                                    | Helper Text=false · Helper Text=true · Error + Helper Text                                                                  |
+| `<NODE_ID>`     | **Adornments**   | `prefixNode / suffixNode slots — toggle Adorn. Start / Adorn. End`                                                                  | Adorn. Start · Adorn. End · Both adornments                                                                                 |
+| `<NODE_ID>`     | **Common usage** | `Typical <TextField> recipes used across the Console app`                                                                           | SearchInput recipe (Outlined + leading `<SearchIcon>`) · PasswordInput recipe (Outlined + trailing `<EyeIcon>`) · Required field (Filled with helper) · Inline validation (Error with helper message) · Read-only / disabled (pre-filled identifier) · Compact filter (Standard Small) |
 
 Notes:
 
@@ -250,7 +250,7 @@ Notes:
 
 ### 6.1 Cell composition
 
-Every single-line cell follows the same nested structure (the Figma `Variant=Filled, Size=Medium, State=Enabled, Has Value=True, Multiline=False` cell `1:6299` is the canonical reference):
+Every single-line cell follows the same nested structure (the Figma `Variant=Filled, Size=Medium, State=Enabled, Has Value=True, Multiline=False` cell `<NODE_ID>` is the canonical reference):
 
 - `Input` (FRAME) — wrapper with the variant fill (Filled) or transparent (Standard / Outlined) and the notched outline (Outlined).
   - `Label` (FRAME) — sub-frame holding the un-floated label text node (visible when `Has Value=False`).
@@ -331,11 +331,11 @@ These are tracked here so the next runtime-truth pass has a punch list:
 This document and the source must move together. When **any** of the following changes:
 
 1. `src/stories/TextField.stories.tsx` (variants, args, adornment / helper-text wiring)
-2. The Figma `<TextField>` component set at `1:6266` (variants, properties, token bindings)
+2. The Figma `<TextField>` component set at `<NODE_ID>` (variants, properties, token bindings)
 3. The local `component/input/*` tokens documented in [`design-token.md`](./design-token.md), or the local `text/disabled`, `background/paper-elevation-0`, `input/label` variables
 4. The shared `mui/seed/*`, `mui/alias/*` tokens consumed in §4.2 — particularly `seed/primary/main`, `seed/danger/main`, `alias/colors/{text-sub,text-default,text-disabled,bg-disabled}`
 5. `.storybook/preview.tsx` (theme overrides via `createTheme`) — today this is an empty `createTheme()`; introducing typography / palette / `MuiTextField.defaultProps` overrides forces a re-measure
-6. The shared `<Icon>` component set (`3:2722`) — variants added/removed/renamed, or the size-to-pixel mapping changes
+6. The shared `<Icon>` component set (`<NODE_ID>`) — variants added/removed/renamed, or the size-to-pixel mapping changes
 7. `package.json` `@mui/material` peer / dev version (currently `^7.3.10` / peer `>=7`)
 
 …this spec **must be updated in the same change**. Specifically:
@@ -348,7 +348,7 @@ This document and the source must move together. When **any** of the following c
 - Token value change in `component/input/*` → no edit to this spec is required (Figma resolves through the same name); `design-token.md` records the resolution chain.
 - Renaming the slot keys (`Start Adorn` / `End Adorn` / `Autocomplete`) or changing the adornment frame size from `24 × 24` → update §3.1, §5, §6.
 - Surfacing the `Placeholder` property visibly (e.g. by adding a "no-label" sub-variant) → update §4.3, §7, and add the new variant axis in §3.
-- Adding / removing / renaming a section in the `UseCase` panel (`1:6157`) — including a new Common-usage recipe → update §6.2's section table and §7.2's wrapper-recipe table in lockstep. Promoting any Common-usage recipe to a proper wrapper component set → add the wrapper to §1, give it its own §3.N matrix and §6 grid entry.
+- Adding / removing / renaming a section in the `UseCase` panel (`<NODE_ID>`) — including a new Common-usage recipe → update §6.2's section table and §7.2's wrapper-recipe table in lockstep. Promoting any Common-usage recipe to a proper wrapper component set → add the wrapper to §1, give it its own §3.N matrix and §6 grid entry.
 - `@mui/material` major bump → re-run `storybook.render.md` §7 drift checks; bump the version row in §1; reconcile any new computed-style values against §4.
 
 ## 9. Quick Reference

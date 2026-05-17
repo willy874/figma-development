@@ -2,9 +2,9 @@
 name: figma-component-tooltip-spec
 description: Figma component specification for `<Tooltip>` — design counterpart of the MUI `<Tooltip>` consumed by `src/stories/Tooltip.stories.tsx`. Documents the variant matrix (Placement × Arrow), the `Title` TEXT property, source-to-Figma mapping, the Tooltip body + Arrow paint bindings, and the MUI runtime divergences (`grey[700] × 0.92` body vs `0.9` arrow alpha pair vs the design system's single `component/tooltip/fill = #616161E5` token). For runtime measurements see `storybook.render.md`; component-scoped tokens reuse the existing shared catalogue (no new `design-token.md` required).
 parent_skill: figma-components
-figma_file_key: KQjP6W9Uw1PN0iipwQHyYn
-figma_node_id: '804:11975'
-figma_component_set_id: '810:16739'
+figma_file_key: <FIGMA_FILE_KEY>
+figma_node_id: '<NODE_ID>'
+figma_component_set_id: '<NODE_ID>'
 ---
 
 # `<Tooltip>` Figma Component Specification
@@ -15,15 +15,15 @@ figma_component_set_id: '810:16739'
 
 Tooltip is the simplest published primitive in this library — no `Color` axis (Tooltip is monochrome greyscale by default), no `State` axis (visibility is binary — open vs closed; closed has no visual to author), and no `Size` axis on the public prop surface (the `touch` mode is set internally via touch-event handlers, not via a public prop — see §7 #1). The variant explosion is therefore driven entirely by **Placement × Arrow = 12 × 2 = 24 cells**.
 
-The editable Figma node `804:11975` (1028 × 657 frame on the **MUI Library** file's Tooltip page) was empty at the start of this pipeline; this spec describes what the **first published version** must look like once Step 5 completes. Frontmatter `figma_node_id` pins the parent frame; `figma_component_set_id` is left blank until the COMPONENT_SET is created.
+The editable Figma node `<NODE_ID>` (1028 × 657 frame on the **MUI Library** file's Tooltip page) was empty at the start of this pipeline; this spec describes what the **first published version** must look like once Step 5 completes. Frontmatter `figma_node_id` pins the parent frame; `figma_component_set_id` is left blank until the COMPONENT_SET is created.
 
 | Aspect              | Value                                                                                |
 | ------------------- | ------------------------------------------------------------------------------------ |
 | Source story        | `src/stories/Tooltip.stories.tsx`                                                    |
 | Underlying source   | `@mui/material` `Tooltip` (re-exported by this package)                              |
 | Underlying MUI      | `@mui/material` 7.3.10 (resolved from `package.json` on 2026-05-07)                  |
-| Figma file          | `KQjP6W9Uw1PN0iipwQHyYn` (MUI-Library)                                               |
-| Figma frame         | `Tooltip` (`804:11975`) — 1028 × 657, page **Tooltip** (or whichever page hosts `804:11975`; verify in step 5) |
+| Figma file          | `<FIGMA_FILE_KEY>` (MUI-Library)                                               |
+| Figma frame         | `Tooltip` (`<NODE_ID>`) — 1028 × 657, page **Tooltip** (or whichever page hosts `<NODE_ID>`; verify in step 5) |
 | Component Set       | _to be created_ — node id pinned in `figma_component_set_id` once published          |
 | Total variants      | **24** (12 Placements × 2 Arrow)                                                     |
 | Typography          | Roboto Medium `11 / 16.5 px` (line-height 1.5 inherited from CssBaseline body1) for the Tooltip body. **Hand-set on the TEXT node** — the design system has no `material-design/components/tooltip` text style, so the spec applies fontName / size / line-height directly. (See §7 #2 for the design-system divergence: Noto Sans TC, the project's primary CJK font, is _not_ used for Tooltip — runtime is Roboto-only and the spec keeps that to mirror MUI fidelity.) |
@@ -105,7 +105,7 @@ None — Tooltip has no `Color` axis (§2.1). If a future PR adds themed Tooltip
 
 ### 5.2 Alias / Seed
 
-- `seed/neutral/white` — `#FFFFFF`. Tooltip body foreground (`color`). The local `mui` collection already ships this token (`VariableID:329:6515`); it's the same value MUI uses (`palette.common.white`) and is the canonical neutral-white binding across this library (`<Chip>` Avatar fg also reaches for `seed/neutral/white` per `Chip/figma.spec.md` §6.7). No raw-palette read is required.
+- `seed/neutral/white` — `#FFFFFF`. Tooltip body foreground (`color`). The local `mui` collection already ships this token (`VariableID:<ID>`); it's the same value MUI uses (`palette.common.white`) and is the canonical neutral-white binding across this library (`<Chip>` Avatar fg also reaches for `seed/neutral/white` per `Chip/figma.spec.md` §6.7). No raw-palette read is required.
 
 ### 5.3 Component-scoped (Tooltip)
 
@@ -207,7 +207,7 @@ This document and the source must move together. A change in any of the followin
 2. `node_modules/@mui/material/Tooltip/Tooltip.js` — MUI source. A MUI minor/major bump that changes paddings, font-size, line-height, arrow geometry, or palette resolution updates §6 (Constants) and `storybook.render.md` §1–§5.
 3. `package.json` (and `pnpm-lock.yaml` / `package-lock.json`) — pin of `@mui/material`. Bump §1's `Underlying MUI` row whenever the resolved version changes.
 4. `.storybook/preview.tsx` — global theme decorator. If the project introduces a custom MUI theme override (palette / typography / shape / `cssVariables`), update §1, §5, §6 and re-derive `storybook.render.md` paint values. Specifically, turning on `theme.vars` (`createTheme({ cssVariables: true })`) changes the Tooltip body / arrow fill source from `alpha(grey[700], 0.92)` / `alpha(grey[700], 0.9)` to a single `vars.palette.Tooltip.bg` token, which alters the §7 #4 divergence resolution.
-5. The published Figma `<Tooltip>` component set (file `KQjP6W9Uw1PN0iipwQHyYn`, frame `804:11975`) — once published, set the `figma_component_set_id` frontmatter and reflect any axis additions / component-property additions in §3.
+5. The published Figma `<Tooltip>` component set (file `<FIGMA_FILE_KEY>`, frame `<NODE_ID>`) — once published, set the `figma_component_set_id` frontmatter and reflect any axis additions / component-property additions in §3.
 6. The MUI variable collection (`material-design` + `mui` collections in this Figma file) — if a token is renamed, removed, or its `resolvedType` changes, update every reference in §5, §6.1, §6.2. **Token-value changes alone do not require a spec edit** — variables resolve by name.
 7. `.claude/skills/figma-create-component/library-tokens.md` — the project token catalogue. If `component/tooltip/fill`'s alpha or hex changes, propagate to §5.3 + §6.1 + §6.2 and re-evaluate divergence #4 in §7.
 
@@ -266,7 +266,7 @@ type TooltipProps = {
 
 ```
 Component: <Tooltip>
-File:      KQjP6W9Uw1PN0iipwQHyYn (MUI Library)
+File:      <FIGMA_FILE_KEY> (MUI Library)
 Frame:     Tooltip / `<Tooltip>` (804:11975)
 
 Variant axes (24 cells):

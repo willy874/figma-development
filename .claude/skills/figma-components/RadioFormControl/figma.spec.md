@@ -2,9 +2,9 @@
 name: figma-component-radio-form-control-spec
 description: Figma component specification for `<RadioFormControl>` — design counterpart of MUI's composed `<FormControlLabel>` + `<Radio>` consumed by `src/stories/RadioFormControl.stories.tsx`. Wraps a `<Radio>` instance and a sibling `Label` text node in auto-layout. Documents the LabelPlacement × Color × Checked × Size × State variant matrix, the nested-instance mirroring contract, and source-to-Figma mapping rules. For runtime measurements see `storybook.render.md`; for the inner-indicator spec see `../Radio/figma.spec.md`.
 parent_skill: figma-components
-figma_file_key: KQjP6W9Uw1PN0iipwQHyYn
-figma_node_id: '295:5573'
-figma_component_set_id: '295:5573'
+figma_file_key: <FIGMA_FILE_KEY>
+figma_node_id: '<NODE_ID>'
+figma_component_set_id: '<NODE_ID>'
 ---
 
 # `<RadioFormControl>` Figma Component Specification
@@ -32,9 +32,9 @@ inside an auto-layout frame whose direction encodes `labelPlacement`. The set sh
 | ----------------- | -------------------------------------------------------------------------------------- |
 | Source story      | `src/stories/RadioFormControl.stories.tsx`                                             |
 | Underlying source | `@mui/material@^7.3.10` `FormControlLabel` + `Radio` (re-exported by this package, no wrapper) |
-| Figma file        | [MUI-Library](https://www.figma.com/design/KQjP6W9Uw1PN0iipwQHyYn) (`KQjP6W9Uw1PN0iipwQHyYn`) |
-| Figma frame       | `<RadioFormControl>` (`295:5572`) at `(1482, 18100)` on the `Foundation Components` page, sibling to `<Radio>` (`286:5441`) above |
-| Component Set     | `<RadioFormControl>` (`295:5573`)                                                        |
+| Figma file        | [MUI-Library](https://www.figma.com/design/<FIGMA_FILE_KEY>) (`<FIGMA_FILE_KEY>`) |
+| Figma frame       | `<RadioFormControl>` (`<NODE_ID>`) at `(1482, 18100)` on the `Foundation Components` page, sibling to `<Radio>` (`<NODE_ID>`) above |
+| Component Set     | `<RadioFormControl>` (`<NODE_ID>`)                                                        |
 | Total variants    | **192** (4 LabelPlacement × 7 Color × 2 Checked × 3 Sizes × Enabled = 168; + 4 LabelPlacement × 1 Color (Default) × 2 Checked × 3 Sizes × Disabled = 24) |
 | Nested component  | `<Radio>` — instance, axes mirror the outer set                                         |
 | Typography (label) | `body1` style — `Roboto Regular 16 / 24 px`, ls `0.15 px` (no text-transform)         |
@@ -94,7 +94,7 @@ Published-set exclusions (intentional):
 
 ## 4. Design Tokens
 
-All paints, strokes, and surfaces bind to local variables in the MUI-Library file (`KQjP6W9Uw1PN0iipwQHyYn`). The component is **self-contained** — every binding resolves to a variable in this file's local collection. Mirror of `<CheckboxFormControl>` token strategy.
+All paints, strokes, and surfaces bind to local variables in the MUI-Library file (`<FIGMA_FILE_KEY>`). The component is **self-contained** — every binding resolves to a variable in this file's local collection. Mirror of `<CheckboxFormControl>` token strategy.
 
 ### 4.1 Layout
 
@@ -143,7 +143,7 @@ The nested instance carries its own bindings (see `../Radio/figma.spec.md` §4).
 
 ## 6. Layout
 
-The Component Set is laid out as a **4-column × multi-row grid** inside its outer frame (id assigned at step-5 publish; placed adjacent to `<Radio>` (`286:5441`) on the same page):
+The Component Set is laid out as a **4-column × multi-row grid** inside its outer frame (id assigned at step-5 publish; placed adjacent to `<Radio>` (`<NODE_ID>`) on the same page):
 
 - **Columns** (left → right) — `LabelPlacement`: End, Start, Top, Bottom.
 - **Rows** (top → bottom) — `Color × Size × Checked`:
@@ -198,7 +198,7 @@ This document and the source must move together. When **any** of the following c
 
 1. `src/stories/RadioFormControl.stories.tsx` (variants, args, `labelPlacement` / `disabled` wiring)
 2. The Figma `<RadioFormControl>` component set (variants, properties, token bindings)
-3. The Figma `<Radio>` component set inside `286:5441` — any change to its variant matrix or naming forces the nested instance mirroring contract to be re-validated, and the published axis options here may need to follow
+3. The Figma `<Radio>` component set inside `<NODE_ID>` — any change to its variant matrix or naming forces the nested instance mirroring contract to be re-validated, and the published axis options here may need to follow
 4. `src/stories/Radio.stories.tsx` — any new state / size / color introduced upstream forces a follow-up here
 5. The shared `mui/alias/colors/{text-default,text-disabled}` tokens — these are the wrapper's only direct dependencies
 6. `material-design/typography/body1` text style — typography changes flow into §4.3 / §7 drift

@@ -25,7 +25,7 @@ The columns differ on padding / border / fill / shadow. Everything else is share
 | `transition`            | `background-color 0.15s cubic-bezier(0.4,0,0.2,1)` | same                       | same                                                                                   |
 | icon glyph              | inline `24 × 24` SVG, `fill: currentColor` | same                              | same                                                                                   |
 
-**Sizing divergence vs Figma (`1:4571`).** Every cell on the editable Figma frame is `36 × 36 px` (4 px smaller than runtime, except Outlined which is 6 px smaller). The runtime numbers above derive from MUI's defaults: `padding: 8`, `font-size: pxToRem(24)` ⇒ `8 + 24 + 8 = 40 px`. The Figma frame appears to have been authored against a `20 px` icon (`8 + 20 + 8 = 36 px`). Step 5 of the figma-create-component pipeline must reconcile this — preferred resolution is to bring Figma to `40 × 40` with a 24 px icon slot to match runtime.
+**Sizing divergence vs Figma (`<NODE_ID>`).** Every cell on the editable Figma frame is `36 × 36 px` (4 px smaller than runtime, except Outlined which is 6 px smaller). The runtime numbers above derive from MUI's defaults: `padding: 8`, `font-size: pxToRem(24)` ⇒ `8 + 24 + 8 = 40 px`. The Figma frame appears to have been authored against a `20 px` icon (`8 + 20 + 8 = 36 px`). Step 5 of the figma-create-component pipeline must reconcile this — preferred resolution is to bring Figma to `40 × 40` with a 24 px icon slot to match runtime.
 
 ## 2. Color axis — palette resolution (Enabled)
 

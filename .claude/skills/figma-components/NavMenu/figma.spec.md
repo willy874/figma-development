@@ -2,11 +2,11 @@
 name: figma-component-navmenu-spec
 description: Figma component specification for `<NavMenu>` and its child `<NavMenuItem>` — design counterpart of the MUI `<List>` + `<ListItemButton>` + `<Collapse>` composition consumed by `src/stories/NavMenu.stories.tsx`. Documents the leaf 5-state surface (`<NavMenuItem>`, 5 variants), the wrapper 2-state collapsible surface (`<NavMenu>`, 2 variants), source-to-Figma mapping for the `MUINavMenuItem` / `MUINavMenu` story-local components, and the divergences between MUI's stock `<ListItemButton>` paint values and the MUI token bindings. For component-scoped tokens (one 8 %-α primary `Selected` fill) see `design-token.md`; for runtime measurements see `storybook.render.md`.
 parent_skill: figma-components
-figma_file_key: KQjP6W9Uw1PN0iipwQHyYn
-figma_parent_frame_id: '779:11816'
-figma_node_id: '790:11848'
-figma_component_set_id: '790:11848'
-figma_wrapper_component_set_id: '793:11949'
+figma_file_key: <FIGMA_FILE_KEY>
+figma_parent_frame_id: '<NODE_ID>'
+figma_node_id: '<NODE_ID>'
+figma_component_set_id: '<NODE_ID>'
+figma_wrapper_component_set_id: '<NODE_ID>'
 ---
 
 # `<NavMenu>` Figma Component Specification
@@ -24,10 +24,10 @@ The specification covers two related design entities:
 | ----------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | Source story            | `src/stories/NavMenu.stories.tsx`                                                                                                                      |
 | Underlying source       | `@mui/material` `List` + `ListItemButton` + `ListItemAvatar` + `ListItemText` + `ListItemIcon` + `Collapse` (re-exported by this package, composed as `MUINavMenuItem` / `MUINavMenu` in the story) |
-| Figma file              | `KQjP6W9Uw1PN0iipwQHyYn` (MUI Library)                                                                                                                  |
-| Parent frame (authoring target) | `779:11816` (currently the empty `Menu` frame at `x=11912, y=0, w=1688, h=1531`)                                                                  |
-| Figma item set          | `<NavMenuItem>` (`790:11848`) on page **Foundation Components**, inside the parent `Menu` frame (`779:11816`)                                          |
-| Figma wrapper set       | `<NavMenu>` (`793:11949`) on page **Foundation Components**, inside the parent `Menu` frame (`779:11816`)                                              |
+| Figma file              | `<FIGMA_FILE_KEY>` (MUI Library)                                                                                                                  |
+| Parent frame (authoring target) | `<NODE_ID>` (currently the empty `Menu` frame at `x=11912, y=0, w=1688, h=1531`)                                                                  |
+| Figma item set          | `<NavMenuItem>` (`<NODE_ID>`) on page **Foundation Components**, inside the parent `Menu` frame (`<NODE_ID>`)                                          |
+| Figma wrapper set       | `<NavMenu>` (`<NODE_ID>`) on page **Foundation Components**, inside the parent `Menu` frame (`<NODE_ID>`)                                              |
 | Item variants           | **5** (1 State axis × 5 values) — see §3.1                                                                                                              |
 | Wrapper variants        | **2** (1 IsOpen axis × 2 values) — see §3.3                                                                                                             |
 | Underlying MUI version  | `@mui/material@^7.3.10` (per `package.json` peer-dep `>=7`, current devDep resolution `^7.3.10`)                                                        |
@@ -35,8 +35,8 @@ The specification covers two related design entities:
 
 **Reference nodes** (read-only, not the authoring target):
 
-- `765:12320` "Navs: custom components" — the structural pattern source. Mirrored its 5-state `<ListItem>` axis (`Default / Hover / Active / Selected / Disabled`) and the `<Navbar>` `isOpen=False/True` wrapper composition verbatim. NavMenu published in this file is a fresh authoring of the same idea, bound to the local `mui` collection.
-- `1:4108` "Button" — the naming-convention / token-binding exemplar. Mirrored the MUI axis-naming style and the local-only token rule.
+- `<NODE_ID>` "Navs: custom components" — the structural pattern source. Mirrored its 5-state `<ListItem>` axis (`Default / Hover / Active / Selected / Disabled`) and the `<Navbar>` `isOpen=False/True` wrapper composition verbatim. NavMenu published in this file is a fresh authoring of the same idea, bound to the local `mui` collection.
+- `<NODE_ID>` "Button" — the naming-convention / token-binding exemplar. Mirrored the MUI axis-naming style and the local-only token rule.
 
 **Variant axes are deliberately small.** Unlike Button / Pagination / Chip, `<NavMenuItem>` does **not** expose a `Color` axis — MUI's `<ListItemButton>` has no `color` prop, and the reference `<ListItem>` (765:12320) carried only State. The Selected paint is themed implicitly via `palette.primary.main × 0.08α` (see §6.4); designers needing a non-primary theme override the Selected bg via `sx` at the consuming app, not at the Figma component-set level. If a future product requirement adds a Color axis (e.g. a Danger-themed "destructive nav highlight"), that is a §8 sync trigger and would explode the matrix to 5 × 6 = 30 leaf variants.
 
@@ -55,8 +55,8 @@ Every prop on `MUINavMenuItem` (from `src/stories/NavMenu.stories.tsx`) maps to 
 | `className='Mui-focusVisible'` _(StateMatrix's Hover row stand-in)_ | _(no direct Figma surface)_                  | —                 | The story uses `Mui-focusVisible` as a static stand-in for `:hover`, but it actually renders the runtime focus paint (12 % black). The Figma `State=Hover` cell binds to the **4 % black** `:hover` paint instead — see §6.3 / §7.                          |
 | `label: string`                              | `Label` TEXT component property                          | TEXT              | Default `List Item`. Drives the primary `<ListItemText>` line.                                                                                                                                                                                              |
 | `secondary?: string` _(undefined when omitted)_ | `Secondary` TEXT + `Show Secondary` BOOLEAN          | TEXT + BOOLEAN    | Default `Secondary` text; `Show Secondary` BOOLEAN toggles the second line on / off. When the BOOLEAN is `false`, the cell collapses from `64 → 44 px` height (see `storybook.render.md` §3).                                                                |
-| `leadingIcon: boolean`                       | `Leading Icon` BOOLEAN                                    | BOOLEAN           | Default `true`. Toggles the `<ListItemAvatar>` slot. The slot is a `<Icon>` instance (`3:2722`) `Size=md` (24 × 24), `Glyph Source` preset to `Person` (default; designers swap via the nested-property panel — see §6.6).                                  |
-| `trailingIcon: boolean`                      | `Trailing Icon` BOOLEAN                                   | BOOLEAN           | Default `true`. Toggles the `<ListItemIcon>` slot. The slot is a `<Icon>` instance (`3:2722`) `Size=md` (24 × 24), `Glyph Source` preset to `ChevronRight` (`512:7509`).                                                                                     |
+| `leadingIcon: boolean`                       | `Leading Icon` BOOLEAN                                    | BOOLEAN           | Default `true`. Toggles the `<ListItemAvatar>` slot. The slot is a `<Icon>` instance (`<NODE_ID>`) `Size=md` (24 × 24), `Glyph Source` preset to `Person` (default; designers swap via the nested-property panel — see §6.6).                                  |
+| `trailingIcon: boolean`                      | `Trailing Icon` BOOLEAN                                   | BOOLEAN           | Default `true`. Toggles the `<ListItemIcon>` slot. The slot is a `<Icon>` instance (`<NODE_ID>`) `Size=md` (24 × 24), `Glyph Source` preset to `ChevronRight` (`<NODE_ID>`).                                                                                     |
 | `nested: boolean`                            | `Nested` BOOLEAN                                          | BOOLEAN           | Default `false`. When `true`, padding-left jumps from `8 → 40 px` (`8 outer + 24 avatar slot + 8 gap`) so child labels align under parent labels. Trailing icon is conventionally hidden on nested children — designers must also flip `Trailing Icon = false` when setting `Nested = true`. |
 | `onClick: (e) => void`                       | —                                                         | —                 | Behavior-only, no design representation.                                                                                                                                                                                                                    |
 | `sx={{ pl, pr, py, borderRadius, gap, … }}`  | Hard-coded Figma layout invariants (see §4)               | —                 | The story bakes `pl: 8px` / `pl: 40px` (nested), `pr: 8px`, `py: 8px`, `borderRadius: 4px`, `gap: 8px`. These are not exposed as Figma variant axes — they are invariants of the MUI design.                                                              |
@@ -114,7 +114,7 @@ The wrapper currently exposes **none**. To document a scenario, a designer eithe
 1. Edits the nested header / child instances' `Label` and `Secondary` text directly via Figma's nested-property panel, or
 2. Detaches the wrapper for a one-off composition (acceptable for screen demos; do not check detached wrappers back into the library).
 
-This mirrors the Pagination pattern (`<Pagination>` `1:5675` § 3.4) — the wrapper is a static composition, and nested instances carry the per-cell text. A future iteration could surface top-level `Header Label` / `Header Secondary` TEXT properties via instance-property propagation, but that is a §8 sync trigger, not a current axis.
+This mirrors the Pagination pattern (`<Pagination>` `<NODE_ID>` § 3.4) — the wrapper is a static composition, and nested instances carry the per-cell text. A future iteration could surface top-level `Header Label` / `Header Secondary` TEXT properties via instance-property propagation, but that is a §8 sync trigger, not a current axis.
 
 ## 4. Layout & Sizing
 
@@ -216,8 +216,8 @@ Numbers below are the **Figma-authored values** — runtime-aligned per `storybo
 | Corner radius                       | `4 px`                                                                                                                                          |
 | Border                              | none                                                                                                                                            |
 | Box-shadow                          | none                                                                                                                                            |
-| Leading slot                        | `<Icon>` (`3:2722`) `Size=md` instance (24 × 24); `Glyph Source` `INSTANCE_SWAP` preset to `Person` (default; designers swap per nav entry) — see §6.6 |
-| Trailing slot                       | `<Icon>` (`3:2722`) `Size=md` instance (24 × 24); `Glyph Source` `INSTANCE_SWAP` preset to `ChevronRight` (`512:7509`)                          |
+| Leading slot                        | `<Icon>` (`<NODE_ID>`) `Size=md` instance (24 × 24); `Glyph Source` `INSTANCE_SWAP` preset to `Person` (default; designers swap per nav entry) — see §6.6 |
+| Trailing slot                       | `<Icon>` (`<NODE_ID>`) `Size=md` instance (24 × 24); `Glyph Source` `INSTANCE_SWAP` preset to `ChevronRight` (`<NODE_ID>`)                          |
 | Primary label                       | Roboto Regular, 14 px, line-height 20 px, fill bound to `alias/colors/text-default`                                                             |
 | Secondary label                     | Roboto Regular, 12 px, line-height 16 px, fill bound to `alias/colors/text-sub`                                                                 |
 
@@ -271,12 +271,12 @@ Numbers below are the **Figma-authored values** — runtime-aligned per `storybo
 
 ### 6.6 Glyph treatment (leading + trailing slots)
 
-Both slots render an **INSTANCE** of the shared `<Icon>` set (`3:2722`) at `Size=md` (which the design-guide publishes at `24 × 24 px`). The `Glyph Source` `INSTANCE_SWAP` property is preset per slot:
+Both slots render an **INSTANCE** of the shared `<Icon>` set (`<NODE_ID>`) at `Size=md` (which the design-guide publishes at `24 × 24 px`). The `Glyph Source` `INSTANCE_SWAP` property is preset per slot:
 
 | Slot          | Default glyph                                      | Notes                                                                                                     |
 | ------------- | -------------------------------------------------- | --------------------------------------------------------------------------------------------------------- |
 | Leading       | `Person` (or another nav-domain glyph — designers swap per entry via the nested-property panel) | The reference `<ListItem>` (765:12320) used a circular avatar with a person glyph; we mirror that as the default. |
-| Trailing      | `ChevronRight` (`512:7509`)                        | Mirrors the reference `<ListItem>` trailing chevron. Hidden on nested children (set `Trailing Icon = false`). |
+| Trailing      | `ChevronRight` (`<NODE_ID>`)                        | Mirrors the reference `<ListItem>` trailing chevron. Hidden on nested children (set `Trailing Icon = false`). |
 
 > **Why one shared `<Icon>` set, not dedicated NavMenu icon sets.** Same rationale as Pagination's 2026-04-29 unification pass — one shared icon library is structurally simpler than per-component icon sets, and `Glyph Source` lets designers swap icons without detaching. See `figma.spec.md` (Pagination) §6.7.
 
@@ -308,8 +308,8 @@ This document and the source must move together. When **any** of the following c
 | Figma wrapper set variant axes / cell count or composition change                                                                     | `figma.spec.md` §3.3, §6.4, refresh `figma.config.json` via `figma-init/config-init.md`                                                                                      |
 | Local `mui/*` tokens used by NavMenu are renamed in this Figma file                                                                | `figma.spec.md` §5 + §6. **Do not** auto-pull from the published library — the NavMenu cells bind to the local collection only.                                              |
 | Published library `seed/*` / `alias/*` tokens drift from the local copies                                                            | Track divergence in `figma.spec.md` §1 local-only note. Re-sync values manually if needed.                                                                                  |
-| `<Icon>` set (`3:2722`) variant axes change (e.g. `Size=md` renamed) or its `Glyph Source` `INSTANCE_SWAP` property is renamed       | `figma.spec.md` §6.1 / §6.6 icon mapping (Size=md ID + property name `Glyph Source`)                                                                                        |
-| `ChevronRight` (`512:7509`) glyph component is renamed, moved, or replaced in the Icon library                                       | `figma.spec.md` §6.6 (Glyph Source preset IDs), `../../figma-create-component/library-components.md` §Icon library                                                                       |
+| `<Icon>` set (`<NODE_ID>`) variant axes change (e.g. `Size=md` renamed) or its `Glyph Source` `INSTANCE_SWAP` property is renamed       | `figma.spec.md` §6.1 / §6.6 icon mapping (Size=md ID + property name `Glyph Source`)                                                                                        |
+| `ChevronRight` (`<NODE_ID>`) glyph component is renamed, moved, or replaced in the Icon library                                       | `figma.spec.md` §6.6 (Glyph Source preset IDs), `../../figma-create-component/library-components.md` §Icon library                                                                       |
 | `mui-theme.ts` adds a `MuiListItemButton` / `MuiListItemText` / `MuiList` override (this project has none today)                     | `figma.spec.md` §1, `storybook.render.md` §1–§4                                                                                                                            |
 | A `material-design/typography/list-item-secondary` text style is minted in the design-guide                                          | `figma.spec.md` §5.5 / §6.1 (rebind secondary text to the new `textStyleId`), `../../figma-create-component/library-tokens.md`                                                     |
 | A shared `seed/primary/selected-bg @ α=0.08` token is minted (resolves §7 issue 1)                                                   | `figma.spec.md` §5.2 / §5.3 / §6.3 (rebind Selected fill from `component/navmenu/selected-bg` to the new shared token); `./design-token.md` (delete the promoted token, point at new shared family); `../../figma-create-component/library-tokens.md` |

@@ -1,11 +1,11 @@
 ---
 name: figma-component-autocomplete-menu-spec
-description: Figma component specification for `<AutocompleteMenu>` — design counterpart of the **popper / listbox** of the MUI `<Autocomplete>` consumed by `src/stories/Autocomplete.stories.tsx`. Owns the Paper + listbox frame and its three content modes (Default with options, Loading, NoOptions). Composes the published `<AutocompleteOption>` (`439:7109`) for option rows. Documents the variant matrix (State), the source-to-Figma mapping, layout, and token bindings. For component-scoped tokens see `design-token.md` in this directory; for runtime measurements see `storybook.render.md`.
+description: Figma component specification for `<AutocompleteMenu>` — design counterpart of the **popper / listbox** of the MUI `<Autocomplete>` consumed by `src/stories/Autocomplete.stories.tsx`. Owns the Paper + listbox frame and its three content modes (Default with options, Loading, NoOptions). Composes the published `<AutocompleteOption>` (`<NODE_ID>`) for option rows. Documents the variant matrix (State), the source-to-Figma mapping, layout, and token bindings. For component-scoped tokens see `design-token.md` in this directory; for runtime measurements see `storybook.render.md`.
 parent_skill: figma-components
-figma_file_key: KQjP6W9Uw1PN0iipwQHyYn
-figma_node_id: '534:7976'
-figma_component_set_id: '534:7976'
-figma_companion_option_set_id: '439:7109'
+figma_file_key: <FIGMA_FILE_KEY>
+figma_node_id: '<NODE_ID>'
+figma_component_set_id: '<NODE_ID>'
+figma_companion_option_set_id: '<NODE_ID>'
 ---
 
 # `<AutocompleteMenu>` Figma Component Specification
@@ -16,20 +16,20 @@ figma_companion_option_set_id: '439:7109'
 
 1. **Paper frame** — the white surface with shadow + radius that holds the listbox. Paint = `background/paper-elevation-0` (`#FFFFFF`); effect = `material-design/shadows/shadows-1`; radius = `4 px`.
 2. **Listbox frame** — vertical Auto Layout, `padding: 8 0 8 0`, `gap: 0`. Holds the option stack (Default state) or the centered loading / no-options message.
-3. **Option rows** — instances of the published `<AutocompleteOption>` companion (`439:7109`). Designers stamp 1-N instances inside the listbox frame; there is no `Option Count` property today (track in §7).
+3. **Option rows** — instances of the published `<AutocompleteOption>` companion (`<NODE_ID>`). Designers stamp 1-N instances inside the listbox frame; there is no `Option Count` property today (track in §7).
 4. **Loading / no-options message** — single centered text node that replaces the option stack when `State=Loading` or `State=NoOptions`. `body1` typography (`16 / 24 px`, matches MUI runtime); fill = `alias/colors/text-sub`. The published cell is `52 px` tall (`24 + 14 + 14`).
 
-This component is **brand-new on 2026-04-29**. Published as node `534:7976` on the Foundation Components page at `(12745, 11000)`.
+This component is **brand-new on 2026-04-29**. Published as node `<NODE_ID>` on the Foundation Components page at `(12745, 11000)`.
 
 | Aspect            | Value                                                                                  |
 | ----------------- | -------------------------------------------------------------------------------------- |
 | Source story      | `src/stories/Autocomplete.stories.tsx` — `MenuMatrix`, `Open`, `OpenWithValue`, `OpenMatrix`, `Loading` |
 | Underlying source | `@mui/material@^7.3.10` `Autocomplete` (re-exported by this package, no wrapper) — `Popper`, `Paper`, `MuiAutocomplete-listbox`, `MuiAutocomplete-loading`, `MuiAutocomplete-noOptions` slots |
 | Underlying MUI    | `@mui/material` `7.3.10` (resolved from `package.json` on 2026-04-29)                  |
-| Figma file        | [MUI-Library](https://www.figma.com/design/KQjP6W9Uw1PN0iipwQHyYn) (`KQjP6W9Uw1PN0iipwQHyYn`) |
-| Figma frame       | `<AutocompleteMenu>` (`534:7976`) on page **Foundation Components** (`0:1`) at absolute `(12864, 10847)`, size `984 × 276 px`. The companion `<AutocompleteOption>` (`439:7109`) sits at absolute `(12864, 11213)`, size `360 × 356 px`. |
-| Component Set     | `<AutocompleteMenu>` (`534:7976`) — published 2026-04-29                                |
-| Composed sets     | `<AutocompleteOption>` (`439:7109`) — 5 variants                                        |
+| Figma file        | [MUI-Library](https://www.figma.com/design/<FIGMA_FILE_KEY>) (`<FIGMA_FILE_KEY>`) |
+| Figma frame       | `<AutocompleteMenu>` (`<NODE_ID>`) on page **Foundation Components** (`<NODE_ID>`) at absolute `(12864, 10847)`, size `984 × 276 px`. The companion `<AutocompleteOption>` (`<NODE_ID>`) sits at absolute `(12864, 11213)`, size `360 × 356 px`. |
+| Component Set     | `<AutocompleteMenu>` (`<NODE_ID>`) — published 2026-04-29                                |
+| Composed sets     | `<AutocompleteOption>` (`<NODE_ID>`) — 5 variants                                        |
 | Total variants    | **3** (`State`: Default, Loading, NoOptions). One width — `280 px` (matches the default Autocomplete wrapper width in the stories). |
 | Typography        | Option rows inherit from `<AutocompleteOption>` — `body1` (Roboto Regular, `16 / 24 px`, ls `0.15 px`). Loading / no-options message uses `body1` (matches MUI runtime). |
 | Local-only bindings | **Required.** Every paint / stroke / effect resolves to a variable in this file's local collection. No `VariableID:<sharedKey>/...` consumed-library bindings are permitted. |
@@ -82,7 +82,7 @@ The published component set ships **3 variants** along the `State` axis. There i
 
 ## 4. Design Tokens
 
-All paints, strokes, surfaces, and effects bind to local variables / styles in the MUI-Library file (`KQjP6W9Uw1PN0iipwQHyYn`). Hex values appear here only as reference resolutions of the light theme — bind to the token, not the hex.
+All paints, strokes, surfaces, and effects bind to local variables / styles in the MUI-Library file (`<FIGMA_FILE_KEY>`). Hex values appear here only as reference resolutions of the light theme — bind to the token, not the hex.
 
 ### 4.1 Sizing
 
@@ -159,7 +159,7 @@ The Component Set is laid out as a **3-column × 1-row grid** (or 1-column × 3-
 
 - Identical to Loading except the text node is bound to `No Options Text` (default `No options`).
 
-The shared `<AutocompleteOption>` companion (`439:7109`) is the canonical source of every option-row paint. Paint duplication on the menu's option rows is forbidden — designers should never repaint option backgrounds / text directly; they pick the right `<AutocompleteOption>` `State` axis instead.
+The shared `<AutocompleteOption>` companion (`<NODE_ID>`) is the canonical source of every option-row paint. Paint duplication on the menu's option rows is forbidden — designers should never repaint option backgrounds / text directly; they pick the right `<AutocompleteOption>` `State` axis instead.
 
 ## 6. Usage Guidelines
 
@@ -199,8 +199,8 @@ These are tracked here so the next runtime-truth pass has a punch list.
 This document and the source must move together. When **any** of the following changes:
 
 1. `src/stories/Autocomplete.stories.tsx` (matrices, args, popper / loading / no-options handling)
-2. The Figma `<AutocompleteMenu>` component set at `534:7976` (variants, properties, token bindings)
-3. The Figma `<AutocompleteOption>` component set at `439:7109` — AutocompleteMenu stamps it inside the Default-state listbox; any change to its variant axes / token bindings cascades here
+2. The Figma `<AutocompleteMenu>` component set at `<NODE_ID>` (variants, properties, token bindings)
+3. The Figma `<AutocompleteOption>` component set at `<NODE_ID>` — AutocompleteMenu stamps it inside the Default-state listbox; any change to its variant axes / token bindings cascades here
 4. The shared `mui/seed/*`, `mui/alias/*` tokens consumed in §4.2 — particularly `seed/primary/main`, `alias/colors/text-sub`
 5. The local `component/autocomplete/option-*` tokens documented in `design-token.md`, or the local `background/paper-elevation-0`, `material-design/shadows/shadows-1` styles
 6. `.storybook/preview.tsx` (theme overrides) — today this is an empty `createTheme()`; introducing typography / palette / `MuiAutocomplete.defaultProps` overrides forces a re-measure
@@ -238,7 +238,7 @@ Figma Component Set: <AutocompleteMenu>  (534:7976) — published 2026-04-29
   Total        : 3 variants
 ```
 
-## 9. Companion: `<AutocompleteOption>` (`439:7109`)
+## 9. Companion: `<AutocompleteOption>` (`<NODE_ID>`)
 
 The popper's option rows are a separate component published next to `<AutocompleteMenu>`. They sit inside the listbox frame at instance level so designers can stamp option counts without authoring each row.
 

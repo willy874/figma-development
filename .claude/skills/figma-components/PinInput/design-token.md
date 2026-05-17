@@ -20,7 +20,7 @@ No paint, stroke, effect, or typography rule on the wrapper requires a value the
 
 ## Pre-flight checklist for step 5
 
-When step 5 runs `figma.variables.getLocalVariableCollections()`, confirm the following local variables exist in the `KQjP6W9Uw1PN0iipwQHyYn` file before authoring any cell. None of them should require minting — they are already used by `<TextField>`, `<Button>`, `<Snackbar>`, and most other published components in this file:
+When step 5 runs `figma.variables.getLocalVariableCollections()`, confirm the following local variables exist in the `<FIGMA_FILE_KEY>` file before authoring any cell. None of them should require minting — they are already used by `<TextField>`, `<Button>`, `<Snackbar>`, and most other published components in this file:
 
 | Token path                                  | Type    | Resolved value (light theme)        | Used as                                                        |
 | ------------------------------------------- | ------- | ----------------------------------- | -------------------------------------------------------------- |

@@ -2,9 +2,9 @@
 name: figma-component-radio-group-spec
 description: Figma component specification for `<RadioGroup>` — design counterpart of MUI's composed `<FormControl>` + `<FormLabel>` + `<RadioGroup>` + `<FormHelperText>` consumed by `src/stories/RadioGroup.stories.tsx`. Documents the Direction × Color × Size × State variant matrix, the multi-row composition, the FormLabel / helper text token bindings, and the Error-state cascade limits. For runtime measurements see `storybook.render.md`; for the per-row indicator see `../Radio/figma.spec.md` and the per-row label see `../RadioFormControl/figma.spec.md`.
 parent_skill: figma-components
-figma_file_key: KQjP6W9Uw1PN0iipwQHyYn
-figma_node_id: '296:5915'
-figma_component_set_id: '296:5915'
+figma_file_key: <FIGMA_FILE_KEY>
+figma_node_id: '<NODE_ID>'
+figma_component_set_id: '<NODE_ID>'
 ---
 
 # `<RadioGroup>` Figma Component Specification
@@ -37,9 +37,9 @@ inside an outer auto-layout `FormControl` frame whose direction is always vertic
 | ----------------- | -------------------------------------------------------------------------------------- |
 | Source story      | `src/stories/RadioGroup.stories.tsx`                                                   |
 | Underlying source | `@mui/material@^7.3.10` `FormControl` + `FormLabel` + `RadioGroup` + `FormHelperText` (re-exported by this package, no wrapper) |
-| Figma file        | [MUI-Library](https://www.figma.com/design/KQjP6W9Uw1PN0iipwQHyYn) (`KQjP6W9Uw1PN0iipwQHyYn`) |
-| Figma frame       | `<RadioGroup>` (`296:5914`) at `(1482, 24300)` on the `Foundation Components` page, sibling to `<Radio>` (`286:5441`) and `<RadioFormControl>` (`295:5572`) above |
-| Component Set     | `<RadioGroup>` (`296:5915`)                                                              |
+| Figma file        | [MUI-Library](https://www.figma.com/design/<FIGMA_FILE_KEY>) (`<FIGMA_FILE_KEY>`) |
+| Figma frame       | `<RadioGroup>` (`<NODE_ID>`) at `(1482, 24300)` on the `Foundation Components` page, sibling to `<Radio>` (`<NODE_ID>`) and `<RadioFormControl>` (`<NODE_ID>`) above |
+| Component Set     | `<RadioGroup>` (`<NODE_ID>`)                                                              |
 | Total variants    | **54** (2 Direction × ((Color (7) × Size (3) at State=Enabled = 21) + (Color=Default × Size (3) at State=Disabled = 3) + (Color=Default × Size (3) at State=Error = 3)) = 2 × 27 = 54). See §3 for the count math. |
 | Nested component  | `<RadioFormControl>` instance (one per option row) — axes mirror the outer set        |
 | Typography (label) | `body1` style — `Roboto Regular 16 / 24 px`, ls `0.15 px` (no text-transform)         |
@@ -114,7 +114,7 @@ The three nested `<RadioFormControl>` instances expose their own per-option labe
 
 ## 4. Design Tokens
 
-All paints, strokes, and surfaces bind to local variables in the MUI-Library file (`KQjP6W9Uw1PN0iipwQHyYn`). The component is **self-contained** — every binding resolves to a variable in this file's local collection.
+All paints, strokes, and surfaces bind to local variables in the MUI-Library file (`<FIGMA_FILE_KEY>`). The component is **self-contained** — every binding resolves to a variable in this file's local collection.
 
 ### 4.1 Layout
 
@@ -189,7 +189,7 @@ Cell composition:
 Surrounding documentation in the outer frame:
 
 - **Header** — title `<RadioGroup>`, source story path, behavior summary, the Error-cascade note.
-- **Sibling sets** — `<Radio>` (`286:5441`) and `<RadioFormControl>` sit above on the same page.
+- **Sibling sets** — `<Radio>` (`<NODE_ID>`) and `<RadioFormControl>` sit above on the same page.
 
 ## 7. Usage Guidelines
 
@@ -231,7 +231,7 @@ This document and the source must move together. When **any** of the following c
 1. `src/stories/RadioGroup.stories.tsx` (variants, args, `row` / `disabled` / `error` / `required` wiring)
 2. The Figma `<RadioGroup>` component set (variants, properties, token bindings)
 3. The Figma `<RadioFormControl>` component set — any change to its variant matrix or naming forces the nested instance mirroring contract to be re-validated, and the published axis options here may need to follow
-4. The Figma `<Radio>` component set inside `286:5441` — same as above (transitively)
+4. The Figma `<Radio>` component set inside `<NODE_ID>` — same as above (transitively)
 5. `src/stories/Radio.stories.tsx` / `src/stories/RadioFormControl.stories.tsx` — any new state / size / color introduced upstream forces a follow-up here
 6. The shared `mui/alias/colors/{text-sub,text-disabled}` and `mui/seed/danger/main` tokens — these are the wrapper's only direct color dependencies
 7. `material-design/typography/{body1,subtitle1,caption}` text styles — typography changes flow into §4.3 / §7 drift

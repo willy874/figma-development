@@ -2,7 +2,7 @@
 
 Source: see [`figma.config.json`](../../../figma.config.json) `.library.fileUrl` (single source of truth — the link below is for human navigation only).
 
-[Figma file `KQjP6W9Uw1PN0iipwQHyYn`](https://www.figma.com/design/KQjP6W9Uw1PN0iipwQHyYn/MUI-Library) (MUI-Library)
+[Figma file `<FIGMA_FILE_KEY>`](https://www.figma.com/design/<FIGMA_FILE_KEY>/MUI-Library) (MUI-Library)
 
 One variable collection (`mui`, 82 vars) + 28 text styles + 29 effect styles. **When building in Figma, bind to these tokens — never hard-code hex/px values.**
 

@@ -2,9 +2,9 @@
 name: figma-component-checkbox-spec
 description: Figma component specification for `<Checkbox>` — design counterpart of the MUI `<Checkbox>` consumed by `src/stories/Checkbox.stories.tsx`. Documents the Color × Checked × Indeterminate × Size × State variant matrix, source-to-Figma mapping, and the token bindings that pin every glyph fill / halo paint to a named token. For runtime measurements see `storybook.render.md`; the design system catalogue lives at `figma-create-component/library-tokens.md`.
 parent_skill: figma-components
-figma_file_key: KQjP6W9Uw1PN0iipwQHyYn
-figma_node_id: '1:7228'
-figma_component_set_id: '1:7228'
+figma_file_key: <FIGMA_FILE_KEY>
+figma_node_id: '<NODE_ID>'
+figma_component_set_id: '<NODE_ID>'
 ---
 
 # `<Checkbox>` Figma Component Specification
@@ -13,15 +13,15 @@ figma_component_set_id: '1:7228'
 
 `<Checkbox>` is the Figma counterpart of the MUI `<Checkbox>` consumed in `src/stories/Checkbox.stories.tsx`. The package re-exports MUI directly — there is no in-repo wrapper — so the Figma component encodes the MUI prop surface (`color`, `size`, `checked`, `indeterminate`, `disabled`) plus the four interaction states MUI paints via the ripple subtree (`Enabled / Hovered / Focused / Pressed`).
 
-The Figma cells already match this contract — every glyph fill and halo overlay is bound to a named variable in the MUI-Library file's local collection (`KQjP6W9Uw1PN0iipwQHyYn`). All seven MUI palette colors are encoded as the `Color` axis; the runtime equivalents come from the published `mui/seed/*` and `mui/alias/*` namespaces (see [`library-tokens.md`](../../figma-create-component/library-tokens.md)). The component is **self-contained** — every binding resolves to a variable in this file's local collection so the library can be consumed without the 天璇 design-system file loaded next to it. _(Local-only sweep completed 2026-04-29 — see §7 issue 9.)_
+The Figma cells already match this contract — every glyph fill and halo overlay is bound to a named variable in the MUI-Library file's local collection (`<FIGMA_FILE_KEY>`). All seven MUI palette colors are encoded as the `Color` axis; the runtime equivalents come from the published `mui/seed/*` and `mui/alias/*` namespaces (see [`library-tokens.md`](../../figma-create-component/library-tokens.md)). The component is **self-contained** — every binding resolves to a variable in this file's local collection so the library can be consumed without the 天璇 design-system file loaded next to it. _(Local-only sweep completed 2026-04-29 — see §7 issue 9.)_
 
 | Aspect            | Value                                                                                  |
 | ----------------- | -------------------------------------------------------------------------------------- |
 | Source story      | `src/stories/Checkbox.stories.tsx`                                                     |
 | Underlying source | `@mui/material@^7.3.10` `Checkbox` (re-exported by this package, no wrapper)          |
-| Figma file        | [MUI-Library](https://www.figma.com/design/KQjP6W9Uw1PN0iipwQHyYn) (`KQjP6W9Uw1PN0iipwQHyYn`) |
-| Figma frame       | `<Checkbox>` (`1:7228`, `704 × 1104 px`) on the same page as `<CheckboxFormControl>`   |
-| Component Set     | `<Checkbox>` (`1:7228`)                                                                |
+| Figma file        | [MUI-Library](https://www.figma.com/design/<FIGMA_FILE_KEY>) (`<FIGMA_FILE_KEY>`) |
+| Figma frame       | `<Checkbox>` (`<NODE_ID>`, `704 × 1104 px`) on the same page as `<CheckboxFormControl>`   |
+| Component Set     | `<Checkbox>` (`<NODE_ID>`)                                                                |
 | Total variants    | **258** (7 Color × 3 Checked/Indeterminate combos × 3 Sizes × 4 interaction States, plus a 6-cell Disabled coverage limited to `Color=Default × {Checked=False, True} × 3 Sizes`) |
 | Glyph geometry    | `CheckBoxOutlineBlankIcon` / `CheckBoxIcon` / `IndeterminateCheckBoxIcon` (Material icon paths in `viewBox 0 0 24 24`) |
 
@@ -94,7 +94,7 @@ Published-set exclusions (intentional — keep them in mind when picking instanc
 
 ## 4. Design Tokens
 
-All paints, strokes, and surfaces bind to local variables in the MUI-Library file (`KQjP6W9Uw1PN0iipwQHyYn`). Hex values appear in this document only as reference resolutions of the light theme — bind to the token, not the hex.
+All paints, strokes, and surfaces bind to local variables in the MUI-Library file (`<FIGMA_FILE_KEY>`). Hex values appear in this document only as reference resolutions of the light theme — bind to the token, not the hex.
 
 ### 4.1 Sizing
 
@@ -185,7 +185,7 @@ Notes:
 
 ## 6. Layout
 
-The Component Set is laid out as a flat grid inside the `<Checkbox>` frame (`1:7228`, `704 × 1104 px`):
+The Component Set is laid out as a flat grid inside the `<Checkbox>` frame (`<NODE_ID>`, `704 × 1104 px`):
 
 - **Top band** — `Color × (Checked/Indeterminate 3-combos) × State (Hovered, Focused, Pressed)` at `Size=Medium` (`36 × 36` cells), 7 rows × 21 columns. Disabled cells (Default only) sit in a separate column block.
 - **Mid band** — Same layout at `Size=Small` (`33 × 33` cells).
@@ -200,7 +200,7 @@ Cell composition:
 Surrounding documentation in the outer frame:
 
 - **Header** — title `<Checkbox>`, source story path, behavior summary.
-- **Sibling frames** — `<CheckboxFormControl>` (`1:7367`) lives below in the same page, wrapping a nested `<Checkbox>` instance.
+- **Sibling frames** — `<CheckboxFormControl>` (`<NODE_ID>`) lives below in the same page, wrapping a nested `<Checkbox>` instance.
 
 ## 7. Usage Guidelines
 
@@ -213,7 +213,7 @@ Surrounding documentation in the outer frame:
    - `Enabled` for resting production screens.
    - `Hovered` / `Focused` / `Pressed` only when illustrating interaction flows.
    - `Disabled` only with `Color=Default` (see §3).
-5. **Don't compose the label here.** Use `<CheckboxFormControl>` (`1:7367`) for label + checkbox composition; this set ships the indicator only.
+5. **Don't compose the label here.** Use `<CheckboxFormControl>` (`<NODE_ID>`) for label + checkbox composition; this set ships the indicator only.
 
 ### 7.2 Don'ts
 
@@ -252,8 +252,8 @@ Tracked here so the next runtime-truth pass has a punch list:
 This document and the source must move together. When **any** of the following changes:
 
 1. `src/stories/Checkbox.stories.tsx` (variants, args, `color`/`size`/`disabled`/`indeterminate` wiring)
-2. The Figma `<Checkbox>` component set at `1:7228` (variants, properties, token bindings)
-3. The Figma `<CheckboxFormControl>` set at `1:7367` — any change to the nested instance contract here must mirror; see [`../CheckboxFormControl/figma.spec.md`](../CheckboxFormControl/figma.spec.md) §3
+2. The Figma `<Checkbox>` component set at `<NODE_ID>` (variants, properties, token bindings)
+3. The Figma `<CheckboxFormControl>` set at `<NODE_ID>` — any change to the nested instance contract here must mirror; see [`../CheckboxFormControl/figma.spec.md`](../CheckboxFormControl/figma.spec.md) §3
 4. The shared `mui/seed/*`, `mui/alias/*` tokens consumed in §4.2 — particularly `seed/{primary,secondary,danger,warning,info,success}/{main,hover-bg,outline-hover}`, `alias/colors/{text-sub,fg-disabled,bg-outline-hover}`
 5. `.storybook/preview.tsx` (theme overrides via `createTheme`) — today this is an empty `createTheme()`; introducing typography / palette / `MuiCheckbox.defaultProps` overrides forces a re-measure
 6. `package.json` `@mui/material` peer / dev version (currently `^7.3.10` / peer `>=7`)

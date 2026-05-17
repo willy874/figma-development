@@ -2,10 +2,10 @@
 name: figma-component-pin-input-spec
 description: Figma component specification for `<PinInput>` — design counterpart of the project-local PinInput composer in `src/stories/PinInput.stories.tsx` (assembled from MUI primitives because `@mui/material` ships no `<PinInput>`). Documents the variant matrix (Character × Label × Helper = 2 × 2 × 2 = 8), the per-cell `<TextField variant="outlined" size="small">` composition, source-to-Figma mapping, layout / token bindings, and the divergence from MUI runtime + reference Figma. For runtime measurements see `storybook.render.md`; component-scoped tokens are documented in `design-token.md`.
 parent_skill: figma-components
-figma_file_key: KQjP6W9Uw1PN0iipwQHyYn
-figma_node_id: '904:11807'
-figma_component_set_id: '911:12594'
-figma_item_component_set_id: '1:6266'
+figma_file_key: <FIGMA_FILE_KEY>
+figma_node_id: '<NODE_ID>'
+figma_component_set_id: '<NODE_ID>'
+figma_item_component_set_id: '<NODE_ID>'
 ---
 
 # `<PinInput>` Figma Component Specification
@@ -21,18 +21,18 @@ figma_item_component_set_id: '1:6266'
 
 State (`error` / `disabled` / `focusedIndex`) is **per-cell**, not row-level — the composer forwards the props onto each `<TextField>` instance. The Figma component therefore models 2 × 2 × 2 = 8 variants — `Character ∈ {4, 6}` × `Label ∈ {True, False}` × `Helper ∈ {True, False}` — and **does not introduce a row-level `State` axis**. Designers paint per-cell focus / error / disabled by overriding the nested `<TextField>` instance state inside a `<PinInput>` instance.
 
-The editable Figma node `904:11807` on the **Foundation Components** page was an empty 1122 × 858 white frame at the start of this pipeline; the published COMPONENT_SET (`911:12594`) was authored inside it during step 5 (2026-05-08). Frontmatter `figma_node_id` pins the parent frame; `figma_component_set_id` pins the published set. The reference-only **documentation page** at `704:22072` in the 天璇 file (`stse2CgIzOugynEdDSexS4`) hosts a published `<PinInput>` whose two variants are `709:23272` (`Character=4`) and `710:20792` (`Character=6`); the aspect table below cites those inner Components. We mirrored its **shape** (variant axes, property API, cell composition, separator glyph, layout) and its **FormLabel paint** (`text-default`, `87 % α`), which matches the local design system (the project does not ship a `text-secondary` token — see §7 #5). The MUI runtime resolves FormLabel + resting FormHelperText to `text.secondary` (`60 % α`); the published Figma cell follows the project convention. See §7 for the full divergence list.
+The editable Figma node `<NODE_ID>` on the **Foundation Components** page was an empty 1122 × 858 white frame at the start of this pipeline; the published COMPONENT_SET (`<NODE_ID>`) was authored inside it during step 5 (2026-05-08). Frontmatter `figma_node_id` pins the parent frame; `figma_component_set_id` pins the published set. The reference-only **documentation page** at `<NODE_ID>` in the 天璇 file (`<FIGMA_FILE_KEY>`) hosts a published `<PinInput>` whose two variants are `<NODE_ID>` (`Character=4`) and `<NODE_ID>` (`Character=6`); the aspect table below cites those inner Components. We mirrored its **shape** (variant axes, property API, cell composition, separator glyph, layout) and its **FormLabel paint** (`text-default`, `87 % α`), which matches the local design system (the project does not ship a `text-secondary` token — see §7 #5). The MUI runtime resolves FormLabel + resting FormHelperText to `text.secondary` (`60 % α`); the published Figma cell follows the project convention. See §7 for the full divergence list.
 
 | Aspect              | Value                                                                                  |
 | ------------------- | -------------------------------------------------------------------------------------- |
 | Source story        | `src/stories/PinInput.stories.tsx`                                                     |
 | Underlying source   | Project-local composer assembling `@mui/material` `FormControl` + `FormLabel` + `Stack` + N × `TextField variant="outlined" size="small"` + `FormHelperText`. **No MUI `<PinInput>` runtime exists** — composition is the runtime. |
 | Underlying MUI      | `@mui/material` 7.3.10 (resolved from `package.json` on 2026-05-08)                    |
-| Figma file          | `KQjP6W9Uw1PN0iipwQHyYn` (MUI-Library)                                                 |
-| Figma frame         | `Pin Input` (`904:11807`) — 1122 × 858, page **Foundation Components**                 |
-| Component Set       | `<PinInput>` (`911:12594`) — published 2026-05-08, 8 variants, inside `904:11807`      |
-| Reference-only set  | `<PinInput>` `709:23272` / `710:20792` in 天璇 (`stse2CgIzOugynEdDSexS4`) — visual source |
-| Sibling primitive   | `<TextField>` (`1:6266`) — published in this file; PinInput cells are **nested INSTANCE** references to the `Variant=Outlined, Size=Small` cell of this set |
+| Figma file          | `<FIGMA_FILE_KEY>` (MUI-Library)                                                 |
+| Figma frame         | `Pin Input` (`<NODE_ID>`) — 1122 × 858, page **Foundation Components**                 |
+| Component Set       | `<PinInput>` (`<NODE_ID>`) — published 2026-05-08, 8 variants, inside `<NODE_ID>`      |
+| Reference-only set  | `<PinInput>` `<NODE_ID>` / `<NODE_ID>` in 天璇 (`<FIGMA_FILE_KEY>`) — visual source |
+| Sibling primitive   | `<TextField>` (`<NODE_ID>`) — published in this file; PinInput cells are **nested INSTANCE** references to the `Variant=Outlined, Size=Small` cell of this set |
 | Total variants      | **8** (2 Characters × 2 Label × 2 Helper)                                              |
 | Typography          | `material-design/typography/body1` text style applied by id to FormLabel + Separator (Noto Sans TC Regular 16 / 24 in this file's local catalogue; MUI runtime resolves to Roboto Regular 16 / 23 — see `render.md §3 / §4` for the runtime values). `material-design/typography/caption` applied to FormHelperText (Noto Sans TC Regular 12 / 20 locally; runtime Roboto 12 / 19.92). All sourced from local `material-design/typography/*` text styles applied by id (no hand-set TEXT). The runtime / Figma font-family divergence is project-wide — Button, Tooltip, Chip, Snackbar all hand-author MUI fonts identically. See §7 #8 for the divergence. |
 | Local-only bindings | **Required.** Every paint resolves to a variable in this file's local collection. The cells reuse `<TextField>`'s already-local bindings; only the `paint.label.*`, `paint.helper.*`, and `paint.separator.text` paints on the wrapper are bound here, and they all map to existing `mui/alias/*` and `mui/seed/*` tokens. No component-scoped tokens are needed — see [`design-token.md`](./design-token.md) for the declared-empty audit. |
@@ -92,7 +92,7 @@ Property names below are the human-readable keys; Figma's internal property ids 
 | `Helper Text`     | TEXT    | `Helper text`  | FormHelperText text content. Bound to the bottom helper TEXT node's `characters`. Visible only when `Helper=True`.                               |
 | `Separator Text`  | TEXT    | `-`            | Separator glyph between cells. Bound to **every** separator TEXT node's `characters` (per-variant: 3 separators in `Character=4`, 5 in `Character=6`). |
 
-No `INSTANCE_SWAP` properties — the inner `<TextField>` cells are nested INSTANCE references to the `<TextField>` set's `Variant=Outlined, Size=Small, State=Enabled, Has Value=False, Multiline=False` variant (the COMPONENT_SET id is `1:6266`; the specific variant Component this PinInput build instances is `1:6443`, a child of that set). Designers override per-cell state / value by entering the published instance and changing its `State` / `Has Value` / `Value` properties.
+No `INSTANCE_SWAP` properties — the inner `<TextField>` cells are nested INSTANCE references to the `<TextField>` set's `Variant=Outlined, Size=Small, State=Enabled, Has Value=False, Multiline=False` variant (the COMPONENT_SET id is `<NODE_ID>`; the specific variant Component this PinInput build instances is `<NODE_ID>`, a child of that set). Designers override per-cell state / value by entering the published instance and changing its `State` / `Has Value` / `Value` properties.
 
 No `BOOLEAN` properties beyond `Label` / `Helper` — those two visibility toggles are sufficient because every other variation is per-cell.
 
@@ -190,15 +190,15 @@ The published cell heights per variant differ because adding the FormLabel adds 
 
 ### 6.2 Surrounding documentation frame
 
-The `Pin Input` frame (`904:11807`) is the documentation wrapper that hosts the published COMPONENT_SET (`911:12594`) at `(x=32, y=32)` and the **Use Case** panel (`919:12286`) at `(x=480, y=32)` side-by-side. The frame currently measures `1152 × 1103 px` — sized to fit both children with `32 px` right / bottom padding.
+The `Pin Input` frame (`<NODE_ID>`) is the documentation wrapper that hosts the published COMPONENT_SET (`<NODE_ID>`) at `(x=32, y=32)` and the **Use Case** panel (`<NODE_ID>`) at `(x=480, y=32)` side-by-side. The frame currently measures `1152 × 1103 px` — sized to fit both children with `32 px` right / bottom padding.
 
 The Use Case panel is a `640 px`-wide VERTICAL Auto Layout with `32 px` padding and `32 px` itemSpacing, hosting one Title + three Sections. Each Section is a Heading (body1-bold) + Caption (caption, `text-sub`) + Content frame (Auto Layout with light grey bg `alias/colors/bg-disabled`, 16 px inset padding) populated by published `<PinInput>` instances and per-cell overrides.
 
 | Section            | Node id     | Content                                                                                                                                                                                                                                                                                                                                                                                          |
 | ------------------ | ----------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| **States**         | `919:12291` | Three example rows mirroring the reference 天璇 file (`704:22072`)'s `Example 01` block — every row uses `Character=6`, `Label=True`. Row 1 (`919:12292`) — Default (every cell `State=Enabled, Has Value=False`). Row 2 (`919:12426`) — Error (every cell `State=Error`; FormLabel + Helper Text fills rebound to `seed/danger/main` per §4.2.1). Row 3 (`919:12658`) — Partial entry (cells 0..2 `State=Disabled, Has Value=True, Value=1/2/3`; cell 3 `State=Focused`; cells 4..5 default). |
-| **Character lengths** | `919:12835` | Two side-by-side `Label=True, Helper=False` instances — `Character=4` (`919:12837`) and `Character=6` (`919:12927`). The two wrap vertically because their combined width exceeds the panel's `576 px` content area; this is intentional and uses Auto Layout `wrap`. |
-| **Custom separator** | `919:13040` | Two `Character=6, Label=False, Helper=False` instances overriding `Separator Text` to `·` (`919:13041`) and ` ` (whitespace, `919:13174`).                                                                                                                                                                                                                                                       |
+| **States**         | `<NODE_ID>` | Three example rows mirroring the reference 天璇 file (`<NODE_ID>`)'s `Example 01` block — every row uses `Character=6`, `Label=True`. Row 1 (`<NODE_ID>`) — Default (every cell `State=Enabled, Has Value=False`). Row 2 (`<NODE_ID>`) — Error (every cell `State=Error`; FormLabel + Helper Text fills rebound to `seed/danger/main` per §4.2.1). Row 3 (`<NODE_ID>`) — Partial entry (cells 0..2 `State=Disabled, Has Value=True, Value=1/2/3`; cell 3 `State=Focused`; cells 4..5 default). |
+| **Character lengths** | `<NODE_ID>` | Two side-by-side `Label=True, Helper=False` instances — `Character=4` (`<NODE_ID>`) and `Character=6` (`<NODE_ID>`). The two wrap vertically because their combined width exceeds the panel's `576 px` content area; this is intentional and uses Auto Layout `wrap`. |
+| **Custom separator** | `<NODE_ID>` | Two `Character=6, Label=False, Helper=False` instances overriding `Separator Text` to `·` (`<NODE_ID>`) and ` ` (whitespace, `<NODE_ID>`).                                                                                                                                                                                                                                                       |
 
 ### 6.2.1 Use Case sync rule
 
@@ -289,10 +289,10 @@ type PinInputProps = {
 ### Figma summary
 
 - **COMPONENT_SET** name: `<PinInput>`
-- **Frame**: `Pin Input` (`904:11807`), page **Foundation Components**
+- **Frame**: `Pin Input` (`<NODE_ID>`), page **Foundation Components**
 - **Variants**: 8 = `Character ∈ {4, 6}` × `Label ∈ {True, False}` × `Helper ∈ {True, False}`
 - **Component properties**: `Label Text` (TEXT, `Label`), `Helper Text` (TEXT, `Helper text`), `Separator Text` (TEXT, `-`)
-- **Nested INSTANCE**: every cell is `<TextField Variant=Outlined, Size=Small>` (`1:6266`)
+- **Nested INSTANCE**: every cell is `<TextField Variant=Outlined, Size=Small>` (`<NODE_ID>`)
 - **Defaults**: `Character=4, Label=True, Helper=False`
 - **Total variants**: 8
 - **Local-only bindings**: required (see §1 + [`design-token.md`](./design-token.md))

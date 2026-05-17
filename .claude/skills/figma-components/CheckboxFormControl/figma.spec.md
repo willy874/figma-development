@@ -2,9 +2,9 @@
 name: figma-component-checkbox-form-control-spec
 description: Figma component specification for `<CheckboxFormControl>` — design counterpart of MUI's composed `<FormControlLabel>` + `<Checkbox>` consumed by `src/stories/CheckboxFormControl.stories.tsx`. Wraps a `<Checkbox>` instance and a sibling `Label` text node in auto-layout. Documents the LabelPlacement × Color × Checked × Indeterminate × Size × State variant matrix, the nested-instance mirroring contract, and source-to-Figma mapping rules. For runtime measurements see `storybook.render.md`; for the inner-indicator spec see `../Checkbox/figma.spec.md`.
 parent_skill: figma-components
-figma_file_key: KQjP6W9Uw1PN0iipwQHyYn
-figma_node_id: '1:7367'
-figma_component_set_id: '1:7367'
+figma_file_key: <FIGMA_FILE_KEY>
+figma_node_id: '<NODE_ID>'
+figma_component_set_id: '<NODE_ID>'
 ---
 
 # `<CheckboxFormControl>` Figma Component Specification
@@ -23,7 +23,7 @@ figma_component_set_id: '1:7367'
 
 There is no separate `<CheckboxFormControl>` runtime component; the project's name is the wrapper-side label for the composed pattern. The Figma component wraps:
 
-- one **`<Checkbox>` instance** (`1:7228`) — the indicator
+- one **`<Checkbox>` instance** (`<NODE_ID>`) — the indicator
 - one sibling **Text** node (the `Label`, bound to `alias/colors/text-default`)
 
 inside an auto-layout frame whose direction encodes `labelPlacement`. The set ships the full `LabelPlacement × Color × Checked × Indeterminate × Size × State` matrix and mirrors the relevant axes onto the nested `<Checkbox>` instance automatically — designers do **not** need to override the inner instance to retint or resize. State is limited to `Enabled` and `Disabled`; `Hovered` / `Focused` / `Pressed` are reachable on the inner `<Checkbox>` set but are not republished here.
@@ -32,11 +32,11 @@ inside an auto-layout frame whose direction encodes `labelPlacement`. The set sh
 | ----------------- | -------------------------------------------------------------------------------------- |
 | Source story      | `src/stories/CheckboxFormControl.stories.tsx`                                          |
 | Underlying source | `@mui/material@^7.3.10` `FormControlLabel` + `Checkbox` (re-exported by this package, no wrapper) |
-| Figma file        | [MUI-Library](https://www.figma.com/design/KQjP6W9Uw1PN0iipwQHyYn) (`KQjP6W9Uw1PN0iipwQHyYn`) |
-| Figma frame       | `<CheckboxFormControl>` (`1:7367`, `1620 × 1987 px`) on the same page as `<Checkbox>` |
-| Component Set     | `<CheckboxFormControl>` (`1:7367`)                                                     |
+| Figma file        | [MUI-Library](https://www.figma.com/design/<FIGMA_FILE_KEY>) (`<FIGMA_FILE_KEY>`) |
+| Figma frame       | `<CheckboxFormControl>` (`<NODE_ID>`, `1620 × 1987 px`) on the same page as `<Checkbox>` |
+| Component Set     | `<CheckboxFormControl>` (`<NODE_ID>`)                                                     |
 | Total variants    | **276** (4 LabelPlacement × 7 Color × 3 Checked/Indeterminate combos × 3 Sizes × Enabled = 252; + 4 LabelPlacement × 1 Color (Default) × 2 (Checked F/F, T/F) × 3 Sizes × Disabled = 24) |
-| Nested component  | `<Checkbox>` (`1:7228`) — instance, axes mirror the outer set                          |
+| Nested component  | `<Checkbox>` (`<NODE_ID>`) — instance, axes mirror the outer set                          |
 | Typography (label) | `body1` style — `Roboto Regular 16 / 24 px`, ls `0.15 px` (no text-transform)         |
 
 ## 2. Source-to-Figma Property Mapping
@@ -98,7 +98,7 @@ Published-set exclusions (intentional — keep them in mind when picking instanc
 
 ## 4. Design Tokens
 
-All paints, strokes, and surfaces bind to local variables in the MUI-Library file (`KQjP6W9Uw1PN0iipwQHyYn`). The component is **self-contained** — every binding resolves to a variable in this file's local collection. _(Local-only sweep completed 2026-04-29 — see §7 issue 6 and `../Checkbox/figma.spec.md` §7 issue 9.)_
+All paints, strokes, and surfaces bind to local variables in the MUI-Library file (`<FIGMA_FILE_KEY>`). The component is **self-contained** — every binding resolves to a variable in this file's local collection. _(Local-only sweep completed 2026-04-29 — see §7 issue 6 and `../Checkbox/figma.spec.md` §7 issue 9.)_
 
 ### 4.1 Layout
 
@@ -147,7 +147,7 @@ The nested instance carries its own bindings (see `../Checkbox/figma.spec.md` §
 
 ## 6. Layout
 
-The Component Set is laid out as a **4-column × multi-row grid** inside the `<CheckboxFormControl>` frame (`1:7367`, `1620 × 1987 px`):
+The Component Set is laid out as a **4-column × multi-row grid** inside the `<CheckboxFormControl>` frame (`<NODE_ID>`, `1620 × 1987 px`):
 
 - **Columns** (left → right) — `LabelPlacement`: End, Start, Top, Bottom. Column origins x = `{40, 460, 880, 1300}`; column stride `420 px`.
 - **Rows** (top → bottom) — `Color × Size × (Checked, Indeterminate)`:
@@ -161,13 +161,13 @@ The Component Set is laid out as a **4-column × multi-row grid** inside the `<C
 Cell composition:
 
 - `Wrapper` (FRAME, auto-layout) — direction per `LabelPlacement`, `itemSpacing 4 px`, cross-axis `Center`.
-  - `Checkbox` (INSTANCE of `1:7228`) — axes mirrored from the wrapping variant.
+  - `Checkbox` (INSTANCE of `<NODE_ID>`) — axes mirrored from the wrapping variant.
   - `Label` (TEXT) — `body1` text style, fill bound per §4.2.
 
 Surrounding documentation in the outer frame:
 
 - **Header** — title `<CheckboxFormControl>`, source story path, behavior summary.
-- **Sibling sets** — `<Checkbox>` (`1:7228`) sits above on the same page.
+- **Sibling sets** — `<Checkbox>` (`<NODE_ID>`) sits above on the same page.
 
 ## 7. Usage Guidelines
 
@@ -197,15 +197,15 @@ Tracked here so the next runtime-truth pass has a punch list:
 3. **Font family differs.** Figma's `body1` text style uses `Noto Sans TC Regular`; MUI runtime renders `Roboto`. Accepted-as-is — locale-driven defaults; the visual height / spacing is identical.
 4. **`Size=Large` falls back to Medium at runtime.** Inherited from `../Checkbox/figma.spec.md` §7 issue 1 — do not duplicate the resolution here.
 5. **`Hovered / Focused / Pressed` are not published in this set.** Drop a bare `<Checkbox>` and compose the label manually until those variants are added.
-6. **~~Wrapper-direct paints (label text fills) bind to external library variables, violating the local-only rule.~~ Resolved 2026-04-29.** Phase 3 of the local-only sweep rebound 276 fill paints (label text Enabled / Disabled) on this set from external `text-default` / `text-disabled` to the local `mui` equivalents. Verification confirmed 0 external bindings remain (648 paints local + 2 unbound). Inner `<Checkbox>` instances inherit the rebind from the master at `1:7228` (see [`../Checkbox/figma.spec.md`](../Checkbox/figma.spec.md) §7 issue 9). Closed.
+6. **~~Wrapper-direct paints (label text fills) bind to external library variables, violating the local-only rule.~~ Resolved 2026-04-29.** Phase 3 of the local-only sweep rebound 276 fill paints (label text Enabled / Disabled) on this set from external `text-default` / `text-disabled` to the local `mui` equivalents. Verification confirmed 0 external bindings remain (648 paints local + 2 unbound). Inner `<Checkbox>` instances inherit the rebind from the master at `<NODE_ID>` (see [`../Checkbox/figma.spec.md`](../Checkbox/figma.spec.md) §7 issue 9). Closed.
 
 ## 8. Source Sync Rule
 
 This document and the source must move together. When **any** of the following changes:
 
 1. `src/stories/CheckboxFormControl.stories.tsx` (variants, args, `labelPlacement` / `disabled` wiring)
-2. The Figma `<CheckboxFormControl>` component set at `1:7367` (variants, properties, token bindings)
-3. The Figma `<Checkbox>` component set at `1:7228` — any change to its variant matrix or naming forces the nested instance mirroring contract to be re-validated, and the published axis options here may need to follow
+2. The Figma `<CheckboxFormControl>` component set at `<NODE_ID>` (variants, properties, token bindings)
+3. The Figma `<Checkbox>` component set at `<NODE_ID>` — any change to its variant matrix or naming forces the nested instance mirroring contract to be re-validated, and the published axis options here may need to follow
 4. `src/stories/Checkbox.stories.tsx` — any new state / size / color introduced upstream forces a follow-up here
 5. The shared `mui/alias/colors/{text-default,text-disabled}` tokens — these are the wrapper's only direct dependencies
 6. `material-design/typography/body1` text style — typography changes flow into §4.3 / §7 drift

@@ -1,10 +1,10 @@
 ---
 name: figma-component-icon-spec
-description: Figma component specification for `<Icon>` — design counterpart of the `MUIIcon` sizing wrapper consumed by `src/stories/Icon.stories.tsx`. Documents the single-axis Size matrix (xs/sm/md/lg/xl/xxl), the `Glyph Source` INSTANCE_SWAP slot whose default is the file-local `ArrowSolid` component (`3:2740`), the source-to-Figma mapping, and the inheritance contract that lets the host component (`<IconButton>`, `<Button>`, `<Chip>`, …) drive the glyph's paint via `currentColor`. Companion runtime measurements live in `storybook.render.md`. The shared `<Icon>` set is the wrapper consumers reach for; the 62 named glyph components in the same file (`3:2740` ArrowSolid through `3:2908` Add — see `figma-create-component/library-components.md` §Icon library) are the swap targets.
+description: Figma component specification for `<Icon>` — design counterpart of the `MUIIcon` sizing wrapper consumed by `src/stories/Icon.stories.tsx`. Documents the single-axis Size matrix (xs/sm/md/lg/xl/xxl), the `Glyph Source` INSTANCE_SWAP slot whose default is the file-local `ArrowSolid` component (`<NODE_ID>`), the source-to-Figma mapping, and the inheritance contract that lets the host component (`<IconButton>`, `<Button>`, `<Chip>`, …) drive the glyph's paint via `currentColor`. Companion runtime measurements live in `storybook.render.md`. The shared `<Icon>` set is the wrapper consumers reach for; the 62 named glyph components in the same file (`<NODE_ID>` ArrowSolid through `<NODE_ID>` Add — see `figma-create-component/library-components.md` §Icon library) are the swap targets.
 parent_skill: figma-components
-figma_file_key: KQjP6W9Uw1PN0iipwQHyYn
-figma_node_id: '3:2722'
-figma_component_set_id: '3:2722'
+figma_file_key: <FIGMA_FILE_KEY>
+figma_node_id: '<NODE_ID>'
+figma_component_set_id: '<NODE_ID>'
 ---
 
 # `<Icon>` Figma Component Specification
@@ -15,7 +15,7 @@ figma_component_set_id: '3:2722'
 
 The wrapper deliberately does **not** ship a `Color` axis. The runtime `<Box>` has `color: 'inherit'` and the inline SVG uses `fill="currentColor"`, so the host paint cascade drives the glyph color end-to-end (see `storybook.render.md` §3 for the verified inheritance chain). Authoring an explicit fill on an `<Icon>` cell breaks this contract and forces every consumer to detach.
 
-The icon library backing the swap targets is sourced from Google **`material-design-icons`** (the `material-symbols` outlined / filled set, 24 px authoring grid). The 62 published glyph components — 40 sequentially-numbered (`3:2740` ArrowSolid … `3:2908` Add); 10 appended on 2026-04-29 in row 5 (`475:7459` Home, `477:7463` Settings, `479:7463` Filter, `479:7466` Notifications, `479:7469` Calendar, `479:7472` Refresh, `481:7463` Star, `481:7466` Help, `481:7469` Folder, `481:7472` Share); 10 more on the same day in row 6 (`512:7497` ChevronUp, `512:7501` ChevronDown, `512:7505` ChevronLeft, `512:7509` ChevronRight, `512:7513` ArrowUp, `513:7497` ArrowDown, `513:7501` Save, `513:7505` Print, `513:7509` Bookmark, `513:7513` Phone); plus 2 more on the same day opening row 7 (`590:7638` CloseCircleSolid `material-symbols:cancel-outline`, `665:11127` CloseCircleFilled `material-symbols:cancel`) — each wrap a single `material-symbols:*` raster; the runtime story mirrors them inline as 24×24 `<svg>`s authored against the same MD grid. Swapping the icon source library (e.g. to `@mui/icons-material` or `@iconify/react`) is a structural change tracked in §8.
+The icon library backing the swap targets is sourced from Google **`material-design-icons`** (the `material-symbols` outlined / filled set, 24 px authoring grid). The 62 published glyph components — 40 sequentially-numbered (`<NODE_ID>` ArrowSolid … `<NODE_ID>` Add); 10 appended on 2026-04-29 in row 5 (`<NODE_ID>` Home, `<NODE_ID>` Settings, `<NODE_ID>` Filter, `<NODE_ID>` Notifications, `<NODE_ID>` Calendar, `<NODE_ID>` Refresh, `<NODE_ID>` Star, `<NODE_ID>` Help, `<NODE_ID>` Folder, `<NODE_ID>` Share); 10 more on the same day in row 6 (`<NODE_ID>` ChevronUp, `<NODE_ID>` ChevronDown, `<NODE_ID>` ChevronLeft, `<NODE_ID>` ChevronRight, `<NODE_ID>` ArrowUp, `<NODE_ID>` ArrowDown, `<NODE_ID>` Save, `<NODE_ID>` Print, `<NODE_ID>` Bookmark, `<NODE_ID>` Phone); plus 2 more on the same day opening row 7 (`<NODE_ID>` CloseCircleSolid `material-symbols:cancel-outline`, `<NODE_ID>` CloseCircleFilled `material-symbols:cancel`) — each wrap a single `material-symbols:*` raster; the runtime story mirrors them inline as 24×24 `<svg>`s authored against the same MD grid. Swapping the icon source library (e.g. to `@mui/icons-material` or `@iconify/react`) is a structural change tracked in §8.
 
 | Aspect              | Value                                                                                |
 | ------------------- | ------------------------------------------------------------------------------------ |
@@ -23,12 +23,12 @@ The icon library backing the swap targets is sourced from Google **`material-des
 | Underlying source   | `MUIIcon` — local sizing wrapper around `<Box>` from `@mui/material`. Not a re-export of `@mui/material/Icon` (whose `fontSize` only exposes 3 sizes and depends on the Material Icons font; see §7 #1). |
 | Underlying MUI      | `@mui/material` 7.3.10 (resolved from `package.json` on 2026-04-29)                  |
 | Icon source library | Google **`material-design-icons`** (`material-symbols` outlined / filled, 24 px grid). `@mui/icons-material` is intentionally not a dependency of this package — host apps swap to real icons at consumption. |
-| Figma frame         | `<Icon>` (`3:2722`) on page **Foundation Components**                                |
-| Component Set       | `<Icon>` (`3:2722`) — six `Size=*` variants, no other axis                           |
+| Figma frame         | `<Icon>` (`<NODE_ID>`) on page **Foundation Components**                                |
+| Component Set       | `<Icon>` (`<NODE_ID>`) — six `Size=*` variants, no other axis                           |
 | Total variants      | **6** (Size only — xs / sm / md / lg / xl / xxl)                                     |
 | Re-probe stories    | `SizeMatrix` (Storybook id `components-icon--size-matrix`) — the canonical 6 × 8 grid for `storybook.render.md` §1 numbers. `ColorInheritance` (`components-icon--color-inheritance`) — the verification harness for `currentColor` propagation in §3 of `storybook.render.md`. |
-| Glyph slot default  | `<ArrowSolid>` (`3:2740`) — file-local component inside the same page's Icon library |
-| Companion sets      | 62 named glyph components on the same page (`3:2740` ArrowSolid … `3:2908` Add — see `figma-create-component/library-components.md` §Icon library) plus the visual catalogue Row at `3:2738`. These are the swap targets, not part of this set. |
+| Glyph slot default  | `<ArrowSolid>` (`<NODE_ID>`) — file-local component inside the same page's Icon library |
+| Companion sets      | 62 named glyph components on the same page (`<NODE_ID>` ArrowSolid … `<NODE_ID>` Add — see `figma-create-component/library-components.md` §Icon library) plus the visual catalogue Row at `<NODE_ID>`. These are the swap targets, not part of this set. |
 | Local-only bindings | **Required.** The wrapper has no paints of its own; the only "binding" is the `Glyph Source` instance default (a file-local component id), so the local-only contract is satisfied trivially. No `VariableID:<sharedKey>/...` consumed-library references are permitted in any cell. |
 
 ## 2. Source-to-Figma Property Mapping
@@ -36,7 +36,7 @@ The icon library backing the swap targets is sourced from Google **`material-des
 | Source prop / token        | Figma property | Type           | Notes                                                                                          |
 | -------------------------- | -------------- | -------------- | ---------------------------------------------------------------------------------------------- |
 | `size`                     | `Size`         | VARIANT        | Six options matching `SIZE_PX` in the story: `xs` / `sm` / `md` / `lg` / `xl` / `xxl`. Figma defaults to `xs` (the smallest cell, top of the published variant grid); the story's `args.size = 'md'` is the runtime default. The two diverge intentionally — Figma's default surfaces the smallest "swatch" when an instance is dropped without a size override; runtime mirrors MUI's 24-px convention. |
-| _(implicit slot)_ children | `Glyph Source` | INSTANCE_SWAP  | The actual icon. Default = `<ArrowSolid>` (`3:2740`). **Shared-default caveat**: the default is shared across every Size variant — picking a different default would propagate to every cell. The benign placeholder lets a freshly-dropped `<Icon>` render visibly while the designer swaps to the intended glyph. |
+| _(implicit slot)_ children | `Glyph Source` | INSTANCE_SWAP  | The actual icon. Default = `<ArrowSolid>` (`<NODE_ID>`). **Shared-default caveat**: the default is shared across every Size variant — picking a different default would propagate to every cell. The benign placeholder lets a freshly-dropped `<Icon>` render visibly while the designer swaps to the intended glyph. |
 | `color`                    | —              | —              | The wrapper has `color: 'inherit'` at runtime; the SVG `fill = currentColor`. **No Figma paint binding.** Consumers drive the icon color via the host component's foreground token. Adding a `Color` axis here would force an explosion to `6 × 7 = 42` variants and break the inheritance contract. |
 | `sx`                       | —              | —              | Prop-side override (e.g. `sx={{ color: 'primary.main' }}`). Behavior-only on the Figma side — the same effect is reached by placing the `<Icon>` instance inside a host whose foreground token resolves to `seed/primary/main`. |
 | `aria-label`               | —              | —              | Accessibility-only; surfaced when the consumer marks the icon as meaningful. No Figma representation; flag in handoff annotations when the icon stands alone (icon-only buttons, status indicators). |
@@ -64,7 +64,7 @@ Size (only axis)   =   1 × 6   =   6 variants
 
 | Property key   | Type           | Default                  | Purpose                                                                                                                                                                                                                                            |
 | -------------- | -------------- | ------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `Glyph Source` | INSTANCE_SWAP  | `<ArrowSolid>` (`3:2740`) | The 24×24 glyph that fills the wrapper. Picks which named icon component renders. Default is `ArrowSolid` (the alphabetically- and source-order-first entry in the Icon library). **Shared-default caveat applies** — every Size variant resolves to the same default, so consumers should swap per-instance, not edit the wrapper. |
+| `Glyph Source` | INSTANCE_SWAP  | `<ArrowSolid>` (`<NODE_ID>`) | The 24×24 glyph that fills the wrapper. Picks which named icon component renders. Default is `ArrowSolid` (the alphabetically- and source-order-first entry in the Icon library). **Shared-default caveat applies** — every Size variant resolves to the same default, so consumers should swap per-instance, not edit the wrapper. |
 
 The slot's leaf VECTOR fill is left **unbound** so the host component's foreground binding propagates via `currentColor`. Authoring an explicit token on the slot defeats the inheritance contract.
 
@@ -103,16 +103,16 @@ n/a — `<Icon>` has no interactive state. Disabled / hover / focus / pressed pa
 
 Conventions:
 
-- **Glyph source**: file-local instance of one of the 62 named icon components in the Icon library (`3:2740` ArrowSolid … `665:11127` CloseCircleFilled). Each named component wraps a single `material-symbols:*` 24×24 raster. **Do not inline VECTORs** into the `<Icon>` cell — always use the named component instance so the swap dropdown stays populated.
+- **Glyph source**: file-local instance of one of the 62 named icon components in the Icon library (`<NODE_ID>` ArrowSolid … `<NODE_ID>` CloseCircleFilled). Each named component wraps a single `material-symbols:*` 24×24 raster. **Do not inline VECTORs** into the `<Icon>` cell — always use the named component instance so the swap dropdown stays populated.
 - **Authoring grid**: the underlying `material-symbols` glyph is authored at `24 × 24 px`. Cells smaller than `md` downsample; `xxl` upsamples 2× (verified against the runtime SVG `viewBox="0 0 24 24"` rendering at the wrapper size).
 - **Fill**: leave the slot's leaf VECTOR fill unbound — `currentColor` inheritance from the host paints it. Binding `seed/<C>/main` here defeats the inheritance contract (§7.4).
-- **Rotation / mirroring**: any per-cell rotation lives on the slot instance, not the wrapper. ArrowSolid (`3:2740`), for instance, applies `rotation: -180°` on its child to convert the upstream `material-symbols:arrow-back-ios-new-rounded` glyph into a forward-facing chevron — that transform is owned by the named component, not by `<Icon>`.
+- **Rotation / mirroring**: any per-cell rotation lives on the slot instance, not the wrapper. ArrowSolid (`<NODE_ID>`), for instance, applies `rotation: -180°` on its child to convert the upstream `material-symbols:arrow-back-ios-new-rounded` glyph into a forward-facing chevron — that transform is owned by the named component, not by `<Icon>`.
 
 ## 6. Layout
 
 ### 6.1 Component set grid
 
-The `<Icon>` set lives at the top-left of the **Foundation Components** page (`0:1`) at canvas position `(0, 0)`, encompassing the 6 Size variants stacked vertically inside a `140 × 298 px` frame:
+The `<Icon>` set lives at the top-left of the **Foundation Components** page (`<NODE_ID>`) at canvas position `(0, 0)`, encompassing the 6 Size variants stacked vertically inside a `140 × 298 px` frame:
 
 | Cell  | Position (x, y) | Size       |
 | ----- | --------------- | ---------- |
@@ -127,7 +127,7 @@ Cells are horizontally centered inside the parent frame (each cell's `x` recente
 
 ### 6.2 Surrounding documentation frame
 
-The 61 named glyph components live in the **same page** but a separate documentation frame: the visual catalogue **Row** at `3:2738`. The Row is **read-only** for `<Icon>` authoring — modifying the Row does not affect the `<Icon>` set's variants. When adding a new glyph to the library, publish a new top-level `COMPONENT` and append it to the Row (and to `figma-create-component/library-components.md` §Icon library).
+The 61 named glyph components live in the **same page** but a separate documentation frame: the visual catalogue **Row** at `<NODE_ID>`. The Row is **read-only** for `<Icon>` authoring — modifying the Row does not affect the `<Icon>` set's variants. When adding a new glyph to the library, publish a new top-level `COMPONENT` and append it to the Row (and to `figma-create-component/library-components.md` §Icon library).
 
 ## 7. Usage Guidelines
 
@@ -148,9 +148,9 @@ The 61 named glyph components live in the **same page** but a separate documenta
 
 | Host          | Slot property      | Default `<Icon>/Size` | Notes                                                                          |
 | ------------- | ------------------ | --------------------- | ------------------------------------------------------------------------------ |
-| `<Chip>`      | `Icon Source`      | `Size=sm` (`3:2731`)  | Leading 20 × 20 slot, hidden by default                                        |
-| `<IconButton>`| (instance child)   | `Size=md` (`3:2729`)  | Sole child, always visible                                                     |
-| `<Button>`    | `Start Icon Source` / `End Icon Source` (when present) | `Size=md` (`3:2729`)                  | Optional adornments; mirror MUI's `startIcon` / `endIcon` slots                |
+| `<Chip>`      | `Icon Source`      | `Size=sm` (`<NODE_ID>`)  | Leading 20 × 20 slot, hidden by default                                        |
+| `<IconButton>`| (instance child)   | `Size=md` (`<NODE_ID>`)  | Sole child, always visible                                                     |
+| `<Button>`    | `Start Icon Source` / `End Icon Source` (when present) | `Size=md` (`<NODE_ID>`)                  | Optional adornments; mirror MUI's `startIcon` / `endIcon` slots                |
 
 (See each host's `figma.spec.md` for the exact slot key names and per-cell foreground bindings.)
 
@@ -178,10 +178,10 @@ When **any** of the following changes, update this spec **and** the named files 
 
 | Trigger                                                                              | Files to update                                                                                                          |
 | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------ |
-| `src/stories/Icon.stories.tsx` `SIZE_PX` table changes                               | `figma.spec.md` §3 + §4.1, `storybook.render.md` §1, Figma component set `3:2722` (re-author cells via `use_figma`)       |
+| `src/stories/Icon.stories.tsx` `SIZE_PX` table changes                               | `figma.spec.md` §3 + §4.1, `storybook.render.md` §1, Figma component set `<NODE_ID>` (re-author cells via `use_figma`)       |
 | The story replaces inline SVGs with a real icon library (`@mui/icons-material`, `@iconify/react`, etc.) | `figma.spec.md` §1 (icon source library) + §5 (slot conventions), `storybook.render.md` §2 + §5 (drift)         |
 | `@mui/material` major bump                                                           | Re-probe `storybook.render.md` §1–§3 (run `SizeMatrix` + `ColorInheritance`); if `<Box>` defaults shift, document the delta in §4 and surface a TODO in §9. Cross-check `package.json` to confirm the version field in §1. |
-| Figma node `3:2722` variant axes change (e.g. someone adds a `Color` or `State` axis) | `figma.spec.md` §3, then update every host spec's `Icon Source` default and refresh `figma.config.json` via `figma-init/config-init.md` |
+| Figma node `<NODE_ID>` variant axes change (e.g. someone adds a `Color` or `State` axis) | `figma.spec.md` §3, then update every host spec's `Icon Source` default and refresh `figma.config.json` via `figma-init/config-init.md` |
 | The `Glyph Source` default is rebound from `<ArrowSolid>` to a different glyph       | `figma.spec.md` §1 + §3.1, every host spec that references the default chain (`<Chip>` `figma.spec.md` §3.1 `Icon Source` row, etc.) |
 | The Figma `Glyph Source` property is renamed (e.g. back to `Instance`, or to `Icon Source` for cross-component naming parity) | `figma.spec.md` §2, §3.1, §5, §7.1, §9 — every reference. Use `editComponentProperty(oldName, { name: newName })` to keep the property id stable so inbound references survive. |
 
@@ -225,7 +225,7 @@ Total variants: 6
 
 ## 10. Token Glossary
 
-`<Icon>` consumes **zero** runtime paint tokens — the wrapper has no fills, strokes, effects, or typography of its own. The only Figma "binding" is the `Glyph Source` instance default (`3:2740`), which is a component reference, not a variable.
+`<Icon>` consumes **zero** runtime paint tokens — the wrapper has no fills, strokes, effects, or typography of its own. The only Figma "binding" is the `Glyph Source` instance default (`<NODE_ID>`), which is a component reference, not a variable.
 
 For completeness, the tokens consumed by `<Icon>`'s **glyph children** (the 40 named icon components and any future additions) are:
 

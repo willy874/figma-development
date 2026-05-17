@@ -6,7 +6,7 @@ parent_skill: figma-components
 
 # `<Typography>` Component Tokens
 
-Tokens scoped to the `<Typography>` Figma component set published inside frame `821:11807` of `KQjP6W9Uw1PN0iipwQHyYn`. For shared tokens (semantic color variables, the 11 base-weight `material-design/typography/*` styles), bind to the shared definitions in [`figma-create-component/library-tokens.md`](../../figma-create-component/library-tokens.md).
+Tokens scoped to the `<Typography>` Figma component set published inside frame `<NODE_ID>` of `<FIGMA_FILE_KEY>`. For shared tokens (semantic color variables, the 11 base-weight `material-design/typography/*` styles), bind to the shared definitions in [`figma-create-component/library-tokens.md`](../../figma-create-component/library-tokens.md).
 
 ## Why these are component-scoped
 
@@ -33,7 +33,7 @@ If `<Button>` / `<IconButton>` / `<Chip>` later promote a shared button-typograp
 
 ### Bold companions under `material-design/typography/*` (local — minted to fill the design-system gap)
 
-These 11 styles live under the same namespace as the published base styles for discoverability, but they are **local** to this file. The design-system file (`stse2CgIzOugynEdDSexS4`) does not ship them today; promote upstream when ready.
+These 11 styles live under the same namespace as the published base styles for discoverability, but they are **local** to this file. The design-system file (`<FIGMA_FILE_KEY>`) does not ship them today; promote upstream when ready.
 
 | Token                                            | Resolves to                                                |
 | ------------------------------------------------ | ---------------------------------------------------------- |

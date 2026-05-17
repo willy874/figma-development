@@ -3,7 +3,7 @@ import { Box, Stack, type SxProps, type Theme } from '@mui/material';
 import * as React from 'react';
 
 // MUI `<Icon>` is a sizing wrapper around an SVG glyph — design counterpart of
-// the Figma component set `<Icon>` (`3:2722`) on the **Foundation Components**
+// the Figma component set `<Icon>` (`<NODE_ID>`) on the **Foundation Components**
 // page of the MUI Library file. Six Size variants
 // (xs=16 / sm=20 / md=24 / lg=28 / xl=32 / xxl=48) drive the box; the glyph
 // itself is supplied via `children` and inherits color via `currentColor`,

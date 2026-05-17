@@ -174,7 +174,7 @@ Identical to `<TextField>`'s helper text — no Select-specific delta.
 
 ## 9. Drift checks (open vs `figma.spec.md`)
 
-Items below are surface differences between this runtime snapshot and the `<Select>` Figma cell at `587:8542`. They are recorded here so the next runtime-truth pass has a punch list; resolution lives in `figma.spec.md` §7 (issues) and §8 (sync rule).
+Items below are surface differences between this runtime snapshot and the `<Select>` Figma cell at `<NODE_ID>`. They are recorded here so the next runtime-truth pass has a punch list; resolution lives in `figma.spec.md` §7 (issues) and §8 (sync rule).
 
 1. **Chevron resting fill** — runtime is `action.active` (`0.54α`); the `<TextField>`-style adornment-glyph spec binds `alias/colors/text-sub` (`0.6α`). The visual delta is small. Either accept or mint a dedicated adornment-fill token.
 2. **Disabled chevron fill** — runtime is `action.disabled` (`0.26α`); commonly bound as `alias/colors/text-disabled` (`0.38α`) by analogy with the label / value text. Mint or rebind a `0.26α` companion to close.

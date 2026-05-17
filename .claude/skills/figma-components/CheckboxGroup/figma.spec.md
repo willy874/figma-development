@@ -2,9 +2,9 @@
 name: figma-component-checkbox-group-spec
 description: Figma component specification for `<CheckboxGroup>` — design counterpart of MUI's composed `<FormControl>` + `<FormLabel>` + `<FormGroup>` + `<FormHelperText>` consumed by `src/stories/CheckboxGroup.stories.tsx`. Documents the Direction × Color × Size × State variant matrix, the multi-row composition, the FormLabel / helper text token bindings, and the Error-state cascade limits. For runtime measurements see `storybook.render.md`; for the per-row indicator see `../Checkbox/figma.spec.md` and the per-row label see `../CheckboxFormControl/figma.spec.md`.
 parent_skill: figma-components
-figma_file_key: KQjP6W9Uw1PN0iipwQHyYn
-figma_node_id: '306:6886'
-figma_component_set_id: '306:6886'
+figma_file_key: <FIGMA_FILE_KEY>
+figma_node_id: '<NODE_ID>'
+figma_component_set_id: '<NODE_ID>'
 ---
 
 # `<CheckboxGroup>` Figma Component Specification
@@ -37,16 +37,16 @@ inside an outer auto-layout `FormControl` frame whose direction is always vertic
 | ----------------- | -------------------------------------------------------------------------------------- |
 | Source story      | `src/stories/CheckboxGroup.stories.tsx`                                                |
 | Underlying source | `@mui/material@^7.3.10` `FormControl` + `FormLabel` + `FormGroup` + `FormHelperText` (re-exported by this package, no wrapper) |
-| Figma file        | [MUI-Library](https://www.figma.com/design/KQjP6W9Uw1PN0iipwQHyYn) (`KQjP6W9Uw1PN0iipwQHyYn`) |
-| Figma frame       | `<CheckboxGroup>` (`306:6886`, `850 × 4853 px`) at `(40, 3231)` inside the `Checkbox` section frame (`1:7227`) at `(1482, 9543)`, sibling to `<Checkbox>` (`1:7228`) and `<CheckboxFormControl>` (`1:7367`) above |
-| Component Set     | `<CheckboxGroup>` (`306:6886`)                                                          |
+| Figma file        | [MUI-Library](https://www.figma.com/design/<FIGMA_FILE_KEY>) (`<FIGMA_FILE_KEY>`) |
+| Figma frame       | `<CheckboxGroup>` (`<NODE_ID>`, `850 × 4853 px`) at `(40, 3231)` inside the `Checkbox` section frame (`<NODE_ID>`) at `(1482, 9543)`, sibling to `<Checkbox>` (`<NODE_ID>`) and `<CheckboxFormControl>` (`<NODE_ID>`) above |
+| Component Set     | `<CheckboxGroup>` (`<NODE_ID>`)                                                          |
 | Total variants    | **54** (2 Direction × ((Color (7) × Size (3) at State=Enabled = 21) + (Color=Default × Size (3) at State=Disabled = 3) + (Color=Default × Size (3) at State=Error = 3)) = 2 × 27 = 54). See §3 for the count math. |
 | Nested component  | `<CheckboxFormControl>` instance (one per option row) — axes mirror the outer set, plus `Indeterminate` per option |
 | Typography (label) | `body1` style — `Roboto Regular 16 / 24 px`, ls `0.15 px` (no text-transform)         |
 | Typography (FormLabel) | `subtitle1`-derived line-height (`23 px` runtime). Use the project's existing `material-design/typography/subtitle1` (or a dedicated `form-label` style); do **not** apply `body1` (line-height drift, see §7 issue 6). |
 | Typography (FormHelperText) | MUI `caption`-equivalent (`12 / 1.66 em`). Apply `material-design/typography/caption`. |
 
-The component is **self-contained** — every paint binds to a variable in the local `mui` collection in `KQjP6W9Uw1PN0iipwQHyYn`. The same local-only rule established in `../Checkbox/figma.spec.md` §7 issue 9 applies here.
+The component is **self-contained** — every paint binds to a variable in the local `mui` collection in `<FIGMA_FILE_KEY>`. The same local-only rule established in `../Checkbox/figma.spec.md` §7 issue 9 applies here.
 
 ## 2. Source-to-Figma Property Mapping
 
@@ -96,7 +96,7 @@ Published-set exclusions (intentional):
 - **`State=Disabled` is published only with `Color=Default`.** Disabled is color-agnostic in MUI; designers should pick `Color=Default, State=Disabled` regardless of the surrounding flow's brand color.
 - **`State=Error` is published only with `Color=Default`.** MUI's Error state repaints FormLabel + FormHelperText only — the inner Checkbox's `color` prop does not cascade. A themed Error row (e.g. `Color=Primary × State=Error`) would render identically to `Color=Default × State=Error` for the FormLabel + helper, while the inner Checkbox retains its `color="primary"` paint. Publishing only `Color=Default × State=Error` keeps the matrix tight; consumers who need both an error helper AND themed checkboxes should compose manually with a bare `<Checkbox>` per option. See §7 issue 5.
 - **`Hovered / Focused / Pressed` are not published.** Reach into the nested `<Checkbox>` set for those states.
-- **Option C under `State=Disabled` falls back to `State=Enabled` on the nested instance.** The `<CheckboxFormControl>` set (`1:7367`) does not publish `(Indeterminate=True, State=Disabled)` — see `../CheckboxFormControl/figma.spec.md` §3 exclusion. Under a `State=Disabled` wrapper, Options A and B cascade `State=Disabled` to their nested instance correctly, but Option C (`Indeterminate=True`) cannot — it remains at `State=Enabled` on the nested instance, so its glyph paints the brand-tinted indeterminate dash instead of `palette.action.disabled`. Adopters who care about a fully-disabled tri-state row should override Option C's `Indeterminate` to `False` (or Adopters can wait for the nested set to publish the missing combo). See §7 issue 8.
+- **Option C under `State=Disabled` falls back to `State=Enabled` on the nested instance.** The `<CheckboxFormControl>` set (`<NODE_ID>`) does not publish `(Indeterminate=True, State=Disabled)` — see `../CheckboxFormControl/figma.spec.md` §3 exclusion. Under a `State=Disabled` wrapper, Options A and B cascade `State=Disabled` to their nested instance correctly, but Option C (`Indeterminate=True`) cannot — it remains at `State=Enabled` on the nested instance, so its glyph paints the brand-tinted indeterminate dash instead of `palette.action.disabled`. Adopters who care about a fully-disabled tri-state row should override Option C's `Indeterminate` to `False` (or Adopters can wait for the nested set to publish the missing combo). See §7 issue 8.
 
 ### 3.1 Component (non-variant) properties
 
@@ -118,7 +118,7 @@ The three nested `<CheckboxFormControl>` instances expose their own per-option l
 
 ## 4. Design Tokens
 
-All paints, strokes, and surfaces bind to local variables in the MUI-Library file (`KQjP6W9Uw1PN0iipwQHyYn`). The component is **self-contained** — every binding resolves to a variable in this file's local collection.
+All paints, strokes, and surfaces bind to local variables in the MUI-Library file (`<FIGMA_FILE_KEY>`). The component is **self-contained** — every binding resolves to a variable in this file's local collection.
 
 ### 4.1 Layout
 
@@ -179,7 +179,7 @@ The `State` axis on each nested instance is pinned to `Enabled` (or `Disabled` w
 
 ## 6. Layout
 
-The Component Set is laid out as a **2-column × multi-row grid** inside its outer frame (`306:6886`):
+The Component Set is laid out as a **2-column × multi-row grid** inside its outer frame (`<NODE_ID>`):
 
 - **Columns** (left → right) — `Direction`: Column, Row.
 - **Rows** (top → bottom) — `Color × Size × State`:
@@ -201,7 +201,7 @@ Cell composition:
 Surrounding documentation in the outer frame:
 
 - **Header** — title `<CheckboxGroup>`, source story path, behavior summary, the Error-cascade note.
-- **Sibling sets** — `<Checkbox>` (`1:7228`) and `<CheckboxFormControl>` (`1:7367`) sit above on the same page.
+- **Sibling sets** — `<Checkbox>` (`<NODE_ID>`) and `<CheckboxFormControl>` (`<NODE_ID>`) sit above on the same page.
 
 ## 7. Usage Guidelines
 
@@ -237,7 +237,7 @@ Tracked here so the next runtime-truth pass has a punch list:
 6. **FormLabel line-height differs from `body1`.** Runtime ships FormLabel at `1.4375em` (≈ 23 px at `16 px`); the project's `body1` text style is `24 px`. If Figma applies `body1` to the FormLabel by mistake, the row will stand 1 px taller than runtime — bind FormLabel to `subtitle1` (or mint a dedicated `form-label`) instead.
 7. **`Mui-required` asterisk position.** MUI appends the `*` after the label text with a leading space; the Figma cell encodes the `*` inline in the `FormLabel` text override. If the text is overridden without the `*`, the Required marker is lost — document the convention so designers don't accidentally drop it.
 8. **Tri-state fixture vs. `<RadioGroup>`'s off/on/off.** The Checkbox group renders Option C as `Indeterminate=True` so a single cell surfaces all three glyph styles. `<RadioGroup>` keeps off/on/off because radio is single-select. Designers comparing the two cells should expect the asymmetry.
-9. **Option C does not grey out under `State=Disabled`.** The `<CheckboxFormControl>` set (`1:7367`) excludes the `(Indeterminate=True, State=Disabled)` combo — see [`../CheckboxFormControl/figma.spec.md`](../CheckboxFormControl/figma.spec.md) §3. As a result, every `<CheckboxGroup>` Disabled wrapper variant (6 cells: 2 Direction × 3 Sizes) leaves Option C's nested instance at `State=Enabled`, so its dash glyph keeps the brand-tinted (`Color=Default` → `bg-active`) paint instead of `palette.action.disabled`. Adopters who need a uniformly-disabled tri-state row must either (a) override Option C's `Indeterminate` axis to `False` (collapsing to off/on/off), or (b) wait for the nested set to publish the missing combo. Resolve at the next runtime-truth pass by extending `<CheckboxFormControl>` rather than detaching here.
+9. **Option C does not grey out under `State=Disabled`.** The `<CheckboxFormControl>` set (`<NODE_ID>`) excludes the `(Indeterminate=True, State=Disabled)` combo — see [`../CheckboxFormControl/figma.spec.md`](../CheckboxFormControl/figma.spec.md) §3. As a result, every `<CheckboxGroup>` Disabled wrapper variant (6 cells: 2 Direction × 3 Sizes) leaves Option C's nested instance at `State=Enabled`, so its dash glyph keeps the brand-tinted (`Color=Default` → `bg-active`) paint instead of `palette.action.disabled`. Adopters who need a uniformly-disabled tri-state row must either (a) override Option C's `Indeterminate` axis to `False` (collapsing to off/on/off), or (b) wait for the nested set to publish the missing combo. Resolve at the next runtime-truth pass by extending `<CheckboxFormControl>` rather than detaching here.
 
 ## 8. Source Sync Rule
 
@@ -245,8 +245,8 @@ This document and the source must move together. When **any** of the following c
 
 1. `src/stories/CheckboxGroup.stories.tsx` (variants, args, `row` / `disabled` / `error` / `required` / per-option `checked` / `indeterminate` wiring)
 2. The Figma `<CheckboxGroup>` component set (variants, properties, token bindings)
-3. The Figma `<CheckboxFormControl>` component set (`1:7367`) — any change to its variant matrix or naming forces the nested instance mirroring contract to be re-validated, and the published axis options here may need to follow
-4. The Figma `<Checkbox>` component set (`1:7228`) — same as above (transitively)
+3. The Figma `<CheckboxFormControl>` component set (`<NODE_ID>`) — any change to its variant matrix or naming forces the nested instance mirroring contract to be re-validated, and the published axis options here may need to follow
+4. The Figma `<Checkbox>` component set (`<NODE_ID>`) — same as above (transitively)
 5. `src/stories/Checkbox.stories.tsx` / `src/stories/CheckboxFormControl.stories.tsx` — any new state / size / color introduced upstream forces a follow-up here
 6. The shared `mui/alias/colors/{text-sub,text-disabled}` and `mui/seed/danger/main` tokens — these are the wrapper's only direct color dependencies
 7. `material-design/typography/{body1,subtitle1,caption}` text styles — typography changes flow into §4.3 / §7 drift

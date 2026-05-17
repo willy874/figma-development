@@ -1,6 +1,6 @@
 ---
 name: figma-component-autocomplete-menu-design-token
-description: Component-scoped design tokens for `<AutocompleteMenu>` (and its option-row companion `<AutocompleteOption>`). Defined here because they're MUI-Autocomplete-specific pre-alpha'd primary tints (option Selected / Selected+Focused) that don't fit the shared `mui/seed/*` or `mui/alias/*` namespaces and live as **local** variables inside the MUI-Library file (`KQjP6W9Uw1PN0iipwQHyYn`). Bind option Selected backgrounds to these names rather than literal values; for shared tokens used by AutocompleteMenu (alias text colors, alias bg-outline-hover, paper-elevation-0, shadows-1) see `.claude/skills/figma-create-component/library-tokens.md`.
+description: Component-scoped design tokens for `<AutocompleteMenu>` (and its option-row companion `<AutocompleteOption>`). Defined here because they're MUI-Autocomplete-specific pre-alpha'd primary tints (option Selected / Selected+Focused) that don't fit the shared `mui/seed/*` or `mui/alias/*` namespaces and live as **local** variables inside the MUI-Library file (`<FIGMA_FILE_KEY>`). Bind option Selected backgrounds to these names rather than literal values; for shared tokens used by AutocompleteMenu (alias text colors, alias bg-outline-hover, paper-elevation-0, shadows-1) see `.claude/skills/figma-create-component/library-tokens.md`.
 parent_skill: figma-components
 ---
 
@@ -14,7 +14,7 @@ These values are **MUI-Autocomplete-specific pre-alpha'd primary tints** that do
 
 The closest shared token is `seed/primary/hover-bg` (`#1976D20A`, `0.04α`) — exactly half of the option-selected alpha and a third of the option-selected-focused alpha. Stacking two / three copies of `hover-bg` in Figma would composite to `0.08` / `0.12`, but the visual result depends on Figma's blend math (it composites in sRGB, not linear), so the rendered hex would diverge from MUI's flat-alpha runtime. Pre-alpha'd locals avoid the discrepancy.
 
-These tokens share the same `component/*` prefix as the shared `mui/component/*` namespace, but they live in the **local** `mui` collection inside the MUI-Library file (`KQjP6W9Uw1PN0iipwQHyYn`) — not the published 天璇 collection. Treat them as local-only; promoting one to the shared collection still requires copying it into the 天璇 file's `mui` collection (and rebinding may be needed if IDs change).
+These tokens share the same `component/*` prefix as the shared `mui/component/*` namespace, but they live in the **local** `mui` collection inside the MUI-Library file (`<FIGMA_FILE_KEY>`) — not the published 天璇 collection. Treat them as local-only; promoting one to the shared collection still requires copying it into the 天璇 file's `mui` collection (and rebinding may be needed if IDs change).
 
 Anything that turns out to be reused by another listbox-bearing component (Select, Menu, Popper-based DatePicker) should be promoted to the shared `mui/component/listbox/*` namespace in the 天璇 file and removed from here.
 

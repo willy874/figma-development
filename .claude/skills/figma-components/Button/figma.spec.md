@@ -2,8 +2,8 @@
 name: figma-component-button-spec
 description: Figma component specification for `<Button>` — design counterpart of the MUI `<Button>` consumed by `src/stories/Button.stories.tsx`. Documents the variant matrix (Color × Variant × State, Size=Medium), component properties (Start Icon / End Icon / Label), source-to-Figma mapping, and the per-cell Render Binding Matrix (§6) that pins every fill / stroke / shadow / foreground to a named token. For component-scoped tokens see `design-token.md` in this directory; for runtime measurements see `storybook.render.md`.
 parent_skill: figma-components
-figma_file_key: KQjP6W9Uw1PN0iipwQHyYn
-figma_node_id: '1:4109'
+figma_file_key: <FIGMA_FILE_KEY>
+figma_node_id: '<NODE_ID>'
 ---
 
 # `<Button>` Figma Component Specification
@@ -16,7 +16,7 @@ figma_node_id: '1:4109'
 | ----------------- | --------------------------------------------------------------------------------- |
 | Source story      | `src/stories/Button.stories.tsx`                                                  |
 | Underlying source | `@mui/material` `Button` (re-exported by this package)                            |
-| Figma frame       | `<Button>` (`1:4109`) on page **Components**                                      |
+| Figma frame       | `<Button>` (`<NODE_ID>`) on page **Components**                                      |
 | Total variants    | **90** (6 Colors × 3 Variants × 5 States, Size=Medium only)                       |
 | Typography        | Roboto Medium, `14 / 24.5 px`, letter-spacing `0.4 px`, `text-transform: uppercase` |
 

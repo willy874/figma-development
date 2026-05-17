@@ -47,7 +47,7 @@ Every glyph in `Icon.stories.tsx` is an inline `<svg>` with `viewBox="0 0 24 24"
 | `<svg>` `fill`            | `currentColor` resolved → `rgba(0, 0, 0, 0.87)` (default) |||||  |
 | inner `<path>` `fill`     | `rgba(0, 0, 0, 0.87)` (inherits from SVG)                 |||||  |
 
-**Authoring grid note.** All eight inline glyphs in the story (`Home`, `Search`, `Add`, `Close`, `Check`, `Delete`, `Edit`, `User`) are sourced from Google `material-design-icons` (the `material-symbols` outlined / filled set, 24 px authoring grid). The Figma cells in the published `<Icon>` set (`3:2722`) are likewise `targetAspectRatio: 48 / 48` with a 24 px raster grid for the `material-symbols:*` glyph slot — the runtime and Figma agree on the scale-by-2 contract for `xxl`. xs/sm/md/lg/xl downsample the same authoring grid; expect minor sub-pixel anti-aliasing differences vs. Figma's vector renderer.
+**Authoring grid note.** All eight inline glyphs in the story (`Home`, `Search`, `Add`, `Close`, `Check`, `Delete`, `Edit`, `User`) are sourced from Google `material-design-icons` (the `material-symbols` outlined / filled set, 24 px authoring grid). The Figma cells in the published `<Icon>` set (`<NODE_ID>`) are likewise `targetAspectRatio: 48 / 48` with a 24 px raster grid for the `material-symbols:*` glyph slot — the runtime and Figma agree on the scale-by-2 contract for `xxl`. xs/sm/md/lg/xl downsample the same authoring grid; expect minor sub-pixel anti-aliasing differences vs. Figma's vector renderer.
 
 ## 3. `currentColor` inheritance contract (`ColorInheritance` story)
 

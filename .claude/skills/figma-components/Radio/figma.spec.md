@@ -2,9 +2,9 @@
 name: figma-component-radio-spec
 description: Figma component specification for `<Radio>` — design counterpart of the MUI `<Radio>` consumed by `src/stories/Radio.stories.tsx`. Documents the Color × Checked × Size × State variant matrix, source-to-Figma mapping, and the token bindings that pin every glyph fill / halo paint to a named token. For runtime measurements see `storybook.render.md`; the design system catalogue lives at `figma-create-component/library-tokens.md`.
 parent_skill: figma-components
-figma_file_key: KQjP6W9Uw1PN0iipwQHyYn
-figma_node_id: '292:6292'
-figma_component_set_id: '292:6292'
+figma_file_key: <FIGMA_FILE_KEY>
+figma_node_id: '<NODE_ID>'
+figma_component_set_id: '<NODE_ID>'
 ---
 
 # `<Radio>` Figma Component Specification
@@ -13,15 +13,15 @@ figma_component_set_id: '292:6292'
 
 `<Radio>` is the Figma counterpart of the MUI `<Radio>` consumed in `src/stories/Radio.stories.tsx`. The package re-exports MUI directly — there is no in-repo wrapper — so the Figma component encodes the MUI prop surface (`color`, `size`, `checked`, `disabled`) plus the four interaction states MUI paints via the ripple subtree (`Enabled / Hovered / Focused / Pressed`).
 
-The Figma cells are authored against the local `mui` collection inside the MUI-Library file (`KQjP6W9Uw1PN0iipwQHyYn`). The component is **self-contained** — every binding resolves to a variable in this file's local collection so the library can be consumed without the 天璇 design-system file loaded next to it. The naming, axis structure, and token-binding conventions deliberately mirror `<Checkbox>` (`1:7228`); the surface shape is the same except `<Radio>` has no `Indeterminate` axis (Radio is single-select) and uses the stacked `RadioButtonUncheckedIcon` + `RadioButtonCheckedIcon` glyphs instead of a single check / dash glyph.
+The Figma cells are authored against the local `mui` collection inside the MUI-Library file (`<FIGMA_FILE_KEY>`). The component is **self-contained** — every binding resolves to a variable in this file's local collection so the library can be consumed without the 天璇 design-system file loaded next to it. The naming, axis structure, and token-binding conventions deliberately mirror `<Checkbox>` (`<NODE_ID>`); the surface shape is the same except `<Radio>` has no `Indeterminate` axis (Radio is single-select) and uses the stacked `RadioButtonUncheckedIcon` + `RadioButtonCheckedIcon` glyphs instead of a single check / dash glyph.
 
 | Aspect            | Value                                                                                  |
 | ----------------- | -------------------------------------------------------------------------------------- |
 | Source story      | `src/stories/Radio.stories.tsx`                                                        |
 | Underlying source | `@mui/material@^7.3.10` `Radio` (re-exported by this package, no wrapper)              |
-| Figma file        | [MUI-Library](https://www.figma.com/design/KQjP6W9Uw1PN0iipwQHyYn) (`KQjP6W9Uw1PN0iipwQHyYn`) |
-| Figma frame       | `<Radio>` (`286:5441`, `2777 × 4112 px`) on the `Foundation Components` page, sibling to `<Checkbox>` (`1:7227`) and `<Form>` (`1:7695`) |
-| Component Set     | `<Radio>` (`292:6292`)                                                                  |
+| Figma file        | [MUI-Library](https://www.figma.com/design/<FIGMA_FILE_KEY>) (`<FIGMA_FILE_KEY>`) |
+| Figma frame       | `<Radio>` (`<NODE_ID>`, `2777 × 4112 px`) on the `Foundation Components` page, sibling to `<Checkbox>` (`<NODE_ID>`) and `<Form>` (`<NODE_ID>`) |
+| Component Set     | `<Radio>` (`<NODE_ID>`)                                                                  |
 | Total variants    | **174** (7 Color × 2 Checked × 3 Sizes × 4 non-Disabled `State` values (`Enabled / Hovered / Focused / Pressed`) = 168, plus a 6-cell Disabled coverage limited to `Color=Default × {Checked=False, True} × 3 Sizes`) |
 | Glyph geometry    | `RadioButtonUncheckedIcon` (outer ring) + `RadioButtonCheckedIcon` (inner dot, visible only when Checked); both Material icon paths in `viewBox 0 0 24 24` |
 
@@ -89,7 +89,7 @@ Published-set exclusions (intentional — keep them in mind when picking instanc
 
 ## 4. Design Tokens
 
-All paints, strokes, and surfaces bind to local variables in the MUI-Library file (`KQjP6W9Uw1PN0iipwQHyYn`). Hex values appear in this document only as reference resolutions of the light theme — bind to the token, not the hex.
+All paints, strokes, and surfaces bind to local variables in the MUI-Library file (`<FIGMA_FILE_KEY>`). Hex values appear in this document only as reference resolutions of the light theme — bind to the token, not the hex.
 
 ### 4.1 Sizing
 
@@ -178,7 +178,7 @@ Notes:
 
 ## 6. Layout
 
-The Component Set is laid out as a flat grid inside the `<Radio>` frame (`286:5441`, `2777 × 4112 px`):
+The Component Set is laid out as a flat grid inside the `<Radio>` frame (`<NODE_ID>`, `2777 × 4112 px`):
 
 - **Top band** — `Color × Checked × State (Hovered, Focused, Pressed)` at `Size=Medium` (`36 × 36` cells), 7 rows × 14 columns. Disabled cells (Default only) sit in a separate column block.
 - **Mid band** — Same layout at `Size=Small` (`33 × 33` cells).
@@ -194,7 +194,7 @@ Cell composition:
 Surrounding documentation in the outer frame:
 
 - **Header** — title `<Radio>`, source story path, behavior summary.
-- **Sibling frames** — `<Checkbox>` (`1:7227`) sits above on the same page; `<RadioFormControl>` and `<RadioGroup>` are added as siblings below `<Radio>` (`286:5441`) — see their own specs.
+- **Sibling frames** — `<Checkbox>` (`<NODE_ID>`) sits above on the same page; `<RadioFormControl>` and `<RadioGroup>` are added as siblings below `<Radio>` (`<NODE_ID>`) — see their own specs.
 
 ## 7. Usage Guidelines
 
@@ -234,7 +234,7 @@ Tracked here so the next runtime-truth pass has a punch list (mirror of the `<Ch
 This document and the source must move together. When **any** of the following changes:
 
 1. `src/stories/Radio.stories.tsx` (variants, args, `color`/`size`/`disabled`/`checked` wiring)
-2. The Figma `<Radio>` component set inside `286:5441` (variants, properties, token bindings)
+2. The Figma `<Radio>` component set inside `<NODE_ID>` (variants, properties, token bindings)
 3. The Figma `<RadioFormControl>` / `<RadioGroup>` sets — any change to the nested instance contract here must mirror; see `../RadioFormControl/figma.spec.md` §3 and `../RadioGroup/figma.spec.md` §3
 4. The shared `mui/seed/*`, `mui/alias/*` tokens consumed in §4.2 — particularly `seed/{primary,secondary,danger,warning,info,success}/{main,hover-bg,outline-hover,focusVisible}`, `alias/colors/{bg-active,text-disabled,bg-outline-hover}`, `seed/neutral/focusVisible`
 5. `.storybook/preview.tsx` (theme overrides via `createTheme`) — today this is an empty `createTheme()`; introducing typography / palette / `MuiRadio.defaultProps` overrides forces a re-measure

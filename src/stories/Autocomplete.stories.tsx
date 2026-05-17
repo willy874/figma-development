@@ -76,7 +76,7 @@ const meta = {
     docs: {
       description: {
         component:
-          'Source for the `<AutocompleteMenu>` Figma component set (popper / listbox surface, State = Default / Loading / NoOptions — see `.claude/skills/figma-components/AutocompleteMenu/figma.spec.md`). Option rows live in the companion `<AutocompleteOption>` set (`439:7109`). `Hovered` is a `:hover` pseudo-class state — trigger by hovering. The StateMatrix renders the `Focused` row with `open: true` so the listbox is visible inline (the menu-open and focused-input axes are orthogonal — coupling them keeps the matrix legible without a separate "open" axis).',
+          'Source for the `<AutocompleteMenu>` Figma component set (popper / listbox surface, State = Default / Loading / NoOptions — see `.claude/skills/figma-components/AutocompleteMenu/figma.spec.md`). Option rows live in the companion `<AutocompleteOption>` set (`<NODE_ID>`). `Hovered` is a `:hover` pseudo-class state — trigger by hovering. The StateMatrix renders the `Focused` row with `open: true` so the listbox is visible inline (the menu-open and focused-input axes are orthogonal — coupling them keeps the matrix legible without a separate "open" axis).',
       },
     },
   },

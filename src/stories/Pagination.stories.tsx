@@ -17,7 +17,7 @@ import {
 // spec swaps those for the published `<Icon>` instances at Size=sm (20px)
 // with `ChevronLeft` / `ChevronRight` glyphs (material-symbols
 // `keyboard-arrow-left` / `keyboard-arrow-right`, see `.claude/skills/
-// figma-design-guide/components.md` §Icon library `512:7505` / `512:7509`).
+// figma-design-guide/components.md` §Icon library `<NODE_ID>` / `<NODE_ID>`).
 // Inline SVGs are authored on the same 24×24 MD grid as Icon.stories.tsx so
 // `currentColor` inheritance through PaginationItem's text paint is preserved.
 

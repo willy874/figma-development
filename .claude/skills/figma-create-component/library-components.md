@@ -2,7 +2,7 @@
 
 Source: see [`figma.config.json`](../../../figma.config.json) `.library.fileUrl` (single source of truth for the published file key — the link below is for human navigation only).
 
-[Figma file `KQjP6W9Uw1PN0iipwQHyYn`](https://www.figma.com/design/KQjP6W9Uw1PN0iipwQHyYn/MUI-Library)
+[Figma file `<FIGMA_FILE_KEY>`](https://www.figma.com/design/<FIGMA_FILE_KEY>/MUI-Library)
 
 Total: **93 components** on 1 page (31 component sets / primitives + 62 icon library entries). Before creating anything new, grep this file for the name — if it exists, import via `importComponentByKeyAsync` / `importComponentSetByKeyAsync` and reuse. Never recreate an existing component.
 
@@ -12,7 +12,7 @@ Total: **93 components** on 1 page (31 component sets / primitives + 62 icon lib
 
 ---
 
-## Page: `Foundation Components` (id `0:1`) — 93 components
+## Page: `Foundation Components` (id `<NODE_ID>`) — 93 components
 
 ### Component sets & primitives — 31 entries
 

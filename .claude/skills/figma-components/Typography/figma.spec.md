@@ -2,9 +2,9 @@
 name: figma-component-typography-spec
 description: Figma component specification for `<Typography>` — design counterpart of MUI `<Typography>` consumed by `src/stories/Typography.stories.tsx`. Documents the Variant × Bold matrix (the synthetic `Bold` axis is a Figma-only extension; MUI Typography has no `bold` prop), the single non-variant component property (`Label`), source-to-Figma mapping, project text-style bindings, and the source-sync rule. `color` / `align` / `gutterBottom` / `noWrap` are intentionally not modeled as Figma properties — they are instance-level overrides on the inner TEXT (or surrounding Auto Layout). Companion to `storybook.render.md` (runtime computed-style snapshot) and `design-token.md` (component-scoped tokens — the local `component/typography/button[-bold]` and `component/typography/overline[-bold]` styles).
 parent_skill: figma-components
-figma_file_key: KQjP6W9Uw1PN0iipwQHyYn
-figma_node_id: '821:11807'
-figma_component_set_id: '844:16739'
+figma_file_key: <FIGMA_FILE_KEY>
+figma_node_id: '<NODE_ID>'
+figma_component_set_id: '<NODE_ID>'
 ---
 
 # `<Typography>` Figma Component Specification
@@ -22,8 +22,8 @@ The design system pre-ships almost every MUI Typography variant as a published t
 | Source story          | `src/stories/Typography.stories.tsx`                                                                                             |
 | Underlying source     | `@mui/material` `Typography` (re-exported by this package — no wrapper)                                                          |
 | Underlying MUI        | `@mui/material` 7.3.10 (resolved from `package.json` on 2026-05-08)                                                              |
-| Figma frame           | `<Typography>` (`821:11807`) on page **Foundation Components**                                                                   |
-| Component Set         | `<Typography>` (`844:16739`) inside frame `821:11807`                                                                            |
+| Figma frame           | `<Typography>` (`<NODE_ID>`) on page **Foundation Components**                                                                   |
+| Component Set         | `<Typography>` (`<NODE_ID>`) inside frame `<NODE_ID>`                                                                            |
 | Total variants        | **26** (13 Variants × 2 Bold values)                                                                                             |
 | Synthetic axes        | `Bold` is a Figma-only extension — it has no MUI counterpart at runtime. Designers use it to flip a TEXT to the bold companion of its current Variant in one click. See `storybook.render.md` §5 for the rationale and the one-MUI-prop-out caveat. |
 | Typography            | 26 distinct text styles bound by `textStyleId`. 11 base Variants bind to published `material-design/typography/<v>` styles; their bold companions bind to local `material-design/typography/<v>-bold` styles minted in this file. `Variant=Button` and `Variant=Overline` (both base and bold) bind to component-scoped local styles under `component/typography/*` so `textCase: UPPER` can be baked in. Project text styles use Noto Sans TC (Inter for `h2` / `h5`), letter-spacing 0% — see `storybook.render.md` §6 for the documented divergences from MUI runtime. |
@@ -98,7 +98,7 @@ Source-of-truth files for any token claim:
 - `src/stories/Typography.stories.tsx` — the story file (variant + color enumerations).
 - `node_modules/@mui/material/styles/createTypography.js` — the MUI default theme's Typography object (resolved from `@mui/material 7.3.10`).
 - `.storybook/preview.tsx` — the Storybook decorator wraps every story in `ThemeProvider theme={createTheme()}` (no project-level overrides — see `storybook.render.md` runtime-context paragraph).
-- `figma-create-component/library-tokens.md` §3 — the published `material-design/typography/*` text styles in the design-system file (`stse2CgIzOugynEdDSexS4`).
+- `figma-create-component/library-tokens.md` §3 — the published `material-design/typography/*` text styles in the design-system file (`<FIGMA_FILE_KEY>`).
 - `design-token.md` (next to this file) — the local component-scoped text styles minted to (a) fill the missing `material-design/typography/button` slot, (b) bake `textCase: UPPER` for `overline`, and (c) provide bold-weight companions for every Variant.
 
 Every text fill **must** be bound to a Figma variable in this file's local collection; every typography rule **must** be applied via `textStyleId`. Hex / numeric values appear in this section only as **reference resolutions of the light theme** — bind the actual Figma paint / text node to the named token.
@@ -171,7 +171,7 @@ The component set is a **13 × 2 grid** of cells:
 - **Columns** — one per `Bold` value (`Off` left, `On` right).
 - **Cell** — a single TEXT node bound to the row's text style (§4.1) and `alias/colors/text-default` for the fill. No padding, no border, no background, no shadow.
 
-Documentation frame (`<Typography>`, `821:11807`) on page **Foundation Components**:
+Documentation frame (`<Typography>`, `<NODE_ID>`) on page **Foundation Components**:
 
 - **Header** at the top — set name + variant count (`13 × 2 = 26`).
 - **Component Set** placed below the header. The grid is small enough (max H1 cell ~330 px wide, 2 columns) that the whole set fits in roughly `<frame width> ≤ 800 px`.
@@ -213,7 +213,7 @@ Documentation frame (`<Typography>`, `821:11807`) on page **Foundation Component
 This document and the source must move together. Files that, when changed, force a spec update:
 
 1. `src/stories/Typography.stories.tsx` — the story file (variant or color enumerations).
-2. The published Figma component set inside frame `821:11807` (`figma_node_id` in frontmatter) — variant axes / property defaults / text-style bindings.
+2. The published Figma component set inside frame `<NODE_ID>` (`figma_node_id` in frontmatter) — variant axes / property defaults / text-style bindings.
 3. `node_modules/@mui/material/styles/createTypography.js` — MUI's default Typography object. A version bump in `package.json` (`@mui/material`) requires re-running `storybook.render.md` §1 measurements.
 4. `.storybook/preview.tsx` — adding a `createTheme({ typography: ... })` override in the Storybook decorator means the runtime measurements no longer reflect the design system; both this spec and `storybook.render.md` need to be re-probed.
 5. `figma-create-component/library-tokens.md` §3 (`material-design/typography/*` text styles) — a renamed / removed text style needs every `textStyleId` reference in §4.1 updated.

@@ -1,11 +1,11 @@
 ---
 name: figma-component-select-spec
-description: Figma component specification for `<Select>` — design counterpart of the MUI `<Select>` (typically composed via `<TextField select>`) consumed by `src/stories/Select.stories.tsx`. Documents the variant matrix (Variant × Size × State × Has Value × Multiple), component properties (Label / Placeholder / Value / Helper Text + chevron / start adornment / chips slot), source-to-Figma mapping, and the token bindings that pin every fill / stroke / chevron / underline to a named local variable. Composes the published `<AutocompleteMenu>` (`534:7976`) when designers want to show the popper next to the trigger. For runtime measurements see `storybook.render.md`.
+description: Figma component specification for `<Select>` — design counterpart of the MUI `<Select>` (typically composed via `<TextField select>`) consumed by `src/stories/Select.stories.tsx`. Documents the variant matrix (Variant × Size × State × Has Value × Multiple), component properties (Label / Placeholder / Value / Helper Text + chevron / start adornment / chips slot), source-to-Figma mapping, and the token bindings that pin every fill / stroke / chevron / underline to a named local variable. Composes the published `<AutocompleteMenu>` (`<NODE_ID>`) when designers want to show the popper next to the trigger. For runtime measurements see `storybook.render.md`.
 parent_skill: figma-components
-figma_file_key: KQjP6W9Uw1PN0iipwQHyYn
-figma_node_id: '587:8542'
-figma_component_set_id: '593:7633'
-figma_companion_menu_set_id: '534:7976'
+figma_file_key: <FIGMA_FILE_KEY>
+figma_node_id: '<NODE_ID>'
+figma_component_set_id: '<NODE_ID>'
+figma_companion_menu_set_id: '<NODE_ID>'
 ---
 
 # `<Select>` Figma Component Specification
@@ -16,22 +16,22 @@ figma_companion_menu_set_id: '534:7976'
 
 1. A **chevron indicator** (`<SelectArrow>` icon) absolutely positioned at the trailing edge of the trigger. The trigger reserves `24 px` (Standard) or `32 px` (Filled / Outlined) of `padding-right` for it.
 2. The `Multiple` axis hides the single-line value text and leaves the Combobox row empty; designers drop `<Chip size="small">` instances into the empty row at instance level (no formal `Chips` SLOT property today — track in §8).
-3. The chevron rotates `180°` when the menu is open; designers stamp the published `<AutocompleteMenu>` (`534:7976`) below the trigger on screens where the menu should be visible.
+3. The chevron rotates `180°` when the menu is open; designers stamp the published `<AutocompleteMenu>` (`<NODE_ID>`) below the trigger on screens where the menu should be visible.
 
 The package re-exports MUI directly — there is no in-repo wrapper. The Figma component encodes the runtime-relevant prop surface (`variant`, `size`, `disabled`, `error`, `focused`, `value`, `multiple`, `label`, `helperText`, `InputProps.startAdornment`).
 
-This component is **brand-new on 2026-04-29**. Authored in place at the editable node `587:8542` (empty frame placeholder before authoring); the variant grid itself is the COMPONENT_SET `<Select>` `593:7633`, cloned from the `<TextField>` set (`1:6266`) and adapted (axis rename `Multiline` → `Multiple`, drop TextField-only properties, add Chevron INSTANCE_SWAP, rebind disabled strokes to `fg-disabled`, collapse Multiple=True cells to single-line). The reference-only siblings `<TextField>` outer frame (`1:6156`) and component set (`1:6266`) govern the trigger geometry / paint surface — the cells in this set must visually agree with the TextField cells at the matching `(Variant, Size, State, Has Value)` coordinates.
+This component is **brand-new on 2026-04-29**. Authored in place at the editable node `<NODE_ID>` (empty frame placeholder before authoring); the variant grid itself is the COMPONENT_SET `<Select>` `<NODE_ID>`, cloned from the `<TextField>` set (`<NODE_ID>`) and adapted (axis rename `Multiline` → `Multiple`, drop TextField-only properties, add Chevron INSTANCE_SWAP, rebind disabled strokes to `fg-disabled`, collapse Multiple=True cells to single-line). The reference-only siblings `<TextField>` outer frame (`<NODE_ID>`) and component set (`<NODE_ID>`) govern the trigger geometry / paint surface — the cells in this set must visually agree with the TextField cells at the matching `(Variant, Size, State, Has Value)` coordinates.
 
 | Aspect            | Value                                                                                  |
 | ----------------- | -------------------------------------------------------------------------------------- |
 | Source story      | `src/stories/Select.stories.tsx`                                                        |
 | Underlying source | `@mui/material@^7.3.10` `Select` consumed via `<TextField select>` (no wrapper)         |
 | Underlying MUI    | `@mui/material` `7.3.10` (resolved from `package.json` on 2026-04-29)                  |
-| Figma file        | [MUI-Library](https://www.figma.com/design/KQjP6W9Uw1PN0iipwQHyYn) (`KQjP6W9Uw1PN0iipwQHyYn`) |
-| Figma frame       | `<Select>` (`587:8542`) on page **Foundation Components** (`0:1`) at absolute `(13007.08, 9543)`, frame size `2926.95 × 3910.91 px` (matches the `<TextField>` reference frame) |
-| Component Set     | `<Select>` (`593:7633`) inside the editable `<Select>` frame (`587:8542`) — variant grid published 2026-04-29 |
-| Composed sets     | `<SelectArrow>` icon (`3:2900`) for the chevron · `<Chip>` (`342:7102`) for Multiple chip stamping at instance level · `<AutocompleteMenu>` (`534:7976`) for the popper recipe (instance-level) |
-| Reference         | `<TextField>` outer frame (`1:6156`) + component set (`1:6266`) — visual sibling cloned and adapted; trigger paint must agree at every `(Variant, Size, State, Has Value)` coordinate. |
+| Figma file        | [MUI-Library](https://www.figma.com/design/<FIGMA_FILE_KEY>) (`<FIGMA_FILE_KEY>`) |
+| Figma frame       | `<Select>` (`<NODE_ID>`) on page **Foundation Components** (`<NODE_ID>`) at absolute `(13007.08, 9543)`, frame size `2926.95 × 3910.91 px` (matches the `<TextField>` reference frame) |
+| Component Set     | `<Select>` (`<NODE_ID>`) inside the editable `<Select>` frame (`<NODE_ID>`) — variant grid published 2026-04-29 |
+| Composed sets     | `<SelectArrow>` icon (`<NODE_ID>`) for the chevron · `<Chip>` (`<NODE_ID>`) for Multiple chip stamping at instance level · `<AutocompleteMenu>` (`<NODE_ID>`) for the popper recipe (instance-level) |
+| Reference         | `<TextField>` outer frame (`<NODE_ID>`) + component set (`<NODE_ID>`) — visual sibling cloned and adapted; trigger paint must agree at every `(Variant, Size, State, Has Value)` coordinate. |
 | Total variants    | **120** (3 Variants × 2 Sizes × 5 States × 2 Has Value × 2 Multiple)                    |
 | Typography        | Roboto Regular, value `16 / 24 px` ls `0.15 px`; floated label text style `input/label` (`12 / 12 px`, ls `0.15 px`); helper text Roboto Regular `12 / 16.6 px`, ls `0.4 px` |
 | Local-only bindings | **Required.** Every paint / stroke / effect resolves to a variable in this file's local collection. No `VariableID:<sharedKey>/...` consumed-library bindings are permitted. |
@@ -49,16 +49,16 @@ This component is **brand-new on 2026-04-29**. Authored in place at the editable
 | `value` / `defaultValue`                                  | `Value`                | TEXT             | Default `Option`. Rendered only when `Has Value=True` and `Multiple=False`.                                        |
 | `helperText`                                              | `Helper Text` + `Helper Text Content` | BOOLEAN + TEXT | `Helper Text` toggles visibility of the `<FormHelperText>` row; `Helper Text Content` overrides the inner text (default `Helper text`). |
 | `InputProps.startAdornment`                               | `Adorn. Start` + `Start Adorn` | BOOLEAN + SLOT  | `Adorn. Start` (note the period — matches `<TextField>`) toggles the leading slot; `Start Adorn` is a native Figma SLOT — designers drop any node into it at instance level. |
-| `IconComponent`                                           | _(via `Chevron` slot)_ | INSTANCE_SWAP    | Default target `<SelectArrow>` (`3:2900`). Designers swap to `<ChevronDown>` (`512:7501`) on instances that prefer the keyboard-arrow glyph; the swap default is shared across every variant. |
-| `open` / `defaultOpen` / `onOpen` / `onClose`             | _(no axis)_            | —                | The chevron rotation (`180°`) is a designer-driven instance-level transform — see §7.2 "Open menu recipe". The popper itself is the published `<AutocompleteMenu>` (`534:7976`), stamped below the trigger; no `Open` axis multiplies the matrix.                            |
+| `IconComponent`                                           | _(via `Chevron` slot)_ | INSTANCE_SWAP    | Default target `<SelectArrow>` (`<NODE_ID>`). Designers swap to `<ChevronDown>` (`<NODE_ID>`) on instances that prefer the keyboard-arrow glyph; the swap default is shared across every variant. |
+| `open` / `defaultOpen` / `onOpen` / `onClose`             | _(no axis)_            | —                | The chevron rotation (`180°`) is a designer-driven instance-level transform — see §7.2 "Open menu recipe". The popper itself is the published `<AutocompleteMenu>` (`<NODE_ID>`), stamped below the trigger; no `Open` axis multiplies the matrix.                            |
 | `MenuProps`                                               | _(via composed menu)_  | —                | Customisations land on the `<AutocompleteMenu>` instance dropped beside / below the trigger.                       |
-| `renderValue`                                             | _(instance-level Chip stamping when `Multiple=True`)_ | — | No formal SLOT property today — designers drop `<Chip size="small">` (`342:7102`) instances into the empty Combobox row at instance level. Promote to a `Chips` SLOT property if multi-row chip wrapping becomes the dominant pattern (§8 trigger). |
+| `renderValue`                                             | _(instance-level Chip stamping when `Multiple=True`)_ | — | No formal SLOT property today — designers drop `<Chip size="small">` (`<NODE_ID>`) instances into the empty Combobox row at instance level. Promote to a `Chips` SLOT property if multi-row chip wrapping becomes the dominant pattern (§8 trigger). |
 | `displayEmpty`                                            | _(via `Has Value=True` + `Value=` empty)_ | — | The `Has Value` axis already lets designers show the floated label without a value; `displayEmpty` semantics fall out of that pairing. No dedicated axis.                          |
 | `autoWidth` / `native` / `MenuProps.PaperProps.style.maxHeight` / `SelectDisplayProps` | — | — | Behavior-only, no design representation.                                              |
 | `color`                                                   | —                      | —                | Wrapper forwards to MUI; Figma ships only the neutral + primary-tint surface today. Adding a `Color` axis is a §8 trigger. |
 | `onChange`, rest native props                             | —                      | —                | Behavior-only, no design representation.                                                                           |
 
-> **Slots are native `SLOT`, not `INSTANCE_SWAP`.** `Start Adorn` is a native Figma SLOT — designers drop any node (an `<Icon>` instance) at instance level. The chevron `Chevron` is **`INSTANCE_SWAP`** because it has a deterministic default (`<SelectArrow>` `3:2900`); the shared-default caveat applies — every variant of the host set inherits the same default target, so the placeholder must be benign across all 120 cells. Multiple-select chips are **not** a formal SLOT property today: `Multiple=True` cells leave the Combobox row empty; designers drop `<Chip>` instances into the row at instance level. Promote to a `Chips` SLOT property if needed (§8 trigger).
+> **Slots are native `SLOT`, not `INSTANCE_SWAP`.** `Start Adorn` is a native Figma SLOT — designers drop any node (an `<Icon>` instance) at instance level. The chevron `Chevron` is **`INSTANCE_SWAP`** because it has a deterministic default (`<SelectArrow>` `<NODE_ID>`); the shared-default caveat applies — every variant of the host set inherits the same default target, so the placeholder must be benign across all 120 cells. Multiple-select chips are **not** a formal SLOT property today: `Multiple=True` cells leave the Combobox row empty; designers drop `<Chip>` instances into the row at instance level. Promote to a `Chips` SLOT property if needed (§8 trigger).
 >
 > **No `Adorn. End`.** The chevron occupies the trailing position; a trailing adornment slot would collide with it. Hosts that need a trailing adornment (e.g. clear button) compose at instance level by overlaying a node above the chevron.
 >
@@ -94,13 +94,13 @@ Property names below are the human-readable keys; Figma's internal property ids 
 | `Value`               | TEXT           | `Option`                   | Selected value string. Rendered only when `Has Value=True` and `Multiple=False`.                                                                  |
 | `Adorn. Start`        | BOOLEAN        | `false`                    | Toggle the leading adornment slot.                                                                                                               |
 | `Start Adorn`         | SLOT           | empty                      | Native Figma slot for the leading adornment. Designers drop any node (`<Icon>` instance is the convention).                                       |
-| `Chevron`             | INSTANCE_SWAP  | `<SelectArrow>` (`3:2900`) | Trailing chevron icon. Default target is the filled-triangle `<SelectArrow>` (matches MUI's `ArrowDropDownIcon`). Designers swap to `<ChevronDown>` (`512:7501`) for the keyboard-arrow glyph.                            |
+| `Chevron`             | INSTANCE_SWAP  | `<SelectArrow>` (`<NODE_ID>`) | Trailing chevron icon. Default target is the filled-triangle `<SelectArrow>` (matches MUI's `ArrowDropDownIcon`). Designers swap to `<ChevronDown>` (`<NODE_ID>`) for the keyboard-arrow glyph.                            |
 | `Helper Text`         | BOOLEAN        | `false`                    | Toggle the `<FormHelperText>` row below the trigger.                                                                                              |
 | `Helper Text Content` | TEXT           | `Helper text`              | Inner text of the helper-text row. Overridable per instance.                                                                                     |
 
 ## 4. Design Tokens
 
-All paints, strokes, and surfaces bind to local variables in the MUI-Library file (`KQjP6W9Uw1PN0iipwQHyYn`). Hex values appear in this document only as reference resolutions of the light theme — bind to the token, not the hex. **Local-only**: every binding resolves to a variable in this file's own collection — never a `VariableID:<sharedKey>/<id>` from a consumed library. Tokens cited by name from the published `mui/seed/*` and `mui/alias/*` catalogue must already be minted as locals (or get minted before authoring) per the figma-create-component pipeline §4.
+All paints, strokes, and surfaces bind to local variables in the MUI-Library file (`<FIGMA_FILE_KEY>`). Hex values appear in this document only as reference resolutions of the light theme — bind to the token, not the hex. **Local-only**: every binding resolves to a variable in this file's own collection — never a `VariableID:<sharedKey>/<id>` from a consumed library. Tokens cited by name from the published `mui/seed/*` and `mui/alias/*` catalogue must already be minted as locals (or get minted before authoring) per the figma-create-component pipeline §4.
 
 ### 4.1 Sizing
 
@@ -178,7 +178,7 @@ One row per paint role. Bind the Figma fill / stroke / text-fill to the variable
 | Helper text — non-Error (Enabled / Hovered / Focused) | **`alias/colors/text-sub`**                                    |                                                                                                                                |
 | Helper text — Disabled                     | **`alias/colors/text-disabled`**                                          | Helper text retints to disabled tone alongside label / value.                                                                  |
 | Helper text — Error                        | **`seed/danger/main`**                                                    |                                                                                                                                |
-| Chip stack (`Multiple=True`)               | _(via `<Chip>` instance — `342:7102`, dropped at instance level)_         | When `Multiple=True`, the cell hides the `Value` text and leaves the Combobox row empty. Designers drop `<Chip size="small">` instances into the empty row at instance level; chip paint roles bind via the published Chip's own variant axis. The cell does not formally expose a Chips SLOT property today (track in §8). |
+| Chip stack (`Multiple=True`)               | _(via `<Chip>` instance — `<NODE_ID>`, dropped at instance level)_         | When `Multiple=True`, the cell hides the `Value` text and leaves the Combobox row empty. Designers drop `<Chip size="small">` instances into the empty row at instance level; chip paint roles bind via the published Chip's own variant axis. The cell does not formally expose a Chips SLOT property today (track in §8). |
 
 > The `component/input/*` tokens are component-scoped aliases that already carry alpha; never pair them with a paint `opacity < 1` — Figma flattens on instance creation. See [`figma-create-component/component-spec-guide.md`](../../figma-create-component/component-spec-guide.md) §4 for the stacking rule.
 
@@ -199,25 +199,25 @@ Notes:
 - **The chevron retints only on Disabled.** Focused / Error keep the chevron at `bg-active` (`0.54α`). MUI keeps adornments / chevrons neutral on themed states; only label / underline / helper retint. A Figma cell that rebrands the chevron to `seed/primary/main` or `seed/danger/main` is a spec bug.
 - **Disabled is color-family agnostic.** `text-disabled` (label / value / helper), `fg-disabled` (chevron / Standard underline / Outlined border), and `bg-disabled` (Filled wrapper) replace every themed paint, so `State=Disabled` is visually identical across Variants other than the wrapper fill (Filled gets the `bg-disabled` overlay; Standard / Outlined keep transparent).
 - **`Has Value=False` is label-only at runtime.** When the field is empty and not focused, MUI un-shrinks the label and renders it inside the trigger; `<TextField select>` does not render a placeholder. The Figma cells follow this — every `Has Value=False` cell hides the floated `Label Container` and shows the un-floated label text inside `Combobox`. When `State=Focused`, the label always shrinks-and-floats regardless of `Has Value`.
-- **`Multiple=True` hides the Value text and leaves the Combobox row empty.** Designers stamp `<Chip size="small">` (`342:7102`) instances into the empty row at instance level — there is no formal Chips SLOT property today (§7 / §8). When `Has Value=False && Multiple=True`, the un-floated label fills the trigger and no chips render. Multi-row chip wrapping is a runtime growth path — see §3 / §7 for the documented limitation.
+- **`Multiple=True` hides the Value text and leaves the Combobox row empty.** Designers stamp `<Chip size="small">` (`<NODE_ID>`) instances into the empty row at instance level — there is no formal Chips SLOT property today (§7 / §8). When `Has Value=False && Multiple=True`, the un-floated label fills the trigger and no chips render. Multi-row chip wrapping is a runtime growth path — see §3 / §7 for the documented limitation.
 - **Standard / Filled disabled underline is rendered solid, not `1 px dotted`.** Figma has no equivalent stroke style at the published surface. Track in §7 issue 2.
 
 ## 5. Icons (chevron + adornment slots)
 
 | Slot            | Visibility prop  | Content prop  | Default visibility / target          | Frame dims | Node name      |
 | --------------- | ---------------- | ------------- | ------------------------------------ | ---------- | -------------- |
-| Trailing chevron | _(always visible)_ | `Chevron`   | `<SelectArrow>` (`3:2900`)           | `24 × 24`  | `Chevron`      |
+| Trailing chevron | _(always visible)_ | `Chevron`   | `<SelectArrow>` (`<NODE_ID>`)           | `24 × 24`  | `Chevron`      |
 | Start adornment | `Adorn. Start`   | `Start Adorn` | `false` / empty                       | `24 × 24`  | `Start Adorn`  |
 
-- **Chevron slot** is `INSTANCE_SWAP` with default target `<SelectArrow>` (`3:2900`) — MUI's `ArrowDropDownIcon`. Designers swap to `<ChevronDown>` (`512:7501`) for the keyboard-arrow glyph; the swap default is shared across every variant of the host set, so a benign `<SelectArrow>` is the right choice.
+- **Chevron slot** is `INSTANCE_SWAP` with default target `<SelectArrow>` (`<NODE_ID>`) — MUI's `ArrowDropDownIcon`. Designers swap to `<ChevronDown>` (`<NODE_ID>`) for the keyboard-arrow glyph; the swap default is shared across every variant of the host set, so a benign `<SelectArrow>` is the right choice.
 - **Chevron fill**: bind the inner Vector fill of the swapped instance to `alias/colors/bg-active` (resting) or `alias/colors/fg-disabled` (Disabled). Do not paint with hex.
 - **Open-state rotation**: rotate the chevron node by `180°` at instance level when stamping with the menu open (see §7.2). The slot itself does not encode rotation — it stays a `0°` instance and designers transform per-cell.
-- **Start adornment slot** is a native Figma `SLOT` (not `INSTANCE_SWAP`). Designers drop any node into the slot at instance level — typically an instance of the shared `<Icon>` component set (`3:2722`). There is no shared default to maintain at the component-set level.
+- **Start adornment slot** is a native Figma `SLOT` (not `INSTANCE_SWAP`). Designers drop any node into the slot at instance level — typically an instance of the shared `<Icon>` component set (`<NODE_ID>`). There is no shared default to maintain at the component-set level.
 - **Slot dimensions**: `24 × 24 px` for both `Size=Small` and `Size=Medium`. Keeping the slot uniform avoids two adornment ramps; the host trigger shrinks vertically on Small but the icon frame stays.
 
 ## 6. Layout
 
-The Component Set `<Select>` (`593:7633`) inside the editable `<Select>` frame (`587:8542`) is laid out as a **6-column × 20-row grid**:
+The Component Set `<Select>` (`<NODE_ID>`) inside the editable `<Select>` frame (`<NODE_ID>`) is laid out as a **6-column × 20-row grid**:
 
 - **Columns** (left → right) — `Variant × Size`: Standard·Medium, Standard·Small, Filled·Medium, Filled·Small, Outlined·Medium, Outlined·Small. Column origins x = `{24, 260, 496, 732, 968, 1204}`; column stride `236 px` (`220 px` cell + `16 px` gap). Mirrors the `<TextField>` grid exactly.
 - **Row bands** (top → bottom) — `State × Has Value × Multiple`. The grid is the `Multiple=False` block (10 rows, identical to the TextField publication) followed immediately by the `Multiple=True` block (10 more rows in the same `State × Has Value` order):
@@ -246,7 +246,7 @@ The Component Set `<Select>` (`593:7633`) inside the editable `<Select>` frame (
 - Row vertical strides reflect cell heights from §4.1; the `Has Value=False` rows collapse to the un-shrunk-label height, identical to the `<TextField>` `Has Value=False` cells.
 - Frame dimensions grow proportionally — adding the Multiple block doubles the row count; the frame's `height` matches the `<TextField>` frame (`≈ 3910 px` based on the editable node's published dimensions). The exact value is whatever the Auto Layout pack produces; do not hard-code.
 
-The outer frame `<Select>` (`587:8542`) houses the variant grid (component set `593:7633`); the sibling `<TextField>` outer frame (`1:6156`) provides the visual reference and a `UseCase` documentation panel (`1:6157`) for the input surface. The Select frame deliberately does **not** ship its own UseCase panel today; recipes live in §7.2 instead. Promote to a UseCase panel once the wrapper recipes settle (§8 trigger).
+The outer frame `<Select>` (`<NODE_ID>`) houses the variant grid (component set `<NODE_ID>`); the sibling `<TextField>` outer frame (`<NODE_ID>`) provides the visual reference and a `UseCase` documentation panel (`<NODE_ID>`) for the input surface. The Select frame deliberately does **not** ship its own UseCase panel today; recipes live in §7.2 instead. Promote to a UseCase panel once the wrapper recipes settle (§8 trigger).
 
 ### 6.1 Cell composition
 
@@ -256,7 +256,7 @@ Every single-line cell follows the same nested structure (the canonical referenc
   - `Label` (FRAME) — sub-frame holding the un-floated label text node (visible when `Has Value=False`).
   - `Combobox` (FRAME) — row containing the start slot, value text node (hidden when `Multiple=True`), un-floated `Label` text node, and the trailing reserved-padding region.
   - `Underline` (LINE) — the `1 px` / `2 px` underline element. Outlined cells keep the LINE node but mask it behind the notched outline.
-- `Chevron` (INSTANCE) — absolute-positioned at the trailing edge of `Input`. Default target `<SelectArrow>` (`3:2900`); rotated `180°` at instance level for open-menu cells (§7.2).
+- `Chevron` (INSTANCE) — absolute-positioned at the trailing edge of `Input`. Default target `<SelectArrow>` (`<NODE_ID>`); rotated `180°` at instance level for open-menu cells (§7.2).
 - `Label Container` (FRAME) — overlay holding the floated label text (visible when `Has Value=True` or `State=Focused`). Painted with `background/paper-elevation-0` so it can sit on top of the Outlined border to create the notch effect.
 - `Helper Text` (FRAME) — visible only when `Helper Text=true`.
 
@@ -270,7 +270,7 @@ The dual-label pattern (un-floated `Label` text inside `Combobox` + floated `Lab
 - `Combobox` (FRAME) — same padding / typography. The `Value` text node is hidden; the row is left empty so designers stamp `<Chip size="small">` instances at instance level (no formal SLOT property — track in §8). When `Has Value=False`, the row stays empty and the un-floated `Label` text fills the trigger.
 - Adornment / chevron / underline / fieldset border / `Label Container` / `Helper Text` — unchanged.
 
-The single design choice was whether to encode the chip stack as part of the cell (default-stamped chip instances or a formal SLOT) or as instance-level designer composition. The current build chose the latter: `Multiple=True` cells leave the Combobox row empty, and designers stamp `<Chip size="small">` (`342:7102`) instances per host data. Promote to a formal SLOT property (or stamp a default 2-chip baseline) if it becomes the dominant pattern (§8 trigger).
+The single design choice was whether to encode the chip stack as part of the cell (default-stamped chip instances or a formal SLOT) or as instance-level designer composition. The current build chose the latter: `Multiple=True` cells leave the Combobox row empty, and designers stamp `<Chip size="small">` (`<NODE_ID>`) instances per host data. Promote to a formal SLOT property (or stamp a default 2-chip baseline) if it becomes the dominant pattern (§8 trigger).
 
 ## 7. Usage Guidelines
 
@@ -288,7 +288,7 @@ The single design choice was whether to encode the chip stack as part of the cel
    - `False` when the field is empty — label sits inside the trigger.
 5. Pick `Multiple`:
    - `False` (default) for single-select dropdowns.
-   - `True` when the source passes `multiple={true}` — the cell hides the `Value` text and leaves the Combobox row empty. Drop `<Chip size="small">` (`342:7102`) instances into the empty row at instance level, one per selected option. Multi-row wrapping is a runtime-only growth path — for screens that show >2 chips per row, manually grow the instance height (a §8 trigger if it becomes the dominant pattern).
+   - `True` when the source passes `multiple={true}` — the cell hides the `Value` text and leaves the Combobox row empty. Drop `<Chip size="small">` (`<NODE_ID>`) instances into the empty row at instance level, one per selected option. Multi-row wrapping is a runtime-only growth path — for screens that show >2 chips per row, manually grow the instance height (a §8 trigger if it becomes the dominant pattern).
 6. Toggle `Adorn. Start` only when the source passes `InputProps.startAdornment`. With the slot visible, drop a glyph into `Start Adorn` (instance of the shared `<Icon>` set is the convention).
 7. Swap `Chevron` only when the design system mandates the `<ChevronDown>` keyboard-arrow glyph instead of MUI's `<SelectArrow>` (filled triangle).
 8. Toggle `Helper Text` only when the source passes `helperText`; override `Helper Text Content` for the inner text.
@@ -300,7 +300,7 @@ The Figma component set has no wrapper components today — every recipe below i
 | Recipe                  | Variant   | Size   | State          | Adornment / Chevron                                              | Helper Text                  | Notes                                                                                       |
 | ----------------------- | --------- | ------ | -------------- | ----------------------------------------------------------------- | ---------------------------- | ------------------------------------------------------------------------------------------- |
 | **Filter dropdown**     | Outlined  | Medium | Enabled        | none                                                              | off                          | `Has Value=True`, override `Value` to the active filter label.                               |
-| **Open menu**           | Outlined  | Medium | Focused        | rotate `Chevron` instance by `180°`                               | off                          | Below the trigger, stamp `<AutocompleteMenu>` (`534:7976`) with `gap: 0`. The popper carries its own paint surface. |
+| **Open menu**           | Outlined  | Medium | Focused        | rotate `Chevron` instance by `180°`                               | off                          | Below the trigger, stamp `<AutocompleteMenu>` (`<NODE_ID>`) with `gap: 0`. The popper carries its own paint surface. |
 | **Multi-select chips**  | Outlined  | Medium | Enabled        | drop 2× `<Chip size="small">` into the empty Combobox row         | off                          | `Multiple=True`, `Has Value=True`. For `>2` chips per row, grow the instance manually.       |
 | **Required field**      | Filled    | Medium | Enabled        | none                                                              | on (instructional copy)      | Append `*` to the `Label` value to mark required at design time — no separate variant.      |
 | **Inline validation**   | (any)     | Medium | Error          | none                                                              | on (error message)           | Use `State=Error`; do not stack with `Focused`. Helper text retints to `seed/danger/main`.  |
@@ -318,7 +318,7 @@ When a future component set ships these as proper wrappers, add a §3.N matrix p
 - ❌ Don't paint the chevron with a hex — rebind the Vector's fill variable.
 - ❌ Don't add a focus ring on the wrapper — only the underline / outline thickens (1 → 2 px).
 - ❌ Don't rely on the source `color` prop for accent — there is no Color axis today; raise a §8 sync before introducing one.
-- ❌ Don't author your own popper — use the published `<AutocompleteMenu>` (`534:7976`). Hand-drawing a Paper + listbox loses the published shadow / option-row paints.
+- ❌ Don't author your own popper — use the published `<AutocompleteMenu>` (`<NODE_ID>`). Hand-drawing a Paper + listbox loses the published shadow / option-row paints.
 - ❌ Don't drop a trailing adornment — there is no `Adorn. End` slot; the chevron occupies the trailing position. Hosts that need a clear button overlay it manually at instance level (a §8 trigger if it becomes a recurring pattern).
 
 ### 7.4 Open issues (drift)
@@ -340,12 +340,12 @@ These are tracked here so the next runtime-truth pass has a punch list:
 This document and the source must move together. When **any** of the following changes:
 
 1. `src/stories/Select.stories.tsx` (variants, args, chip rendering, chevron / helper-text wiring)
-2. The Figma `<Select>` component set at `587:8542` (variants, properties, token bindings, layout)
+2. The Figma `<Select>` component set at `<NODE_ID>` (variants, properties, token bindings, layout)
 3. The local `component/input/*` tokens documented in `<TextField>`'s [`design-token.md`](../TextField/design-token.md), or the local `background/paper-elevation-0` variable / `input/label` text style
 4. The shared `mui/seed/*`, `mui/alias/*` tokens consumed in §4.2 — particularly `seed/primary/main`, `seed/danger/main`, `alias/colors/{text-sub,text-default,text-disabled,bg-disabled,bg-active,fg-disabled}`
 5. `.storybook/preview.tsx` (theme overrides via `createTheme`) — today this is an empty `createTheme()`; introducing typography / palette / `MuiSelect.defaultProps` overrides forces a re-measure
-6. The published `<SelectArrow>` (`3:2900`), `<ChevronDown>` (`512:7501`), `<Chip>` (`342:7102`), `<Icon>` (`3:2722`), or `<AutocompleteMenu>` (`534:7976`) component sets — variants added/removed/renamed, or the size-to-pixel mapping changes
-7. The reference-only `<TextField>` frame at `1:6156` / component set at `1:6266` — Select inherits its trigger geometry / state paint, so a TextField change must propagate here in lockstep
+6. The published `<SelectArrow>` (`<NODE_ID>`), `<ChevronDown>` (`<NODE_ID>`), `<Chip>` (`<NODE_ID>`), `<Icon>` (`<NODE_ID>`), or `<AutocompleteMenu>` (`<NODE_ID>`) component sets — variants added/removed/renamed, or the size-to-pixel mapping changes
+7. The reference-only `<TextField>` frame at `<NODE_ID>` / component set at `<NODE_ID>` — Select inherits its trigger geometry / state paint, so a TextField change must propagate here in lockstep
 8. `package.json` `@mui/material` peer / dev version (currently `^7.3.10` / peer `>=7`)
 
 …this spec **must be updated in the same change**. Specifically:

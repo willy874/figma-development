@@ -2,11 +2,11 @@
 name: figma-component-table-spec
 description: Figma component specification for `<Table>` — design counterpart of MUI `<Table>` / `<TableHead>` / `<TableBody>` / `<TableRow>` / `<TableCell>` consumed by `src/stories/Table.stories.tsx`. Documents the two published component sets (`<TableCell>` — 108 variants of Variant × Padding × Align × Size × State; `<TableRow>` — 8 variants of Type × Hover × Selected), the static composed `<Table>` reference frame, the local-only token bindings, and the source-to-Figma sync rules. For runtime measurements see `storybook.render.md`; for component-scoped tokens see `design-token.md`.
 parent_skill: figma-components
-figma_file_key: KQjP6W9Uw1PN0iipwQHyYn
-figma_node_id: '674:12705'
-figma_cell_component_set_id: '679:11463'
-figma_row_component_set_id: '681:11303'
-figma_composed_sample_id: '681:11304'
+figma_file_key: <FIGMA_FILE_KEY>
+figma_node_id: '<NODE_ID>'
+figma_cell_component_set_id: '<NODE_ID>'
+figma_row_component_set_id: '<NODE_ID>'
+figma_composed_sample_id: '<NODE_ID>'
 ---
 
 # `<Table>` Figma Component Specification
@@ -25,8 +25,8 @@ The variant-bearing surfaces in the Figma library are:
 | ------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Source story              | `src/stories/Table.stories.tsx`                                                                                                                                 |
 | Underlying source         | `@mui/material` `Table` / `TableHead` / `TableBody` / `TableContainer` / `TableRow` / `TableCell` / `TableSortLabel` (re-exported by this package, no wrapper)  |
-| Figma file                | `KQjP6W9Uw1PN0iipwQHyYn` (MUI Library)                                                                                                                          |
-| Figma frame               | `Table` (`674:12705`) on page **Foundation Components**                                                                                                         |
+| Figma file                | `<FIGMA_FILE_KEY>` (MUI Library)                                                                                                                          |
+| Figma frame               | `Table` (`<NODE_ID>`) on page **Foundation Components**                                                                                                         |
 | Cell component set        | `<TableCell>` — populated when authored (id recorded in frontmatter)                                                                                            |
 | Row component set         | `<TableRow>` — populated when authored (id recorded in frontmatter)                                                                                             |
 | Composed reference        | `<Table> Sample` static frame — composed from cell + row instances inside a `<Paper>` container                                                                  |
@@ -196,7 +196,7 @@ Cells never paint their own background. Selected / Hover overlays live on the ro
 
 The Table component sets do not own a dedicated icon slot. Two related icon usages appear inside cells:
 
-- **Sort arrow** (`<TableSortLabel>` slot inside head cells) — rendered inline as an instance of the published `<Icon>` set at `Size=sm` (20 px container, 18×18 glyph). Glyph default: material-symbols `arrow-downward` (`512:7517` in `library-components.md`). Visibility / direction toggled via the consumer's own variant logic; authored statically in the composed reference frame.
+- **Sort arrow** (`<TableSortLabel>` slot inside head cells) — rendered inline as an instance of the published `<Icon>` set at `Size=sm` (20 px container, 18×18 glyph). Glyph default: material-symbols `arrow-downward` (`<NODE_ID>` in `library-components.md`). Visibility / direction toggled via the consumer's own variant logic; authored statically in the composed reference frame.
 - **Checkbox glyph** (`Padding=Checkbox` cells) — slot accepts an instance of the published `<Checkbox>` set. Default: `<Checkbox>` `State=Default, Checked=Off`. The cell's `Padding=Checkbox` is `2 px` on all sides inside a fixed `36 × 36` frame (updated 2026-04-30; superseded the earlier `0 0 0 4 px` ramp).
 
 Neither slot is exposed as `INSTANCE_SWAP` on the cell set itself — they are dropped into the cell's generic `Slot` (§3.1.1). Designers right-click → Swap Instance to change the icon glyph or checkbox state.
@@ -208,7 +208,7 @@ Neither slot is exposed as `INSTANCE_SWAP` on the cell set itself — they are d
 - **`<TableCell>`** — `Variant × Padding × Align × Size × State` published as 108 variants. Authored as a single horizontal-wrap COMPONENT_SET grouped by `Variant → Size → State → Padding → Align` so siblings of the same Variant / Size sit together visually.
 - **`<TableRow>`** — `Type × Hover × Selected` published as 8 variants. Recommended layout: **4 columns × 2 rows** (`Hover × Selected` per row, `Type` per column).
 
-Both sets sit on the `Table` page (parent frame `674:12705`) inside the parent placeholder. The composed `<Table>` reference frame sits below them.
+Both sets sit on the `Table` page (parent frame `<NODE_ID>`) inside the parent placeholder. The composed `<Table>` reference frame sits below them.
 
 ### 6.2 Documentation frame
 
@@ -285,7 +285,7 @@ type TableRowProps = {
 ```
 
 ```
-Figma library (file KQjP6W9Uw1PN0iipwQHyYn, page Foundation Components, frame 674:12705):
+Figma library (file <FIGMA_FILE_KEY>, page Foundation Components, frame 674:12705):
   <TableCell> COMPONENT_SET — 108 variants (Variant × Padding × Align × Size × State)
     properties: Variant ∈ {Head, Body}, Padding ∈ {Normal, Checkbox, None}, Align ∈ {Left, Center, Right},
                 Size ∈ {Medium, Small}, State ∈ {Default, Hover, Selected}

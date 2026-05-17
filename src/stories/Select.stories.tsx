@@ -60,7 +60,7 @@ const meta = {
     docs: {
       description: {
         component:
-          'Source for the `<Select>` Figma component set (see `.claude/skills/figma-components/Select/figma.spec.md`) — 120 variants (3 Variants × 2 Sizes × 5 States × 2 Has Value × 2 Multiple). Composes the published `<AutocompleteMenu>` (`534:7976`) when `open=true`. `Hovered` is a `:hover` pseudo-class state — trigger by hovering the rendered field. The matrix stories pre-resolve `Focused` / `Disabled` / `Error` via `focused` / `disabled` / `error` so every Figma cell has a runtime equivalent. The `Multiple` axis swaps the single-line value text for a row of `<Chip>` instances rendered via `renderValue`.',
+          'Source for the `<Select>` Figma component set (see `.claude/skills/figma-components/Select/figma.spec.md`) — 120 variants (3 Variants × 2 Sizes × 5 States × 2 Has Value × 2 Multiple). Composes the published `<AutocompleteMenu>` (`<NODE_ID>`) when `open=true`. `Hovered` is a `:hover` pseudo-class state — trigger by hovering the rendered field. The matrix stories pre-resolve `Focused` / `Disabled` / `Error` via `focused` / `disabled` / `error` so every Figma cell has a runtime equivalent. The `Multiple` axis swaps the single-line value text for a row of `<Chip>` instances rendered via `renderValue`.',
       },
     },
   },

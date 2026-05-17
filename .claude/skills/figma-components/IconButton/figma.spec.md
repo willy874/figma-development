@@ -2,9 +2,9 @@
 name: figma-component-iconbutton-spec
 description: Figma component specification for `<IconButton>` — design counterpart of MUI `<IconButton>` consumed by `src/stories/IconButton.stories.tsx`. Documents the variant matrix (Color × Variant × State, Size=Medium), source-to-Figma mapping, the per-cell Render Binding Matrix (§6) that pins every fill / stroke / shadow / foreground to a named token, and the divergence between MUI's native `IconButton` (no `variant` prop) and the MUI Figma extension that adds Text / Outlined / Contained. For component-scoped tokens see `design-token.md`; for runtime measurements see `storybook.render.md`.
 parent_skill: figma-components
-figma_file_key: KQjP6W9Uw1PN0iipwQHyYn
-figma_node_id: '1:4571'
-figma_component_set_id: '1:4571'
+figma_file_key: <FIGMA_FILE_KEY>
+figma_node_id: '<NODE_ID>'
+figma_component_set_id: '<NODE_ID>'
 ---
 
 # `<IconButton>` Figma Component Specification
@@ -17,7 +17,7 @@ figma_component_set_id: '1:4571'
 | ----------------- | ------------------------------------------------------------------------------------ |
 | Source story      | `src/stories/IconButton.stories.tsx`                                                 |
 | Underlying source | `@mui/material` `IconButton` (re-exported by this package, wrapped as `MUIIconButton` in the story) |
-| Figma frame       | `<IconButton>` (`1:4571`) on page **Components**                                     |
+| Figma frame       | `<IconButton>` (`<NODE_ID>`) on page **Components**                                     |
 | Total variants    | **90** (6 Colors × 3 Variants × 5 States, Size=Medium only)                          |
 | Icon slot         | `24 × 24 px` (MUI default; Figma cells currently authored at 20 px — see §7 sizing)  |
 | Borrowed behaviors | Variant paint model, hover/pressed background ramp, focus ring, and elevation steps mirror `<Button>` (`figma.spec.md`) — `<IconButton>` is the icon-only sibling of `<Button>` in the MUI system |
@@ -63,7 +63,7 @@ Color × Variant × State (Size=Medium)   =   6 × 3 × 5   =   90 variants
 | `State`   | `Enabled`     | `Enabled`, `Hovered`, `Focused`, `Pressed`, `Disabled`       |
 | `Size`    | `Medium`      | `Medium` _(single option; axis kept for prop parity)_        |
 
-The published frame `1:4571` already enumerates every cell; verify the count after Step 5 with `count(component_set.children) === 90`.
+The published frame `<NODE_ID>` already enumerates every cell; verify the count after Step 5 with `count(component_set.children) === 90`.
 
 ### 3.1 Component (non-variant) properties
 
@@ -238,7 +238,7 @@ Themed colors collapse to greyscale alias tokens — `Color=Primary, State=Disab
 
 ## 7. Open issues
 
-1. ~~Figma cell sizing.~~ **Resolved 2026-04-28** — Figma cells resized from `36 × 36` to runtime-matching `40 × 40` (Outlined `42 × 42` via `strokesIncludedInLayout: true`), with a `24 × 24` icon slot. Existing `1:4571` instances in consumer files will reflow.
+1. ~~Figma cell sizing.~~ **Resolved 2026-04-28** — Figma cells resized from `36 × 36` to runtime-matching `40 × 40` (Outlined `42 × 42` via `strokesIncludedInLayout: true`), with a `24 × 24` icon slot. Existing `<NODE_ID>` instances in consumer files will reflow.
 2. ~~Story `sx` Contained hover.~~ **Resolved 2026-04-28** — Story `sx` left as-is by design (deferred / not needed for the spec contract). Figma authoring follows §6.3 Button-parity bindings; runtime divergence documented in `storybook.render.md` §4.
 3. **MD elevation effect styles missing in this file.** No local effect styles named `material-design/shadows/*` exist (verified via `figma.getLocalEffectStylesAsync()` 2026-04-28). The 30 Contained cells therefore carry **zero shadow effects** today. Spec §6 still pins them to `shadows-2/4/6/8` as the design contract — the gap is in the file's effect-style library, not the spec. `<Button>`'s Contained cells likely have the same gap. Resolution path: create the four shared effect styles in this file (or its upstream library) and bind every Contained cell + Button's Contained cells in a single PR. Until then, Contained variants render visually flat.
 4. **`loading` axis** is not represented in Figma. If/when a Loading variant is needed, add a 4th value to the `State` axis and document the `CircularProgress` overlay paint.
@@ -253,6 +253,6 @@ When any of the following changes, update this spec **and** the named files in t
 | `node_modules/@mui/material/IconButton/IconButton.js` changes (MUI bump)   | `figma.spec.md` §1 MUI version row, `storybook.render.md` §1 + §6                                          |
 | `mui-theme.ts` adds/changes a `MuiIconButton` override                     | `figma.spec.md` §1, `storybook.render.md` §1 + §3                                                          |
 | `src/stories/IconButton.stories.tsx` `variantSx` changes                   | `figma.spec.md` §6, `storybook.render.md` §4 (if Hovered/Pressed alters)                                   |
-| Figma frame `1:4571` variant axes / cell count change                      | `figma.spec.md` §3, refresh `figma.config.json` via `figma-init/config-init.md`                            |
+| Figma frame `<NODE_ID>` variant axes / cell count change                      | `figma.spec.md` §3, refresh `figma.config.json` via `figma-init/config-init.md`                            |
 | `seed/*` or `alias/*` tokens used by IconButton are renamed in Figma       | `figma.spec.md` §5 + §6, `figma-create-component/library-tokens.md`                                              |
 | Default-color `contained-bg` / `outlined-default-border` are promoted from `component/button/*` to a shared `mui/*` token | `figma.spec.md` §5.5 + §6, `design-token.md` (this dir), and Button's `design-token.md` |

@@ -2,10 +2,10 @@
 name: figma-component-pagination-spec
 description: Figma component specification for `<Pagination>` and its child `<PaginationItem>` — design counterpart of MUI `<Pagination>` / `<PaginationItem>` consumed by `src/stories/Pagination.stories.tsx`. Documents the item-set Render Binding Matrix (Color × Type × Size × State, 288 variants), the wrapper-set static composition (Color × Size × State, 36 variants), source-to-Figma mapping with the hard-coded `variant="outlined"` + `shape="rounded"` rendering, and the divergences between MUI's stock paint values and the MUI token bindings. For component-scoped tokens see `design-token.md`; for runtime measurements see `storybook.render.md`.
 parent_skill: figma-components
-figma_file_key: KQjP6W9Uw1PN0iipwQHyYn
-figma_node_id: '1:5098'
-figma_component_set_id: '1:5098'
-figma_wrapper_component_set_id: '1:5675'
+figma_file_key: <FIGMA_FILE_KEY>
+figma_node_id: '<NODE_ID>'
+figma_component_set_id: '<NODE_ID>'
+figma_wrapper_component_set_id: '<NODE_ID>'
 ---
 
 # `<Pagination>` Figma Component Specification
@@ -16,16 +16,16 @@ figma_wrapper_component_set_id: '1:5675'
 
 The specification covers two related design entities:
 
-- **`<PaginationItem>`** (`1:5098`) — atomic button / icon / ellipsis used inside the pagination bar; carries every variant axis.
-- **`<Pagination>`** (`1:5675`) — composite frame that arranges 9 item instances in Auto Layout, pre-wired per Color so a full-width bar reads consistently.
+- **`<PaginationItem>`** (`<NODE_ID>`) — atomic button / icon / ellipsis used inside the pagination bar; carries every variant axis.
+- **`<Pagination>`** (`<NODE_ID>`) — composite frame that arranges 9 item instances in Auto Layout, pre-wired per Color so a full-width bar reads consistently.
 
 | Aspect                  | Value                                                                                |
 | ----------------------- | ------------------------------------------------------------------------------------ |
 | Source story            | `src/stories/Pagination.stories.tsx`                                                 |
 | Underlying source       | `@mui/material` `Pagination` + `PaginationItem` (re-exported by this package, wrapped as `MUIPagination` in the story to inject MUI themed colors via `sx`) |
-| Figma file              | `KQjP6W9Uw1PN0iipwQHyYn` (MUI Library)                                               |
-| Figma item set          | `<PaginationItem>` (`1:5098`) on page **MUI Library**                                |
-| Figma wrapper set       | `<Pagination>` (`1:5675`) on page **MUI Library**                                    |
+| Figma file              | `<FIGMA_FILE_KEY>` (MUI Library)                                               |
+| Figma item set          | `<PaginationItem>` (`<NODE_ID>`) on page **MUI Library**                                |
+| Figma wrapper set       | `<Pagination>` (`<NODE_ID>`) on page **MUI Library**                                    |
 | Item variants           | **288** (6 Colors × 4 Types × 3 Sizes × 4 States) — see §3.1                         |
 | Wrapper variants        | **36** (6 Colors × 3 Sizes × 2 States) — see §3.3                                    |
 | Hard-coded MUI props    | `variant="outlined"`, `shape="rounded"` — applied in the `MUIPagination` story wrapper, not in a source-side wrapper. Not exposed as Figma axes. |
@@ -83,7 +83,7 @@ Designers pick the MUI name in Figma. Bind every Figma fill / stroke to the list
 
 ## 3. Variant Property Matrix
 
-### 3.1 `<PaginationItem>` (`1:5098`)
+### 3.1 `<PaginationItem>` (`<NODE_ID>`)
 
 ```
 Color × Type × Size × State = 6 × 4 × 3 × 4 = 288 variants
@@ -104,7 +104,7 @@ Many combinations are visually identical across `Color` (every state except `Pag
 | ------------ | ---- | ------- | ----------------------------------------------------------------------------------------------------- |
 | `Label`      | TEXT | `1`     | Page number shown when `Type=Page`. Ignored (rendered as glyph) for `Previous` / `Next` / `Ellipsis`. |
 
-### 3.3 `<Pagination>` wrapper (`1:5675`)
+### 3.3 `<Pagination>` wrapper (`<NODE_ID>`)
 
 ```
 Color × Size × State = 6 × 3 × 2 = 36 variants
@@ -243,7 +243,7 @@ The cell-by-cell paint / stroke / effect bindings for every variant. `<C>` denot
 
 ### 6.1 Constants (all cells)
 
-Numbers below are the **Figma-authored values** in the published item set (`1:5098`) — runtime-aligned. Every MUI-runtime value was reproduced verbatim in the 2026-04-28 runtime-truth pass; the divergences previously listed in §7 issues 1 / 2 / 4 / 6 / 7 / 8 are now resolved.
+Numbers below are the **Figma-authored values** in the published item set (`<NODE_ID>`) — runtime-aligned. Every MUI-runtime value was reproduced verbatim in the 2026-04-28 runtime-truth pass; the divergences previously listed in §7 issues 1 / 2 / 4 / 6 / 7 / 8 are now resolved.
 
 | Property                            | Small         | Medium        | Large         |
 | ----------------------------------- | ------------- | ------------- | ------------- |
@@ -252,7 +252,7 @@ Numbers below are the **Figma-authored values** in the published item set (`1:50
 | Padding (T R B L)                   | `0 4 0 4`     | `0 6 0 6`     | `0 10 0 10`   |
 | Corner radius                       | `4 px`        | `4 px`        | `4 px`        |
 | Outline border width / alignment    | `1 px` / INSIDE | same        | same          |
-| Icon glyph (`Type ∈ {Previous, Next}`) | `<Icon>` `Size=sm` instance, `Glyph Source` preset to `ChevronLeft` (`512:7505`) / `ChevronRight` (`512:7509`) — see §6.7 | same | same |
+| Icon glyph (`Type ∈ {Previous, Next}`) | `<Icon>` `Size=sm` instance, `Glyph Source` preset to `ChevronLeft` (`<NODE_ID>`) / `ChevronRight` (`<NODE_ID>`) — see §6.7 | same | same |
 | Icon size (Previous / Next)         | `20 × 20 px`  | `20 × 20 px`  | `20 × 20 px`  |
 | Label font size (`Type=Page`)       | `14 px`       | `14 px`       | `15 px`       |
 | Glyph font size (`Type=Ellipsis`)   | `14 px`       | `14 px`       | `15 px`       |
@@ -273,7 +273,7 @@ Numbers below are the **Figma-authored values** in the published item set (`1:50
 
 ### 6.3 `State=Hovered`
 
-Only `Type=Page, Color=<C>` carries a themed hover tint. Every other (Type × Color) combination uses the neutral `alias/colors/bg-outline-hover` overlay, matching the published Figma cells (verified against `1:5205`, `1:5229`, `1:5269`).
+Only `Type=Page, Color=<C>` carries a themed hover tint. Every other (Type × Color) combination uses the neutral `alias/colors/bg-outline-hover` overlay, matching the published Figma cells (verified against `<NODE_ID>`, `<NODE_ID>`, `<NODE_ID>`).
 
 | Type                        | Color   | Fill                                                                | Stroke                               | Foreground                          | Effect |
 | --------------------------- | ------- | ------------------------------------------------------------------- | ------------------------------------ | ----------------------------------- | ------ |
@@ -312,7 +312,7 @@ Themed colors collapse to greyscale alias tokens — `Color=Primary, State=Disab
 
 ### 6.6 Wrapper composition (`<Pagination>` static layout)
 
-`<Pagination>` (`1:5675`) is an **Auto Layout** horizontal frame containing a static sequence of 9 `<PaginationItem>` instances in this order, matching MUI's default output for `count ≥ 7` with `siblingCount=1, boundaryCount=1`:
+`<Pagination>` (`<NODE_ID>`) is an **Auto Layout** horizontal frame containing a static sequence of 9 `<PaginationItem>` instances in this order, matching MUI's default output for `count ≥ 7` with `siblingCount=1, boundaryCount=1`:
 
 ```
 [ Previous ] [ 1 ] [ Ellipsis ] [ currentPage-1 ] [ currentPage ]* [ currentPage+1 ] [ Ellipsis ] [ Total Pages ] [ Next ]
@@ -332,11 +332,11 @@ The published wrapper bakes `currentPage = 5, totalPages = 10`, so labels are `1
 
 | Item `Type` | Glyph source                                                                                              | Size                                                          | Color override                                                                                                                       |
 | ----------- | --------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------ |
-| `Previous`  | `<Icon>` (`3:2722`) `Size=sm` (`3:2731`); `Glyph Source` (`INSTANCE_SWAP`) → `ChevronLeft` (`512:7505`)   | Fixed `20 × 20 px` for every Pagination `Size`                | Glyph Vector fills bound to `alias/colors/text-default` (default); `State=Disabled` cells override to `alias/colors/text-disabled`. |
-| `Next`      | `<Icon>` (`3:2722`) `Size=sm` (`3:2731`); `Glyph Source` (`INSTANCE_SWAP`) → `ChevronRight` (`512:7509`)  | Same as Previous.                                              | Same as Previous.                                                                                                                    |
+| `Previous`  | `<Icon>` (`<NODE_ID>`) `Size=sm` (`<NODE_ID>`); `Glyph Source` (`INSTANCE_SWAP`) → `ChevronLeft` (`<NODE_ID>`)   | Fixed `20 × 20 px` for every Pagination `Size`                | Glyph Vector fills bound to `alias/colors/text-default` (default); `State=Disabled` cells override to `alias/colors/text-disabled`. |
+| `Next`      | `<Icon>` (`<NODE_ID>`) `Size=sm` (`<NODE_ID>`); `Glyph Source` (`INSTANCE_SWAP`) → `ChevronRight` (`<NODE_ID>`)  | Same as Previous.                                              | Same as Previous.                                                                                                                    |
 | `Ellipsis`  | TEXT node, character `…` (U+2026)                                                                         | Roboto Regular `14 / 14 / 15 px` per Size (matches `Type=Page` font ramp) | TEXT fill bound to `alias/colors/text-default` (or `text-disabled` for `State=Disabled`).                                            |
 
-**Why one shared `<Icon>` set, not dedicated chevron sets.** Pagination chevrons used to live in two dedicated component sets — `<NavigateBefore>` (`224:4189`) and `<NavigateNext>` (`224:4199`) — each with three `Size=Small/Medium/Large` variants at 18/20/22 px. The 2026-04-29 unification pass replaced them with one `<Icon>` `Size=sm` instance per cell, plus `Glyph Source` preset to `ChevronLeft` / `ChevronRight` (both published as standalone components in the shared Icon library — see `figma-create-component/library-components.md` §Icon library). One shared set + one swap property is structurally simpler than two dedicated sets, and it lets future direction-aware revisions (RTL chevron, custom glyph) reuse the same Icon library entries instead of minting new component sets.
+**Why one shared `<Icon>` set, not dedicated chevron sets.** Pagination chevrons used to live in two dedicated component sets — `<NavigateBefore>` (`<NODE_ID>`) and `<NavigateNext>` (`<NODE_ID>`) — each with three `Size=Small/Medium/Large` variants at 18/20/22 px. The 2026-04-29 unification pass replaced them with one `<Icon>` `Size=sm` instance per cell, plus `Glyph Source` preset to `ChevronLeft` / `ChevronRight` (both published as standalone components in the shared Icon library — see `figma-create-component/library-components.md` §Icon library). One shared set + one swap property is structurally simpler than two dedicated sets, and it lets future direction-aware revisions (RTL chevron, custom glyph) reuse the same Icon library entries instead of minting new component sets.
 
 **Why fixed `20 × 20 px` for every Pagination `Size`.** Storybook hard-codes `width: 20, height: 20` on the icon slot wrapper (`MUIIconSm` in `src/stories/Pagination.stories.tsx`) regardless of the underlying MUI `Pagination` `size` prop. Figma now matches: every `Type ∈ {Previous, Next}` cell, across all three Pagination `Size` values, contains an `<Icon> Size=sm` instance at 20 × 20. The earlier 18/20/22 ramp came from the dedicated `<NavigateBefore>` Size variants and was a Figma-only divergence — MUI runtime never scaled the chevron either.
 
@@ -363,7 +363,7 @@ The runtime-truth pass on **2026-04-28** resolved most of the issues that previo
 
 ### Resolved (2026-04-29 icon-source unification pass)
 
-9. **Icon source for Previous / Next.** Replaced the dedicated `<NavigateBefore>` (`224:4189`) / `<NavigateNext>` (`224:4199`) component sets — three `Size` variants at 18 / 20 / 22 px each — with a single `<Icon>` (`3:2722`) `Size=sm` (`3:2731`) instance per cell, plus the `Glyph Source` `INSTANCE_SWAP` property preset to `ChevronLeft` (`512:7505`) for Previous or `ChevronRight` (`512:7509`) for Next. All 144 `Type ∈ {Previous, Next}` variants in `1:5098` were swapped in place; the legacy `<NavigateBefore>` / `<NavigateNext>` sets are no longer referenced by Pagination. Icon dims are now uniform `20 × 20 px` for every Pagination `Size`, matching the runtime story's `MUIIconSm` slot wrapper. See §6.7.
+9. **Icon source for Previous / Next.** Replaced the dedicated `<NavigateBefore>` (`<NODE_ID>`) / `<NavigateNext>` (`<NODE_ID>`) component sets — three `Size` variants at 18 / 20 / 22 px each — with a single `<Icon>` (`<NODE_ID>`) `Size=sm` (`<NODE_ID>`) instance per cell, plus the `Glyph Source` `INSTANCE_SWAP` property preset to `ChevronLeft` (`<NODE_ID>`) for Previous or `ChevronRight` (`<NODE_ID>`) for Next. All 144 `Type ∈ {Previous, Next}` variants in `<NODE_ID>` were swapped in place; the legacy `<NavigateBefore>` / `<NavigateNext>` sets are no longer referenced by Pagination. Icon dims are now uniform `20 × 20 px` for every Pagination `Size`, matching the runtime story's `MUIIconSm` slot wrapper. See §6.7.
 
 ## 8. Source Sync Rule
 
@@ -375,12 +375,12 @@ This document and the source must move together. When **any** of the following c
 | `src/stories/Pagination.stories.tsx` `paginationItemSx` changes (e.g. `0.08 → 0.12` on Selected bg) | `figma.spec.md` §6.4, `storybook.render.md` §3                                                                          |
 | `src/stories/Pagination.stories.tsx` `MUIPagination` adds / removes a hard-coded MUI prop (e.g. unlocks `variant`) | `figma.spec.md` §1 hard-coded MUI props row, §2.1, §3 (+ axis if exposed), §6 (+ rows for new combinations)            |
 | `src/stories/Pagination.stories.tsx` story matrices change (e.g. add `FirstButton` / `LastButton` cases) | `figma.spec.md` §3.1 `Type` options + 12 new item variants per added type per Size, §6.1–§6.5 + §6.6 wrapper composition, `storybook.render.md` §1 |
-| Figma item set `1:5098` variant axes / cell count change                                        | `figma.spec.md` §3.1, refresh `figma.config.json` via `figma-init/config-init.md`                                          |
-| Figma wrapper set `1:5675` variant axes / cell count or composition change                      | `figma.spec.md` §3.3, §6.6, refresh `figma.config.json` via `figma-init/config-init.md`                                    |
+| Figma item set `<NODE_ID>` variant axes / cell count change                                        | `figma.spec.md` §3.1, refresh `figma.config.json` via `figma-init/config-init.md`                                          |
+| Figma wrapper set `<NODE_ID>` variant axes / cell count or composition change                      | `figma.spec.md` §3.3, §6.6, refresh `figma.config.json` via `figma-init/config-init.md`                                    |
 | Local `mui/*` tokens used by Pagination are renamed in this Figma file                        | `figma.spec.md` §5 + §6, `./design-token.md`. **Do not** auto-pull from the published library — the Pagination cells bind to the local collection only. |
 | Published library `seed/*` / `alias/*` tokens drift from the local copies                       | `./design-token.md` (record divergence), `figma.spec.md` §1 local-only note. Re-sync values manually if needed.            |
-| `<Icon>` set (`3:2722`) variant axes change (e.g. `Size=sm` renamed) or its `Glyph Source` `INSTANCE_SWAP` property is renamed | `figma.spec.md` §6.1 / §6.7 icon mapping table (Size=sm `3:2731` ID + property name `Glyph Source`)                       |
-| `ChevronLeft` (`512:7505`) / `ChevronRight` (`512:7509`) glyph components are renamed, moved, or replaced in the Icon library | `figma.spec.md` §6.7 (Glyph Source preset IDs), `../../figma-create-component/library-components.md` §Icon library                    |
+| `<Icon>` set (`<NODE_ID>`) variant axes change (e.g. `Size=sm` renamed) or its `Glyph Source` `INSTANCE_SWAP` property is renamed | `figma.spec.md` §6.1 / §6.7 icon mapping table (Size=sm `<NODE_ID>` ID + property name `Glyph Source`)                       |
+| `ChevronLeft` (`<NODE_ID>`) / `ChevronRight` (`<NODE_ID>`) glyph components are renamed, moved, or replaced in the Icon library | `figma.spec.md` §6.7 (Glyph Source preset IDs), `../../figma-create-component/library-components.md` §Icon library                    |
 | Local `component/pagination/selected-bg-*` tokens are promoted to `seed/<C>/selected-bg @ α=0.12` | `figma.spec.md` §5.3 / §6.4 (rebind), `./design-token.md` (delete promoted tokens, point at new shared family)            |
 | `mui-theme.ts` adds a `MuiPagination` / `MuiPaginationItem` override (this project has none today) | `figma.spec.md` §1, `storybook.render.md` §1–§4                                                                          |
 
